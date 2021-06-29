@@ -1,25 +1,51 @@
+/** @note
+ * it.only: 只會執行這個
+ * it.skip: 不會執行這個
+ * it: 正常執行，如有 only 會省略，如有 skip 則執行
+ */
 export const GoToBookingPageTest = () => {
-  it('前往個人訂票頁', () => {
-    cy.visit('https://www.railway.gov.tw/tra-tip-web/tip/tip001/tip121/query');
+  it.only('should go to booking page\n(前往個人訂票頁)', () => {
+    cy.visit('/tra-tip-web/tip/tip001/tip121/query');
     cy.contains('首頁 線上訂票 個人訂票').should('be.visible');
   });
 }
 
+// 我就幫你改前幾個，後面的測試你就自己參考一下我怎麼寫的
+export const MainMenuTests = () => {
+  it.only('should display main menu \n(應出現選單: 快速, 完整, 花東常態實名制, 兩鐵列車, 連假加班實名制, 原住民返鄉)', () => {
+    // 先用 get 抓到選單，定義為 menu, 之後可用 get('@menu') 抓
+    cy.get('#tablist').as('menu');
+
+    cy.get('@menu').contains('快速').should('be.visible');
+    cy.get('@menu').contains('完整').should('be.visible');
+    cy.get('@menu').contains('花東常態實名制').should('be.visible');
+    cy.get('@menu').contains('兩鐵列車').should('be.visible');
+    cy.get('@menu').contains('連假加班實名制').should('be.visible');
+    cy.get('@menu').contains('原住民返鄉').should('be.visible');
+  });
+}
+
 export const SwitchQueryTypeTest = () => {
-  it('訂票類型可否正常切換', () => {
-    cy.contains('快速').should('be.visible');
-    cy.contains('完整').should('be.visible');
-    cy.contains('花東常態實名制').should('be.visible');
-    // 報錯就先註解
-    // cy.contains('兩鐵列車').should('be.visible');
-    cy.contains('連假加班實名制').should('be.visible');
-    cy.contains('原住民返鄉').should('be.visible');
-    cy.contains('完整').click();
-    cy.contains('花東常態實名制').click();
-    // cy.contains('兩鐵列車').click();
-    cy.contains('連假加班實名制').click();
-    cy.contains('原住民返鄉').click();
-    cy.contains('快速').click();
+  it.only('should booking type can change\n(訂票類型可否正常切換\n快速, 完整, 花東常態實名制, 兩鐵列車, 連假加班實名制, 原住民返鄉)', () => {
+    cy.get('#tablist').as('menu');
+
+    cy.get('@menu').contains('快速').click();
+    cy.url().should('eq', Cypress.config().baseUrl + '/tra-tip-web/tip/tip001/tip121/query');
+
+    cy.get('@menu').contains('完整').click();
+    cy.url().should('eq', Cypress.config().baseUrl + '/tra-tip-web/tip/tip001/tip123/query');
+
+    cy.get('@menu').contains('花東常態實名制').click();
+    cy.url().should('eq', Cypress.config().baseUrl + '/tra-tip-web/tip/tip001/tip130/query');
+
+    cy.get('@menu').contains('兩鐵列車').click();
+    cy.url().should('eq', Cypress.config().baseUrl + '/tra-tip-web/tip/tip001/tip126/query');
+
+    cy.get('@menu').contains('連假加班實名制').click();
+    cy.url().should('eq', Cypress.config().baseUrl + '/tra-tip-web/tip/tip001/tip124/query');
+
+    cy.get('@menu').contains('原住民返鄉').click();
+    cy.url().should('eq', Cypress.config().baseUrl + '/tra-tip-web/tip/tip001/tip128/query');
   });
 }
 

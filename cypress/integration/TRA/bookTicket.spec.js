@@ -1,8 +1,9 @@
-import * as tests from './tests/query.tests';
+import * as tests from './tests/book.ticket.tests';
 
 describe('台鐵訂票系統', () => {
   describe('訂票系統', () => {
     tests.GoToBookingPageTest();
+    tests.MainMenuTests();
     tests.SwitchQueryTypeTest();
     tests.InputIDTest();
     tests.ChooseStartStationTest();
