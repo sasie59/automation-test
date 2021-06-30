@@ -50,9 +50,9 @@ export const SwitchQueryTypeTest = () => {
 }
 
 export const InputIDTest = () => {
-  it('輸入身分證字號', () => {
-    cy.contains('身分證字號').should('be.visible');
+  it.only('should display ID input\n(身分證字號輸入格有出現)', () => {
     cy.get('#pid.idmember.pid.form-input').type('A123456789');
+    cy.contains('身分證字號').should('be.visible');
     // 你的驗證只驗身分證字號是否有出現，對嗎？那這樣你的 it 應該改成
     // 「身分證字號輸入格有出現」，而不是「輸入身分證字號」
     // 因為你的輸入沒有"驗證"
@@ -60,27 +60,59 @@ export const InputIDTest = () => {
 }
 
 export const ChooseStartStationTest = () => {
-  it('選擇出發站', () => {
-    cy.contains('出發站').should('be.visible');
-    cy.get('#startStation.startStation.ui-autocomplete-input').type('宜蘭');
+  it.only('should dispaly counties and cities menu and click startStaton is Toucheng\n(應該出現縣市選單並選擇出發站為宜蘭縣的頭城)', () => {
+    cy.get('.icon.icon-list').click({ multiple: true });
+    cy.contains('縣市').should('be.visible');
+    cy.contains('支線').should('be.visible');
+    cy.contains('宜蘭縣').click();
+
+    cy.get('#mainline').as('menu');
+
+    cy.get('@menu').contains('頭城').click();
+    cy.contains('7230-頭城').should('be.visible');
+    // 出現在抵達站?
   });
 }
 
 export const ChooseEndStationTest = () => {
-  it('選擇抵達站', () => {
-    cy.contains('抵達站').should('be.visible');
-    cy.get('#endStation.endStation.ui-autocomplete-input').type('花蓮');
+  it.skip('should dispaly counties and cities menu and click endtStaton is Nangang\n(應該出現縣市選單並選擇抵達站為臺北市南港', () => {
+    cy.get('.icon.icon-list').click({ multiple: true });
+    cy.contains('縣市').should('be.visible');
+    cy.contains('支線').should('be.visible');
+    cy.contains('臺北市').click();
+
+    cy.get('#mainline').as('menu');
+
+    cy.get('@menu').contains('南港').click({ force: true });
+    cy.contains('0980-南港').should('be.visible');
   });
 }
 
-export const ChooseTypeTimeTest = () => {
-  it('行程及時段', () => {
-    cy.contains('行程類型').should('be.visible');
-    cy.contains('訂票方式').should('be.visible');
-    cy.contains('去回').click();
-    cy.contains('依時段').click({ force: true });
+export const StrokeTypeMenu = () => {
+  it('should display stroke type\n(應出現行程類型為: 單程，去回)', () => {
+    cy.contains('單程').should('be.visible');
+    cy.contains('去回').should('be.visible');
   });
 }
+
+export const SwitchStrokeTypeMenu = () => {
+  it('should stroke type can change\n(行程類型可否正常切換 單程，去回)', () => {
+    cy.contains('去回').click();
+    cy.contains('行程一').should('be.visible');
+    cy.contains('行程二').should('be.visible');
+    cy.contains('單程').click();
+    cy.contains('單程').should('be.visible');
+  });
+}
+
+// export const ChooseTypeTimeTest = () => {
+//   it('行程及時段', () => {
+//     cy.contains('行程類型').should('be.visible');
+//     cy.contains('訂票方式').should('be.visible');
+//     cy.contains('去回').click();
+//     cy.contains('依時段').click({ force: true });
+//   });
+// }
 
 export const ChooseTicketQtyTest = () => {
   it('選擇張數', () => {

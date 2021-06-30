@@ -8,7 +8,8 @@ describe('台鐵訂票系統', () => {
     tests.InputIDTest();
     tests.ChooseStartStationTest();
     tests.ChooseEndStationTest();
-    tests.ChooseTypeTimeTest();
+    tests.StrokeTypeMenu();
+    tests.SwitchStrokeTypeMenu();
     tests.ChooseTicketQtyTest();
     tests.ChooseGoCarTypeTest();
     tests.ChooseReturnCarTypeTest();
