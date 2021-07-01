@@ -8,11 +8,13 @@ describe('台鐵訂票系統', () => {
     tests.InputIDTest();
     tests.ChooseStartStationTest();
     tests.ChooseEndStationTest();
-    tests.StrokeTypeMenu();
-    tests.SwitchStrokeTypeMenu();
+    tests.StrokeType();
+    tests.SwitchStrokeType();
+    tests.BookingMethodType();
+    tests.SwitchBookingMethodType();
     tests.ChooseTicketQtyTest();
     tests.ChooseGoCarTypeTest();
     tests.ChooseReturnCarTypeTest();
-    tests.NotBotTest();
+    tests.Inquire();
   });
 })

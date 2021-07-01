@@ -60,7 +60,7 @@ export const InputIDTest = () => {
 }
 
 export const ChooseStartStationTest = () => {
-  it.only('should dispaly counties and cities menu and click startStaton is Toucheng\n(應該出現縣市選單並選擇出發站為宜蘭縣的頭城)', () => {
+  it.only('should dispaly counties and cities menu and click startStaton is Toucheng\n(應該出現縣市選單並選擇出發站為宜蘭縣頭城)', () => {
     cy.get('.icon.icon-list').click({ multiple: true });
     cy.contains('縣市').should('be.visible');
     cy.contains('支線').should('be.visible');
@@ -75,7 +75,7 @@ export const ChooseStartStationTest = () => {
 }
 
 export const ChooseEndStationTest = () => {
-  it.skip('should dispaly counties and cities menu and click endtStaton is Nangang\n(應該出現縣市選單並選擇抵達站為臺北市南港', () => {
+  it.only('should dispaly counties and cities menu and click endtStaton is Nangang\n(應該出現縣市選單並選擇抵達站為臺北市南港)', () => {
     cy.get('.icon.icon-list').click({ multiple: true });
     cy.contains('縣市').should('be.visible');
     cy.contains('支線').should('be.visible');
@@ -88,74 +88,78 @@ export const ChooseEndStationTest = () => {
   });
 }
 
-export const StrokeTypeMenu = () => {
-  it('should display stroke type\n(應出現行程類型為: 單程，去回)', () => {
+export const StrokeType = () => {
+  it.only('should display stroke type\n(應出現行程類型為: 單程，去回)', () => {
+    cy.contains('行程類型').should('be.visible');
     cy.contains('單程').should('be.visible');
     cy.contains('去回').should('be.visible');
   });
 }
 
-export const SwitchStrokeTypeMenu = () => {
-  it('should stroke type can change\n(行程類型可否正常切換 單程，去回)', () => {
+export const SwitchStrokeType = () => {
+  it.only('should stroke type can change\n(行程類型可否正常切換 單程，去回)', () => {
+    cy.contains('單程').click();
+    cy.contains('單程').should('be.visible');
     cy.contains('去回').click();
     cy.contains('行程一').should('be.visible');
     cy.contains('行程二').should('be.visible');
-    cy.contains('單程').click();
-    cy.contains('單程').should('be.visible');
   });
 }
 
-// export const ChooseTypeTimeTest = () => {
-//   it('行程及時段', () => {
-//     cy.contains('行程類型').should('be.visible');
-//     cy.contains('訂票方式').should('be.visible');
-//     cy.contains('去回').click();
-//     cy.contains('依時段').click({ force: true });
-//   });
-// }
+export const BookingMethodType = () => {
+  it.only('should dispaly booking method type\n(應出現訂票方式類型為: 依車次，依時段)', () => {
+    cy.contains('訂票方式').should('be.visible');
+    cy.contains('依車次').should('be.visible');
+    cy.contains('依時段').should('be.visible');
+  });
+}
+
+export const SwitchBookingMethodType = () => {
+  it.only('should dispaly booking method type\n(訂票方式類型可否正常切換 依車次，依時段)', () => {
+    cy.contains('依車次').click();
+    cy.get('#trainNoList1').should('be.visible');
+    cy.contains('依時段').click({ force: true });
+    cy.contains('查詢出發時間').should('be.visible')
+    cy.contains('查詢抵達時間').should('be.visible')
+  });
+}
 
 export const ChooseTicketQtyTest = () => {
-  it('選擇張數', () => {
+  it.only('should choose tictet quantity\n(選擇張數)', () => {
     cy.contains('一般座票數').should('be.visible');
-    cy.get('#normalQty.normalSeat.seatQty').clear();
-    cy.get('#normalQty.normalSeat.seatQty').type(2);
+    cy.get('#normalQty1.normalSeat.seatQty').clear();
+    cy.get('#normalQty1.normalSeat.seatQty').type(2);
+    // cy.get('#normalQty1.normalSeat.seatQty').contains(2).should('be.visible');
   });
 }
 
 export const ChooseGoCarTypeTest = () => {
-  it('選擇去程時段的車種', () => {
-    cy.contains('日期').should('be.visible');
-    cy.contains('時段').should('be.visible');
-    cy.contains('查詢出發時間').should('be.visible');
-    cy.contains('查詢抵達時間').should('be.visible');
-    cy.contains('座位偏好').should('be.visible');
+  it.only('should choose start train type\n(選擇去程時段)', () => {
     cy.get('#rideDate1.rideDate').clear();
-    cy.get('#rideDate1.rideDate').type(20210630);
+    cy.get('#rideDate1.rideDate').type(20210715);
+    // cy.get('#rideDate1.rideDate').contains('2021/07/15').should('be.visible');
     cy.get('#startTime1.form-control.timeRng').select('07:00');
+    cy.contains('07:00').should('be.visible');
     cy.get('#endTime1.form-control.timeRng').select('12:00');
-    cy.contains('太魯閣').click();
+    cy.contains('12:00').should('be.visible');
   });
 }
 
 export const ChooseReturnCarTypeTest = () => {
-  it('選擇回程時段的車種', () => {
-    cy.contains('車種').should('be.visible');
-    // cy.contains('優惠').should('be.visible');
-    cy.contains('限定早享車次').should('be.visible');
-    cy.contains('偏好查詢').should('be.visible');
-    cy.get('#rideDate2.rideDate').type(20210702);
+  it.only('should choose return train type and ticket quantity\n(選擇回程時段及張數)', () => {
+    cy.get('#rideDate2.rideDate').type(20210717);
+    // cy.get('#rideDate2.rideDate').contains('2021/07/17').should('be.visible')
     cy.get('#startTime2.form-control.timeRng').select('16:00');
+    cy.contains('16:00').should('be.visible');
     cy.get('#endTime2.form-control.timeRng').select('20:00');
-    cy.contains('普悠瑪').click({ force: true });
+    cy.contains('20:00').should('be.visible');
+    cy.get('#normalQty2.normalSeat.seatQty').clear();
+    cy.get('#normalQty2.normalSeat.seatQty').type(2);
   });
 }
 
-export const NotBotTest = () => {
-  it('不是機器人 & 訂票', () => {
-    cy.contains('訂票').should('be.visible');
-    // cy.get('#recaptcha-anchor-label').contains('我不是機器人').click();
-    cy.get('.btn-sentgroup').contains('訂票').click();
+export const Inquire = () => {
+  it.only('should inquire\n(查詢)', () => {
+    cy.get('.btn.btn-3d').click();
   });
 }
-
-// test
