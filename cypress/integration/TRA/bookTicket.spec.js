@@ -15,6 +15,6 @@ describe('台鐵訂票系統', () => {
     tests.ChooseTicketQtyTest();
     tests.ChooseGoCarTypeTest();
     tests.ChooseReturnCarTypeTest();
-    tests.Inquire();
+    tests.BookingTicket();
   });
 })
