@@ -3,3 +3,4 @@ examples
 videos
 screenshots
 .DS_Store
+cypress.env.json
