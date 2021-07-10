@@ -17,3 +17,28 @@ export const LoginTests = () => {
     // cy.get('input[title="登入"]').click();
   });
 }
+
+export const MainTypeTests = () => {
+  it('should display main type and can each switch\n(應該呈現主要類型為: WOMEN, MEN, KIDS, BABY並且可以各自切換)', () => {
+    cy.go(-1);
+    cy.get('a[title="UNIQLO"]').should('be.visible');
+
+    cy.get('#navHeader').as('head');
+
+    cy.get('@head').get('a[id="header_women"]').should('be.visible');
+    cy.get('@head').get('a[id="header_men"]').should('be.visible');
+    cy.get('@head').get('a[id="header_kids"]').should('be.visible');
+    cy.get('@head').get('a[id="header_baby"]').should('be.visible');
+
+    cy.get('@head').get('a[id="header_women"]').click();
+    cy.get('#gnav_women').contains('女裝首頁').should('be.visible');
+    cy.get('@head').get('a[id="header_men"]').click();
+    cy.get('#gnav_men').contains('男裝首頁').should('be.visible');
+    cy.get('@head').get('a[id="header_kids"]').click();
+    cy.get('#gnav_kids').contains('童裝首頁').should('be.visible');
+    cy.get('@head').get('a[id="header_baby"]').click();
+    cy.get('#gnav_baby').contains('嬰幼兒首頁').should('be.visible');
+  });
+}
+
+

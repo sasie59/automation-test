@@ -8,5 +8,6 @@ describe('台灣Uniqlo', () => {
   describe('登入帳號', () => {
     tests.GoToUniqloPageTests();
     tests.LoginTests();
+    tests.MainTypeTests();
   });
 });
