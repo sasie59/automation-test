@@ -9,5 +9,15 @@ describe('台灣Uniqlo', () => {
     tests.GoToUniqloPageTests();
     tests.LoginTests();
     tests.MainTypeTests();
+    tests.CarouselTests();
+    tests.SearchBarTests();
+    tests.StoreInformationTests();
+    tests.RegisteredTests();
+    tests.WomenAreaTests();
+    tests.MenAreaTests();
+    tests.KidsAreaTests();
+    tests.BabyAreaTests();
+    tests.CommodityInformationTests();
+    tests.ShoppingCartTests();
   });
 });
