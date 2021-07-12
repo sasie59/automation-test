@@ -44,15 +44,15 @@ export const MainTypeTests = () => {
 export const CarouselTests = () => {
   it.only('should click arrow or dots will change img\n(點擊箭頭或圓點會改變圖片)', () => {
     cy.get('#main-slider').as('carousel_1');
-    cy.get('@carousel_1').contains('Next').click({force: true});
+    cy.get('@carousel_1').contains('Next').click({ force: true });
     cy.get('img[src="https://im.uniqlo.com/images/tw/uq/pc/img/feature/top/210709/210709_L1_hero_02.jpg"]').should('be.visible');
+
+    cy.get('.bx-pager.bx-default-pager').as('dots');
+    cy.get('@dots').contains('4').click();
+    cy.get('img[src="https://im.uniqlo.com/images/tw/uq/pc/img/feature/top/210709/210709_L1_hero_04.jpg"]').should('be.visible');
+    // cy.get('a[class="bx-pager-link"]').should('have.class', 'bx-pager-link');
+
     // cy.get('@carousel_1').contains('Prev').click();
-    // cy.get('.bx-pager.bx-default-pager').contains(4).click();
-    // cy.get('img[src="https://im.uniqlo.com/images/tw/uq/pc/img/feature/top/210709/210709_L1_hero_04.jpg"]').should('be.visible');
-    // cy.get('.bx-pager.bx-default-pager').contains(1).click();
-    // cy.get('img[src="https://im.uniqlo.com/images/tw/uq/pc/img/feature/top/210709/210709_L1_hero_01.jpg"]').should('be.visible');
-    cy.get('.bx-pager-item').contains(4).click();
-    // cy.get('img[src="https://im.uniqlo.com/images/tw/uq/pc/img/feature/top/210709/210709_L1_hero_03.jpg"]').should('be.visible');
   });
 }
 
