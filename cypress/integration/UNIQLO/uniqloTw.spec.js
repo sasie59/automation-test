@@ -12,7 +12,6 @@ describe('台灣Uniqlo', () => {
     tests.CarouselTests();
     tests.SearchBarTests();
     tests.StoreInformationTests();
-    tests.RegisteredTests();
     tests.WomenAreaTests();
     tests.MenAreaTests();
     tests.KidsAreaTests();
