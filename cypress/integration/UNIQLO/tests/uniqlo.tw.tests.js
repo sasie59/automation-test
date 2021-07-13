@@ -42,7 +42,7 @@ export const MainTypeTests = () => {
 }
 
 export const CarouselTests = () => {
-  it.only('should click arrow or dots will change img\n(點擊箭頭或圓點會改變圖片)', () => {
+  it('should click arrow or dots will change img\n(點擊箭頭或圓點會改變圖片)', () => {
     cy.get('#main-slider').as('carousel_1');
     cy.get('@carousel_1').contains('Next').click({ force: true });
     cy.get('.slider.newslider2020').first().find('img[src="https://im.uniqlo.com/images/tw/uq/pc/img/feature/top/210709/210709_L1_hero_02.jpg"]').should('be.visible');
@@ -61,8 +61,6 @@ export const CarouselTests = () => {
 
     cy.get('@carousel_1').find('a[data-slide-index="0"]').click();
     cy.get('.slider.newslider2020').first().find('img[src="https://im.uniqlo.com/images/tw/uq/pc/img/feature/top/210709/210709_L1_hero_01.jpg"]').should('be.visible');
-
-
   });
 }
 
@@ -73,8 +71,12 @@ export const SearchBarTests = () => {
 }
 
 export const StoreInformationTests = () => {
-  it('should', () => {
-
+  it.only('should target_blank a windows about store infomation(應彈跳出有關店舖資訊的頁面)', () => {
+    cy.get('#gnav_header').as('head');
+    cy.get('@head')
+      .get('img[src="//im.uniqlo.com/images/tw/uq/pc/img/feature/top/2020_L1_update/header_nav_stores.gif"]')
+      .click({force:true});
+    cy.get('a[href="/tw/stores/"]').should('have.attr', 'target', '_blank');
   });
 }
 
