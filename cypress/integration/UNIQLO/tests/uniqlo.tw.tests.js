@@ -1,3 +1,9 @@
+export const DefineElement = () => {
+  beforeEach(() => {
+    // alias the $btn.text() as 'text'
+    cy.get('#navHeader').invoke('head').as('head');
+  })
+}
 
 export const GoToUniqloPageTests = () => {
   it.only('should go to uniqlo index\n(前往uniqlo)', () => {
@@ -7,7 +13,7 @@ export const GoToUniqloPageTests = () => {
 }
 
 export const LoginTests = () => {
-  it('should login account secret\n(登入帳號密碼)', () => {
+  it.skip('should login account secret\n(登入帳號密碼)', () => {
     cy.get('img[alt="登入"]').click({ force: true });
     cy.url().should('eq', 'https://www.uniqlo.com/tw/store/FSC01010E02.do');
     cy.get('input[name="cust_eml_id"]').type(Cypress.env('account'));
@@ -25,18 +31,18 @@ export const MainTypeTests = () => {
 
     cy.get('#navHeader').as('head');
 
-    cy.get('@head').find('a[id="header_women"]').should('be.visible');
-    cy.get('@head').find('a[id="header_men"]').should('be.visible');
-    cy.get('@head').find('a[id="header_kids"]').should('be.visible');
-    cy.get('@head').find('a[id="header_baby"]').should('be.visible');
+    this.head.find('a[id="header_women"]').should('be.visible');
+    this.head.find('a[id="header_men"]').should('be.visible');
+    this.head.find('a[id="header_kids"]').should('be.visible');
+    this.head.find('a[id="header_baby"]').should('be.visible');
 
-    cy.get('@head').find('a[id="header_women"]').click();
+    this.head.find('a[id="header_women"]').click();
     cy.get('#gnav_women').contains('女裝首頁').should('be.visible');
-    cy.get('@head').find('a[id="header_men"]').click();
+    this.head.find('a[id="header_men"]').click();
     cy.get('#gnav_men').contains('男裝首頁').should('be.visible');
-    cy.get('@head').find('a[id="header_kids"]').click();
+    this.head.find('a[id="header_kids"]').click();
     cy.get('#gnav_kids').contains('童裝首頁').should('be.visible');
-    cy.get('@head').find('a[id="header_baby"]').click();
+    this.head.find('a[id="header_baby"]').click();
     cy.get('#gnav_baby').contains('嬰幼兒首頁').should('be.visible');
   });
 }
@@ -71,9 +77,9 @@ export const SearchBarTests = () => {
 }
 
 export const StoreInformationTests = () => {
-  it.only('should target_blank a windows about store infomation(應彈跳出有關店舖資訊的頁面)', () => {
-    cy.get('#gnav_header').as('head');
-    cy.get('@head')
+  it('should target_blank a windows about store infomation(應彈跳出有關店舖資訊的頁面)', () => {
+    cy.get('#gnav_header').as('header');
+    cy.get('@header')
       .get('img[src="//im.uniqlo.com/images/tw/uq/pc/img/feature/top/2020_L1_update/header_nav_stores.gif"]')
       .click({force:true});
     cy.get('a[href="/tw/stores/"]').should('have.attr', 'target', '_blank');

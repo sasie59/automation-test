@@ -5,8 +5,9 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 });
 
 describe('台灣Uniqlo', () => {
+  tests.GoToUniqloPageTests();
   describe('登入帳號', () => {
-    tests.GoToUniqloPageTests();
+    tests.DefineElement();
     tests.LoginTests();
     tests.MainTypeTests();
     tests.CarouselTests();
