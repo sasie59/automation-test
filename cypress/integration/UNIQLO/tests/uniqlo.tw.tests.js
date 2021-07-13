@@ -1,15 +1,14 @@
+export function GoToUniqloPageTests() {
+  it.only('should go to uniqlo index\n(前往uniqlo)', () => {
+    cy.visit('https://www.uniqlo.com/tw/');
+    cy.get('a[title="UNIQLO"]').should('be.visible');
+  });
+}
 export const DefineElement = () => {
   beforeEach(() => {
     // alias the $btn.text() as 'text'
     cy.get('#navHeader').invoke('head').as('head');
   })
-}
-
-export function GoToUniqloPageTests() {
-  it('should go to uniqlo index\n(前往uniqlo)', () => {
-    cy.visit('https://www.uniqlo.com/tw/');
-    cy.get('a[title="UNIQLO"]').should('be.visible');
-  });
 }
 
 
@@ -112,14 +111,14 @@ export const BabyAreaTests = () => {
 }
 
 export const CommodityInformationTests = () => {
-  it('should', () => {
-
+  it.only('should display commodity information\n(應呈現商品資訊)', () => {
+    cy.visit('https://www.uniqlo.com/tw/store/goods/440681#thumbnailSelect')
   });
 }
 
 export const ShoppingCartTests = () => {
   it('should', () => {
-
+    
   });
 }
 
