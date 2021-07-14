@@ -13,7 +13,7 @@ export const DefineElement = () => {
   });
 }
 
-export const MainTypeTests = () =>{
+export const MainTypeTests = () => {
   it('should display main type and can each switch\n(應該呈現主要類型為: WOMEN, MEN, KIDS, BABY並且可以各自切換)', () => {
 
     cy.get('@menu').find('a[id="header_women"]').should('be.visible');
@@ -40,10 +40,9 @@ export const SearchBarTests = () => {
 
 export const StoreInformationTests = () => {
   it('should target_blank a windows about store infomation(應彈跳出有關店舖資訊的頁面)', () => {
-    cy.get('#gnav_header').as('header');
-    cy.get('@header')
-      .get('img[src="//im.uniqlo.com/images/tw/uq/pc/img/feature/top/2020_L1_update/header_nav_stores.gif"]')
-      .click({force:true});
+    cy.get('@menu')
+      .find('img[src="//im.uniqlo.com/images/tw/uq/pc/img/feature/top/2020_L1_update/header_nav_stores.gif"]')
+      .click({ force: true });
     cy.get('a[href="/tw/stores/"]').should('have.attr', 'target', '_blank');
   });
 }
@@ -62,21 +61,16 @@ export const LoginTests = () => {
 
 export const ShoppingCartTests = () => {
   it('should', () => {
-    
+
   });
 }
-
-// export const DefineControlElement = () => {
-//   beforeEach(() => {
-    
-//   });
-// }
 
 export const CarouselTests = () => {
   it('should click arrow or dots will change img\n(點擊箭頭或圓點會改變圖片)', () => {
     cy.go(-1);
     cy.get('a[title="UNIQLO"]').should('be.visible');
     cy.get('#main-slider').as('carousel_1');
+    cy.get('.uni-spacing-XS').last().as('carousel_2');
 
     cy.get('@carousel_1').contains('Next').click({ force: true });
     cy.get('.slider.newslider2020').first().find('img[src="https://im.uniqlo.com/images/tw/uq/pc/img/feature/top/210709/210709_L1_hero_02.jpg"]').should('be.visible');
@@ -95,6 +89,32 @@ export const CarouselTests = () => {
 
     cy.get('@carousel_1').find('a[data-slide-index="0"]').click();
     cy.get('.slider.newslider2020').first().find('img[src="https://im.uniqlo.com/images/tw/uq/pc/img/feature/top/210709/210709_L1_hero_01.jpg"]').should('be.visible');
+
+    cy.get('@carousel_2').scrollIntoView();
+
+    cy.get('@carousel_2').contains('Next').click({ force: true });
+    cy.get('.slider.newslider2020').last().find('img[src="https://im.uniqlo.com/images/tw/uq/pc/img/feature/top/210709/210709_L1_specialcollaborationstyling_02.jpg"]');
+    cy.get('.slider.newslider2020').last().find('img[src="https://im.uniqlo.com/images/tw/uq/pc/img/feature/top/210709/210709_L1_specialcollaborationstyling_03.jpg"]');
+    cy.get('.slider.newslider2020').last().find('img[src="https://im.uniqlo.com/images/tw/uq/pc/img/feature/top/210709/210709_L1_specialcollaborationstyling_04.jpg"]');
+    cy.get('.slider.newslider2020').last().find('img[src="https://im.uniqlo.com/images/tw/uq/pc/img/feature/top/210709/210709_L1_specialcollaborationstyling_05.jpg"]');
+
+    cy.wait(1000);
+
+    cy.get('@carousel_2').find('a[data-slide-index="3"]').click();
+    cy.get('.slider.newslider2020').last().find('img[src="https://im.uniqlo.com/images/tw/uq/pc/img/feature/top/210709/210709_L1_specialcollaborationstyling_04.jpg"]');
+    cy.get('.slider.newslider2020').last().find('img[src="https://im.uniqlo.com/images/tw/uq/pc/img/feature/top/210709/210709_L1_specialcollaborationstyling_05.jpg"]');
+    cy.get('.slider.newslider2020').last().find('img[src="https://im.uniqlo.com/images/tw/uq/pc/img/feature/top/210709/210709_L1_specialcollaborationstyling_01.jpg"]');
+    cy.get('.slider.newslider2020').last().find('img[src="https://im.uniqlo.com/images/tw/uq/pc/img/feature/top/210709/210709_L1_specialcollaborationstyling_02.jpg"]');
+
+    cy.wait(1000);
+
+    cy.get('@carousel_2').contains('Prev').click({ force: true });
+    cy.get('.slider.newslider2020').last().find('img[src="https://im.uniqlo.com/images/tw/uq/pc/img/feature/top/210709/210709_L1_specialcollaborationstyling_03.jpg"]');
+    cy.get('.slider.newslider2020').last().find('img[src="https://im.uniqlo.com/images/tw/uq/pc/img/feature/top/210709/210709_L1_specialcollaborationstyling_04.jpg"]');
+    cy.get('.slider.newslider2020').last().find('img[src="https://im.uniqlo.com/images/tw/uq/pc/img/feature/top/210709/210709_L1_specialcollaborationstyling_05.jpg"]');
+    cy.get('.slider.newslider2020').last().find('img[src="https://im.uniqlo.com/images/tw/uq/pc/img/feature/top/210709/210709_L1_specialcollaborationstyling_01.jpg"]');
+
+
   });
 }
 

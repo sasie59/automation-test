@@ -17,9 +17,12 @@ describe('主要選單', () => {
   tests.ShoppingCartTests();
 });
 
+describe('旋轉木馬', () => {
+  tests.CarouselTests();
+});
+
 describe('行為測試', () => {
   // tests.DefineControlElement();
-  tests.CarouselTests();
   tests.WomenAreaTests();
   tests.MenAreaTests();
   tests.KidsAreaTests();
