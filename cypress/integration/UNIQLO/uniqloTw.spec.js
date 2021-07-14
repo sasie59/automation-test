@@ -7,17 +7,24 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 describe('前往台灣Uniqlo', () => {
   tests.GoToUniqloPageTests();
 });
-describe('行為測試', () => {
+
+describe('主要選單', () => {
   tests.DefineElement();
-  tests.LoginTests();
   tests.MainTypeTests();
-  tests.CarouselTests();
   tests.SearchBarTests();
   tests.StoreInformationTests();
+  tests.LoginTests();
+  tests.ShoppingCartTests();
+});
+
+describe('行為測試', () => {
+  // tests.DefineControlElement();
+  tests.CarouselTests();
   tests.WomenAreaTests();
   tests.MenAreaTests();
   tests.KidsAreaTests();
   tests.BabyAreaTests();
   tests.CommodityInformationTests();
-  tests.ShoppingCartTests();
 });
+
+
