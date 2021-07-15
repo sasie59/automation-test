@@ -59,8 +59,95 @@ export const LoginTests = () => {
 }
 
 export const CommodityInformationTests = () => {
-  it('should display commodity information\n(應呈現商品資訊)', () => {
-    cy.visit('https://www.uniqlo.com/tw/store/goods/440681#thumbnailSelect')
+  it.only('should display commodity information\n(應呈現商品資訊)', () => {
+    cy.visit('https://www.uniqlo.com/tw/store/goods/440681#thumbnailSelect');
+
+    cy.get('#primary').as('leftInfo');
+    cy.get('#tertiary').as('rightInfo');
+
+    cy.get('@leftInfo').contains('男裝 Manga UT印花T恤(短袖)').should('be.visible');
+    cy.get('@leftInfo').find('.btnOpen.readmore-js-toggle').click();
+    cy.get('@leftInfo').find('#shortComment').should('be.visible');
+    cy.get('@leftInfo').find('.btnClose.readmore-js-toggle').click();
+    cy.get('#shortComment').should('have.css', 'height', '99px');
+    cy.get('@leftInfo').find('#price').should('be.visible');
+    cy.get('@leftInfo').find('.number').contains('商品編號440681').should('be.visible');
+    cy.get('@leftInfo')
+    .find('img[src="https://im.uniqlo.com/images/tw/uq/pc/img/l4/txt_tag_special01_TW.gif"]')
+    .should('be.visible'); //若是新品的話才有這句斷言式//
+    cy.get('@leftInfo').find('#BVRRRatingOverall_Rating_Summary_1').should('be.visible');
+    cy.get('@leftInfo').find('a[name="BV_TrackingTag_Rating_Summary_1_ReadReviews_440681"]').click();
+    cy.get('@leftInfo').find('#BVRRRatingSummaryLinkReadID').contains('讀取總共 3 則商品評論').should('be.visible');
+    cy.get('#BVRRDisplayContentReviewID_135098465').should('be.visible');
+    cy.get('#BVRRDisplayContentReviewID_135123625').should('be.visible');
+    cy.get('#BVRRDisplayContentReviewID_135479033').should('be.visible');
+
+    cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub1_mini.jpg"]').scrollIntoView()
+    cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub1_mini.jpg"]').click();
+    cy.get('#prodImgDefault').scrollIntoView();
+
+    cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub2_mini.jpg"]').scrollIntoView()
+    cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub2_mini.jpg"]').click();
+    cy.get('#prodImgDefault').scrollIntoView();
+
+    cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub7_mini.jpg"]').scrollIntoView()
+    cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub7_mini.jpg"]').click();
+    cy.get('#prodImgDefault').scrollIntoView();
+
+    cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub13_mini.jpg"]').scrollIntoView()
+    cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub13_mini.jpg"]').click();
+    cy.get('#prodImgDefault').scrollIntoView();
+
+    cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub14_mini.jpg"]').scrollIntoView()
+    cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub14_mini.jpg"]').click();
+    cy.get('#prodImgDefault').scrollIntoView();
+
+    cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub18_mini.jpg"]').scrollIntoView()
+    cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub18_mini.jpg"]').click();
+    cy.get('#prodImgDefault').scrollIntoView();
+
+    cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub19_mini.jpg"]').scrollIntoView()
+    cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub19_mini.jpg"]').click();
+    cy.get('#prodImgDefault').scrollIntoView();
+
+    cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub27_mini.jpg"]').scrollIntoView()
+    cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub27_mini.jpg"]').click();
+    cy.get('#prodImgDefault').scrollIntoView();
+
+    cy.get('@rightInfo').find('#prodSelectColor').should('be.visible');
+
+    cy.get('@rightInfo').find('#prodSelectSize').should('be.visible');
+    cy.get('#listChipSize').find('li[size="003"]').should('be.visible');
+    cy.get('#listChipSize').find('li[size="003"]').click();
+    cy.get('#sizeNmId').contains('尺寸:S').should('be.visible');
+
+    cy.get('#listChipSize').find('li[size="004"]').should('be.visible');
+    cy.get('#listChipSize').find('li[size="004"]').click();
+    cy.get('#sizeNmId').contains('尺寸:M').should('be.visible');
+
+    cy.get('#listChipSize').find('li[size="005"]').should('be.visible');
+    cy.get('#listChipSize').find('li[size="005"]').click();
+    cy.get('#sizeNmId').contains('尺寸:L').should('be.visible');
+    
+    cy.get('#listChipSize').find('li[size="007"]').should('be.visible');
+    cy.get('#listChipSize').find('li[size="007"]').click();
+    cy.get('#sizeNmId').contains('尺寸:XXL').should('be.visible');
+    
+    cy.get('#listChipSize').find('li[size="008"]').should('be.visible');
+    cy.get('#listChipSize').find('li[size="008"]').click();
+    cy.get('#sizeNmId').contains('尺寸:3XL').should('be.visible');
+    
+    cy.get('#listChipSize').find('li[size="006"]').should('be.visible');
+    cy.get('#listChipSize').find('li[size="006"]').click();
+    cy.get('#sizeNmId').contains('尺寸:XL').should('be.visible');
+
+    cy.get('@rightInfo').find('#prodSelectQuantity').should('be.visible');
+    cy.get('#selectNum').select('2')
+    cy.get('#selectNum').should('have.value', '2');
+
+    cy.get('#intoCartOff').click();
+    cy.get('#msgAddedCart').should('be.visible');
+
   });
 }
 

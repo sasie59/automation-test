@@ -15,11 +15,13 @@ describe('旋轉木馬', () => {
 });
 describe('商品資訊', () => {
   tests.CommodityInformationTests();
+  // ok
 });
 
 
 describe('主要選單', () => {
   tests.DefineElement();
+  // ok
   tests.MainTypeTests();
   // ok
   tests.SearchBarTests();
