@@ -9,7 +9,6 @@ export const DefineElement = () => {
   beforeEach(() => {
     // alias the $btn.text() as 'text'
     cy.get('#gnav_header').as('menu');
-    // cy.get('#main-slider').as('carousel_1');
   });
 }
 
@@ -33,7 +32,7 @@ export const MainTypeTests = () => {
 }
 
 export const SearchBarTests = () => {
-  it('should', () => {
+  it('should key in keyword can find What you want\n(輸入關鍵字可以找到你想要的)', () => {
 
   });
 }
@@ -59,16 +58,20 @@ export const LoginTests = () => {
   });
 }
 
+export const CommodityInformationTests = () => {
+  it('should display commodity information\n(應呈現商品資訊)', () => {
+    cy.visit('https://www.uniqlo.com/tw/store/goods/440681#thumbnailSelect')
+  });
+}
+
 export const ShoppingCartTests = () => {
-  it('should', () => {
+  it('should display shopping cart checkout process\n(應呈現購物車結帳流程)', () => {
 
   });
 }
 
 export const CarouselTests = () => {
   it('should click arrow or dots will change img\n(點擊箭頭或圓點會改變圖片)', () => {
-    cy.go(-1);
-    cy.get('a[title="UNIQLO"]').should('be.visible');
     cy.get('#main-slider').as('carousel_1');
     cy.get('.uni-spacing-XS').last().as('carousel_2');
 
@@ -121,34 +124,30 @@ export const CarouselTests = () => {
 
 
 export const WomenAreaTests = () => {
-  it('should', () => {
-
+  it('should display all women clothing category products\n(應呈現所有女裝的分類產品)', () => {
+    // cy.go(-1);
+    // cy.get('a[title="UNIQLO"]').should('be.visible');
   });
 }
 
 export const MenAreaTests = () => {
-  it('should', () => {
+  it('should should display all men clothing category products\n(應呈現所有男裝的分類產品)', () => {
 
   });
 }
 
 export const KidsAreaTests = () => {
-  it('should', () => {
+  it('should should display all kids clothing category products\n(應呈現所有童裝的分類產品)', () => {
 
   });
 }
 
 export const BabyAreaTests = () => {
-  it('should', () => {
+  it('should should display all baby clothing category products\n(應呈現所有嬰幼兒的分類產品)', () => {
 
   });
 }
 
-export const CommodityInformationTests = () => {
-  it('should display commodity information\n(應呈現商品資訊)', () => {
-    cy.visit('https://www.uniqlo.com/tw/store/goods/440681#thumbnailSelect')
-  });
-}
 
 
 
