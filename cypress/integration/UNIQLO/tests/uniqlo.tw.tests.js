@@ -126,37 +126,55 @@ export const CommodityInformationTests = () => {
     cy.get('#BVRRDisplayContentReviewID_135123625').should('be.visible');
     cy.get('#BVRRDisplayContentReviewID_135479033').should('be.visible');
 
-    cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub1_mini.jpg"]').scrollIntoView()
-    cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub1_mini.jpg"]').click();
-    cy.get('#prodImgDefault').scrollIntoView();
+    const IMG_BASE = 'https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/';
+    const IMG_LIST = [
+      '440681_sub1_mini.jpg',
+      '440681_sub2_mini.jpg',
+      '440681_sub7_mini.jpg',
+      '440681_sub13_mini.jpg',
+      '440681_sub14_mini.jpg',
+      '440681_sub18_mini.jpg',
+      '440681_sub19_mini.jpg',
+      '440681_sub27_mini.jpg',
+    ];
 
-    cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub2_mini.jpg"]').scrollIntoView()
-    cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub2_mini.jpg"]').click();
-    cy.get('#prodImgDefault').scrollIntoView();
+    IMG_LIST.forEach(IMG => {
+      cy.get('#subImages').find(`img[src="${IMG_BASE}${IMG}"]`).scrollIntoView()
+      cy.get('#subImages').find(`img[src="${IMG_BASE}${IMG}"]`).click();
+      cy.get('#prodImgDefault').scrollIntoView();
+    });
 
-    cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub7_mini.jpg"]').scrollIntoView()
-    cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub7_mini.jpg"]').click();
-    cy.get('#prodImgDefault').scrollIntoView();
+    // cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub1_mini.jpg"]').scrollIntoView()
+    // cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub1_mini.jpg"]').click();
+    // cy.get('#prodImgDefault').scrollIntoView();
 
-    cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub13_mini.jpg"]').scrollIntoView()
-    cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub13_mini.jpg"]').click();
-    cy.get('#prodImgDefault').scrollIntoView();
+    // cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub2_mini.jpg"]').scrollIntoView()
+    // cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub2_mini.jpg"]').click();
+    // cy.get('#prodImgDefault').scrollIntoView();
 
-    cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub14_mini.jpg"]').scrollIntoView()
-    cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub14_mini.jpg"]').click();
-    cy.get('#prodImgDefault').scrollIntoView();
+    // cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub7_mini.jpg"]').scrollIntoView()
+    // cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub7_mini.jpg"]').click();
+    // cy.get('#prodImgDefault').scrollIntoView();
 
-    cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub18_mini.jpg"]').scrollIntoView()
-    cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub18_mini.jpg"]').click();
-    cy.get('#prodImgDefault').scrollIntoView();
+    // cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub13_mini.jpg"]').scrollIntoView()
+    // cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub13_mini.jpg"]').click();
+    // cy.get('#prodImgDefault').scrollIntoView();
 
-    cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub19_mini.jpg"]').scrollIntoView()
-    cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub19_mini.jpg"]').click();
-    cy.get('#prodImgDefault').scrollIntoView();
+    // cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub14_mini.jpg"]').scrollIntoView()
+    // cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub14_mini.jpg"]').click();
+    // cy.get('#prodImgDefault').scrollIntoView();
 
-    cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub27_mini.jpg"]').scrollIntoView()
-    cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub27_mini.jpg"]').click();
-    cy.get('#prodImgDefault').scrollIntoView();
+    // cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub18_mini.jpg"]').scrollIntoView()
+    // cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub18_mini.jpg"]').click();
+    // cy.get('#prodImgDefault').scrollIntoView();
+
+    // cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub19_mini.jpg"]').scrollIntoView()
+    // cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub19_mini.jpg"]').click();
+    // cy.get('#prodImgDefault').scrollIntoView();
+
+    // cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub27_mini.jpg"]').scrollIntoView()
+    // cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub27_mini.jpg"]').click();
+    // cy.get('#prodImgDefault').scrollIntoView();
 
     cy.get('@rightInfo').find('#prodSelectColor').should('be.visible');
 
@@ -483,13 +501,5 @@ export const BabyAreaTests = () => {
     cy.get('@main').find('a[href="https://www.uniqlo.com/tw/store/feature/baby/toddler/inner-and-loungewear/#anchor10"]').should('be.visible');
     cy.get('@main').find('a[href="https://www.uniqlo.com/tw/store/feature/baby/toddler/goods/"]').should('be.visible');
 
-
-
-
   });
 }
-
-
-
-
-
