@@ -147,13 +147,14 @@ export const CommodityInformationTests = () => {
 
     cy.get('#intoCartOff').click();
     cy.get('#msgAddedCart').should('be.visible');
-
+    cy.get('#msgAddedCart').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/img/l4/btn_view_cart_TW.gif"]').click();
+    cy.url().should('eq', 'https://www.uniqlo.com/tw/store/FSC02020E02.do');
   });
 }
 
 export const ShoppingCartTests = () => {
   it('should display shopping cart checkout process\n(應呈現購物車結帳流程)', () => {
-
+    // cy.get('#inner').as('sc');
   });
 }
 

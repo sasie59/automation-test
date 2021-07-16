@@ -15,6 +15,7 @@ describe('旋轉木馬', () => {
 });
 describe('商品資訊', () => {
   tests.CommodityInformationTests();
+  tests.ShoppingCartTests();
   // ok
 });
 
@@ -29,7 +30,6 @@ describe('主要選單', () => {
   // ok
   tests.LoginTests();
   // ok
-  tests.ShoppingCartTests();
 });
 
 describe('行為測試', () => {
