@@ -133,10 +133,6 @@ export const CommodityInformationTests = () => {
     cy.get('#listChipSize').find('li[size="007"]').click();
     cy.get('#sizeNmId').contains('尺寸:XXL').should('be.visible');
     
-    cy.get('#listChipSize').find('li[size="008"]').should('be.visible');
-    cy.get('#listChipSize').find('li[size="008"]').click();
-    cy.get('#sizeNmId').contains('尺寸:3XL').should('be.visible');
-    
     cy.get('#listChipSize').find('li[size="006"]').should('be.visible');
     cy.get('#listChipSize').find('li[size="006"]').click();
     cy.get('#sizeNmId').contains('尺寸:XL').should('be.visible');
@@ -153,8 +149,32 @@ export const CommodityInformationTests = () => {
 }
 
 export const ShoppingCartTests = () => {
-  it('should display shopping cart checkout process\n(應呈現購物車結帳流程)', () => {
-    // cy.get('#inner').as('sc');
+  it.only('should display shopping cart checkout process\n(應呈現購物車結帳流程)', () => {
+    cy.get('#tblCartItemList').contains('商品照片').eq(0).should('be.visible');
+    cy.get('#tblCartItemList').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/item/09_440681_small.jpg"]').should('be.visible');
+    cy.get('#tblCartItemList').contains('顏色').eq(0).should('be.visible');
+    cy.get('#tblCartItemList').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/chip/09_440681.gif"]').should('be.visible');
+    cy.get('#tblCartItemList').contains('商品名稱').eq(0).should('be.visible');
+    cy.get('#tblCartItemList').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/img/material/tag/txt_tag_001.gif"]').should('be.visible');
+    cy.get('#tblCartItemList').find('a[title="男裝 Manga UT印花T恤(短袖)"]').should('be.visible');
+    cy.get('#tblCartItemList').contains('尺寸').eq(0).should('be.visible');
+    cy.get('#tblCartItemList').find('.cellSize').contains('XL').should('be.visible');
+    cy.get('#tblCartItemList').contains('長度').eq(0).should('be.visible');
+    cy.get('#tblCartItemList').find('.cellLength').contains('－').should('be.visible');
+    cy.get('#tblCartItemList').contains('商品單價').eq(0).should('be.visible');
+    cy.get('#tblCartItemList').find('.cellPrice').contains('NT$590').should('be.visible');
+    cy.get('#tblCartItemList').contains('數量').eq(0).should('be.visible');
+    cy.get('#tblCartItemList').find('.cellQuantity').find('input[maxlength="2"]').should('have.value', '2');
+    cy.get('#tblCartItemList').find('.cellQuantity').find('input[src="https://im.uniqlo.com/images/tw/uq/pc/img/material/btn-change-02_TW.gif"]').should('be.visible');
+    cy.get('#tblCartItemList').contains('小計').eq(0).should('be.visible');
+    cy.get('#tblCartItemList').find('.cellSubtotal').contains('NT$1,180').should('be.visible');
+    cy.get('#tblCartItemList').contains('刪除商品').eq(0).should('be.visible');
+    cy.get('#tblCartItemList').find('.cellCancel').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/img/material/btn-cancel-01_TW.gif"]').should('be.visible');
+    cy.get('#tblCartItemList').contains('備註').eq(0).should('be.visible');
+    cy.get('#tblCartItemList').find('.cellNote').should('be.visible');
+    cy.get('#btnCheckOut').should('be.visible');
+    cy.get('#btnCheckOut').click(); 
+    // 按下結帳發生錯誤
   });
 }
 

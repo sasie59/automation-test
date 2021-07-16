@@ -15,6 +15,7 @@ describe('旋轉木馬', () => {
 });
 describe('商品資訊', () => {
   tests.CommodityInformationTests();
+  // ok
   tests.ShoppingCartTests();
   // ok
 });
