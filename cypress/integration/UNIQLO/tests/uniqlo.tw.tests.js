@@ -1,5 +1,5 @@
 export function GoToUniqloPageTests() {
-  it('should go to uniqlo index\n(前往uniqlo)', () => {
+  it.only('should go to uniqlo index\n(前往uniqlo)', () => {
     cy.visit('https://www.uniqlo.com/tw/');
     cy.get('a[title="UNIQLO"]').should('be.visible');
   });
@@ -32,8 +32,46 @@ export const MainTypeTests = () => {
 }
 
 export const SearchBarTests = () => {
-  it('should key in keyword can find What you want\n(輸入關鍵字可以找到你想要的)', () => {
+  it.only('should key in keyword can find What you want\n(輸入關鍵字可以找到你想要的)', () => {
+    cy.get('@menu').find('input[name="qtext"]')
+      .type('咒術迴戰').type('{enter}');
+    cy.get('.blkProdSearchOptions').should('be.visible');
 
+    cy.get('.blkPaginationTop').as('result');
+    
+    cy.get('@result').first().contains('搜尋結果：22件').first().should('be.visible');
+    cy.get('#blkMainItemList > .unit').its('length').should('eq', 22);
+    cy.get('@result').first().find('img[title="排序方式"]').should('be.visible');
+    cy.get('@result').first().find('img[title="人氣度"]').should('be.visible');
+    cy.get('@result').first().find('img[title="新品"]').should('be.visible');
+    cy.get('@result').first().find('.prev').should('be.visible');
+    cy.get('@result').first().find('.num').should('be.visible');
+    cy.get('@result').first().find('.next').should('be.visible');
+    
+    cy.get('@result').last().scrollIntoView();
+    cy.get('@result').last().contains('搜尋結果：22件').last().should('be.visible');    
+    cy.get('@result').last().find('img[title="排序方式"]').should('be.visible');
+    cy.get('@result').last().find('img[title="人氣度"]').should('be.visible');
+    cy.get('@result').last().find('img[title="新品"]').should('be.visible');
+    cy.get('@result').last().find('.prev').should('be.visible');
+    cy.get('@result').last().find('.num').should('be.visible');
+    cy.get('@result').last().find('.next').should('be.visible');
+
+    cy.get('#blkNarrowSearch').as('filter');
+    // 選擇類別
+    cy.get('@filter').contains('MEN').should('be.visible');
+    cy.get('@filter').contains('WOMEN').should('be.visible');
+    cy.get('@filter').contains('KIDS').should('be.visible');
+    // 選擇顏色
+    cy.get('@filter').contains('白色系').should('be.visible');
+    cy.get('@filter').contains('灰色系').should('be.visible');
+    cy.get('@filter').contains('黑色').should('be.visible');
+    cy.get('@filter').contains('紅色系').should('be.visible');
+    cy.get('@filter').contains('綠色系').should('be.visible');
+    cy.get('@filter').contains('藍色系').should('be.visible');
+    // 選擇價格
+    cy.get('@filter').contains('NT$499以下').should('be.visible');
+    cy.get('@filter').contains('NT$500～NT$999').should('be.visible');
   });
 }
 
@@ -59,7 +97,7 @@ export const LoginTests = () => {
 }
 
 export const CommodityInformationTests = () => {
-  it.only('should display commodity information\n(應呈現商品資訊)', () => {
+  it('should display commodity information\n(應呈現商品資訊)', () => {
     cy.visit('https://www.uniqlo.com/tw/store/goods/440681#thumbnailSelect');
 
     cy.get('#primary').as('leftInfo');
@@ -149,7 +187,7 @@ export const CommodityInformationTests = () => {
 }
 
 export const ShoppingCartTests = () => {
-  it.only('should display shopping cart checkout process\n(應呈現購物車結帳流程)', () => {
+  it('should display shopping cart checkout process\n(應呈現購物車結帳流程)', () => {
     cy.get('#tblCartItemList').contains('商品照片').eq(0).should('be.visible');
     cy.get('#tblCartItemList').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/item/09_440681_small.jpg"]').should('be.visible');
     cy.get('#tblCartItemList').contains('顏色').eq(0).should('be.visible');
