@@ -9,7 +9,7 @@ describe('前往台灣Uniqlo', () => {
   // ok`
 });
 
-describe('旋轉木馬', () => {
+describe('輪播器', () => {
   tests.CarouselTests();
   // ok
 });
@@ -35,11 +35,16 @@ describe('主要選單', () => {
 });
 
 describe('行為測試', () => {
-  // tests.DefineControlElement();
+  tests.DefineControlElement();
+  // ok
   tests.WomenAreaTests();
+  // ok
   tests.MenAreaTests();
+  // ok
   tests.KidsAreaTests();
+  // ok
   tests.BabyAreaTests();
+  // ok
 });
 
 
