@@ -2,10 +2,10 @@ import * as tests from './tests/dinTaiFung.tests';
 
 describe('前往鼎泰豐', () => {
   tests.GoToDinTaiFungTests();
+  // ok
 });
 
 describe('首頁導覽', () => {
-  tests.HomeTourTests();
   tests.ChangeLanguageTests();
   tests.OnSitToNumQueryTests();
   // 現場到號查詢 上下各一個
@@ -19,12 +19,12 @@ describe('首頁導覽', () => {
 
 describe('主要選單', () => {
   tests.MainMenuTests();
-  // tests.AboutDinTaiFungTests();
-  // tests.LatestNewsTests();
-  // tests.WorldwideLocationTests();
-  // tests.CuisineTests();
-  // tests.PeaceOfMindGuaranteeTests();
-  // tests.ContactUstests();
-  // tests.ShoppingOnLineTests();
-  // tests.RecruitingTests();
+  tests.AboutDinTaiFungTests();
+  tests.LatestNewsTests();
+  tests.WorldwideLocationTests();
+  tests.CuisineTests();
+  tests.PeaceOfMindGuaranteeTests();
+  tests.ContactUstests();
+  tests.ShoppingOnLineTests();
+  tests.RecruitingTests();
 });

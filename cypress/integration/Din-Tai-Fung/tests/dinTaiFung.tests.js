@@ -1,7 +1,7 @@
 
 // 前往鼎泰豐
 export const GoToDinTaiFungTests = () => {
-  it('should go to Din-Tai-Fang index\n(前往鼎泰豐首頁)', () => {
+  it.only('should go to Din-Tai-Fang index\n(前往鼎泰豐首頁)', () => {
     cy.visit('https://www.dintaifung.com.tw/');
     cy.get('#menubox_box').should('be.visible');
   });
@@ -9,21 +9,18 @@ export const GoToDinTaiFungTests = () => {
 
 
 // 首頁導覽
-export const HomeTourTests = () => {
-  it('should home tour to Din-Tai-Fang\n(鼎泰豐首頁導覽)', () => {
-
-  });
-}
-
 export const ChangeLanguageTests = () => {
-  it('should change language\n(改變語系)', () => {
-
+  it.skip('should change language\n(改變語系)', () => {
+    cy.get('#language-button').should('be.visible');
   });
 }
 
 export const OnSitToNumQueryTests = () => {
-  it('should on-sit To number query\n(現場到號查詢)', () => {
-
+  it.only('should on-sit To number query\n(現場到號查詢)', () => {
+    // cy.get('#video').find('a[href="https://www.dintaifung.tw/Queue/?type=3"]').click();
+    // 精準的找不到
+    cy.get('#video').contains('現場到號查詢').click({force: true});
+    // 不精準的ok?
   });
 }
 
@@ -69,3 +66,52 @@ export const MainMenuTests = () => {
 
   });
 }
+
+export const AboutDinTaiFungTests = () => {
+  it('should dispaly Din-Tai-Fung history\n(關於鼎泰豐))', () => {
+
+  });
+}
+
+export const LatestNewsTests = () => {
+  it('should dispaly latest news \n(最新消息))', () => {
+
+  });
+}
+
+export const WorldwideLocationTests = () => {
+  it('should dispaly world wide location \n(門市據點))', () => {
+
+  });
+}
+
+export const CuisineTests = () => {
+  it('should dispaly cuisine \n(絕頂美味))', () => {
+
+  });
+}
+
+export const PeaceOfMindGuaranteeTests = () => {
+  it('should dispaly peace of mind guarantee \n(安心宣言)', () => {
+
+  });
+}
+
+export const ContactUstests = () => {
+  it('should dispaly contact us \n(聯絡我們)', () => {
+
+  });
+}
+
+export const ShoppingOnLineTests = () => {
+  it('should dispaly shopping onling \n(線上購物)', () => {
+
+  });
+}
+
+export const RecruitingTests = () => {
+  it('should dispaly recruiting \n(人才招募)', () => {
+
+  });
+}
+
