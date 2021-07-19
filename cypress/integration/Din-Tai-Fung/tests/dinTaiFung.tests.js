@@ -13,6 +13,8 @@ export const ChangeLanguageTests = () => {
   it('should change language\n(改變語系)', () => {
     cy.get('#language-button').click().get('#language-menu').should('be.visible');
     cy.get('#ui-id-1').should('be.visible');
+
+    // 應該要寫迴圈
     cy.get('#ui-id-2').click()
       .get('#language-button > .ui-selectmenu-text')
       .contains('ENGLISH')
@@ -40,9 +42,18 @@ export const ChangeLanguageTests = () => {
 }
 
 export const OnSitToNumQueryTests = () => {
-  it.only('should on-sit To number query\n(現場到號查詢)', () => {
-    cy.get('.number_s.fadeInUp.animated15').click()
-      .should('have.attr', 'target', '_blank');
+  it.only('should make sure on-sit link\n(確認訂位連結)', () => {
+    cy.get('.number_s.fadeInUp.animated15')
+      .should('have.attr', 'target', '_blank')
+      .should('have.attr', 'href', 'http://www.dintaifung.tw/Queue/?type=3');
+  });
+
+  it.only('should go to on-sit page and....', () => {
+    cy.visit('http://www.dintaifung.tw/Queue/?type=3');
+
+    // cy.get('.number_s.fadeInUp.animated15')
+    //   .invoke('removeAttr', 'target').click();
+
     // cy.go('back');
     // cy.state('document')
     // cy.state('window');
