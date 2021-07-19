@@ -10,17 +10,42 @@ export const GoToDinTaiFungTests = () => {
 
 // 首頁導覽
 export const ChangeLanguageTests = () => {
-  it.only('should change language\n(改變語系)', () => {
-    cy.get('#language-button').should('be.visible');
+  it('should change language\n(改變語系)', () => {
+    cy.get('#language-button').click().get('#language-menu').should('be.visible');
+    cy.get('#ui-id-1').should('be.visible');
+    cy.get('#ui-id-2').click()
+      .get('#language-button > .ui-selectmenu-text')
+      .contains('ENGLISH')
+      .should('be.visible');
+    // 英文
+    cy.get('#language-button').click()
+      .get('#ui-id-3').click()
+      .get('#language-button > .ui-selectmenu-text')
+      .contains('日本語')
+      .should('be.visible');
+    // 日文
+    cy.get('#language-button').click()
+      .get('#ui-id-4').click()
+      .get('#language-button > .ui-selectmenu-text')
+      .contains('한국어')
+      .should('be.visible');
+    // 韓文
+    cy.get('#language-button').click()
+      .get('#ui-id-1').click()
+      .get('#language-button > .ui-selectmenu-text')
+      .contains('繁體中文')
+      .should('be.visible');
+    // 繁體中文
   });
 }
 
 export const OnSitToNumQueryTests = () => {
-  it('should on-sit To number query\n(現場到號查詢)', () => {
-    // cy.get('#video').find('a[href="https://www.dintaifung.tw/Queue/?type=3"]').click();
-    // 精準的找不到
-    cy.get('#video').contains('現場到號查詢').click({force: true});
-    // 不精準的ok?
+  it.only('should on-sit To number query\n(現場到號查詢)', () => {
+    cy.get('.number_s.fadeInUp.animated15').click()
+      .should('have.attr', 'target', '_blank');
+    // cy.go('back');
+    // cy.state('document')
+    // cy.state('window');
   });
 }
 

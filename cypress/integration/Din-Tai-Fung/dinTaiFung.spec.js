@@ -9,9 +9,10 @@ describe('鼎泰豐測試', () => {
     tests.GoToDinTaiFungTests();
     // ok
   });
-  
+
   describe('首頁導覽', () => {
     tests.ChangeLanguageTests();
+    // ok
     tests.OnSitToNumQueryTests();
     // 現場到號查詢 上下各一個
     tests.CarouselTests();
@@ -21,7 +22,7 @@ describe('鼎泰豐測試', () => {
     tests.MobileAppTests();
     tests.BackToTopTests();
   });
-  
+
   describe('主要選單', () => {
     tests.MainMenuTests();
     tests.AboutDinTaiFungTests();
