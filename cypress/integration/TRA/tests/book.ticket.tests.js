@@ -172,8 +172,8 @@ export const ChooseGoCarTypeTest = () => {
       .children('.btn.btn-lg.btn-linear')
       .contains('依時段').click({ force: true });
     cy.get('#rideDate1.rideDate').clear();
-    cy.get('#rideDate1.rideDate').type(20210715);
-    cy.get('input[name="ticketOrderParamList[0].rideDate"]').should('have.value', '2021/07/15')
+    cy.get('#rideDate1.rideDate').type(20210720);
+    cy.get('input[name="ticketOrderParamList[0].rideDate"]').should('have.value', '2021/07/20')
     cy.get('#startTime1.form-control.timeRng').select('07:00');
     cy.get('#startTime1.form-control.timeRng').should('have.value', '07:00');
     cy.get('#endTime1.form-control.timeRng').select('12:00');
@@ -197,8 +197,8 @@ export const ChooseReturnCarTypeTest = () => {
       .children('.btn.btn-lg.btn-linear')
       .contains('依時段').click({ force: true });
     cy.get('#rideDate2.rideDate').clear();
-    cy.get('#rideDate2.rideDate').type(20210717);
-    cy.get('input[name="ticketOrderParamList[1].rideDate"]').should('have.value', '2021/07/17')
+    cy.get('#rideDate2.rideDate').type(20210721);
+    cy.get('input[name="ticketOrderParamList[1].rideDate"]').should('have.value', '2021/07/21')
     cy.get('#startTime2.form-control.timeRng').select('16:00');
     cy.get('#startTime2.form-control.timeRng').should('have.value', '16:00');
     cy.get('#endTime2.form-control.timeRng').select('22:00');

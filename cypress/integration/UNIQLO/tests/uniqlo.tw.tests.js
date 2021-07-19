@@ -45,8 +45,8 @@ export const SearchBarTests = () => {
 
     cy.get('.blkPaginationTop').as('result');
 
-    cy.get('@result').first().contains('搜尋結果：22件').first().should('be.visible');
-    cy.get('#blkMainItemList > .unit').its('length').should('eq', 22);
+    cy.get('@result').first().contains('搜尋結果：21件').first().should('be.visible');
+    cy.get('#blkMainItemList > .unit').its('length').should('eq', 21);
     cy.get('@result').first().find('img[title="排序方式"]').should('be.visible');
     cy.get('@result').first().find('img[title="人氣度"]').should('be.visible');
     cy.get('@result').first().find('img[title="新品"]').should('be.visible');
@@ -55,7 +55,7 @@ export const SearchBarTests = () => {
     cy.get('@result').first().find('.next').should('be.visible');
 
     cy.get('@result').last().scrollIntoView();
-    cy.get('@result').last().contains('搜尋結果：22件').last().should('be.visible');
+    cy.get('@result').last().contains('搜尋結果：21件').last().should('be.visible');
     cy.get('@result').last().find('img[title="排序方式"]').should('be.visible');
     cy.get('@result').last().find('img[title="人氣度"]').should('be.visible');
     cy.get('@result').last().find('img[title="新品"]').should('be.visible');

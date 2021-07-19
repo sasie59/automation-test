@@ -28,7 +28,7 @@ describe('主要選單', () => {
   // ok
   tests.SearchBarTests();
   // ok
-  tests.StoreInformationTests();
+  // tests.StoreInformationTests();
   // ok
   tests.LoginTests();
   // ok
