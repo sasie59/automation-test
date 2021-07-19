@@ -10,13 +10,13 @@ export const GoToDinTaiFungTests = () => {
 
 // 首頁導覽
 export const ChangeLanguageTests = () => {
-  it.skip('should change language\n(改變語系)', () => {
+  it.only('should change language\n(改變語系)', () => {
     cy.get('#language-button').should('be.visible');
   });
 }
 
 export const OnSitToNumQueryTests = () => {
-  it.only('should on-sit To number query\n(現場到號查詢)', () => {
+  it('should on-sit To number query\n(現場到號查詢)', () => {
     // cy.get('#video').find('a[href="https://www.dintaifung.tw/Queue/?type=3"]').click();
     // 精準的找不到
     cy.get('#video').contains('現場到號查詢').click({force: true});
