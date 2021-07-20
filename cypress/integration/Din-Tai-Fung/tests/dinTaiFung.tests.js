@@ -11,13 +11,12 @@ export const GoToDinTaiFungTests = () => {
 
 // 首頁導覽
 export const ChangeLanguageTests = () => {
-  it.only('should change language\n(改變語系)', () => {
+  it('should change language\n(改變語系)', () => {
     cy.get('#language-button').click().get('#language-menu').should('be.visible');
     // cy.get('#ui-id-1').should('be.visible');
 
     // 應該要寫迴圈
 
-    // const ID_LIST = ['#ui-id-1', '#ui-id-2', '#ui-id-3', '#ui-id-4'];
     const LANGUAGE_LIST = ['繁體中文', 'ENGLISH', '日本語', '한국어'];
     for(let i = 0; i <= LANGUAGE_LIST.length - 1; i++) {
       cy.get(`#ui-id-${i + 1}`)
@@ -52,13 +51,13 @@ export const ChangeLanguageTests = () => {
 }
 
 export const OnSitToNumQueryTests = () => {
-  it.only('should make sure on-sit link\n(確認訂位連結)', () => {
+  it('should make sure on-sit link\n(確認訂位連結)', () => {
     cy.get('.number_s.fadeInUp.animated15')
       .should('have.attr', 'target', '_blank')
       .should('have.attr', 'href', 'http://www.dintaifung.tw/Queue/?type=3');
   });
 
-  it.only('should go to on-sit page and....\n(前往現場到號查詢)', () => {
+  it('should go to on-sit page and....\n(前往現場到號查詢)', () => {
     cy.visit('http://www.dintaifung.tw/Queue/?type=3')
       .get('.title-text > img[title="現場到號查詢"]')
       .should('be.visible');
@@ -69,11 +68,19 @@ export const OnSitToNumQueryTests = () => {
 }
 
 export const CarouselTests = () => {
-  it('should click dots change img\n(輪播器)', () => {
+  it.only('should click dots change img\n(輪播器)', () => {
+    cy.get('#believe').scrollIntoView()
+      .should('be.visible');
 
+    for(let i = 0; i < 4; i++) {
+      cy.get('#believe')
+        .get(`a[data-slide-index="${i}"]`)
+        .click().get(`.bx_home > li > div[data-id="${i + 1}"]`)
+        // .click().get('.imgs') 
+        .should('be.visible');
+    }
   });
 }
-
 export const TopTenTests = () => {
   it('should dispaly top ten \n(十大人氣料理)', () => {
 
