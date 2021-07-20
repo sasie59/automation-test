@@ -2,41 +2,51 @@
 // 前往鼎泰豐
 export const GoToDinTaiFungTests = () => {
   it.only('should go to Din-Tai-Fang index\n(前往鼎泰豐首頁)', () => {
-    cy.visit('https://www.dintaifung.com.tw/');
-    cy.get('#menubox_box').should('be.visible');
+    cy.visit('https://www.dintaifung.com.tw/')
+      .get('#menubox_box')
+      .should('be.visible');
   });
 }
 
 
 // 首頁導覽
 export const ChangeLanguageTests = () => {
-  it('should change language\n(改變語系)', () => {
+  it.only('should change language\n(改變語系)', () => {
     cy.get('#language-button').click().get('#language-menu').should('be.visible');
-    cy.get('#ui-id-1').should('be.visible');
+    // cy.get('#ui-id-1').should('be.visible');
 
     // 應該要寫迴圈
-    cy.get('#ui-id-2').click()
-      .get('#language-button > .ui-selectmenu-text')
-      .contains('ENGLISH')
-      .should('be.visible');
-    // 英文
-    cy.get('#language-button').click()
-      .get('#ui-id-3').click()
-      .get('#language-button > .ui-selectmenu-text')
-      .contains('日本語')
-      .should('be.visible');
-    // 日文
-    cy.get('#language-button').click()
-      .get('#ui-id-4').click()
-      .get('#language-button > .ui-selectmenu-text')
-      .contains('한국어')
-      .should('be.visible');
-    // 韓文
-    cy.get('#language-button').click()
-      .get('#ui-id-1').click()
-      .get('#language-button > .ui-selectmenu-text')
-      .contains('繁體中文')
-      .should('be.visible');
+
+    // const ID_LIST = ['#ui-id-1', '#ui-id-2', '#ui-id-3', '#ui-id-4'];
+    const LANGUAGE_LIST = ['繁體中文', 'ENGLISH', '日本語', '한국어'];
+    for(let i = 0; i <= LANGUAGE_LIST.length - 1; i++) {
+      cy.get(`#ui-id-${i + 1}`)
+        .get('#language-button > .ui-selectmenu-text')
+        .contains(`${LANGUAGE_LIST[i]}`)
+        .should('be.visible');
+    }
+    // cy.get('#ui-id-2').click()
+    //   .get('#language-button > .ui-selectmenu-text')
+    //   .contains('ENGLISH')
+    //   .should('be.visible');
+    // // 英文
+    // cy.get('#language-button').click()
+    //   .get('#ui-id-3').click()
+    //   .get('#language-button > .ui-selectmenu-text')
+    //   .contains('日本語')
+    //   .should('be.visible');
+    // // 日文
+    // cy.get('#language-button').click()
+    //   .get('#ui-id-4').click()
+    //   .get('#language-button > .ui-selectmenu-text')
+    //   .contains('한국어')
+    //   .should('be.visible');
+    // // 韓文
+    // cy.get('#language-button').click()
+    //   .get('#ui-id-1').click()
+      // .get('#language-button > .ui-selectmenu-text')
+      // .contains('繁體中文')
+      // .should('be.visible');
     // 繁體中文
   });
 }
@@ -48,15 +58,13 @@ export const OnSitToNumQueryTests = () => {
       .should('have.attr', 'href', 'http://www.dintaifung.tw/Queue/?type=3');
   });
 
-  it.only('should go to on-sit page and....', () => {
-    cy.visit('http://www.dintaifung.tw/Queue/?type=3');
+  it.only('should go to on-sit page and....\n(前往現場到號查詢)', () => {
+    cy.visit('http://www.dintaifung.tw/Queue/?type=3')
+      .get('.title-text > img[title="現場到號查詢"]')
+      .should('be.visible');
 
     // cy.get('.number_s.fadeInUp.animated15')
     //   .invoke('removeAttr', 'target').click();
-
-    // cy.go('back');
-    // cy.state('document')
-    // cy.state('window');
   });
 }
 
