@@ -91,17 +91,23 @@ export const StoresTests = () => {
     storeList.forEach((store) => {
       cy.get("@globo").find(`.${store}`).should("be.visible");
     });
+    cy.get("#album_show").scrollIntoView().should("be.visible");
+    cy.get("#album").find(".show_big").should("be.visible");
+    cy.get("#album").find(".thumb_block").should("be.visible");
+
+    cy.get("#people").scrollIntoView().should("be.visible");
+    cy.get("#people").find("figure").its("length").should("eq", 5);
   });
 };
 
 export const MobileAppTests = () => {
   it("should download mobile app\n(智能手機App下載)", () => {
-    cy.get("#album_show").scrollIntoView().should("be.visible");
+    cy.get("footer").scrollIntoView();
   });
 };
 export const BackToTopTests = () => {
   it("should back to top\n(回到頂端))", () => {
-    cy.get("#people").scrollIntoView().should("be.visible");
+    cy.get("footer").scrollIntoView();
   });
 };
 
