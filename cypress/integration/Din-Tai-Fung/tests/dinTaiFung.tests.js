@@ -39,14 +39,15 @@ export const OnSitToNumQueryTests = () => {
       .should("have.attr", "href", "http://www.dintaifung.tw/Queue/?type=3");
   });
 
-  it("should go to on-sit page and....\n(前往現場到號查詢)", () => {
-    cy.visit("http://www.dintaifung.tw/Queue/?type=3")
-      .get('.title-text > img[title="現場到號查詢"]')
-      .should("be.visible");
+  // it("should go to on-sit page and....\n(前往現場到號查詢)", () => {
+  //   cy.visit("http://www.dintaifung.tw/Queue/?type=3")
+  //     .get('.title-text > img[title="現場到號查詢"]')
+  //     .should("be.visible");
+  // cy.go("back");
 
-    // cy.get('.number_s.fadeInUp.animated15')
-    //   .invoke('removeAttr', 'target').click();
-  });
+  // cy.get('.number_s.fadeInUp.animated15')
+  //   .invoke('removeAttr', 'target').click();
+  // });
 };
 
 export const CarouselTests = () => {
@@ -61,7 +62,14 @@ export const CarouselTests = () => {
   });
 };
 export const TopTenTests = () => {
-  it("should dispaly top ten \n(十大人氣料理)", () => {});
+  it("should dispaly top ten \n(十大人氣料理)", () => {
+    cy.get("#home_food").scrollIntoView().should("be.visible");
+    cy.get(".swiper-wrapper") //會滾動的圖片//
+      .first()
+      .find("div") //底下的css太多種變化 我改抓共有幾個div//
+      .its("length")
+      .should("eq", 32);
+  });
 };
 
 export const NewsTests = () => {
