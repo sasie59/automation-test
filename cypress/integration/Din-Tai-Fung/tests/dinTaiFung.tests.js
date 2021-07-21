@@ -73,7 +73,15 @@ export const TopTenTests = () => {
 };
 
 export const NewsTests = () => {
-  it("should display news\n(最新消息)", () => {});
+  it("should display news\n(最新消息)", () => {
+    cy.get("#home_news").scrollIntoView().should("be.visible");
+    cy.get("#home_news").as("news");
+
+    cy.get("@news").find(".downbg").should("be.visible");
+    cy.get("@news").find(".title_img.active").should("be.visible");
+    cy.get("@news").find(".newsblock.clear").should("be.visible");
+    cy.get("@news").find(".flower").should("be.visible");
+  });
 };
 
 export const StoresTests = () => {
