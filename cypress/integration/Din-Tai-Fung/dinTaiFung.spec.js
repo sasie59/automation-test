@@ -11,8 +11,8 @@ describe('鼎泰豐測試', () => {
   });
 
   describe('首頁導覽', () => {
-    tests.ChangeLanguageTests();
-    // // ok
+    // tests.ChangeLanguageTests();
+    // ok
     // tests.OnSitToNumQueryTests();
     // 現場到號查詢 上下各一個
     tests.CarouselTests();
