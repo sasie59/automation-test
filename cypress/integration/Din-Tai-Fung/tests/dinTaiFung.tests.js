@@ -76,23 +76,33 @@ export const NewsTests = () => {
   it("should display news\n(最新消息)", () => {
     cy.get("#home_news").scrollIntoView().should("be.visible");
     cy.get("#home_news").as("news");
-
-    cy.get("@news").find(".downbg").should("be.visible");
-    cy.get("@news").find(".title_img.active").should("be.visible");
-    cy.get("@news").find(".newsblock.clear").should("be.visible");
-    cy.get("@news").find(".flower").should("be.visible");
+    const newList = ["downbg", "title_img.active", "newsblock.clear", "flower"];
+    newList.forEach((news) => {
+      cy.get("@news").find(`.${news}`).should("be.visible");
+    });
   });
 };
 
 export const StoresTests = () => {
-  it("should display stroe\n(門市據點)", () => {});
+  it("should display stroe\n(門市據點)", () => {
+    cy.get("#globo").scrollIntoView().should("be.visible");
+    cy.get("#globo").as("globo");
+    const storeList = ["title_img.active", "mainmemo.active", "map.active"];
+    storeList.forEach((store) => {
+      cy.get("@globo").find(`.${store}`).should("be.visible");
+    });
+  });
 };
 
 export const MobileAppTests = () => {
-  it("should download mobile app\n(智能手機App下載)", () => {});
+  it("should download mobile app\n(智能手機App下載)", () => {
+    cy.get("#album_show").scrollIntoView().should("be.visible");
+  });
 };
 export const BackToTopTests = () => {
-  it("should back to top\n(回到頂端))", () => {});
+  it("should back to top\n(回到頂端))", () => {
+    cy.get("#people").scrollIntoView().should("be.visible");
+  });
 };
 
 // 主要選單

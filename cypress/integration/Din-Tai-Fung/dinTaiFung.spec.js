@@ -20,9 +20,11 @@ describe("鼎泰豐測試", () => {
     // ok
     // tests.TopTenTests();
     // ok
-    tests.NewsTests();
+    // tests.NewsTests();
+    // ok
     // tests.StoresTests();
-    // tests.MobileAppTests();
+    // ok
+    tests.MobileAppTests();
     // tests.BackToTopTests();
   });
 
