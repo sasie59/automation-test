@@ -12,27 +12,27 @@ describe('鼎泰豐測試', () => {
 
   describe('首頁導覽', () => {
     tests.ChangeLanguageTests();
-    // ok
-    tests.OnSitToNumQueryTests();
+    // // ok
+    // tests.OnSitToNumQueryTests();
     // 現場到號查詢 上下各一個
     tests.CarouselTests();
-    tests.TopTenTests();
-    tests.NewsTests();
-    tests.StoresTests();
-    tests.MobileAppTests();
-    tests.BackToTopTests();
+    // tests.TopTenTests();
+    // tests.NewsTests();
+    // tests.StoresTests();
+    // tests.MobileAppTests();
+    // tests.BackToTopTests();
   });
 
-  describe('主要選單', () => {
-    tests.MainMenuTests();
-    tests.AboutDinTaiFungTests();
-    tests.LatestNewsTests();
-    tests.WorldwideLocationTests();
-    tests.CuisineTests();
-    tests.PeaceOfMindGuaranteeTests();
-    tests.ContactUstests();
-    tests.ShoppingOnLineTests();
-    tests.RecruitingTests();
-  });
+  // describe('主要選單', () => {
+  //   tests.MainMenuTests();
+  //   tests.AboutDinTaiFungTests();
+  //   tests.LatestNewsTests();
+  //   tests.WorldwideLocationTests();
+  //   tests.CuisineTests();
+  //   tests.PeaceOfMindGuaranteeTests();
+  //   tests.ContactUstests();
+  //   tests.ShoppingOnLineTests();
+  //   tests.RecruitingTests();
+  // });
 });
 

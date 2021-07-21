@@ -1,7 +1,7 @@
 
 // 前往鼎泰豐
 export const GoToDinTaiFungTests = () => {
-  it.only('should go to Din-Tai-Fang index\n(前往鼎泰豐首頁)', () => {
+  it('should go to Din-Tai-Fang index\n(前往鼎泰豐首頁)', () => {
     cy.visit('https://www.dintaifung.com.tw/')
       .get('#menubox_box')
       .should('be.visible');
@@ -20,7 +20,6 @@ export const ChangeLanguageTests = () => {
     const LANGUAGE_LIST = ['繁體中文', 'ENGLISH', '日本語', '한국어'];
     for(let i = 0; i <= LANGUAGE_LIST.length - 1; i++) {
       cy.get(`#ui-id-${i + 1}`)
-        .get('#language-button > .ui-selectmenu-text')
         .contains(`${LANGUAGE_LIST[i]}`)
         .should('be.visible');
     }
@@ -68,16 +67,13 @@ export const OnSitToNumQueryTests = () => {
 }
 
 export const CarouselTests = () => {
-  it.only('should click dots change img\n(輪播器)', () => {
-    cy.get('#believe').scrollIntoView()
-      .should('be.visible');
+  it('should click dots change img\n(輪播器)', () => {
+    cy.get('#believe').scrollIntoView().should('be.visible');
 
     for(let i = 0; i < 4; i++) {
-      cy.get('#believe')
-        .get(`a[data-slide-index="${i}"]`)
-        .click().get(`.bx_home > li > div[data-id="${i + 1}"]`)
-        // .click().get('.imgs') 
-        .should('be.visible');
+      cy.get('#believe').get(`a[data-slide-index="${i}"]`).click();
+      cy.wait(700);
+      cy.get(`.bx_home > li > div[data-id="${i + 1}"]`).should('be.visible');
     }
   });
 }
