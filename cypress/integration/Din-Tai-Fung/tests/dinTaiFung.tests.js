@@ -146,8 +146,63 @@ export const MainMenuTests = () => {
 
 export const AboutDinTaiFungTests = () => {
   it("should dispaly Din-Tai-Fung history\n(關於鼎泰豐))", () => {
-    // cy.get("#menu").find('a[href="about.php"]').click();
-    // cy.wait(1000);
+    cy.get("#menu").find('a[href="about.php"]').click();
+    cy.wait(1000);
+    cy.get(".triggerblk").find("li").its("length").should("eq", 4);
+    cy.get('li[togo="sec1"]').click(); //緣起//
+    const baseClass = ".editblk.sec1.fadeInUp.animated15";
+    const imgList = [
+      "https://www.dintaifung.com.tw/archive/images/editor/about/sec1.png",
+      "https://www.dintaifung.com.tw/archive/images/editor/about/man.png",
+      "https://www.dintaifung.com.tw/archive/images/editor/about/sec3.jpg",
+    ];
+    imgList.forEach((img) => {
+      cy.get(`${baseClass}`).get(`img[src="${img}"]`).should("be.visible");
+
+      // cy.get('......get img').should('src', img).should('be.visible');
+    });
+    cy.get('li[togo="sec2"]').click(); //信念//
+    for (let i = 0; i < 3; i++) {
+      cy.get(".editblk.sec2.fadeInUp.animated15 .editblk2 .img")
+        .eq(i) // element query
+        .should("have.attr", "style")
+        .should(
+          "eq", // equal
+          `background-image:url('https://www.dintaifung.com.tw/archive/images/about/c${
+            i + 1
+          }.png')`
+        );
+    }
+    const img4 =
+      "https://www.dintaifung.com.tw/archive/images/about/c4.png.png";
+    cy.get(".editblk.sec2.fadeInUp.animated15 .editblk2 .img")
+      .eq(3)
+      .should("have.attr", "style")
+      .should("eq", `background-image:url('${img4}')`);
+    cy.get('li[togo="memoblk"]').click(); //記事//
+    cy.get(
+      ".yearblk > .swiper-container.swiper-container-horizontal > .swiper-wrapper > .swiper-slide"
+    )
+      .find(".year")
+      .its("length")
+      .should("eq", 26);
+    cy.get('li[togo="videoblk"]').click(); //影片//
+    // cy.get(".ytp-cued-thumbnail-overlay-image")
+    //   .should("have.attr", "style")
+    //   .should(
+    //     "eq",
+    //     'background-image: url("https://i.ytimg.com/vi_webp/zMnvKTqFKPE/maxresdefault.webp")'
+    //   );
+    // 抓影片有問題 主要報這段  > Cannot read property 'playVideo' of undefined
+
+    cy.get(
+      ".bg > .videopick > .thumb_contain.swiper-container-horizontal.swiper-container-autoheight > .swiper-wrapper"
+    )
+      .find("img")
+      .its("length")
+      .should("eq", 6);
+    cy.get(".prev.swiper-button-disabled").last().should("be.visible");
+    cy.get(".next").last().should("be.visible");
   });
 };
 

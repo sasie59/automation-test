@@ -31,9 +31,9 @@ describe("鼎泰豐測試", () => {
 
   describe("主要選單", () => {
     tests.ClickMenu();
-    tests.MainMenuTests();
+    // tests.MainMenuTests();
     // ok
-    // tests.AboutDinTaiFungTests();
+    tests.AboutDinTaiFungTests();
     // tests.LatestNewsTests();
     // tests.WorldwideLocationTests();
     // tests.CuisineTests();
