@@ -103,6 +103,23 @@ export const StoresTests = () => {
 export const MobileAppTests = () => {
   it("should download mobile app\n(智能手機App下載)", () => {
     cy.get("footer").scrollIntoView();
+    cy.get("footer").find(".custom.a_link.download.app_show").click();
+    cy.get("#app").find(".title > .t01").should("be.visible");
+    cy.get("#app").find(".title > .t02").should("be.visible");
+    // cy.get("#app > .button")
+    //   .find(
+    //     'a[href="https://apps.apple.com/tw/app/%E9%BC%8E%E6%B3%B0%E8%B1%90/id1108359809"]'
+    //   )
+    //   .should("be.visible");
+    // IOS的連結會找不到
+    cy.get("#app > .button")
+      .find(
+        'a[href="https://play.google.com/store/apps/details?id=com.dtf.orderapp&hl=zh_TW"]'
+      )
+      .should("be.visible");
+    // 安卓ok
+    cy.get("#app").get('a[title="Close"]').click();
+    cy.get("#app").get('a[title="Close"]').should("not.be.exist");
   });
 };
 export const BackToTopTests = () => {

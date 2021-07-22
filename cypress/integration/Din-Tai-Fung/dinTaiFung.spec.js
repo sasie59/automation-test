@@ -25,6 +25,7 @@ describe("鼎泰豐測試", () => {
     // tests.StoresTests();
     // ok
     tests.MobileAppTests();
+    // ok
     // tests.BackToTopTests();
   });
 
