@@ -10,35 +10,36 @@ describe("鼎泰豐測試", () => {
     // ok
   });
 
-  describe("首頁導覽", () => {
-    // tests.ChangeLanguageTests();
-    // ok;
-    // tests.OnSitToNumQueryTests();
-    // ok
-    // 現場到號查詢 上下各一個
-    // tests.CarouselTests();
-    // ok
-    // tests.TopTenTests();
-    // ok
-    // tests.NewsTests();
-    // ok
-    // tests.StoresTests();
-    // ok
-    // tests.MobileAppTests();
-    // ok
-    // tests.BackToTopTests();
-    // ok
-  });
-
-  // describe('主要選單', () => {
-  //   tests.MainMenuTests();
-  //   tests.AboutDinTaiFungTests();
-  //   tests.LatestNewsTests();
-  //   tests.WorldwideLocationTests();
-  //   tests.CuisineTests();
-  //   tests.PeaceOfMindGuaranteeTests();
-  //   tests.ContactUstests();
-  //   tests.ShoppingOnLineTests();
-  //   tests.RecruitingTests();
+  // describe("首頁導覽", () => {
+  // tests.ChangeLanguageTests();
+  // ok;
+  // tests.OnSitToNumQueryTests();
+  // ok
+  // tests.CarouselTests();
+  // ok
+  // tests.TopTenTests();
+  // ok
+  // tests.NewsTests();
+  // ok
+  // tests.StoresTests();
+  // ok
+  // tests.MobileAppTests();
+  // ok
+  // tests.BackToTopTests();
+  // ok
   // });
+
+  describe("主要選單", () => {
+    tests.ClickMenu();
+    tests.MainMenuTests();
+    // ok
+    // tests.AboutDinTaiFungTests();
+    // tests.LatestNewsTests();
+    // tests.WorldwideLocationTests();
+    // tests.CuisineTests();
+    // tests.PeaceOfMindGuaranteeTests();
+    // tests.ContactUstests();
+    // tests.ShoppingOnLineTests();
+    // tests.RecruitingTests();
+  });
 });

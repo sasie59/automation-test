@@ -131,12 +131,24 @@ export const BackToTopTests = () => {
 };
 
 // 主要選單
+
+export const ClickMenu = () => [
+  beforeEach(() => {
+    cy.get("#nav_btn").click();
+  }),
+];
+
 export const MainMenuTests = () => {
-  it("should click display main menu\n(主要選單))", () => {});
+  it("should click display main menu\n(主要選單))", () => {
+    cy.get("#menu").should("be.visible");
+  });
 };
 
 export const AboutDinTaiFungTests = () => {
-  it("should dispaly Din-Tai-Fung history\n(關於鼎泰豐))", () => {});
+  it("should dispaly Din-Tai-Fung history\n(關於鼎泰豐))", () => {
+    // cy.get("#menu").find('a[href="about.php"]').click();
+    // cy.wait(1000);
+  });
 };
 
 export const LatestNewsTests = () => {
