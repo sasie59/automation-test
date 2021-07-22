@@ -24,9 +24,10 @@ describe("鼎泰豐測試", () => {
     // ok
     // tests.StoresTests();
     // ok
-    tests.MobileAppTests();
+    // tests.MobileAppTests();
     // ok
     // tests.BackToTopTests();
+    // ok
   });
 
   // describe('主要選單', () => {

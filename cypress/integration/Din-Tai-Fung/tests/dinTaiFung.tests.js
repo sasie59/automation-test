@@ -125,6 +125,8 @@ export const MobileAppTests = () => {
 export const BackToTopTests = () => {
   it("should back to top\n(回到頂端))", () => {
     cy.get("footer").scrollIntoView();
+    cy.get("#gotop").click();
+    cy.get("#nav_btn").should("be.visible"); //三條線//
   });
 };
 
