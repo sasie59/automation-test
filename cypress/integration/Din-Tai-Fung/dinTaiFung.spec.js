@@ -33,8 +33,9 @@ describe("鼎泰豐測試", () => {
     tests.ClickMenu();
     // tests.MainMenuTests();
     // ok
-    tests.AboutDinTaiFungTests();
-    // tests.LatestNewsTests();
+    // tests.AboutDinTaiFungTests();
+    tests.LatestNewsTests();
+    // ok
     // tests.WorldwideLocationTests();
     // tests.CuisineTests();
     // tests.PeaceOfMindGuaranteeTests();

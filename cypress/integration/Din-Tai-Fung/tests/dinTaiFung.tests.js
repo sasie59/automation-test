@@ -207,9 +207,26 @@ export const AboutDinTaiFungTests = () => {
 };
 
 export const LatestNewsTests = () => {
-  it("should dispaly latest news \n(最新消息))", () => {});
+  it("should dispaly latest news \n(最新消息))", () => {
+    cy.get("#menu").find('a[href="news.php"]').click();
+    cy.wait(1000);
+    const selectBox = ["year.select_box", "type.select_box"];
+    selectBox.forEach((item) => {
+      cy.get("#news")
+        .find(`.search.fadeInUp.animated15 > #form1 > .${item}`)
+        .should("be.visible");
+    });
+    cy.get(".news_list.fadeInUp.animated15 > .news_box > .imgs > span")
+      .find("img")
+      .its("length")
+      .should("eq", 4);
+    cy.get(".pager").scrollIntoView();
+    const pageList = [".first.p2", ".prev,p1", ".num", ".next.p1", ".end.p2"];
+    pageList.forEach((page) => {
+      cy.get(`${page}`).should("be.visible");
+    });
+  });
 };
-
 export const WorldwideLocationTests = () => {
   it("should dispaly world wide location \n(門市據點))", () => {});
 };
