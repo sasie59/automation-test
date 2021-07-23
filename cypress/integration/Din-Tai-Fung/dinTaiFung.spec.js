@@ -36,11 +36,11 @@ describe("鼎泰豐測試", () => {
     // tests.AboutDinTaiFungTests();
     // tests.LatestNewsTests();
     // ok
-    tests.WorldwideLocationTests();
+    // tests.WorldwideLocationTests();
     // ok
     // tests.CuisineTests();
     // tests.PeaceOfMindGuaranteeTests();
-    // tests.ContactUstests();
+    tests.ContactUstests();
     // tests.ShoppingOnLineTests();
     // tests.RecruitingTests();
   });

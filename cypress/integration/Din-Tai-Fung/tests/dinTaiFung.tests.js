@@ -259,7 +259,38 @@ export const PeaceOfMindGuaranteeTests = () => {
 };
 
 export const ContactUstests = () => {
-  it("should dispaly contact us \n(聯絡我們)", () => {});
+  it("should dispaly contact us \n(聯絡我們)", () => {
+    cy.get("#menu").find('a[href="contact.php"]').click();
+    cy.get("#eForm1").should("be.visible");
+    const formList = [
+      "#name",
+      "#tel",
+      "#mail",
+      ".styled-select",
+      "#datepicker",
+      "#subject",
+      "#contents",
+      "#member_code",
+      "#btn_submit",
+    ];
+    formList.forEach((form) => {
+      cy.get(`${form}`).should("be.visible");
+    });
+    cy.get("#name").type("謝士偉");
+    cy.get("#name").should("have.value", "謝士偉");
+    cy.get("#tel").type("0912345678");
+    cy.get("#tel").should("have.value", "0912345678");
+    cy.get("#mail").type("abc@gmail.com");
+    cy.get("#mail").should("have.value", "abc@gmail.com");
+    // cy.get(".ui-selectmenu-text").last().click();
+    // cy.get("#store").select("信義店");
+    // 選店別會有bug
+    cy.get("#datepicker").type("20210701{enter}");
+    cy.get("#subject").type("用餐");
+    cy.get("#subject").should("have.value", "用餐");
+    cy.get("#contents").type("no");
+    cy.get("#contents").should("have.value", "no");
+  });
 };
 
 export const ShoppingOnLineTests = () => {
