@@ -228,7 +228,26 @@ export const LatestNewsTests = () => {
   });
 };
 export const WorldwideLocationTests = () => {
-  it("should dispaly world wide location \n(門市據點))", () => {});
+  it("should dispaly world wide location \n(門市據點))", () => {
+    cy.get("#menu").find('a[href="store.php"]').click();
+    cy.get("#globo").should("be.visible");
+    cy.get('.mainmemo.active > .new__btns > a[href="store.php"]').click();
+    const storeInfo = ["img", ".name", ".addr", ".line"];
+    storeInfo.forEach((store) => {
+      cy.get("#album_list").find(`${store}`).should("be.visible");
+    });
+    // 門市基本資訊
+    cy.get("#album_list").find(".store_line").its("length").should("eq", 12);
+    // 國內分店有12間
+    cy.get('.mainmemo.active > .new__btns > a[href="store_world.php"]').click();
+    cy.get(
+      ".map.active > .world > .type > .world-container.swiper-container-horizontal > .swiper-wrapper"
+    )
+      .find(".swiper-slide")
+      .its("length")
+      .should("eq", 12);
+    // 在全球海外12個國家有門市
+  });
 };
 
 export const CuisineTests = () => {
