@@ -282,8 +282,8 @@ export const ContactUstests = () => {
     cy.get("#tel").should("have.value", "0912345678");
     cy.get("#mail").type("abc@gmail.com");
     cy.get("#mail").should("have.value", "abc@gmail.com");
-    // cy.get(".ui-selectmenu-text").last().click();
-    // cy.get("#store").select("信義店");
+    cy.get(".ui-selectmenu-text").last().click();
+    cy.get("#store-menu #ui-id-2").click(); //"信義店"
     // 選店別會有bug
     cy.get("#datepicker").type("20210701{enter}");
     cy.get("#subject").type("用餐");
