@@ -296,5 +296,8 @@ export const ShoppingOnLineTests = () => {
 };
 
 export const RecruitingTests = () => {
-  it("should dispaly recruiting \n(人才招募)", () => { });
+  it("should dispaly recruiting \n(人才招募)", () => {
+    cy.get("#menu").contains('人才招募').click();
+    cy.get('#menu a').last().should('have.attr', 'target', '_blank');
+  });
 };

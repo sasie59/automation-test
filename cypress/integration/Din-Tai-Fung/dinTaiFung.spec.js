@@ -40,8 +40,10 @@ describe("鼎泰豐測試", () => {
     // ok
     // tests.CuisineTests();
     // tests.PeaceOfMindGuaranteeTests();
-    tests.ContactUstests();
+    // tests.ContactUstests();
+    // ok
     // tests.ShoppingOnLineTests();
-    // tests.RecruitingTests();
+    tests.RecruitingTests();
+    // ok
   });
 });
