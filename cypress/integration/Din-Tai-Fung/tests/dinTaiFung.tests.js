@@ -259,7 +259,6 @@ export const PeaceOfMindGuaranteeTests = () => {
 
 export const ContactUstests = () => {
   it("should dispaly contact us \n(聯絡我們)", () => {
-    cy.get("#menu").find('a[href="contact.php"]').click();
     cy.get("#eForm1").should("be.visible");
     const formList = [
       "#name",
@@ -291,12 +290,15 @@ export const ContactUstests = () => {
     cy.get("#contents").should("have.value", "no");
   });
 };
-export const ShoppingOnLineTests = () => {
-  it("should dispaly shopping onling \n(線上購物)", () => { });
+export const TargetBlankShoppingOnLineTests = () => {
+  it("should dispaly shopping onling \n(彈跳出線上購物的連結)", () => {
+    cy.get("#menu").contains('線上購物').click();
+    cy.get('#menu a').eq(6).should('have.attr', 'target', '_blank');
+  });
 };
 
-export const RecruitingTests = () => {
-  it("should dispaly recruiting \n(人才招募)", () => {
+export const TargetBlankRecruitingTests = () => {
+  it("should dispaly recruiting \n(彈跳出人才招募的連結)", () => {
     cy.get("#menu").contains('人才招募').click();
     cy.get('#menu a').last().should('have.attr', 'target', '_blank');
   });
