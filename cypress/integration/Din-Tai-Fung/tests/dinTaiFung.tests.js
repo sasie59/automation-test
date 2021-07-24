@@ -168,8 +168,7 @@ export const AboutDinTaiFungTests = () => {
         .should("have.attr", "style")
         .should(
           "eq", // equal
-          `background-image:url('https://www.dintaifung.com.tw/archive/images/about/c${
-            i + 1
+          `background-image:url('https://www.dintaifung.com.tw/archive/images/about/c${i + 1
           }.png')`
         );
     }
@@ -251,11 +250,11 @@ export const WorldwideLocationTests = () => {
 };
 
 export const CuisineTests = () => {
-  it("should dispaly cuisine \n(絕頂美味))", () => {});
+  it("should dispaly cuisine \n(絕頂美味))", () => { });
 };
 
 export const PeaceOfMindGuaranteeTests = () => {
-  it("should dispaly peace of mind guarantee \n(安心宣言)", () => {});
+  it("should dispaly peace of mind guarantee \n(安心宣言)", () => { });
 };
 
 export const ContactUstests = () => {
@@ -284,7 +283,7 @@ export const ContactUstests = () => {
     cy.get("#mail").should("have.value", "abc@gmail.com");
     cy.get(".ui-selectmenu-text").last().click();
     cy.get("#store-menu #ui-id-2").click(); //"信義店"
-    // 選店別會有bug
+    cy.get(".ui-selectmenu-text").last().contains('信義店').should('be.visible');
     cy.get("#datepicker").type("20210701{enter}");
     cy.get("#subject").type("用餐");
     cy.get("#subject").should("have.value", "用餐");
@@ -292,11 +291,10 @@ export const ContactUstests = () => {
     cy.get("#contents").should("have.value", "no");
   });
 };
-
 export const ShoppingOnLineTests = () => {
-  it("should dispaly shopping onling \n(線上購物)", () => {});
+  it("should dispaly shopping onling \n(線上購物)", () => { });
 };
 
 export const RecruitingTests = () => {
-  it("should dispaly recruiting \n(人才招募)", () => {});
+  it("should dispaly recruiting \n(人才招募)", () => { });
 };
