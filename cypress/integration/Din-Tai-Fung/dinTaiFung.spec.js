@@ -9,7 +9,6 @@ describe("鼎泰豐測試", () => {
     tests.GoToDinTaiFungTests();
     // ok
   });
-
   // describe("首頁導覽", () => {
   // tests.ChangeLanguageTests();
   // ok;
@@ -34,19 +33,20 @@ describe("鼎泰豐測試", () => {
     // tests.MainMenuTests();
     // ok
     // tests.AboutDinTaiFungTests();
+    // ok
     // tests.LatestNewsTests();
     // ok
     // tests.WorldwideLocationTests();
     // ok
     // tests.CuisineTests();
 
-    // tests.PeaceOfMindGuaranteeTests();
-
+    tests.PeaceOfMindGuaranteeTests();
+    // ok
     // tests.ContactUstests();
     // ok
-    tests.TargetBlankShoppingOnLineTests();
+    // tests.TargetBlankShoppingOnLineTests();
     // ok
-    tests.TargetBlankRecruitingTests();
+    // tests.TargetBlankRecruitingTests();
     // ok
   });
 });

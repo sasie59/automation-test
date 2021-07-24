@@ -250,11 +250,94 @@ export const WorldwideLocationTests = () => {
 };
 
 export const CuisineTests = () => {
-  it("should dispaly cuisine \n(絕頂美味))", () => { });
+  it("should dispaly cuisine \n(絕頂美味))", () => {
+    cy.get("#menu").find('a[href="food.php"]').click();
+
+  });
 };
 
 export const PeaceOfMindGuaranteeTests = () => {
-  it("should dispaly peace of mind guarantee \n(安心宣言)", () => { });
+  it("should dispaly peace of mind guarantee \n(安心宣言)", () => {
+    cy.get("#menu").find('a[href="care.php"]').click();
+    const peaceMindList = [
+      '.title_img.active',
+      '.sloganblk.fadeInUp.animated15',
+      '.videoblk.fadeInUp.animated15',
+      '.navblk',
+      '.sec1',
+      '.alyblkbg',
+      '.sldieblk',
+      // '.reportblk.fadeInUp.animated15', 會找不到
+      // '.sec2.fadeInUp.animated15', 會找不到
+      '.supplybg',
+      // '.sec3.fadeInUp.animated15' 會找不到
+    ];
+    const mindList = [
+      '原料嚴選',
+      '餐點情報'
+    ]
+    mindList.forEach(mind => {
+      cy.get('#care').contains(`${mind}`).should('be.visible');
+    })
+    peaceMindList.forEach(peace => {
+      cy.get(`${peace}`).should('be.visible');
+    });
+    // cy.get('#care').find('產品&原物料檢驗報告').should('be.visible'); //另外驗証//
+    cy.get('.title_img.active > img').should('have.attr', 'src');
+    cy.get('.sloganblk.fadeInUp.animated15 > .ytitle').should('be.visible');
+    const videoList = ['.middle', '.video.mb_YTPlayer.isMuted']
+    videoList.forEach(video => {
+      cy.get('.videoblk.fadeInUp.animated15').find(`${video}`).should('be.visible');
+    })
+    cy.get('.navblk > .triggerblk').should('be.visible');
+    cy.get('.navblk > .triggerblk').scrollIntoView();
+    cy.get('.sec1 > .titlep').should('be.visible');
+    cy.get('.alyblkbg > .alyblk > .alylist').find('.item').its('length').should('eq', 4);
+    cy.get('.sldieblk').scrollIntoView();
+    cy.get('.sldieblk img').should('have.attr', 'src');
+    cy.get('.sldieblk p').should('be.visible');
+    cy.get('.sldieblk .btnblk > div').find('a').its('length').should('eq', 4);
+    cy.get('.mb2').scrollIntoView().should('be.visible');
+    cy.get('.listtitle').first().should('be.visible');
+    cy.get('.listtitle').last().click({ force: true });
+    cy.get('.tableblk tr').last().find('td').its('length').should('eq', 3);
+    cy.get('.tableblk tbody').last().find('tr').its('length').should('eq', 7);
+    cy.get('.dataTables_paginate.paging_full_numbers_no_ellipses').as('page');
+    const turnPageList = [
+      '.paginate_button.first.disabled',
+      '.paginate_button.previous.disabled',
+      '.paginate_button',
+      '.paginate_button.next',
+      '.paginate_button.last'
+    ];
+    turnPageList.forEach(page => {
+      cy.get('@page').find(`${page}`).should('be.visible');
+    })
+    cy.get('.closelist.active').last().click({ force: true });
+    cy.get('h3').contains('原料嚴選').scrollIntoView();
+    cy.get('.sourcelist').find('li').its('length').should('eq', 12);
+    cy.get('.supplybg .supply').scrollIntoView();
+    cy.get('.supplybg .supply').find('h4').should('be.visible');
+    cy.get('.supplybg .supply').find('p').should('be.visible');
+    cy.get('.supplybg img').first().should('have.attr', 'src');
+    cy.get('.supplybg img').last().should('have.attr', 'src');
+    cy.get('h3').contains('餐點情報').scrollIntoView();
+    cy.get('h3').contains('餐點情報').should('be.visible');
+    cy.get('p').contains('您想知道的，就是鼎泰豐所關心的，針對素食者、含有致過敏性原料的餐點資訊，期待透過Q&A讓您更了解我們的產品。')
+      .should('be.visible');
+    cy.get('.cardblk').should('be.visible');
+    cy.get('.cardblk .card').should('be.visible');
+    cy.get('.cardblk a').eq(1).should('have.attr', 'href');
+    cy.get('.QAblk').scrollIntoView().should('be.visible');
+    cy.get('.QAblk .selectblk').should('be.visible');
+    cy.get('.QAblk').find('.listblk').its('length').should('eq', 10);
+    cy.get('.ui-selectmenu-text').last().click({ force: true });
+    cy.get('#QAselect-menu #ui-id-4').click({ force: true });
+    const qA = ['.iconblk', '.anserblk'];
+    qA.forEach(item => {
+      cy.get(`${item}`).should('be.visible');
+    })
+  });
 };
 
 export const ContactUstests = () => {
