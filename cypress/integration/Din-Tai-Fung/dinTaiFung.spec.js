@@ -39,11 +39,14 @@ describe("鼎泰豐測試", () => {
     // tests.WorldwideLocationTests();
     // ok
     // tests.CuisineTests();
+
     // tests.PeaceOfMindGuaranteeTests();
+
     // tests.ContactUstests();
     // ok
-    // tests.ShoppingOnLineTests();
-    tests.RecruitingTests();
+    tests.TargetBlankShoppingOnLineTests();
+    // ok
+    tests.TargetBlankRecruitingTests();
     // ok
   });
 });
