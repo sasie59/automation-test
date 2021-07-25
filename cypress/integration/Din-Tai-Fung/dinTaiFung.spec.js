@@ -38,9 +38,9 @@ describe("鼎泰豐測試", () => {
     // ok
     // tests.WorldwideLocationTests();
     // ok
-    // tests.CuisineTests();
-
-    tests.PeaceOfMindGuaranteeTests();
+    tests.CuisineTests();
+    // ok
+    // tests.PeaceOfMindGuaranteeTests();
     // ok
     // tests.ContactUstests();
     // ok

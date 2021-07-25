@@ -252,7 +252,103 @@ export const WorldwideLocationTests = () => {
 export const CuisineTests = () => {
   it("should dispaly cuisine \n(絕頂美味))", () => {
     cy.get("#menu").find('a[href="food.php"]').click();
+    const foodLayOut = [
+      '.title_img.active',
+      '.downbg',
+      '.food_slider.fadeInUp.animated15'
+    ];
+    foodLayOut.forEach(item => {
+      cy.get(`#food ${item}`).should("be.visible");
+    });
+    cy.get('.title_img.active img').should('have.attr', 'src');
+    const foodInfo = [
+      '.swiper-container.swiper-container-horizontal',
+      '.button_box',
+      '.text'
+    ];
+    const foodSinder = '.food_slider.fadeInUp.animated15'
+    foodInfo.forEach(item => {
+      cy.get(`#food ${foodSinder} ${item}`).should("be.visible");
+    });
+    cy.get(`${foodSinder}`).find('img').its('length').should('eq', 23);
+    const pageClass = [
+      '.swiper-button-next',
+      '.swiper-button-prev',
+      '.page'
+    ];
+    pageClass.forEach(item => {
+      cy.get(`#food ${foodSinder} .button_box ${item}`).should("be.visible");
+    });
+    const state = ['.now', '.all'];
+    state.forEach(item => {
+      cy.get(`#food ${foodSinder} .button_box .page ${item}`).should("be.visible");
+    });
+    cy.get('#food .text').find('a').its('length').should('eq', 13);
+    cy.get('#food .text a[data-id="2"]').click({ force: true }); //選擇最經典的小籠包//
+    cy.wait(1000);
+    cy.url().should('eq', 'https://www.dintaifung.com.tw/food_show.php?cid=2');
+    const introduce = [
+      '.main_img',
+      '.title_img.active',
+      '.food_memo'
+    ];
+    introduce.forEach(item => {
+      cy.get(`#food_show ${item}`).should("be.visible");
+    });
+    const mainImg = [
+      //'.title_img.active', 有上下兩個 另外驗証//
+      '.img_',
+      'a'
+    ];
+    mainImg.forEach(item => {
+      cy.get(`#food_show .main_img ${item}`).should("be.visible");
+    });
+    cy.get('#food_show .main_img').find('.title_img.active').first().should("be.visible");
+    cy.get('#food_show .main_img .title_img.active').find('img').should('have.attr', 'src');
+    cy.get('#food_show .main_img .img_').find('img').should('have.attr', 'src');
+    cy.get('#food_show .main_img').find('a').should('have.attr', 'href');
+    cy.get('#food_show').find('.title_img.active').last().should("be.visible");
+    cy.get('#food_show .bx_food_list').find('li').its('length').should('eq', 6) //小籠包有6種選項//
+    cy.get('#food_show .bx-controls-direction').find('a').its('length').should('eq', 2) //上一頁 下一頁//
 
+    const foodMemo = [
+      '.left',
+      '.right.buying'
+    ];
+    foodMemo.forEach(item => {
+      cy.get(`.food_memo ${item}`).should("be.visible");
+    });
+    const leftType = [
+      '.type',
+      '.word',
+      '.icon'
+    ];
+    leftType.forEach(item => {
+      cy.get(`.food_memo .left ${item}`).should("be.visible");
+    })
+    cy.get('.food_memo .left .icon').find('img').its('length').should('eq', 2);
+    cy.get('.food_memo .left .icon').find('img').should('have.attr', 'src');
+    const rightBuying = [
+      '.mid',
+      '.album'
+    ];
+    rightBuying.forEach(item => {
+      cy.get(`.food_memo .right.buying ${item}`).should("be.visible");
+    });
+    const midClass = [
+      '.memo',
+      '.linkbox'
+    ];
+    midClass.forEach(item => {
+      cy.get(`.food_memo .right.buying .mid ${item}`).should("be.visible");
+    });
+    cy.get('.right.buying .linkbox a').its('length').should('eq', 2);
+    cy.get('.right.buying .linkbox').find('a').should('have.attr', 'href');
+    cy.get('.right.buying .album img').its('length').should('eq', 2);
+    cy.get('.right.buying .album').find('img').should('have.attr', 'src');
+    cy.get(`#food_show .main_img a`).click();
+    cy.wait(1000);
+    cy.url().should('eq', 'https://www.dintaifung.com.tw/food.php?cid=2');
   });
 };
 
