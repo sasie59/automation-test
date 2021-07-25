@@ -29,6 +29,12 @@ export const ChangeLanguageTests = () => {
         .should("be.visible");
       // 驗證語系
     }
+    cy.get("#language-button")
+      .click({ force: true })
+      .get("#language-menu")
+      .get('#ui-id-1')
+      .click({ force: true });
+    // 切回繁中
   });
 };
 
@@ -45,9 +51,9 @@ export const CarouselTests = () => {
     cy.get("#believe").scrollIntoView().should("be.visible");
 
     for (let i = 0; i < 4; i++) {
-      cy.get("#believe .bx-pager-link").eq(i).click();
+      cy.get("#believe .bx-pager.bx-default-pager a").eq(i).click();
       cy.wait(1000);
-      cy.get(`.bx_home div[data-id="${i + 1}"]`).should("be.visible");
+      cy.get('.bx_home li').eq(i).should("be.visible");
     }
   });
 };
@@ -158,8 +164,7 @@ export const AboutDinTaiFungTests = () => {
         .should("have.attr", "style")
         .should(
           "eq", // equal
-          `background-image:url('https://www.dintaifung.com.tw/archive/images/about/c${
-            i + 1
+          `background-image:url('https://www.dintaifung.com.tw/archive/images/about/c${i + 1
           }.png')`
         );
     }
@@ -279,10 +284,7 @@ export const CuisineTests = () => {
     cy.get("#food .text").find("a").its("length").should("eq", 13);
     cy.get('#food .text a[data-id="2"]').click({ force: true }); //選擇最經典的小籠包//
     cy.wait(1000);
-    cy.url().should(
-      "eq",
-      "https://www.dintaifung.com.tw/kr/food_show.php?cid=2"
-    );
+    cy.get('#food_show').should("be.visible");
     const introduce = [".main_img", ".title_img.active", ".food_memo"];
     introduce.forEach((item) => {
       cy.get(`#food_show ${item}`).should("be.visible");
