@@ -1,5 +1,8 @@
 import * as tests from "./tests/dinTaiFung.tests";
 
+Cypress.on("uncaught:exception", (err, runnable) => {
+  return false;
+});
 describe("鼎泰豐測試", () => {
   beforeEach(() => {
     cy.viewport(1366, 768);
@@ -9,44 +12,44 @@ describe("鼎泰豐測試", () => {
     tests.GoToDinTaiFungTests();
     // ok
   });
-  // describe("首頁導覽", () => {
-  // tests.ChangeLanguageTests();
-  // ok;
-  // tests.OnSitToNumQueryTests();
-  // ok
-  // tests.CarouselTests();
-  // ok
-  // tests.TopTenTests();
-  // ok
-  // tests.NewsTests();
-  // ok
-  // tests.StoresTests();
-  // ok
-  // tests.MobileAppTests();
-  // ok
-  // tests.BackToTopTests();
-  // ok
-  // });
+  describe("首頁導覽", () => {
+    tests.ChangeLanguageTests();
+    // ok;
+    tests.OnSitToNumQueryTests();
+    // ok
+    tests.CarouselTests();
+    // ok
+    tests.TopTenTests();
+    // ok
+    tests.NewsTests();
+    // ok
+    tests.StoresTests();
+    // ok
+    tests.MobileAppTests();
+    // ok
+    tests.BackToTopTests();
+    // ok
+  });
 
   describe("主要選單", () => {
     tests.ClickMenu();
-    // tests.MainMenuTests();
+    tests.MainMenuTests();
     // ok
-    // tests.AboutDinTaiFungTests();
+    tests.AboutDinTaiFungTests();
     // ok
-    // tests.LatestNewsTests();
+    tests.LatestNewsTests();
     // ok
-    // tests.WorldwideLocationTests();
+    tests.WorldwideLocationTests();
     // ok
     tests.CuisineTests();
     // ok
-    // tests.PeaceOfMindGuaranteeTests();
+    tests.PeaceOfMindGuaranteeTests();
     // ok
-    // tests.ContactUstests();
+    tests.ContactUstests();
     // ok
-    // tests.TargetBlankShoppingOnLineTests();
+    tests.TargetBlankShoppingOnLineTests();
     // ok
-    // tests.TargetBlankRecruitingTests();
+    tests.TargetBlankRecruitingTests();
     // ok
   });
 });
