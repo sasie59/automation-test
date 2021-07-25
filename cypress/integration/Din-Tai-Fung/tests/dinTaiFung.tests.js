@@ -1,9 +1,9 @@
 // 前往鼎泰豐
 export const GoToDinTaiFungTests = () => {
   it("should go to Din-Tai-Fang index\n(前往鼎泰豐首頁)", () => {
-    cy.visit("https://www.dintaifung.com.tw/")
-      .get("#menubox_box")
-      .should("be.visible");
+    cy.visit("https://www.dintaifung.com.tw/");
+    cy.wait(4000);
+    cy.get("#menubox_box").should("be.visible");
   });
 };
 
@@ -38,16 +38,6 @@ export const OnSitToNumQueryTests = () => {
       .should("have.attr", "target", "_blank")
       .should("have.attr", "href", "http://www.dintaifung.tw/Queue/?type=3");
   });
-
-  // it("should go to on-sit page and....\n(前往現場到號查詢)", () => {
-  //   cy.visit("http://www.dintaifung.tw/Queue/?type=3")
-  //     .get('.title-text > img[title="現場到號查詢"]')
-  //     .should("be.visible");
-  // cy.go("back");
-
-  // cy.get('.number_s.fadeInUp.animated15')
-  //   .invoke('removeAttr', 'target').click();
-  // });
 };
 
 export const CarouselTests = () => {
@@ -147,7 +137,7 @@ export const MainMenuTests = () => {
 export const AboutDinTaiFungTests = () => {
   it("should dispaly Din-Tai-Fung history\n(關於鼎泰豐))", () => {
     cy.get("#menu").find('a[href="about.php"]').click();
-    cy.wait(1000);
+    cy.wait(4000);
     cy.get(".triggerblk").find("li").its("length").should("eq", 4);
     cy.get('li[togo="sec1"]').click(); //緣起//
     const baseClass = ".editblk.sec1.fadeInUp.animated15";
@@ -187,12 +177,12 @@ export const AboutDinTaiFungTests = () => {
       .its("length")
       .should("eq", 26);
     cy.get('li[togo="videoblk"]').click(); //影片//
+    cy.wait(4000);
+    // const videoUrl =
+    //   "https://i.ytimg.com/vi_webp/zMnvKTqFKPE/maxresdefault.webp";
     // cy.get(".ytp-cued-thumbnail-overlay-image")
     //   .should("have.attr", "style")
-    //   .should(
-    //     "eq",
-    //     'background-image: url("https://i.ytimg.com/vi_webp/zMnvKTqFKPE/maxresdefault.webp")'
-    //   );
+    //   .should("eq", `background-image: url('${videoUrl}')`);
     // 抓影片有問題 主要報這段  > Cannot read property 'playVideo' of undefined
 
     cy.get(
@@ -209,7 +199,7 @@ export const AboutDinTaiFungTests = () => {
 export const LatestNewsTests = () => {
   it("should dispaly latest news \n(最新消息))", () => {
     cy.get("#menu").find('a[href="news.php"]').click();
-    cy.wait(1000);
+    cy.wait(4000);
     const selectBox = ["year.select_box", "type.select_box"];
     selectBox.forEach((item) => {
       cy.get("#news")
@@ -230,6 +220,7 @@ export const LatestNewsTests = () => {
 export const WorldwideLocationTests = () => {
   it("should dispaly world wide location \n(門市據點))", () => {
     cy.get("#menu").find('a[href="store.php"]').click();
+    cy.wait(4000);
     cy.get("#globo").should("be.visible");
     cy.get('.mainmemo.active > .new__btns > a[href="store.php"]').click();
     const storeInfo = [".imgs", ".info", ".album_box.active", ".botton.active"];
@@ -255,6 +246,7 @@ export const WorldwideLocationTests = () => {
 export const CuisineTests = () => {
   it("should dispaly cuisine \n(絕頂美味))", () => {
     cy.get("#menu").find('a[href="food.php"]').click({ force: true });
+    cy.wait(4000);
     const foodLayOut = [
       ".title_img.active",
       ".downbg",
@@ -350,6 +342,7 @@ export const CuisineTests = () => {
 export const PeaceOfMindGuaranteeTests = () => {
   it("should dispaly peace of mind guarantee \n(安心宣言)", () => {
     cy.get("#menu").find('a[href="care.php"]').click();
+    cy.wait(4000);
     const peaceMindList = [
       ".title_img.active",
       ".sloganblk.fadeInUp.animated15",
@@ -428,6 +421,7 @@ export const PeaceOfMindGuaranteeTests = () => {
 export const ContactUstests = () => {
   it("should dispaly contact us \n(聯絡我們)", () => {
     cy.get("#menu").find('a[href="contact.php"]').click({ force: true });
+    cy.wait(4000);
     cy.get("#eForm1").should("be.visible");
     const formList = [
       "#name",
