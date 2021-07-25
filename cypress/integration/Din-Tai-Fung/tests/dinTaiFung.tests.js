@@ -27,13 +27,15 @@ export const ChangeLanguageTests = () => {
         .get(`#ui-id-${i + 1}`)
         .contains(`${LANGUAGE_LIST[i]}`)
         .should("be.visible");
+      cy.wait(700);
       // 驗證語系
     }
     cy.get("#language-button")
       .click({ force: true })
       .get("#language-menu")
-      .get('#ui-id-1')
+      .get("#ui-id-1")
       .click({ force: true });
+    cy.wait(700);
     // 切回繁中
   });
 };
@@ -53,7 +55,7 @@ export const CarouselTests = () => {
     for (let i = 0; i < 4; i++) {
       cy.get("#believe .bx-pager.bx-default-pager a").eq(i).click();
       cy.wait(1000);
-      cy.get('.bx_home li').eq(i).should("be.visible");
+      cy.get(".bx_home li").eq(i).should("be.visible");
     }
   });
 };
@@ -100,13 +102,10 @@ export const MobileAppTests = () => {
   it("should download mobile app\n(智能手機App下載)", () => {
     cy.get("footer").scrollIntoView();
     cy.get("footer").find(".custom.a_link.download.app_show").click();
+    cy.wait(1000);
     cy.get("#app").find(".title > .t01").should("be.visible");
     cy.get("#app").find(".title > .t02").should("be.visible");
-    // cy.get("#app > .button")
-    //   .find(
-    //     'a[href="https://apps.apple.com/tw/app/%E9%BC%8E%E6%B3%B0%E8%B1%90/id1108359809"]'
-    //   )
-    //   .should("be.visible");
+    cy.get("#app > .button").find("a").first().should("have.attr", "href");
     // IOS的連結會找不到
     cy.get("#app > .button")
       .find(
@@ -115,6 +114,7 @@ export const MobileAppTests = () => {
       .should("be.visible");
     // 安卓ok
     cy.get("#app").get('a[title="Close"]').click();
+    cy.wait(1000);
     cy.get("#app").get('a[title="Close"]').should("not.be.exist");
   });
 };
@@ -122,6 +122,7 @@ export const BackToTopTests = () => {
   it("should back to top\n(回到頂端))", () => {
     cy.get("footer").scrollIntoView();
     cy.get("#gotop").click();
+    cy.wait(1000);
     cy.get("#nav_btn").should("be.visible"); //三條線//
   });
 };
@@ -130,7 +131,8 @@ export const BackToTopTests = () => {
 
 export const ClickMenu = () => [
   beforeEach(() => {
-    cy.get("#nav_btn").click();
+    cy.get("#nav_btn").click({ force: true });
+    cy.wait(1000);
   }),
 ];
 
@@ -142,10 +144,11 @@ export const MainMenuTests = () => {
 
 export const AboutDinTaiFungTests = () => {
   it("should dispaly Din-Tai-Fung history\n(關於鼎泰豐))", () => {
-    cy.get("#menu").find('a[href="about.php"]').click();
+    cy.get("#menu").find('a[href="about.php"]').click({ force: true });
     cy.wait(4000);
     cy.get(".triggerblk").find("li").its("length").should("eq", 4);
-    cy.get('li[togo="sec1"]').click(); //緣起//
+    cy.get('li[togo="sec1"]').click({ force: true }); //緣起//
+    cy.wait(1000);
     const baseClass = ".editblk.sec1.fadeInUp.animated15";
     const imgList = [
       "https://www.dintaifung.com.tw/archive/images/editor/about/sec1.png",
@@ -157,14 +160,16 @@ export const AboutDinTaiFungTests = () => {
 
       // cy.get('......get img').should('src', img).should('be.visible');
     });
-    cy.get('li[togo="sec2"]').click(); //信念//
+    cy.get('li[togo="sec2"]').click({ force: true }); //信念//
+    cy.wait(1000);
     for (let i = 0; i < 3; i++) {
       cy.get(".editblk.sec2.fadeInUp.animated15 .editblk2 .img")
         .eq(i) // element query
         .should("have.attr", "style")
         .should(
           "eq", // equal
-          `background-image:url('https://www.dintaifung.com.tw/archive/images/about/c${i + 1
+          `background-image:url('https://www.dintaifung.com.tw/archive/images/about/c${
+            i + 1
           }.png')`
         );
     }
@@ -174,14 +179,15 @@ export const AboutDinTaiFungTests = () => {
       .eq(3)
       .should("have.attr", "style")
       .should("eq", `background-image:url('${img4}')`);
-    cy.get('li[togo="memoblk"]').click(); //記事//
+    cy.get('li[togo="memoblk"]').click({ force: true }); //記事//
+    cy.wait(1000);
     cy.get(
       ".yearblk > .swiper-container.swiper-container-horizontal > .swiper-wrapper > .swiper-slide"
     )
       .find(".year")
       .its("length")
       .should("eq", 26);
-    cy.get('li[togo="videoblk"]').click(); //影片//
+    cy.get('li[togo="videoblk"]').click({ force: true }); //影片//
     cy.wait(4000);
     // const videoUrl =
     //   "https://i.ytimg.com/vi_webp/zMnvKTqFKPE/maxresdefault.webp";
@@ -228,6 +234,7 @@ export const WorldwideLocationTests = () => {
     cy.wait(4000);
     cy.get("#globo").should("be.visible");
     cy.get('.mainmemo.active > .new__btns > a[href="store.php"]').click();
+    cy.wait(4000);
     const storeInfo = [".imgs", ".info", ".album_box.active", ".botton.active"];
     storeInfo.forEach((store) => {
       cy.get(`#album_list .store_line.store_line_198.clear ${store}`).should(
@@ -238,6 +245,7 @@ export const WorldwideLocationTests = () => {
     cy.get("#album_list").find(".imgs").its("length").should("eq", 12);
     // 國內分店有12間
     cy.get('.mainmemo.active > .new__btns > a[href="store_world.php"]').click();
+    cy.wait(4000);
     cy.get(
       ".map.active > .world > .type > .world-container.swiper-container-horizontal > .swiper-wrapper"
     )
@@ -284,7 +292,7 @@ export const CuisineTests = () => {
     cy.get("#food .text").find("a").its("length").should("eq", 13);
     cy.get('#food .text a[data-id="2"]').click({ force: true }); //選擇最經典的小籠包//
     cy.wait(1000);
-    cy.get('#food_show').should("be.visible");
+    cy.get("#food_show").should("be.visible");
     const introduce = [".main_img", ".title_img.active", ".food_memo"];
     introduce.forEach((item) => {
       cy.get(`#food_show ${item}`).should("be.visible");
@@ -383,6 +391,7 @@ export const PeaceOfMindGuaranteeTests = () => {
     cy.get(".mb2").scrollIntoView().should("be.visible");
     cy.get(".listtitle").first().should("be.visible");
     cy.get(".listtitle").last().click({ force: true });
+    cy.wait(4000);
     cy.get(".tableblk tr").last().find("td").its("length").should("eq", 3);
     cy.get(".tableblk tbody").last().find("tr").its("length").should("eq", 7);
     cy.get(".dataTables_paginate.paging_full_numbers_no_ellipses").as("page");
@@ -397,6 +406,7 @@ export const PeaceOfMindGuaranteeTests = () => {
       cy.get("@page").find(`${page}`).should("be.visible");
     });
     cy.get(".closelist.active").last().click({ force: true });
+    cy.wait(4000);
     cy.get(".sec2.fadeInUp.animated15").scrollIntoView();
     cy.get(".sourcelist").find("li").its("length").should("eq", 12);
     cy.get(".supplybg .supply").scrollIntoView();
@@ -404,7 +414,7 @@ export const PeaceOfMindGuaranteeTests = () => {
     cy.get(".supplybg .supply").find("p").should("be.visible");
     cy.get(".supplybg img").first().should("have.attr", "src");
     cy.get(".supplybg img").last().should("have.attr", "src");
-    cy.get(".sec3.fadeInUp.animated15").scrollIntoView().should("be.visible");
+    cy.get(".sec3").scrollIntoView().should("be.visible");
     cy.get(".cardblk").should("be.visible");
     cy.get(".cardblk .card").should("be.visible");
     cy.get(".cardblk a").eq(1).should("have.attr", "href");
@@ -412,7 +422,9 @@ export const PeaceOfMindGuaranteeTests = () => {
     cy.get(".QAblk .selectblk").should("be.visible");
     cy.get(".QAblk").find(".listblk").its("length").should("eq", 10);
     cy.get(".ui-selectmenu-text").last().click({ force: true });
+    cy.wait(4000);
     cy.get("#QAselect-menu #ui-id-4").click({ force: true });
+    cy.wait(4000);
     const qA = [".iconblk", ".anserblk"];
     qA.forEach((item) => {
       cy.get(`${item}`).should("be.visible");
@@ -446,7 +458,9 @@ export const ContactUstests = () => {
     cy.get("#mail").type("abc@gmail.com");
     cy.get("#mail").should("have.value", "abc@gmail.com");
     cy.get(".ui-selectmenu-text").last().click();
+    cy.wait(4000);
     cy.get("#store-menu #ui-id-2").click(); //"信義店"
+    cy.wait(4000);
     cy.get(".styled-select")
       .find('span[aria-labelledby="ui-id-2"]')
       .should("be.visible");
@@ -460,6 +474,7 @@ export const ContactUstests = () => {
 export const TargetBlankShoppingOnLineTests = () => {
   it("should dispaly shopping onling \n(彈跳出線上購物的連結)", () => {
     cy.get("#menu a").eq(6).click();
+    cy.wait(1000);
     cy.get("#menu a").eq(6).should("have.attr", "target", "_blank");
   });
 };
@@ -467,6 +482,7 @@ export const TargetBlankShoppingOnLineTests = () => {
 export const TargetBlankRecruitingTests = () => {
   it("should dispaly recruiting \n(彈跳出人才招募的連結)", () => {
     cy.get("#menu a").eq(7).click();
+    cy.wait(1000);
     cy.get("#menu a").last().should("have.attr", "target", "_blank");
   });
 };
