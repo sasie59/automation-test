@@ -370,6 +370,7 @@ export const PeaceOfMindGuaranteeTests = () => {
       cy.get(`#care ${peace}`).should("be.visible");
     });
     cy.get(".title_img.active > img").should("have.attr", "src");
+    cy.wait(4000);
     cy.get(".sloganblk.fadeInUp.animated15 > .ytitle").should("be.visible");
     const videoList = [".middle", ".video.mb_YTPlayer.isMuted"];
     videoList.forEach((video) => {
@@ -473,7 +474,7 @@ export const ContactUstests = () => {
 };
 export const TargetBlankShoppingOnLineTests = () => {
   it("should dispaly shopping onling \n(彈跳出線上購物的連結)", () => {
-    cy.get("#menu a").eq(6).click();
+    cy.get("#menu a").eq(6).click({ force: true });
     cy.wait(1000);
     cy.get("#menu a").eq(6).should("have.attr", "target", "_blank");
   });
@@ -481,7 +482,7 @@ export const TargetBlankShoppingOnLineTests = () => {
 
 export const TargetBlankRecruitingTests = () => {
   it("should dispaly recruiting \n(彈跳出人才招募的連結)", () => {
-    cy.get("#menu a").eq(7).click();
+    cy.get("#menu a").eq(7).click({ force: true });
     cy.wait(1000);
     cy.get("#menu a").last().should("have.attr", "target", "_blank");
   });
