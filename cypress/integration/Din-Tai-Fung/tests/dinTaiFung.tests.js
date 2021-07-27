@@ -364,13 +364,25 @@ export const PeaceOfMindGuaranteeTests = () => {
     });
     cy.get(".title_img.active > img").should("have.attr", "src");
     cy.wait(4000);
+
     cy.get(".sloganblk.fadeInUp.animated15 > .ytitle").should("be.visible");
-    const videoList = [".middle", ".video.mb_YTPlayer.isMuted"];
-    videoList.forEach((video) => {
-      cy.get(".videoblk.fadeInUp.animated15")
-        .find(`${video}`)
-        .should("be.visible");
-    });
+    cy.wait(4000);
+    // const videoList = [".middle", ".video.mb_YTPlayer.isMuted"];
+    cy.get(".videoblk.fadeInUp.animated15 div")
+      .first()
+      .should("have.class", "middle");
+    cy.wait(4000);
+
+    // cy.get(".videoblk.fadeInUp.animated15 > div")
+    //   .eq(1)
+    //   .should("have.attr", "class", "video");
+    // cy.wait(4000);
+
+    cy.get(".videoblk.fadeInUp.animated15 > div")
+      .eq(1)
+      .get(".video")
+      .should("be.visible");
+
     cy.get(".navblk > .triggerblk").should("be.visible");
     cy.get(".navblk > .triggerblk").scrollIntoView();
     cy.get(".sec1 > .titlep").should("be.visible");
