@@ -1,7 +1,7 @@
-import * as tests from './tests/check.fare.tests';
+import * as tests from "./tests/check.fare.tests";
 
-describe('台鐵票價試算', () => {
-  describe('票價試算', () => {
+describe("台鐵票價試算", () => {
+  describe("票價試算", () => {
     tests.GoToCheckFarePageTests();
     tests.MainMenuTests();
     tests.ChooseTrainTicketTypeTests();
@@ -12,5 +12,5 @@ describe('台鐵票價試算', () => {
     tests.ChooseVotesTests();
     tests.AddOrClear();
     tests.Inquire();
-  })
-})
+  });
+});
