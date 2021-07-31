@@ -72,8 +72,7 @@ export const TopTenTests = () => {
     cy.get(".swiper-wrapper") //會滾動的圖片//
       .first()
       .find("div") //底下的css太多種變化 我改抓共有幾個div//
-      .its("length")
-      .should("eq", 32);
+      .its("length").should("eq", 32);
   });
 };
 
@@ -161,8 +160,7 @@ export const AboutDinTaiFungTests = () => {
         .should("have.attr", "style")
         .should(
           "eq", // equal
-          `background-image:url('https://www.dintaifung.com.tw/archive/images/about/c${
-            i + 1
+          `background-image:url('https://www.dintaifung.com.tw/archive/images/about/c${i + 1
           }.png')`
         );
     }

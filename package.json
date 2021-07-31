@@ -6,6 +6,6 @@
   "author": "sasie59 <sasie59@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "cypress": "8.0.0"
+    "cypress": "8.1.0"
   }
 }
