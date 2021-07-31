@@ -51,7 +51,7 @@ export const GoRideEveryWhereTests = () => {
 };
 
 export const FirstRideAndShareToEarnTests = () => {
-  it('should display go first ride and share\n(優專介紹)', () => {
+  it('should display go first ride and share\n(優惠介紹)', () => {
     cy.get('.standard-container.promotion')
       .scrollIntoView()
       .should('be.visible');
