@@ -135,7 +135,7 @@ export const ChooseVotesTests = () => {
 };
 
 export const AddOrClear = () => {
-  it.skip("should add or clear\n(選擇新增一筆或清空)", () => {});
+  it.skip("should add or clear\n(選擇新增一筆或清空)", () => { });
 };
 
 export const Inquire = () => {

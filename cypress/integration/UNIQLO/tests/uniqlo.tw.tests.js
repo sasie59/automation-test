@@ -7,33 +7,36 @@ export function GoToUniqloPageTests() {
 
 export const DefineElement = () => {
   beforeEach(() => {
-    // alias the $btn.text() as 'text'
     cy.get('#gnav_header').as('menu');
   });
 }
 export const DefineControlElement = () => {
   beforeEach(() => {
-    // alias the $btn.text() as 'text'
     cy.get('#navHeader').as('main');
   });
 }
 
 export const MainTypeTests = () => {
   it('should display main type and can each switch\n(應該呈現主要類型為: WOMEN, MEN, KIDS, BABY並且可以各自切換)', () => {
-
-    cy.get('@menu').find('a[id="header_women"]').should('be.visible');
-    cy.get('@menu').find('a[id="header_men"]').should('be.visible');
-    cy.get('@menu').find('a[id="header_kids"]').should('be.visible');
-    cy.get('@menu').find('a[id="header_baby"]').should('be.visible');
-
-    cy.get('@menu').find('a[id="header_women"]').click();
-    cy.get('#gnav_women').contains('女裝首頁').should('be.visible');
-    cy.get('@menu').find('a[id="header_men"]').click();
-    cy.get('#gnav_men').contains('男裝首頁').should('be.visible');
-    cy.get('@menu').find('a[id="header_kids"]').click();
-    cy.get('#gnav_kids').contains('童裝首頁').should('be.visible');
-    cy.get('@menu').find('a[id="header_baby"]').click();
-    cy.get('#gnav_baby').contains('嬰幼兒首頁').should('be.visible');
+    const mainList = [
+      'header_women',
+      'header_men',
+      'header_kids',
+      'header_baby'
+    ];
+    mainList.forEach(item => {
+      cy.get('@menu').find(`a[id=${item}]`).should('be.visible');
+    });
+    const idList = [
+      'gnav_women',
+      'gnav_men',
+      'gnav_kids',
+      'gnav_baby',
+    ];
+    for (let i = 0; i < 4; i++) {
+      cy.get('@menu').find(`a[id=${mainList[0]}]`).click();
+      cy.get(`#${idList[0]}`).should('be.visible');
+    }
   });
 }
 
@@ -44,49 +47,60 @@ export const SearchBarTests = () => {
     cy.get('.blkProdSearchOptions').should('be.visible');
 
     cy.get('.blkPaginationTop').as('result');
+    const firstSortList = [
+      'img[title="排序方式"]',
+      'img[title="人氣度"]',
+      'img[title="新品"]',
+      '.prev',
+      '.num',
+      '.next',
+    ];
+    cy.get('@result').first().contains('搜尋結果：21件').first().should('be.visible');
+    cy.get('#blkMainItemList > .unit').its('length').should('eq', 21);
 
-    cy.get('@result').first().contains('搜尋結果：22件').first().should('be.visible');
-    cy.get('#blkMainItemList > .unit').its('length').should('eq', 22);
-    cy.get('@result').first().find('img[title="排序方式"]').should('be.visible');
-    cy.get('@result').first().find('img[title="人氣度"]').should('be.visible');
-    cy.get('@result').first().find('img[title="新品"]').should('be.visible');
-    cy.get('@result').first().find('.prev').should('be.visible');
-    cy.get('@result').first().find('.num').should('be.visible');
-    cy.get('@result').first().find('.next').should('be.visible');
+    firstSortList.forEach(item => {
+      cy.get('@result').first().find(`${item}`).should('be.visible');
+    });
 
+    const lastSortList = [
+      'img[title="排序方式"]',
+      'img[title="人氣度"]',
+      'img[title="新品"]',
+      '.prev',
+      '.num',
+      '.next',
+    ];
     cy.get('@result').last().scrollIntoView();
-    cy.get('@result').last().contains('搜尋結果：22件').last().should('be.visible');
-    cy.get('@result').last().find('img[title="排序方式"]').should('be.visible');
-    cy.get('@result').last().find('img[title="人氣度"]').should('be.visible');
-    cy.get('@result').last().find('img[title="新品"]').should('be.visible');
-    cy.get('@result').last().find('.prev').should('be.visible');
-    cy.get('@result').last().find('.num').should('be.visible');
-    cy.get('@result').last().find('.next').should('be.visible');
+    cy.get('@result').last().contains('搜尋結果：21件').last().should('be.visible');
+
+    lastSortList.forEach(item => {
+      cy.get('@result').first().find(`${item}`).should('be.visible');
+    });
 
     cy.get('#blkNarrowSearch').as('filter');
-    // 選擇類別
-    cy.get('@filter').contains('MEN').should('be.visible');
-    cy.get('@filter').contains('WOMEN').should('be.visible');
-    cy.get('@filter').contains('KIDS').should('be.visible');
-    // 選擇顏色
-    cy.get('@filter').contains('白色系').should('be.visible');
-    cy.get('@filter').contains('灰色系').should('be.visible');
-    cy.get('@filter').contains('黑色').should('be.visible');
-    cy.get('@filter').contains('紅色系').should('be.visible');
-    cy.get('@filter').contains('綠色系').should('be.visible');
-    cy.get('@filter').contains('藍色系').should('be.visible');
-    // 選擇價格
-    cy.get('@filter').contains('NT$499以下').should('be.visible');
-    cy.get('@filter').contains('NT$500～NT$999').should('be.visible');
+    const filterList = [
+      'MEN',
+      'WOMEN',
+      'KIDS',
+      '白色系',
+      '灰色系',
+      '黑色',
+      '紅色系',
+      '綠色系',
+      '藍色系',
+      'NT$499以下',
+      'NT$500～NT$999',
+    ];
+
+    filterList.forEach(item => {
+      cy.get('@filter').contains(`${item}`).should('be.visible');
+    })
   });
 }
 
 export const StoreInformationTests = () => {
   it('should target_blank a windows about store infomation(應彈跳出有關店舖資訊的頁面)', () => {
-    cy.get('@menu')
-      .find('img[src="//im.uniqlo.com/images/tw/uq/pc/img/feature/top/2020_L1_update/header_nav_stores.gif"]')
-      .click({ force: true });
-    cy.get('a[href="/tw/stores/"]').should('have.attr', 'target', '_blank');
+    cy.get('#navUtil a[href="/tw/stores/"]').should('have.attr', 'target', '_blank', 'https://www.uniqlo.com/tw/stores/');
   });
 }
 
@@ -142,38 +156,6 @@ export const CommodityInformationTests = () => {
       cy.get('#subImages').find(`img[src="${IMG_BASE}${IMG}"]`).click();
       cy.get('#prodImgDefault').scrollIntoView();
     });
-
-    // cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub1_mini.jpg"]').scrollIntoView()
-    // cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub1_mini.jpg"]').click();
-    // cy.get('#prodImgDefault').scrollIntoView();
-
-    // cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub2_mini.jpg"]').scrollIntoView()
-    // cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub2_mini.jpg"]').click();
-    // cy.get('#prodImgDefault').scrollIntoView();
-
-    // cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub7_mini.jpg"]').scrollIntoView()
-    // cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub7_mini.jpg"]').click();
-    // cy.get('#prodImgDefault').scrollIntoView();
-
-    // cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub13_mini.jpg"]').scrollIntoView()
-    // cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub13_mini.jpg"]').click();
-    // cy.get('#prodImgDefault').scrollIntoView();
-
-    // cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub14_mini.jpg"]').scrollIntoView()
-    // cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub14_mini.jpg"]').click();
-    // cy.get('#prodImgDefault').scrollIntoView();
-
-    // cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub18_mini.jpg"]').scrollIntoView()
-    // cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub18_mini.jpg"]').click();
-    // cy.get('#prodImgDefault').scrollIntoView();
-
-    // cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub19_mini.jpg"]').scrollIntoView()
-    // cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub19_mini.jpg"]').click();
-    // cy.get('#prodImgDefault').scrollIntoView();
-
-    // cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub27_mini.jpg"]').scrollIntoView()
-    // cy.get('#subImages').find('img[src="https://im.uniqlo.com/images/tw/uq/pc/goods/440681/sub/440681_sub27_mini.jpg"]').click();
-    // cy.get('#prodImgDefault').scrollIntoView();
 
     cy.get('@rightInfo').find('#prodSelectColor').should('be.visible');
 
