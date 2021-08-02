@@ -13,13 +13,13 @@ describe("固定行高", () => {
   });
 
   describe('輪播器', () => {
-    // tests.CarouselTests();
+    tests.CarouselTests();
     // ok
   });
   describe('商品資訊', () => {
-    // tests.CommodityInformationTests();
-    // // ok
-    // tests.ShoppingCartTests();
+    tests.CommodityInformationTests();
+    // ok
+    tests.ShoppingCartTests();
     // ok
   });
 
@@ -33,20 +33,20 @@ describe("固定行高", () => {
     // ok
     tests.StoreInformationTests();
     // ok
-    // tests.LoginTests();
+    tests.LoginTests();
     // ok
   });
 
   describe('行為測試', () => {
-    // tests.DefineControlElement();
+    tests.DefineControlElement();
     // // ok
-    // tests.WomenAreaTests();
+    tests.WomenAreaTests();
     // // ok
-    // tests.MenAreaTests();
+    tests.MenAreaTests();
     // // ok
-    // tests.KidsAreaTests();
+    tests.KidsAreaTests();
     // // ok
-    // tests.BabyAreaTests();
+    tests.BabyAreaTests();
     // ok
   });
 

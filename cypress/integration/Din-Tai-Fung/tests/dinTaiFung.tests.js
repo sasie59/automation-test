@@ -59,11 +59,6 @@ export const CarouselTests = () => {
         `memo_box${i + 1}`
       );
     }
-    // for (let i = 0; i < 4; i++) {
-    //   cy.get("#believe .right_box .bx-pager-item a").eq(`${i}`).click();
-    //   cy.wait(1000);
-    //   cy.get(".bx_home li").eq(`${i}`).should("be.visible");
-    // }
   });
 };
 export const TopTenTests = () => {
@@ -71,7 +66,7 @@ export const TopTenTests = () => {
     cy.get("#home_food").scrollIntoView().should("be.visible");
     cy.get(".swiper-wrapper") //會滾動的圖片//
       .first()
-      .find("div") //底下的css太多種變化 我改抓共有幾個div//
+      .find("div")
       .its("length").should("eq", 32);
   });
 };
@@ -180,12 +175,6 @@ export const AboutDinTaiFungTests = () => {
       .should("eq", 26);
     cy.get('li[togo="videoblk"]').click({ force: true }); //影片//
     cy.wait(4000);
-    // const videoUrl =
-    //   "https://i.ytimg.com/vi_webp/zMnvKTqFKPE/maxresdefault.webp";
-    // cy.get(".ytp-cued-thumbnail-overlay-image")
-    //   .should("have.attr", "style")
-    //   .should("eq", `background-image: url('${videoUrl}')`);
-    // 抓影片有問題 主要報這段  > Cannot read property 'playVideo' of undefined
 
     cy.get(
       ".bg > .videopick > .thumb_contain.swiper-container-horizontal.swiper-container-autoheight > .swiper-wrapper"
