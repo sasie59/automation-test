@@ -6,14 +6,16 @@ describe("固定行高", () => {
   });
   describe("前往台灣Pay", () => {
     tests.GoToTaiwanPayTests();
+    // ok
   });
   describe("首頁導覽", () => {
     tests.HeaderTests();
-    tests.AdvertiseTests();
-    tests.CarouselTests();
-    tests.VideoTests();
-    tests.WhatisTaiwanPayTests();
-    tests.FooterTests();
+    // ok
+    // tests.AdvertiseTests();
+    // tests.CarouselTests();
+    // tests.VideoTests();
+    // tests.WhatisTaiwanPayTests();
+    // tests.FooterTests();
   });
   describe("線上客服小幫手", () => {
     // tests.LittleHelperTests();
