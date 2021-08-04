@@ -21,21 +21,112 @@ export const HeaderTests = () => {
 };
 
 export const AdvertiseTests = () => {
-  it("should", () => {});
+  it("should every three seconds change different advertise\n(每三秒更換不同的廣告) ", () => {
+    cy.get('.intro').scrollIntoView();
+    const advImgIdList = [
+      '#ContentPlaceHolder1_panelImage1',
+      '#ContentPlaceHolder1_panelImage2',
+      '#ContentPlaceHolder1_panelImage4',
+    ];
+    advImgIdList.forEach(item => {
+      cy.get(`${item}`).should('be.visible');
+      cy.wait(2500);
+    });
+    cy.get('.slick-dots').first().find('button').its("length").should("eq", 3);
+    cy.get('.slick-dots').first().find('button').eq(2).click();
+    cy.wait(500);
+    cy.get('#ContentPlaceHolder1_panelImage4').should('be.visible');
+  });
 };
 
 export const CarouselTests = () => {
-  it("should", () => {});
+  it("should", () => { });
 };
 
 export const VideoTests = () => {
-  it("should", () => {});
+  it("should", () => { });
 };
 
 export const WhatisTaiwanPayTests = () => {
-  it("should", () => {});
+  it("should", () => { });
 };
 
 export const FooterTests = () => {
-  it("should", () => {});
+  it("should", () => { });
+};
+
+export const LittleHelperTests = () => {
+  it("should", () => {
+
+  });
+};
+export const MainMenuTests = () => {
+  it("should", () => {
+
+  });
+};
+export const IntroductionTests = () => {
+  it("should", () => {
+
+  });
+};
+export const HowToApplyTests = () => {
+  it("should", () => {
+
+  });
+};
+export const LatestNewsTests = () => {
+  it("should", () => {
+
+  });
+};
+export const WhereToUseTests = () => {
+  it("should", () => {
+
+  });
+};
+export const MerchantZoneTests = () => {
+  it("should", () => {
+
+  });
+};
+export const EpidemicPreventionZoneTests = () => {
+  it("should", () => {
+
+  });
+};
+export const VideoZoneTests = () => {
+  it("should", () => {
+
+  });
+};
+export const CommonProblemTests = () => {
+  it("should", () => {
+
+  });
+};
+export const FriendlyServiceTests = () => {
+  it("should", () => {
+
+  });
+};
+export const ContentUsTests = () => {
+  it("should", () => {
+
+  });
+};
+export const WebsiteUseStatementTests = () => {
+  it("should", () => {
+
+  });
+};
+export const PrivacyPolicyTests = () => {
+  it("should", () => {
+
+  });
+};
+export const MediaCommunityTests = () => {
+  it("should", () => {
+
+  });
 };

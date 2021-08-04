@@ -2,16 +2,17 @@ import * as tests from "./tests/taiwanPay.tests";
 
 describe("固定行高", () => {
   beforeEach(() => {
-    cy.viewport(1000, 700);
+    cy.viewport(1000, 600);
   });
   describe("前往台灣Pay", () => {
     tests.GoToTaiwanPayTests();
     // ok
   });
   describe("首頁導覽", () => {
-    tests.HeaderTests();
+    // tests.HeaderTests();
     // ok
     // tests.AdvertiseTests();
+    // ok
     // tests.CarouselTests();
     // tests.VideoTests();
     // tests.WhatisTaiwanPayTests();
