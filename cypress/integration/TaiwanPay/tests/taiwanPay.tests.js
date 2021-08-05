@@ -40,7 +40,7 @@ export const AdvertiseTests = () => {
 };
 
 export const CarouselTests = () => {
-  it("should dispaly\n(輪播器)", () => {
+  it("should dispaly Carousel\n(輪播器)", () => {
     cy.get('.in_news').scrollIntoView();
     cy.get('.in_news h2 a').should('have.attr', 'href');
     cy.get('#activity .col-sm-6 a').its('length').should('eq', 18);
@@ -56,7 +56,11 @@ export const CarouselTests = () => {
 };
 
 export const VideoTests = () => {
-  it("should", () => { });
+  it("should display video\n(呈現影片)", () => {
+    cy.get('.video_slider').scrollIntoView();
+    cy.get('.video h2 a').should('have.attr', 'href');
+    cy.get('.slick-track').last().find('a').its('length').should('eq', 2);
+  });
 };
 
 export const WhatisTaiwanPayTests = () => {
