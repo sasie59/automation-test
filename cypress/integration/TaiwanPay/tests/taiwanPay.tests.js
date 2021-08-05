@@ -40,7 +40,19 @@ export const AdvertiseTests = () => {
 };
 
 export const CarouselTests = () => {
-  it("should", () => { });
+  it("should dispaly\n(輪播器)", () => {
+    cy.get('.in_news').scrollIntoView();
+    cy.get('.in_news h2 a').should('have.attr', 'href');
+    cy.get('#activity .col-sm-6 a').its('length').should('eq', 18);
+    const turnPageList = [
+      '.slick-prev.slick-arrow',
+      '.slick-next.slick-arrow',
+    ];
+    turnPageList.forEach(item => {
+      cy.get(`${item}`).should('be.visible');
+    });
+    cy.get('.slick-dots').last().find('li').its('length').should('eq', 10);
+  });
 };
 
 export const VideoTests = () => {

@@ -14,6 +14,7 @@ describe("固定行高", () => {
     // tests.AdvertiseTests();
     // ok
     // tests.CarouselTests();
+    // ok
     // tests.VideoTests();
     // tests.WhatisTaiwanPayTests();
     // tests.FooterTests();
