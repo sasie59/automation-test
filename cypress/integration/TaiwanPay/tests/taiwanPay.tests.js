@@ -22,127 +22,102 @@ export const HeaderTests = () => {
 
 export const AdvertiseTests = () => {
   it("should every three seconds change different advertise\n(每三秒更換不同的廣告) ", () => {
-    cy.get('.intro').scrollIntoView();
+    cy.get(".intro").scrollIntoView();
     const advImgIdList = [
-      '#ContentPlaceHolder1_panelImage1',
-      '#ContentPlaceHolder1_panelImage2',
-      '#ContentPlaceHolder1_panelImage4',
+      "#ContentPlaceHolder1_panelImage1",
+      "#ContentPlaceHolder1_panelImage2",
+      "#ContentPlaceHolder1_panelImage4",
     ];
-    advImgIdList.forEach(item => {
-      cy.get(`${item}`).should('be.visible');
+    advImgIdList.forEach((item) => {
+      cy.get(`${item}`).should("be.visible");
       cy.wait(2500);
     });
-    cy.get('.slick-dots').first().find('button').its("length").should("eq", 3);
-    cy.get('.slick-dots').first().find('button').eq(2).click();
+    cy.get(".slick-dots").first().find("button").its("length").should("eq", 3);
+    cy.get(".slick-dots").first().find("button").eq(2).click();
     cy.wait(500);
-    cy.get('#ContentPlaceHolder1_panelImage4').should('be.visible');
+    cy.get("#ContentPlaceHolder1_panelImage4").should("be.visible");
   });
 };
 
 export const CarouselTests = () => {
   it("should dispaly Carousel\n(輪播器)", () => {
-    cy.get('.in_news').scrollIntoView();
-    cy.get('.in_news h2 a').should('have.attr', 'href');
-    cy.get('#activity .col-sm-6 a').its('length').should('eq', 18);
-    const turnPageList = [
-      '.slick-prev.slick-arrow',
-      '.slick-next.slick-arrow',
-    ];
-    turnPageList.forEach(item => {
-      cy.get(`${item}`).should('be.visible');
+    cy.get(".in_news").scrollIntoView();
+    cy.get(".in_news h2 a").should("have.attr", "href");
+    cy.get("#activity .col-sm-6 a").its("length").should("eq", 18);
+    const turnPageList = [".slick-prev.slick-arrow", ".slick-next.slick-arrow"];
+    turnPageList.forEach((item) => {
+      cy.get(`${item}`).should("be.visible");
     });
-    cy.get('.slick-dots').last().find('li').its('length').should('eq', 10);
+    cy.get(".slick-dots").last().find("li").its("length").should("eq", 10);
   });
 };
 
 export const VideoTests = () => {
   it("should display video\n(呈現影片)", () => {
-    cy.get('.video_slider').scrollIntoView();
-    cy.get('.video h2 a').should('have.attr', 'href');
-    cy.get('.slick-track').last().find('a').its('length').should('eq', 2);
+    cy.get(".video_slider").scrollIntoView();
+    cy.get(".video h2 a").should("have.attr", "href");
+    cy.get(".slick-track").last().find("a").its("length").should("eq", 2);
   });
 };
 
 export const WhatisTaiwanPayTests = () => {
-  it("should", () => { });
+  it("should introduce what is taiwan pay\n(介紹什麼是台灣pay)", () => {
+    cy.get(".about").scrollIntoView();
+    cy.get(".about p").its("length").should("eq", 5);
+    cy.get(".about .item li").its("length").should("eq", 4);
+    for (let i = 1; i <= 4; i++) {
+      cy.get(`.about .item .box_0${i}`).should("be.visible");
+    }
+    cy.get(".about .item li").find("a").should("have.attr", "href");
+  });
 };
 
 export const FooterTests = () => {
-  it("should", () => { });
+  it("should", () => {});
 };
 
 export const LittleHelperTests = () => {
-  it("should", () => {
-
-  });
+  it("should", () => {});
 };
 export const MainMenuTests = () => {
-  it("should", () => {
-
-  });
+  it("should", () => {});
 };
 export const IntroductionTests = () => {
-  it("should", () => {
-
-  });
+  it("should", () => {});
 };
 export const HowToApplyTests = () => {
-  it("should", () => {
-
-  });
+  it("should", () => {});
 };
 export const LatestNewsTests = () => {
-  it("should", () => {
-
-  });
+  it("should", () => {});
 };
 export const WhereToUseTests = () => {
-  it("should", () => {
-
-  });
+  it("should", () => {});
 };
 export const MerchantZoneTests = () => {
-  it("should", () => {
-
-  });
+  it("should", () => {});
 };
 export const EpidemicPreventionZoneTests = () => {
-  it("should", () => {
-
-  });
+  it("should", () => {});
 };
 export const VideoZoneTests = () => {
-  it("should", () => {
-
-  });
+  it("should", () => {});
 };
 export const CommonProblemTests = () => {
-  it("should", () => {
-
-  });
+  it("should", () => {});
 };
 export const FriendlyServiceTests = () => {
-  it("should", () => {
-
-  });
+  it("should", () => {});
 };
 export const ContentUsTests = () => {
-  it("should", () => {
-
-  });
+  it("should", () => {});
 };
 export const WebsiteUseStatementTests = () => {
-  it("should", () => {
-
-  });
+  it("should", () => {});
 };
 export const PrivacyPolicyTests = () => {
-  it("should", () => {
-
-  });
+  it("should", () => {});
 };
 export const MediaCommunityTests = () => {
-  it("should", () => {
-
-  });
+  it("should", () => {});
 };
