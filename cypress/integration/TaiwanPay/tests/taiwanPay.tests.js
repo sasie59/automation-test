@@ -73,51 +73,57 @@ export const WhatisTaiwanPayTests = () => {
 };
 
 export const FooterTests = () => {
-  it("should", () => {});
+  it("should", () => {
+    cy.get("#footer").scrollIntoView();
+    cy.get('#footer .footer_link a').its('length').should('eq', 4);
+    cy.get('#footer .footer_link a').should('have.attr', 'href');
+
+    // cy.get('#gotop').should('be.visible').click();
+  });
 };
 
 export const LittleHelperTests = () => {
-  it("should", () => {});
+  it("should", () => { });
 };
 export const MainMenuTests = () => {
-  it("should", () => {});
+  it("should", () => { });
 };
 export const IntroductionTests = () => {
-  it("should", () => {});
+  it("should", () => { });
 };
 export const HowToApplyTests = () => {
-  it("should", () => {});
+  it("should", () => { });
 };
 export const LatestNewsTests = () => {
-  it("should", () => {});
+  it("should", () => { });
 };
 export const WhereToUseTests = () => {
-  it("should", () => {});
+  it("should", () => { });
 };
 export const MerchantZoneTests = () => {
-  it("should", () => {});
+  it("should", () => { });
 };
 export const EpidemicPreventionZoneTests = () => {
-  it("should", () => {});
+  it("should", () => { });
 };
 export const VideoZoneTests = () => {
-  it("should", () => {});
+  it("should", () => { });
 };
 export const CommonProblemTests = () => {
-  it("should", () => {});
+  it("should", () => { });
 };
 export const FriendlyServiceTests = () => {
-  it("should", () => {});
+  it("should", () => { });
 };
 export const ContentUsTests = () => {
-  it("should", () => {});
+  it("should", () => { });
 };
 export const WebsiteUseStatementTests = () => {
-  it("should", () => {});
+  it("should", () => { });
 };
 export const PrivacyPolicyTests = () => {
-  it("should", () => {});
+  it("should", () => { });
 };
 export const MediaCommunityTests = () => {
-  it("should", () => {});
+  it("should", () => { });
 };

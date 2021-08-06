@@ -19,7 +19,7 @@ describe("固定行高", () => {
     // ok
     // tests.WhatisTaiwanPayTests();
     // ok
-    // tests.FooterTests();
+    tests.FooterTests();
   });
   describe("線上客服小幫手", () => {
     // tests.LittleHelperTests();
