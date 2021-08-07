@@ -9,17 +9,18 @@ describe("固定行高", () => {
     // ok
   });
   describe("首頁導覽", () => {
-    // tests.HeaderTests();
+    tests.HeaderTests();
     // ok
-    // tests.AdvertiseTests();
+    tests.AdvertiseTests();
     // ok
-    // tests.CarouselTests();
+    tests.CarouselTests();
     // ok
-    // tests.VideoTests();
+    tests.VideoTests();
     // ok
-    // tests.WhatisTaiwanPayTests();
+    tests.WhatisTaiwanPayTests();
     // ok
     tests.FooterTests();
+    // ok
   });
   describe("線上客服小幫手", () => {
     // tests.LittleHelperTests();

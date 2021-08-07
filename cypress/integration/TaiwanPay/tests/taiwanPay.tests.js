@@ -73,12 +73,12 @@ export const WhatisTaiwanPayTests = () => {
 };
 
 export const FooterTests = () => {
-  it("should", () => {
+  it("should display footer info\n(呈現底部資訊)", () => {
     cy.get("#footer").scrollIntoView();
     cy.get('#footer .footer_link a').its('length').should('eq', 4);
     cy.get('#footer .footer_link a').should('have.attr', 'href');
-
-    // cy.get('#gotop').should('be.visible').click();
+    cy.get('#footer ul > li').its('length').should('eq', 12)
+    cy.get('#gotop').should('be.visible').click();
   });
 };
 
