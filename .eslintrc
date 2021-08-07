@@ -1,0 +1,16 @@
+{
+  "extends": [
+    "plugin:cypress/recommended"
+  ],
+  "plugins": [
+    "cypress"
+  ],
+  "parser": "babel-eslint",
+  "rules": {
+    "semi": "error",
+    "indent": ["error", 2],
+    "prefer-const": "error",
+    "no-extra-semi": "error",
+    "cypress/no-unnecessary-waiting": "off"
+  }
+}

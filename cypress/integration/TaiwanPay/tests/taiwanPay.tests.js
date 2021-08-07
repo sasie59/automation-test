@@ -77,13 +77,26 @@ export const FooterTests = () => {
     cy.get("#footer").scrollIntoView();
     cy.get('#footer .footer_link a').its('length').should('eq', 4);
     cy.get('#footer .footer_link a').should('have.attr', 'href');
-    cy.get('#footer ul > li').its('length').should('eq', 12)
+    cy.get('#footer ul > li').its('length').should('eq', 12);
     cy.get('#gotop').should('be.visible').click();
   });
 };
 
 export const LittleHelperTests = () => {
-  it("should", () => { });
+  it("should click to trigger little helper\n(點擊觸發小幫手)", () => { 
+    cy.get('.open_btn img').should('have.attr', 'src');
+    const btnIdList = [
+      '#open',
+      '#open_facebook',
+      '#open_line',
+    ];
+    btnIdList.forEach(item => {
+      cy.get(`${item}`).should('be.visible').should('have.attr', 'href');
+    });
+    cy.get('.open_btn').click();
+    cy.get('#chatbot.on').should('be.visible');
+    
+  });
 };
 export const MainMenuTests = () => {
   it("should", () => { });
