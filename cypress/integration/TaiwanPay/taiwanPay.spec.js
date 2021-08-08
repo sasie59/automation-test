@@ -25,9 +25,10 @@ describe("固定行高", () => {
   
   describe('功能選單', () => {
     tests.DefineElementAndClickDropDown();
-    tests.IntroductionTests();
+    // tests.IntroductionTests();
     // ok
-    // tests.HowToApplyTests();
+    tests.HowToApplyTests();
+    // ok
     // tests.LatestNewsTests();
     // tests.WhereToUseTests();
     // tests.MerchantZoneTests();

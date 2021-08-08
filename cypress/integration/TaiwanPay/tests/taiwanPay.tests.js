@@ -143,8 +143,17 @@ export const IntroductionTests = () => {
 };
 export const HowToApplyTests = () => {
   it("should link to how to apply page\n(連結至如何申請頁面)", () => { 
-    // cy.get('@menu').find('.hb_list > li > a').eq(1).click();
-    // cy.wait(3000);
+    cy.get('@menu').find('.hb_list > li > a').eq(1).click();
+    cy.wait(3000);
+    cy.get('.section-navtab').should('be.visible');
+    cy.get('.pane-bank-logo').should('be.visible');
+    cy.get('.pane-bank-logo h4').its('length').should('eq', 3);
+    cy.get('.pane-bank-logo .bankApp').its('length').should('eq', 30);
+    cy.get('.pane-bank-logo .bankApp a').should('have.attr', 'href');
+    for(let i = 0; i < 7; i++) {
+      cy.scrollTo(0, 400 * i);
+      cy.wait(1000);
+    }
   });
 };
 export const LatestNewsTests = () => {
