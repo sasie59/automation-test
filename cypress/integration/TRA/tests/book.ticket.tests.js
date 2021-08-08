@@ -8,7 +8,7 @@ export const GoToBookingPageTest = () => {
     cy.visit('/tra-tip-web/tip/tip001/tip121/query');
     cy.get('.breadcrumb').should('be.visible');
   });
-}
+};
 const bookTicktetType = [
   '完整',
   '花東常態實名制',
@@ -16,7 +16,7 @@ const bookTicktetType = [
   '連假加班實名制',
   '原住民返鄉',
   '快速'
-]
+];
 // 我就幫你改前幾個，後面的測試你就自己參考一下我怎麼寫的
 export const MainMenuTests = () => {
   it('should display main menu \n(應出現選單: 完整, 花東常態實名制, 兩鐵列車, 連假加班實名制, 原住民返鄉, 快速)', () => {
@@ -24,9 +24,9 @@ export const MainMenuTests = () => {
     cy.get('#tablist').as('menu');
     bookTicktetType.forEach(item => {
       cy.get('@menu').contains(`${item}`).should('be.visible');
-    })
+    });
   });
-}
+};
 
 export const SwitchQueryTypeTest = () => {
   it('should booking type can change\n(訂票類型可否正常切換\n快速, 完整, 花東常態實名制, 兩鐵列車, 連假加班實名制, 原住民返鄉)', () => {
@@ -47,7 +47,7 @@ export const SwitchQueryTypeTest = () => {
       cy.url().should('eq', Cypress.config().baseUrl + `${tipTypeList[i]}`);
     }
   });
-}
+};
 
 export const InputIDTest = () => {
   it('should display ID input\n(身分證字號輸入格可輸入)', () => {
@@ -55,7 +55,7 @@ export const InputIDTest = () => {
       .type('A123456789')
       .should('have.value', 'A123456789');
   });
-}
+};
 
 export const ChooseStartStationTest = () => {
   it('should dispaly counties and cities menu and click startStaton is Toucheng\n(應該出現縣市選單並選擇出發站為宜蘭縣頭城)', () => {
@@ -66,7 +66,7 @@ export const ChooseStartStationTest = () => {
     cy.get('@menu').contains('宜蘭縣').click();
     cy.get('@menu').contains('頭城').click();
   });
-}
+};
 
 /** @fix: modify to should have.value */
 export const ChooseEndStationTest = () => {
@@ -80,7 +80,7 @@ export const ChooseEndStationTest = () => {
     cy.get('@menu').contains('南港').click({ force: true });
     cy.get('input[name="endStation"').should('have.value', '0980-南港');
   });
-}
+};
 
 export const StrokeType = () => {
   it('should display stroke type\n(應出現行程類型為: 單程，去回)', () => {
@@ -95,7 +95,7 @@ export const StrokeType = () => {
       .children('.btn.btn-lg.btn-linear')
       .contains('去回').should('be.visible');
   });
-}
+};
 
 export const SwitchStrokeType = () => {
   it('should stroke type can change\n(行程類型可否正常切換 單程，去回)', () => {
@@ -117,7 +117,7 @@ export const SwitchStrokeType = () => {
       .contains('去回').click()
       .get('@stroke').contains('回程').should('be.visible');
   });
-}
+};
 
 export const BookingMethodType = () => {
   it('should dispaly booking method type\n(應出現訂票方式類型為: 依車次，依時段)', () => {
@@ -132,7 +132,7 @@ export const BookingMethodType = () => {
       .children('.btn.btn-lg.btn-linear')
       .contains('依時段').should('be.visible');
   });
-}
+};
 
 export const SwitchBookingMethodType = () => {
   it('should dispaly booking method type\n(訂票方式類型可否正常切換 依車次，依時段)', () => {
@@ -149,7 +149,7 @@ export const SwitchBookingMethodType = () => {
       .contains('依時段').click({ force: true })
       .get('@stroke').contains('車種').should('be.visible');
   });
-}
+};
 
 export const ChooseTicketQtyTest = () => {
   it('should choose tictet quantity\n(選擇張數)', () => {
@@ -157,7 +157,7 @@ export const ChooseTicketQtyTest = () => {
     cy.get('#normalQty.normalSeat.seatQty').type(2);
     cy.get('input[name="normalQty"]').should('have.value', '2');
   });
-}
+};
 
 export const ChooseGoCarTypeTest = () => {
   it('should choose start train type\n(選擇去程時段及車種)', () => {
@@ -173,7 +173,7 @@ export const ChooseGoCarTypeTest = () => {
       .contains('依時段').click({ force: true });
     cy.get('#rideDate1.rideDate').clear();
     cy.get('#rideDate1.rideDate').type(20210805);
-    cy.get('input[name="ticketOrderParamList[0].rideDate"]').should('have.value', '2021/08/05')
+    cy.get('input[name="ticketOrderParamList[0].rideDate"]').should('have.value', '2021/08/05');
     cy.get('#startTime1.form-control.timeRng').select('07:00');
     cy.get('#startTime1.form-control.timeRng').should('have.value', '07:00');
     cy.get('#endTime1.form-control.timeRng').select('12:00');
@@ -182,7 +182,7 @@ export const ChooseGoCarTypeTest = () => {
       .get('.btn.btn-lg.btn-linear.active.focus')
       .should('be.visible');
   });
-}
+};
 
 export const ChooseReturnCarTypeTest = () => {
   it('should choose return train type and ticket quantity\n(選擇回程時段及車種)', () => {
@@ -198,7 +198,7 @@ export const ChooseReturnCarTypeTest = () => {
       .contains('依時段').click({ force: true });
     cy.get('#rideDate2.rideDate').clear();
     cy.get('#rideDate2.rideDate').type(20210807);
-    cy.get('input[name="ticketOrderParamList[1].rideDate"]').should('have.value', '2021/08/07')
+    cy.get('input[name="ticketOrderParamList[1].rideDate"]').should('have.value', '2021/08/07');
     cy.get('#startTime2.form-control.timeRng').select('16:00');
     cy.get('#startTime2.form-control.timeRng').should('have.value', '16:00');
     cy.get('#endTime2.form-control.timeRng').select('22:00');
@@ -209,11 +209,11 @@ export const ChooseReturnCarTypeTest = () => {
       .get('.btn.btn-lg.btn-linear.active.focus')
       .should('be.visible');
   });
-}
+};
 
 export const BookingTicket = () => {
   it('should click not RBT booking ticket\n(點擊我不是機器人及訂票)', () => {
     // cy.get('.rc-inline-block').last().click();
     cy.get('.btn.btn-3d').click();
   });
-}
+};

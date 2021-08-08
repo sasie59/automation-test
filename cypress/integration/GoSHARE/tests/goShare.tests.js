@@ -17,7 +17,7 @@ export const IntroductionTests = () => {
     cy.go(-1);
     cy.wait(1000);
   });
-}
+};
 
 export const UseStepTests = () => {
   it('should show use step\n(使用步驟)', () => {
@@ -29,8 +29,7 @@ export const UseStepTests = () => {
       cy.wait(2000);
     });
   });
-}
-
+};
 
 export const GoRideEveryWhereTests = () => {
   it('should display go ride every where\n(到處騎乘)', () => {
@@ -76,7 +75,7 @@ export const FooterNavTests = () => {
     mainMenuList.forEach(item => {
       cy.get('footer').find(`${item}`).should('be.visible');
     });
-    cy.get('footer .downloads img').its('length').should('eq', 2)
+    cy.get('footer .downloads img').its('length').should('eq', 2);
     cy.get('footer .downloads').find('img').should('have.attr', 'src');
 
     cy.get('footer .contact a').its('length').should('eq', 6);
@@ -102,7 +101,7 @@ export const FooterNavTests = () => {
     serversList.forEach(item => {
       cy.get(`${item}`).scrollIntoView().should('be.visible');
       cy.wait(5000);
-    })
+    });
     cy.get('footer .contact a').eq(2).click();
     const partnerList = [
       '.hero.blue-dark',
@@ -135,9 +134,9 @@ export const FooterNavTests = () => {
     ];
     for (let i = 0; i < 8; i++) {
       cy.get('.custom-input-wrapper input').eq(i).type(`${infomationList[i]}`);
-      cy.wait(2000)
+      cy.wait(2000);
       cy.get('.custom-input-wrapper input').eq(i).should('have.value', `${infomationList[i]}`);
-    };
+    }
     cy.get('.custom-input-wrapper textarea').eq(0).type('xxx');
     cy.get('.custom-input-wrapper textarea').eq(0).should('have.value', 'xxx');
     cy.get('input[type="submit"]').should('be.visible');
@@ -153,7 +152,7 @@ export const FooterNavTests = () => {
     cy.get('.news-list li').its('length').should('eq', 10);
     cy.get('.news-list .news-item').find('a').should('have.attr', 'href');
 
-    cy.get('footer .contact a').eq(5).should('have.attr', 'target', '_blank', 'https://www.104.com.tw/company/ojonwyo')
+    cy.get('footer .contact a').eq(5).should('have.attr', 'target', '_blank', 'https://www.104.com.tw/company/ojonwyo');
 
     cy.get('footer .icons a').its('length').should('eq', 4);
     cy.get('footer .icons').find('a').should('have.attr', 'href');
@@ -161,10 +160,10 @@ export const FooterNavTests = () => {
     cy.get('footer .language a').its('length').should('eq', 2);
     cy.get('footer .language').find('a').should('have.attr', 'href');
     cy.get('footer .language a').last().click();
-    cy.get('.privacy .btn-dark').contains('I accept').should('be.visible')
+    cy.get('.privacy .btn-dark').contains('I accept').should('be.visible');
     cy.get('footer .language a').first().click();
-    cy.get('.privacy .btn-dark').contains('我接受').should('be.visible')
+    cy.get('.privacy .btn-dark').contains('我接受').should('be.visible');
 
-    cy.get('footer .gogoro-logo').should('have.attr', 'target', '_blank', 'https://www.gogoro.com/tw/')
+    cy.get('footer .gogoro-logo').should('have.attr', 'target', '_blank', 'https://www.gogoro.com/tw/');
   });
 };

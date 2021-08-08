@@ -11,6 +11,7 @@
     "indent": ["error", 2],
     "prefer-const": "error",
     "no-extra-semi": "error",
-    "cypress/no-unnecessary-waiting": "off"
+    "cypress/no-unnecessary-waiting": "off",
+    "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0 }]
   }
 }

@@ -9,12 +9,12 @@ export const DefineElement = () => {
   beforeEach(() => {
     cy.get('#gnav_header').as('menu');
   });
-}
+};
 export const DefineControlElement = () => {
   beforeEach(() => {
     cy.get('#navHeader').as('main');
   });
-}
+};
 
 export const MainTypeTests = () => {
   it('should display main type and can each switch\n(應該呈現主要類型為: WOMEN, MEN, KIDS, BABY並且可以各自切換)', () => {
@@ -39,7 +39,7 @@ export const MainTypeTests = () => {
       cy.get(`${idList[i]}`).should('be.visible');
     }
   });
-}
+};
 
 export const SearchBarTests = () => {
   it('should key in keyword can find What you want\n(輸入關鍵字可以找到你想要的)', () => {
@@ -93,15 +93,15 @@ export const SearchBarTests = () => {
 
     filterList.forEach(item => {
       cy.get('@filter').contains(`${item}`).should('be.visible');
-    })
+    });
   });
-}
+};
 
 export const StoreInformationTests = () => {
   it('should target_blank a windows about store infomation(應彈跳出有關店舖資訊的頁面)', () => {
     cy.get('#navUtil a[href="/tw/stores/"]').should('have.attr', 'target', '_blank', 'https://www.uniqlo.com/tw/stores/');
   });
-}
+};
 
 export const LoginTests = () => {
   it('should login account secret\n(登入帳號密碼)', () => {
@@ -109,12 +109,12 @@ export const LoginTests = () => {
     cy.wait(1000);
     cy.url().should('eq', 'https://www.uniqlo.com/tw/store/FSC01010E02.do');
     cy.get('input[name="cust_eml_id"]').type(Cypress.env('account'));
-    cy.get('input[name="cust_eml_id"]').should('have.value', Cypress.env('account'))
+    cy.get('input[name="cust_eml_id"]').should('have.value', Cypress.env('account'));
     cy.get('input[name="cust_pass"]').type(Cypress.env('password'));
     cy.get('input[name="cust_pass"]').should('have.value', Cypress.env('password'));
     // cy.get('input[title="登入"]').click();
   });
-}
+};
 
 export const CommodityInformationTests = () => {
   it('should display commodity information\n(應呈現商品資訊)', () => {
@@ -159,7 +159,7 @@ export const CommodityInformationTests = () => {
     ];
 
     IMG_LIST.forEach(IMG => {
-      cy.get('#subImages').find(`img[src="${IMG_BASE}${IMG}"]`).scrollIntoView()
+      cy.get('#subImages').find(`img[src="${IMG_BASE}${IMG}"]`).scrollIntoView();
       cy.get('#subImages').find(`img[src="${IMG_BASE}${IMG}"]`).click();
       cy.wait(1000);
       cy.get('#prodImgDefault').scrollIntoView();
@@ -190,7 +190,7 @@ export const CommodityInformationTests = () => {
     }
 
     cy.get('@rightInfo').find('#prodSelectQuantity').should('be.visible');
-    cy.get('#selectNum').select('2')
+    cy.get('#selectNum').select('2');
     cy.get('#selectNum').should('have.value', '2');
 
     cy.get('#intoCartOff').click();
@@ -200,7 +200,7 @@ export const CommodityInformationTests = () => {
     cy.wait(1000);
     cy.url().should('eq', 'https://www.uniqlo.com/tw/store/FSC02020E02.do');
   });
-}
+};
 
 export const ShoppingCartTests = () => {
   it('should display shopping cart checkout process\n(應呈現購物車結帳流程)', () => {
@@ -233,7 +233,7 @@ export const ShoppingCartTests = () => {
     cy.wait(1000);
     // 按下結帳發生錯誤
   });
-}
+};
 
 export const CarouselTests = () => {
   it('should click arrow or dots will change img\n(點擊箭頭或圓點會改變圖片)', () => {
@@ -255,7 +255,7 @@ export const CarouselTests = () => {
     cy.wait(1000);
     cy.get('.slider.newslider2020 img').should('have.attr', 'src');
   });
-}
+};
 
 
 
@@ -269,7 +269,7 @@ export const WomenAreaTests = () => {
     cy.get('.pure-g').first().find('a').its('length').should('eq', 75);
     cy.get('.pure-g').first().find('a').should('have.attr', 'href');
   });
-}
+};
 
 export const MenAreaTests = () => {
   it('should should display all men clothing category products\n(應呈現所有男裝的分類產品)', () => {
@@ -281,7 +281,7 @@ export const MenAreaTests = () => {
     cy.get('.pure-g').first().find('a').its('length').should('eq', 75);
     cy.get('.pure-g').first().find('a').should('have.attr', 'href');
   });
-}
+};
 
 export const KidsAreaTests = () => {
   it('should should display all kids clothing category products\n(應呈現所有童裝的分類產品)', () => {
@@ -293,7 +293,7 @@ export const KidsAreaTests = () => {
     cy.get('.pure-g').first().find('a').its('length').should('eq', 75);
     cy.get('.pure-g').first().find('a').should('have.attr', 'href');
   });
-}
+};
 
 export const BabyAreaTests = () => {
   it('should should display all baby clothing category products\n(應呈現所有嬰幼兒的分類產品)', () => {
@@ -305,4 +305,4 @@ export const BabyAreaTests = () => {
     cy.get('.pure-g').first().find('a').its('length').should('eq', 75);
     cy.get('.pure-g').first().find('a').should('have.attr', 'href');
   });
-}
+};
