@@ -79,6 +79,7 @@ export const FooterTests = () => {
     cy.get('#footer .footer_link a').should('have.attr', 'href');
     cy.get('#footer ul > li').its('length').should('eq', 12);
     cy.get('#gotop').should('be.visible').click();
+    cy.wait(500);
   });
 };
 
@@ -114,9 +115,14 @@ export const LittleHelperTests = () => {
     });
   });
 };
-export const MainMenuTests = () => {
-  it("should", () => { });
+export const ClickMenuTests = () => {
+  it('should click dropdown emerge main menu\n(點擊下拉選後浮現主要選單)', () => {
+    cy.get("#menu1").click();
+    cy.wait(1000);
+    cy.get('.container.hb_content').should('be.visible');
+  });
 };
+
 export const IntroductionTests = () => {
   it("should", () => { });
 };

@@ -22,17 +22,13 @@ describe("固定行高", () => {
     // tests.FooterTests();
     // ok
   });
-  describe("線上客服小幫手", () => {
-    // tests.LittleHelperTests();
+  
+  describe('功能選單', () => {
+    // beforeEach(() => {
+      
+    // });
+    // tests.ClickMenuTests();
     // ok
-  });
-
-  describe("功能選單", () => {
-    beforeEach(() => {
-      describe("", () => {
-        // tests.MainMenuTests();
-      });
-    });
     // tests.IntroductionTests();
     // tests.HowToApplyTests();
     // tests.LatestNewsTests();
@@ -46,5 +42,10 @@ describe("固定行高", () => {
     // tests.WebsiteUseStatementTests();
     // tests.PrivacyPolicyTests();
     // tests.MediaCommunityTests();
+  });
+
+  describe("線上客服小幫手", () => {
+    // tests.LittleHelperTests();
+    // ok
   });
 });
