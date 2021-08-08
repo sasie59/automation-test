@@ -157,7 +157,12 @@ export const HowToApplyTests = () => {
   });
 };
 export const LatestNewsTests = () => {
-  it("should", () => { });
+  it("should link to latest news page\n(連結至最新消息頁面)", () => { 
+    cy.get('@menu').find('.hb_list')
+      .eq(2).find('li').last().find('a').eq(0).click({force: true});
+    // cy.get('@menu').find('.hb_list')
+    //   .eq(2).find('li').last().find('a').eq(2).click({force: true});
+  });
 };
 export const WhereToUseTests = () => {
   it("should", () => { });

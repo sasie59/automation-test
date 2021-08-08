@@ -27,9 +27,9 @@ describe("固定行高", () => {
     tests.DefineElementAndClickDropDown();
     // tests.IntroductionTests();
     // ok
-    tests.HowToApplyTests();
+    // tests.HowToApplyTests();
     // ok
-    // tests.LatestNewsTests();
+    tests.LatestNewsTests();
     // tests.WhereToUseTests();
     // tests.MerchantZoneTests();
     // tests.EpidemicPreventionZoneTests();
