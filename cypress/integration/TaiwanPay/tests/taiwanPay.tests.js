@@ -129,16 +129,23 @@ export const IntroductionTests = () => {
     cy.get('@menu').find('.hb_list > li > a').eq(0).click();
     cy.wait(3000);
     cy.get('.container').eq(0).should('be.visible');
-    cy.get('.title.title_b').should('be.visible');
-    cy.get('.title.title_b h2').should('be.visible');
+    cy.get('.title.title_b').scrollIntoView().should('be.visible');
+    cy.get('.title.title_b h2').scrollIntoView().should('be.visible');
+    cy.wait(1000);
     cy.get('.title.title_b p').its('length').should('eq', 5);
-    cy.get('.item.row').should('be.visible');
+    cy.wait(1000);
+    cy.get('.item.row').scrollIntoView().should('be.visible');
     cy.get('.item.row li').its('length').should('eq', 4);
+    cy.wait(1000);
     cy.get('.item.row li a').should('have.attr', 'href');
+    cy.wait(1000);
   });
 };
 export const HowToApplyTests = () => {
-  it("should", () => { });
+  it("should link to how to apply page\n(連結至如何申請頁面)", () => { 
+    // cy.get('@menu').find('.hb_list > li > a').eq(1).click();
+    // cy.wait(3000);
+  });
 };
 export const LatestNewsTests = () => {
   it("should", () => { });
