@@ -24,12 +24,9 @@ describe("固定行高", () => {
   });
   
   describe('功能選單', () => {
-    // beforeEach(() => {
-      
-    // });
-    // tests.ClickMenuTests();
+    tests.DefineElementAndClickDropDown();
+    tests.IntroductionTests();
     // ok
-    // tests.IntroductionTests();
     // tests.HowToApplyTests();
     // tests.LatestNewsTests();
     // tests.WhereToUseTests();

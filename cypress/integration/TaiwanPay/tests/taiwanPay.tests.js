@@ -115,16 +115,27 @@ export const LittleHelperTests = () => {
     });
   });
 };
-export const ClickMenuTests = () => {
-  it('should click dropdown emerge main menu\n(點擊下拉選後浮現主要選單)', () => {
-    cy.get("#menu1").click();
+
+export const DefineElementAndClickDropDown = () => {
+  beforeEach(() => {
+    cy.get("#menu1").click({force:true});
     cy.wait(1000);
-    cy.get('.container.hb_content').should('be.visible');
+    cy.get('.container.hb_content').as('menu');
   });
 };
 
 export const IntroductionTests = () => {
-  it("should", () => { });
+  it("should link to introduction page\n(連結至台灣Pay介紹頁面)", () => { 
+    cy.get('@menu').find('.hb_list > li > a').eq(0).click();
+    cy.wait(3000);
+    cy.get('.container').eq(0).should('be.visible');
+    cy.get('.title.title_b').should('be.visible');
+    cy.get('.title.title_b h2').should('be.visible');
+    cy.get('.title.title_b p').its('length').should('eq', 5);
+    cy.get('.item.row').should('be.visible');
+    cy.get('.item.row li').its('length').should('eq', 4);
+    cy.get('.item.row li a').should('have.attr', 'href');
+  });
 };
 export const HowToApplyTests = () => {
   it("should", () => { });
