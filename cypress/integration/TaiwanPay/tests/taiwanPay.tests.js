@@ -94,8 +94,24 @@ export const LittleHelperTests = () => {
       cy.get(`${item}`).should('be.visible').should('have.attr', 'href');
     });
     cy.get('.open_btn').click();
+    cy.wait(500);
     cy.get('#chatbot.on').should('be.visible');
-    
+    const helpFormList = [
+      '.chatbot_head',
+      '.box_inner',
+      '.box_bottom',
+    ];
+    helpFormList.forEach(item => {
+      cy.get(`#chatbot ${item}`).should('be.visible');
+      cy.get('#chatbot > div > div').eq(0).find('img').should('have.attr', 'src');
+      cy.get('#chatbot > div > div .chatbot_close').should('be.visible');
+      cy.get('#chatbot > div > div').eq(1).get('.box_content > div')
+        .its('length').should('eq', 2);
+      cy.wait(1000);
+      cy.get(`#chatbot #input`).should('be.visible');
+      cy.get(`#chatbot #send`).should('be.visible');
+      cy.get('#close').should('be.visible');
+    });
   });
 };
 export const MainMenuTests = () => {

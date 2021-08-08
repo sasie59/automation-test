@@ -23,7 +23,8 @@ describe("固定行高", () => {
     // ok
   });
   describe("線上客服小幫手", () => {
-    tests.LittleHelperTests();
+    // tests.LittleHelperTests();
+    // ok
   });
 
   describe("功能選單", () => {
