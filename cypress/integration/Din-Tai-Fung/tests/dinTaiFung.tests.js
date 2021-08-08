@@ -124,12 +124,12 @@ export const BackToTopTests = () => {
 
 // 主要選單
 
-export const ClickMenu = () => [
+export const ClickMenu = () => {
   beforeEach(() => {
     cy.get("#nav_btn").click({ force: true });
     cy.wait(1000);
-  }),
-];
+  });
+};
 
 export const MainMenuTests = () => {
   it("should click display main menu\n(主要選單))", () => {
