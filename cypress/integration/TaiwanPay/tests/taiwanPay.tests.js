@@ -159,9 +159,19 @@ export const HowToApplyTests = () => {
 export const LatestNewsTests = () => {
   it("should link to latest news page\n(連結至最新消息頁面)", () => { 
     cy.get('@menu').find('.hb_list')
-      .eq(2).find('li').last().find('a').eq(0).click({force: true});
-    // cy.get('@menu').find('.hb_list')
-    //   .eq(2).find('li').last().find('a').eq(2).click({force: true});
+      .eq(2).find('li').last().find('a').eq(0).click();
+    cy.wait(1000);
+    cy.get('.nav.nav-tabs li').its('length').should('eq', 2);
+    cy.get('.nav.nav-tabs li a').should('have.attr', 'href');
+    cy.get('#activity a').its('length').should('eq', 205);
+    cy.get('.nav.nav-tabs li').last().find('a').click();
+    cy.wait(1000);
+    cy.get('#events a').its('length').should('eq', 30);
+    cy.get('#activity a').should('have.attr', 'href');
+    
+    cy.get('@menu').find('.hb_list')
+      .eq(2).find('li').last().find('a').eq(2).click({force: true});
+    cy.wait(1000);
   });
 };
 export const WhereToUseTests = () => {
