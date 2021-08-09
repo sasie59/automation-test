@@ -84,7 +84,7 @@ export const FooterTests = () => {
 };
 
 export const LittleHelperTests = () => {
-  it("should click to trigger little helper\n(點擊觸發小幫手)", () => { 
+  it("should click to trigger little helper\n(點擊觸發小幫手)", () => {
     cy.get('.open_btn img').should('have.attr', 'src');
     const btnIdList = [
       '#open',
@@ -118,14 +118,14 @@ export const LittleHelperTests = () => {
 
 export const DefineElementAndClickDropDown = () => {
   beforeEach(() => {
-    cy.get("#menu1").click({force:true});
+    cy.get("#menu1").click({ force: true });
     cy.wait(1000);
     cy.get('.container.hb_content').as('menu');
   });
 };
 
 export const IntroductionTests = () => {
-  it("should link to introduction page\n(連結至台灣Pay介紹頁面)", () => { 
+  it("should link to introduction page\n(連結至台灣Pay介紹頁面)", () => {
     cy.get('@menu').find('.hb_list > li > a').eq(0).click();
     cy.wait(3000);
     cy.get('.container').eq(0).should('be.visible');
@@ -142,7 +142,7 @@ export const IntroductionTests = () => {
   });
 };
 export const HowToApplyTests = () => {
-  it("should link to how to apply page\n(連結至如何申請頁面)", () => { 
+  it("should link to how to apply page\n(連結至如何申請頁面)", () => {
     cy.get('@menu').find('.hb_list > li > a').eq(1).click();
     cy.wait(3000);
     cy.get('.section-navtab').should('be.visible');
@@ -150,14 +150,14 @@ export const HowToApplyTests = () => {
     cy.get('.pane-bank-logo h4').its('length').should('eq', 3);
     cy.get('.pane-bank-logo .bankApp').its('length').should('eq', 30);
     cy.get('.pane-bank-logo .bankApp a').should('have.attr', 'href');
-    for(let i = 0; i < 7; i++) {
+    for (let i = 0; i < 7; i++) {
       cy.scrollTo(0, 400 * i);
       cy.wait(1000);
     }
   });
 };
 export const LatestNewsTests = () => {
-  it("should link to latest news page\n(連結至最新消息頁面)", () => { 
+  it("should link to latest news page\n(連結至最新消息頁面)", () => {
     cy.get('@menu').find('.hb_list')
       .eq(2).find('li').last().find('a').eq(0).click();
     cy.wait(1000);
@@ -168,10 +168,49 @@ export const LatestNewsTests = () => {
     cy.wait(1000);
     cy.get('#events a').its('length').should('eq', 30);
     cy.get('#activity a').should('have.attr', 'href');
-    
+
     cy.get('@menu').find('.hb_list')
-      .eq(2).find('li').last().find('a').eq(2).click({force: true});
+      .eq(2).find('li').last().find('a').eq(2).click({ force: true });
+    cy.wait(4000);
+    cy.get('.services').should('be.visible');
+    // 第一區塊
+    cy.get('.wrap__kv img').should('have.attr', 'src');
+    cy.get('.wrap__kv a').should('have.attr', 'target', '_blank', 'https://page.line.me/439jjrex?openQrModal=true');
+    // 第二區塊
+    cy.get('.wrap__title').eq(0).scrollIntoView();
     cy.wait(1000);
+    cy.get('.wrap__title').eq(0).find('img').should('have.attr', 'src');
+    cy.get('.swiper-wrapper').first().find('.swiper-slide.promotion__slide')
+      .its('length').should('eq', 3);
+    cy.get('.slide__next.promotion__next').should('be.visible');
+    cy.get('.slide__prev.promotion__prev').should('be.visible');
+    // 第三區塊
+    cy.get('.wrap__title').eq(1).scrollIntoView();
+    cy.wait(1000);
+    cy.get('.wrap__title').eq(1).find('img').should('have.attr', 'src');
+    cy.get('.swiper-wrapper').eq(1).find('img').its('length')
+      .should('eq', 7);
+    cy.get('.swiper-wrapper').eq(1).find('img').should('have.attr', 'src');
+    cy.get('.slide__prev.binding__prev').should('be.visible');
+    cy.get('.slide__next.binding__next').should('be.visible');
+    // 第四區塊
+    cy.get('.wrap__title').eq(2).scrollIntoView();
+    cy.wait(1000);
+    cy.get('.wrap__title').eq(2).find('img').should('have.attr', 'src');
+    cy.get('.wrap__slide.financial img').its('length').should('eq', 9);
+    cy.get('.wrap__slide.financial img').should('have.attr', 'src');
+    // 第五區塊
+    cy.get('.wrap__title').eq(3).scrollIntoView();
+    cy.wait(1000);
+    cy.get('.wrap__title').eq(3).find('img').should('have.attr', 'src');
+    cy.get('.qa__tab li').its('length').should('eq', 9);
+    cy.get('.qa__tab li a').should('have.attr', 'href');
+    cy.get('.tab__q').eq(0).should('be.visible');
+    cy.get('.qa__tab li a').eq(0).click();
+    cy.get('.tab__q.tab__q--active').eq(0).should('be.visible');
+    // 第六區塊
+    cy.get('.services__footer').scrollIntoView().should('be.visible');
+    cy.get('.services__footer img').should('have.attr', 'src');
   });
 };
 export const WhereToUseTests = () => {
