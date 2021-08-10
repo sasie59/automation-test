@@ -1,6 +1,7 @@
 export const GoToTaiwanPayTests = () => {
   it("should go to TaiwanPay index\n(前往台灣Pay)", () => {
     cy.visit("https://www.taiwanpay.com.tw/content/info/index.aspx");
+    cy.wait(4000);
     cy.get("#testlink").should("be.visible");
   });
 };
@@ -223,34 +224,49 @@ export const WhereToUseTests = () => {
   it("should", () => { });
 };
 export const MerchantZoneTests = () => {
-  it("should", () => { 
-    cy.get('@menu').find('.hb_list').last().find('a').eq(0);
+  it("should link to merchant znoe page\n(連結至商家專區頁面)", () => { 
+    cy.get('@menu').find('.hb_list').last().find('a').eq(0).click();
     cy.wait(2000);
+    cy.get('.nav.nav-tabs a').its('length').should('eq', 2);
+    cy.get('.nav.nav-tabs a').should('have.attr', 'href');
+    cy.get('.nav.nav-tabs a').eq(0).click();
+    cy.wait(2000);
+    cy.get('#card p').should('be.visible');
+    cy.get('#card .bankLogo').its('length').should('eq', 23);
+    cy.get('#card .bankLogo a').should('have.attr', 'target', '_blank', 'href',);
+
+    cy.get('.nav.nav-tabs a').eq(1).click();
+    cy.wait(2000);
+    cy.get('#qrcode .storeTitle').should('be.visible');
+    cy.get('#qrcode .step .brandStep').its('length').should('eq', 3);
+    cy.get('#qrcode .step .brandStep img').should('have.attr', 'src');
+    cy.get('#qrcode .step .brandStep h3').should('be.visible');
+    cy.get('#qrcode .step .brandStep h4').should('be.visible');
   });
 };
 export const EpidemicPreventionZoneTests = () => {
   it("should", () => { 
-    cy.get('@menu').find('.hb_list').last().find('a').eq(1);
+    cy.get('@menu').find('.hb_list').last().find('a').eq(1).click();
     cy.wait(2000);
   });
 };
 export const VideoZoneTests = () => {
   it("should", () => { 
-    cy.get('@menu').find('.hb_list').last().find('a').eq(2);
+    cy.get('@menu').find('.hb_list').last().find('a').eq(2).click();
     cy.wait(2000);
     
   });
 };
 export const CommonProblemTests = () => {
   it("should", () => { 
-    cy.get('@menu').find('.hb_list').last().find('a').eq(3);
+    cy.get('@menu').find('.hb_list').last().find('a').eq(3).click();
     cy.wait(2000);
     
   });
 };
 export const FriendlyServiceTests = () => {
   it("should", () => { 
-    cy.get('@menu').find('.hb_list').last().find('a').eq(4);
+    cy.get('@menu').find('.hb_list').last().find('a').eq(4).click();
     cy.wait(2000);
     
   });
@@ -258,14 +274,14 @@ export const FriendlyServiceTests = () => {
 
 export const WebsiteUseStatementTests = () => {
   it("should", () => { 
-    cy.get('@menu').find('.hb_list').last().find('a').eq(5);
+    cy.get('@menu').find('.hb_list').last().find('a').eq(5).click();
     cy.wait(2000);
 
   });
 };
 export const PrivacyPolicyTests = () => {
   it("should", () => { 
-    cy.get('@menu').find('.hb_list > li > a').last();
+    cy.get('@menu').find('.hb_list > li > a').last().click();
     cy.wait(2000);
   });
 };
