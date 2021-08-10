@@ -83,6 +83,12 @@ export const FooterTests = () => {
   });
 };
 
+export const ContentUsTests = () => {
+  it("should", () => {
+
+  });
+};
+
 export const LittleHelperTests = () => {
   it("should click to trigger little helper\n(點擊觸發小幫手)", () => {
     cy.get('.open_btn img').should('have.attr', 'src');
@@ -217,28 +223,51 @@ export const WhereToUseTests = () => {
   it("should", () => { });
 };
 export const MerchantZoneTests = () => {
-  it("should", () => { });
+  it("should", () => { 
+    cy.get('@menu').find('.hb_list').last().find('a').eq(0);
+    cy.wait(2000);
+  });
 };
 export const EpidemicPreventionZoneTests = () => {
-  it("should", () => { });
+  it("should", () => { 
+    cy.get('@menu').find('.hb_list').last().find('a').eq(1);
+    cy.wait(2000);
+  });
 };
 export const VideoZoneTests = () => {
-  it("should", () => { });
+  it("should", () => { 
+    cy.get('@menu').find('.hb_list').last().find('a').eq(2);
+    cy.wait(2000);
+    
+  });
 };
 export const CommonProblemTests = () => {
-  it("should", () => { });
+  it("should", () => { 
+    cy.get('@menu').find('.hb_list').last().find('a').eq(3);
+    cy.wait(2000);
+    
+  });
 };
 export const FriendlyServiceTests = () => {
-  it("should", () => { });
+  it("should", () => { 
+    cy.get('@menu').find('.hb_list').last().find('a').eq(4);
+    cy.wait(2000);
+    
+  });
 };
-export const ContentUsTests = () => {
-  it("should", () => { });
-};
+
 export const WebsiteUseStatementTests = () => {
-  it("should", () => { });
+  it("should", () => { 
+    cy.get('@menu').find('.hb_list').last().find('a').eq(5);
+    cy.wait(2000);
+
+  });
 };
 export const PrivacyPolicyTests = () => {
-  it("should", () => { });
+  it("should", () => { 
+    cy.get('@menu').find('.hb_list > li > a').last();
+    cy.wait(2000);
+  });
 };
 export const MediaCommunityTests = () => {
   it("should", () => { });

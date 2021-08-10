@@ -21,6 +21,7 @@ describe("固定行高", () => {
     // ok
     // tests.FooterTests();
     // ok
+    // tests.ContentUsTests();
   });
 
   describe('功能選單', () => {
@@ -29,14 +30,14 @@ describe("固定行高", () => {
     // ok
     // tests.HowToApplyTests();
     // ok
-    tests.LatestNewsTests();
+    // tests.LatestNewsTests();
+    // ok
     // tests.WhereToUseTests();
     // tests.MerchantZoneTests();
     // tests.EpidemicPreventionZoneTests();
     // tests.VideoZoneTests();
     // tests.CommonProblemTests();
     // tests.FriendlyServiceTests();
-    // tests.ContentUsTests();
     // tests.WebsiteUseStatementTests();
     // tests.PrivacyPolicyTests();
     // tests.MediaCommunityTests();
