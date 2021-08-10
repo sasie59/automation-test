@@ -85,8 +85,21 @@ export const FooterTests = () => {
 };
 
 export const ContentUsTests = () => {
-  it("should", () => {
-
+  it("should link to content us page\n(連結至聯結我們的頁面)", () => {
+    cy.get('.footer_link').scrollIntoView().should('be.visible');
+    cy.get('#footer').find('ul a').eq(9).click({force:true});
+    cy.wait(3000);
+    cy.get('.row.info').should('be.visible');
+    cy.get('.row.info .col-md-12').should('be.visible');
+    cy.wait(3000);
+    cy.get('.row.info .col-sm-offset-1.col-sm-10').should('be.visible');
+    cy.wait(3000);
+    cy.get('#ContentPlaceHolder1_txtEmail').scrollIntoView().type('abc@gmai;.com');
+    cy.get('#ContentPlaceHolder1_txtEmail').should('have.value', 'abc@gmai;.com');
+    cy.get('#ContentPlaceHolder1_txtContent').scrollIntoView().type('有免費服務電話嗎');
+    cy.get('#ContentPlaceHolder1_txtContent').should('have.value', '有免費服務電話嗎');
+    cy.get('.form-group.bt-tool').should('be.visible');
+    cy.get('#ContentPlaceHolder1_btnSend').should('be.visible');
   });
 };
 
