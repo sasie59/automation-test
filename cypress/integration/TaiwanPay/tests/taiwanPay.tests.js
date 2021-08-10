@@ -233,7 +233,7 @@ export const MerchantZoneTests = () => {
     cy.wait(2000);
     cy.get('#card p').should('be.visible');
     cy.get('#card .bankLogo').its('length').should('eq', 23);
-    cy.get('#card .bankLogo a').should('have.attr', 'target', '_blank', 'href',);
+    cy.get('#card .bankLogo a').should('have.attr', 'target', '_blank', 'href');
 
     cy.get('.nav.nav-tabs a').eq(1).click();
     cy.wait(2000);
@@ -245,9 +245,21 @@ export const MerchantZoneTests = () => {
   });
 };
 export const EpidemicPreventionZoneTests = () => {
-  it("should", () => { 
+  it("should link to epidemic prevention zone page\n(連結至防疫專區頁面)", () => { 
     cy.get('@menu').find('.hb_list').last().find('a').eq(1).click();
     cy.wait(2000);
+    cy.get('.covid__menu li').its('length').should('eq', 3);
+    cy.get('.covid__menu li > a').should('have.attr', 'href');
+    cy.get('.covid__section.covid__0 img').its('length').should('eq', 2);
+    cy.get('.covid__section.covid__0 img').should('have.attr', 'src');
+    for(let i = 1; i <= 3; i++) {
+      cy.get('.covid__menu li').eq(`${i - 1}`).click();
+      cy.wait(1000);
+      cy.get(`#covid__${i}`).should('be.visible');
+      cy.get(`#covid__${i}`).find('img').its('length').should('eq', 3);
+      cy.get(`#covid__${i}`).find('a').should('have.attr', 'target', '_blank', 'href');
+      cy.wait(2000);
+    }
   });
 };
 export const VideoZoneTests = () => {
