@@ -290,6 +290,48 @@ export const CommonProblemTests = () => {
   it("should link common problem page\n(連結至常見問題頁面)", () => { 
     cy.get('@menu').find('.hb_list').last().find('a').eq(3).click();
     cy.wait(2000);
+    const classList = [
+      '.form-inline.form-twpay-filter-bar.clearfix',
+      '.qnasec',
+      '.text-center',
+    ];
+    classList.forEach(item => {
+      cy.get(`${item}`).scrollIntoView().should('be.visible');
+      cy.wait(3000);
+    });
+    cy.get('.form-inline.form-twpay-filter-bar.clearfix div').eq(0)
+      .find('select > option').its('length').should('eq', 8);
+    cy.get('.form-inline.form-twpay-filter-bar.clearfix div').eq(0)
+      .find('select > option').should('have.attr', 'value');
+    for(let i = 1; i < 3; i++) {
+      cy.get('.form-inline.form-twpay-filter-bar.clearfix div').eq(`${i}`)
+        .find('input').should('have.attr', 'type');
+    }
+
+    cy.get('.qnasec .panel.panel-default').its('length').should('eq', 10);
+    for(let i = 1; i <= 10; i++) {
+      cy.get(`.qnasec .panel.panel-default a[data-target="#a-${i}"]`).should('be.visible').click();
+      cy.wait(2000);
+      cy.get(`#a-${i}`).find('.panel-body').should('be.visible');
+    }
+
+    cy.get('.text-center').scrollIntoView();
+    
+    cy.get('.pagination li').its('length').should('eq', 6);
+    cy.get('.pagination li a').should('have.attr', 'href');
+    cy.get(' .disabled').should('be.visible');
+    cy.get('.pagination .disabled').should('be.visible');
+    cy.get('.pagination .active').should('be.visible');
+
+    cy.get('#header').scrollIntoView();
+    cy.get('#ContentPlaceHolder1_ddlClassify').select('全部');
+    cy.get('#ContentPlaceHolder1_ddlClassify').should('have.value', '全部');
+
+    cy.get('#ContentPlaceHolder1_txtTitle').type('手續費');
+    cy.get('#ContentPlaceHolder1_txtTitle').should('have.value', '手續費');
+
+    cy.get('#ContentPlaceHolder1_btnSearch').click();
+    cy.get('.qnasec .panel.panel-default').its('length').should('eq', 4);
   });
 };
 export const FriendlyServiceTests = () => {
