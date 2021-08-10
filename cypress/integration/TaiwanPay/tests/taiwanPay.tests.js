@@ -234,7 +234,21 @@ export const LatestNewsTests = () => {
   });
 };
 export const WhereToUseTests = () => {
-  it("should", () => { });
+  it("should link to where to use page\n(連結至哪裡使用的頁面)", () => { 
+    const creditCardStoreList = [
+      'VISA主掃支付特店',
+      '信用卡一維被掃特店'
+    ];
+    creditCardStoreList.forEach(item => {
+      cy.get('@menu').find('.hb_list').eq(3)
+        .find('li').eq(1).contains(`${item}`)
+        .should('have.attr', 'target', '_blank', 'href');
+    });
+    cy.get('@menu').find('.hb_list').eq(3)
+      .find('li').eq(1).contains('QR Code支付').click();
+    cy.wait(3000);
+    
+  });
 };
 export const MerchantZoneTests = () => {
   it("should link to merchant znoe page\n(連結至商家專區頁面)", () => { 
