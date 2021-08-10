@@ -2,7 +2,7 @@ import * as tests from "./tests/taiwanPay.tests";
 
 describe("固定行高", () => {
   beforeEach(() => {
-    cy.viewport(1000, 1300);
+    cy.viewport(1000, 600);
   });
   describe("前往台灣Pay", () => {
     tests.GoToTaiwanPayTests();
@@ -37,12 +37,13 @@ describe("固定行高", () => {
     // ok
     // tests.EpidemicPreventionZoneTests();
     // ok
-    tests.VideoZoneTests();
+    // tests.VideoZoneTests();
     // ok
     // tests.CommonProblemTests();
     // tests.FriendlyServiceTests();
     // tests.WebsiteUseStatementTests();
-    // tests.PrivacyPolicyTests();
+    tests.PrivacyPolicyTests();
+    // ok
     // tests.SocialMediaTests();
   });
 
