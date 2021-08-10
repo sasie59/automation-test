@@ -22,6 +22,7 @@ describe("固定行高", () => {
     // tests.FooterTests();
     // ok
     // tests.ContentUsTests();
+    
   });
 
   describe('功能選單', () => {
@@ -33,6 +34,7 @@ describe("固定行高", () => {
     // tests.LatestNewsTests();
     // ok
     // tests.WhereToUseTests();
+
     // tests.MerchantZoneTests();
     // ok
     // tests.EpidemicPreventionZoneTests();
@@ -40,6 +42,7 @@ describe("固定行高", () => {
     // tests.VideoZoneTests();
     // ok
     // tests.CommonProblemTests();
+
     // tests.FriendlyServiceTests();
     // ok
     // tests.WebsiteUseStatementTests();
@@ -47,6 +50,7 @@ describe("固定行高", () => {
     // tests.PrivacyPolicyTests();
     // ok
     // tests.SocialMediaTests();
+    // ok
   });
 
   describe("線上客服小幫手", () => {

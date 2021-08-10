@@ -330,5 +330,8 @@ export const PrivacyPolicyTests = () => {
   });
 };
 export const SocialMediaTests = () => {
-  it("should link to social media page\n(連結至社群媒體頁面)", () => { });
+  it("should link to social media page\n(連結至社群媒體頁面)", () => { 
+    cy.get('.hb_list').last().find('.hb_socail').its('length').should('eq', 3);
+    cy.get('.hb_list').last().find('.hb_socail').should('be.visible').should('have.attr', 'href');
+  });
 };
