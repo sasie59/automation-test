@@ -263,21 +263,25 @@ export const EpidemicPreventionZoneTests = () => {
   });
 };
 export const VideoZoneTests = () => {
-  it("should", () => { 
+  it("should link to video zone page\n(連結至影片專區頁面)", () => { 
     cy.get('@menu').find('.hb_list').last().find('a').eq(2).click();
     cy.wait(2000);
-    
+    cy.get('.page.video').should('be.visible');
+    cy.get('.row .col-xs-6 a').its('length').should('eq', 2);
+    cy.get('.row .col-xs-6 a').should('have.attr', 'target', '_blank', 'href');
+    cy.get('.row .col-xs-6 a .play').should('be.visible');
+    cy.get('.row .col-xs-6 a .text').should('be.visible');
   });
 };
 export const CommonProblemTests = () => {
-  it("should", () => { 
+  it("should link common problem page\n(連結至常見問題頁面)", () => { 
     cy.get('@menu').find('.hb_list').last().find('a').eq(3).click();
     cy.wait(2000);
     
   });
 };
 export const FriendlyServiceTests = () => {
-  it("should", () => { 
+  it("should link to friendly service page\n(連結至友善服務頁面)", () => { 
     cy.get('@menu').find('.hb_list').last().find('a').eq(4).click();
     cy.wait(2000);
     
@@ -285,18 +289,18 @@ export const FriendlyServiceTests = () => {
 };
 
 export const WebsiteUseStatementTests = () => {
-  it("should", () => { 
+  it("should link to website use statement\n(連結至網站使用聲明頁面)", () => { 
     cy.get('@menu').find('.hb_list').last().find('a').eq(5).click();
     cy.wait(2000);
 
   });
 };
 export const PrivacyPolicyTests = () => {
-  it("should", () => { 
+  it("should link to privacy policy\n(連結至隱私權政策頁面)", () => { 
     cy.get('@menu').find('.hb_list > li > a').last().click();
     cy.wait(2000);
   });
 };
-export const MediaCommunityTests = () => {
-  it("should", () => { });
+export const SocialMediaTests = () => {
+  it("should link to social media page\n(連結至社群媒體頁面)", () => { });
 };

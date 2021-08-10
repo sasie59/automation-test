@@ -35,13 +35,15 @@ describe("固定行高", () => {
     // tests.WhereToUseTests();
     // tests.MerchantZoneTests();
     // ok
-    tests.EpidemicPreventionZoneTests();
-    // tests.VideoZoneTests();
+    // tests.EpidemicPreventionZoneTests();
+    // ok
+    tests.VideoZoneTests();
+    // ok
     // tests.CommonProblemTests();
     // tests.FriendlyServiceTests();
     // tests.WebsiteUseStatementTests();
     // tests.PrivacyPolicyTests();
-    // tests.MediaCommunityTests();
+    // tests.SocialMediaTests();
   });
 
   describe("線上客服小幫手", () => {
