@@ -277,13 +277,29 @@ export const CommonProblemTests = () => {
   it("should link common problem page\n(連結至常見問題頁面)", () => { 
     cy.get('@menu').find('.hb_list').last().find('a').eq(3).click();
     cy.wait(2000);
-    
   });
 };
 export const FriendlyServiceTests = () => {
   it("should link to friendly service page\n(連結至友善服務頁面)", () => { 
     cy.get('@menu').find('.hb_list').last().find('a').eq(4).click();
     cy.wait(2000);
+    cy.get('.navbar.navbar-inverse.navbar-fixed-top').should('be.visible');
+    cy.get('.in_banner img').its('length').should('eq', 2);
+    cy.get('.in_banner img').should('have.attr', 'src');
+    cy.get('.in_banner a').should('have.attr', 'href');
+    
+    cy.get('#content').scrollIntoView();
+    cy.wait(2000);
+    cy.get('#content').find('.inner > .container > a').its('length').should('eq', 2);
+    cy.get('#content').find('.row  a').its('length').should('eq', 4);
+    cy.get('#content a').should('have.attr', 'href');
+    
+    cy.get('.news.event').scrollIntoView();
+    cy.wait(2000);
+    cy.get('.news.event .container h2').should('be.visible');
+    cy.get('.news.event .container > a').should('be.visible').should('have.attr', 'href');
+    cy.get('.news.event .row .col-sm-6.col-md-3').its('length').should('eq', 4);
+    cy.get('.news.event .row a').should('have.attr', 'href');
     
   });
 };
