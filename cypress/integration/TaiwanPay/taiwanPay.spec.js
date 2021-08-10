@@ -42,7 +42,8 @@ describe("固定行高", () => {
     // tests.CommonProblemTests();
     // tests.FriendlyServiceTests();
     // tests.WebsiteUseStatementTests();
-    tests.PrivacyPolicyTests();
+    // ok
+    // tests.PrivacyPolicyTests();
     // ok
     // tests.SocialMediaTests();
   });

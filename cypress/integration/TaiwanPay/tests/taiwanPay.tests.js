@@ -292,14 +292,21 @@ export const WebsiteUseStatementTests = () => {
   it("should link to website use statement\n(連結至網站使用聲明頁面)", () => { 
     cy.get('@menu').find('.hb_list').last().find('a').eq(5).click();
     cy.wait(2000);
-
+    cy.get('.page.qa h2').should('be.visible');
+    cy.get('.page.qa p').should('be.visible');
+    for(let i = 0; i < 15; i++) {
+      cy.get('br').eq(`${i}`).scrollIntoView();
+      cy.wait(1000);
+    }
   });
 };
 export const PrivacyPolicyTests = () => {
   it("should link to privacy policy\n(連結至隱私權政策頁面)", () => { 
     cy.get('@menu').find('.hb_list > li > a').last().click();
     cy.wait(2000);
-    cy.get('.page.qa').should('be.visible');
+    cy.get('.page.qa h2').should('be.visible');
+    cy.get('.page.qa p').should('be.visible');
+    // cy.get('.page.qa').should('be.visible');
     for(let i = 0; i < 10; i++) {
       cy.get('br').eq(`${i}`).scrollIntoView();
       cy.wait(1000);
