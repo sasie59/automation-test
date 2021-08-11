@@ -256,7 +256,7 @@ export const WhereToUseTests = () => {
       cy.get(`.list__content ${item}`).should('be.visible');
       cy.wait(2000);
     });
-    
+
     const formTitle = [
       '.list__col__name', 
       '.list__col__address',
@@ -279,6 +279,53 @@ export const WhereToUseTests = () => {
     cy.get('.list__page .btn__next').should('be.visible');
     cy.get('.list__page span').should('be.visible');
 
+    // 左半部的filter部分
+    cy.get('header').scrollIntoView();
+    cy.get('.filter__container').should('be.visible');
+    cy.get('.filter__container .filter__type a').its('length').should('eq', 2);
+    cy.get('.filter__container .filter__type a').should('have.attr', 'href');
+
+    const filterTypeList = [
+      '.row.loaction__select__row.pc-view',
+      '.filter__search__container',
+      '.filter.filter__option',
+      '.filter__bottom.pc-view',
+    ];
+    filterTypeList.forEach(item => {
+      cy.get(`.filter__content ${item}`).should('be.visible');
+    });
+    // cy.get('.filter__content > div').its('length').should('eq', 4);
+    cy.get('.filter__content > div').eq(0)
+      .find('.loaction__select__city.county option').its('length').should('eq', 23);
+    cy.get('.filter__content > div').eq(0)
+      .find('#loaction__select__city').select("宜蘭縣");
+    cy.wait(1000);
+    cy.get('.filter__content > div').eq(0)
+      .find('.loaction__select__area.district option')
+      .its('length').should('eq', 14);
+    cy.get('.filter__content > div').eq(0)
+      .find('#loaction__select__area').select("宜蘭市");
+    // 依照選的縣市不同 市區鄉鎮的數目也會有所不同
+
+    cy.get('#filter__search__input').type('85度C');
+    cy.get('#filter__search__input').should('have.value', '85度C');
+    cy.wait(1000);
+    cy.get('.list__loader > .list__row--data')
+      .its('length').should('eq', 6);
+    // 市蘭市有六間85度C
+
+    const filterConditionList = [
+      '.filter__pay',
+      '.filter__category__sub',
+      '.btn.btn__search__menu',
+      // '.btn.btn__pos__menu',
+    ];
+    filterConditionList.forEach(item => {
+      cy.get('.filter__content > div').eq(2)
+        .find(`.filter__scroll ${item}`).should('be.visible');
+    });
+
+    cy.get('.filter__bottom.pc-view').should('be.visible');
   });
 };
 

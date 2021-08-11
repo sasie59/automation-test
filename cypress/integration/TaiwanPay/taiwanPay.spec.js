@@ -33,8 +33,8 @@ describe("固定行高", () => {
     // ok
     // tests.LatestNewsTests();
     // ok
-    tests.WhereToUseTests();
-
+    // tests.WhereToUseTests();
+    // ok
     // tests.MerchantZoneTests();
     // ok
     // tests.EpidemicPreventionZoneTests();
