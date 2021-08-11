@@ -1,7 +1,7 @@
 export const GoToTaiwanPayTests = () => {
   it("should go to TaiwanPay index\n(前往台灣Pay)", () => {
     cy.visit("https://www.taiwanpay.com.tw/content/info/index.aspx");
-    cy.wait(4000);
+    // cy.wait(4000);
     cy.get("#testlink").should("be.visible");
   });
 };
@@ -31,11 +31,11 @@ export const AdvertiseTests = () => {
     ];
     advImgIdList.forEach((item) => {
       cy.get(`${item}`).should("be.visible");
-      cy.wait(2500);
+      cy.wait(4000);
     });
     cy.get(".slick-dots").first().find("button").its("length").should("eq", 3);
     cy.get(".slick-dots").first().find("button").eq(2).click();
-    cy.wait(500);
+    cy.wait(2000);
     cy.get("#ContentPlaceHolder1_panelImage4").should("be.visible");
   });
 };
@@ -88,7 +88,7 @@ export const ContentUsTests = () => {
   it("should link to content us page\n(連結至聯結我們的頁面)", () => {
     cy.get('.footer_link').scrollIntoView().should('be.visible');
     cy.get('#footer').find('ul a').eq(9).click({force:true});
-    cy.wait(3000);
+    // cy.wait(4000);
     cy.get('.row.info').should('be.visible');
     cy.get('.row.info .col-md-12').should('be.visible');
     cy.wait(3000);
@@ -105,16 +105,16 @@ export const ContentUsTests = () => {
 
 export const LittleHelperTests = () => {
   it("should click to trigger little helper\n(點擊觸發小幫手)", () => {
-    cy.get('.open_btn img').should('have.attr', 'src');
+    cy.get('#open').click({force:true});
     const btnIdList = [
-      '#open',
+      // '#open',
       '#open_facebook',
       '#open_line',
     ];
     btnIdList.forEach(item => {
       cy.get(`${item}`).should('be.visible').should('have.attr', 'href');
     });
-    cy.get('.open_btn').click();
+    cy.get('.open_btn').click({force:true});
     cy.wait(500);
     cy.get('#chatbot.on').should('be.visible');
     const helpFormList = [
@@ -139,15 +139,15 @@ export const LittleHelperTests = () => {
 export const DefineElementAndClickDropDown = () => {
   beforeEach(() => {
     cy.get("#menu1").click({ force: true });
-    cy.wait(1000);
+    cy.wait(4000);
     cy.get('.container.hb_content').as('menu');
   });
 };
 
 export const IntroductionTests = () => {
   it("should link to introduction page\n(連結至台灣Pay介紹頁面)", () => {
-    cy.get('@menu').find('.hb_list > li > a').eq(0).click();
-    cy.wait(3000);
+    cy.get('@menu').find('.hb_list > li > a').eq(0).click({force:true});
+    // cy.wait(4000);
     cy.get('.container').eq(0).should('be.visible');
     cy.get('.title.title_b').scrollIntoView().should('be.visible');
     cy.get('.title.title_b h2').scrollIntoView().should('be.visible');
@@ -161,10 +161,11 @@ export const IntroductionTests = () => {
     cy.wait(1000);
   });
 };
+
 export const HowToApplyTests = () => {
   it("should link to how to apply page\n(連結至如何申請頁面)", () => {
-    cy.get('@menu').find('.hb_list > li > a').eq(1).click();
-    cy.wait(3000);
+    cy.get('@menu').find('.hb_list > li > a').eq(1).click({force:true});
+    // cy.wait(4000);
     cy.get('.section-navtab').should('be.visible');
     cy.get('.pane-bank-logo').should('be.visible');
     cy.get('.pane-bank-logo h4').its('length').should('eq', 3);
@@ -176,11 +177,12 @@ export const HowToApplyTests = () => {
     }
   });
 };
+
 export const LatestNewsTests = () => {
   it("should link to latest news page\n(連結至最新消息頁面)", () => {
     cy.get('@menu').find('.hb_list')
-      .eq(2).find('li').last().find('a').eq(0).click();
-    cy.wait(1000);
+      .eq(2).find('li').last().find('a').eq(0).click({force:true});
+    // cy.wait(4000);
     cy.get('.nav.nav-tabs li').its('length').should('eq', 2);
     cy.get('.nav.nav-tabs li a').should('have.attr', 'href');
     cy.get('#activity a').its('length').should('eq', 205);
@@ -244,8 +246,8 @@ export const WhereToUseTests = () => {
     creditCardStoreList.forEach(item => {
       cy.get('@menu').find('.hb_list').eq(3).find('li').eq(1).contains(`${item}`).should('have.attr', 'target', '_blank', 'href');
     });
-    cy.get('@menu').find('.hb_list').eq(3).find('li').eq(1).contains('QR Code支付').click();
-    cy.wait(3000);
+    cy.get('@menu').find('.hb_list').eq(3).find('li').eq(1).contains('QR Code支付').click({force:true});
+    cy.wait(4000);
 
     const storeFormList = [
       '.row.list__row.list__row--title',
@@ -309,7 +311,7 @@ export const WhereToUseTests = () => {
 
     cy.get('#filter__search__input').type('85度C');
     cy.get('#filter__search__input').should('have.value', '85度C');
-    cy.wait(1000);
+    cy.wait(4000);
     cy.get('.list__loader > .list__row--data')
       .its('length').should('eq', 6);
     // 市蘭市有六間85度C
@@ -331,8 +333,8 @@ export const WhereToUseTests = () => {
 
 export const MerchantZoneTests = () => {
   it("should link to merchant znoe page\n(連結至商家專區頁面)", () => { 
-    cy.get('@menu').find('.hb_list').last().find('a').eq(0).click();
-    cy.wait(2000);
+    cy.get('@menu').find('.hb_list').last().find('a').eq(0).click({force:true});
+    // cy.wait(4000);
     cy.get('.nav.nav-tabs a').its('length').should('eq', 2);
     cy.get('.nav.nav-tabs a').should('have.attr', 'href');
     cy.get('.nav.nav-tabs a').eq(0).click();
@@ -350,10 +352,11 @@ export const MerchantZoneTests = () => {
     cy.get('#qrcode .step .brandStep h4').should('be.visible');
   });
 };
+
 export const EpidemicPreventionZoneTests = () => {
   it("should link to epidemic prevention zone page\n(連結至防疫專區頁面)", () => { 
-    cy.get('@menu').find('.hb_list').last().find('a').eq(1).click();
-    cy.wait(2000);
+    cy.get('@menu').find('.hb_list').last().find('a').eq(1).click({force:true});
+    cy.wait(4000);
     cy.get('.covid__menu li').its('length').should('eq', 3);
     cy.get('.covid__menu li > a').should('have.attr', 'href');
     cy.get('.covid__section.covid__0 img').its('length').should('eq', 2);
@@ -368,10 +371,11 @@ export const EpidemicPreventionZoneTests = () => {
     }
   });
 };
+
 export const VideoZoneTests = () => {
   it("should link to video zone page\n(連結至影片專區頁面)", () => { 
-    cy.get('@menu').find('.hb_list').last().find('a').eq(2).click();
-    cy.wait(2000);
+    cy.get('@menu').find('.hb_list').last().find('a').eq(2).click({force:true});
+    cy.wait(4000);
     cy.get('.page.video').should('be.visible');
     cy.get('.row .col-xs-6 a').its('length').should('eq', 2);
     cy.get('.row .col-xs-6 a').should('have.attr', 'target', '_blank', 'href');
@@ -379,10 +383,11 @@ export const VideoZoneTests = () => {
     cy.get('.row .col-xs-6 a .text').should('be.visible');
   });
 };
+
 export const CommonProblemTests = () => {
   it("should link common problem page\n(連結至常見問題頁面)", () => { 
-    cy.get('@menu').find('.hb_list').last().find('a').eq(3).click();
-    cy.wait(2000);
+    cy.get('@menu').find('.hb_list').last().find('a').eq(3).click({force:true});
+    // cy.wait(4000);
     const classList = [
       '.form-inline.form-twpay-filter-bar.clearfix',
       '.qnasec',
@@ -404,7 +409,7 @@ export const CommonProblemTests = () => {
     cy.get('.qnasec .panel.panel-default').its('length').should('eq', 10);
     for(let i = 1; i <= 10; i++) {
       cy.get(`.qnasec .panel.panel-default a[data-target="#a-${i}"]`).should('be.visible').click();
-      cy.wait(2000);
+      cy.wait(4000);
       cy.get(`#a-${i}`).find('.panel-body').should('be.visible');
     }
 
@@ -423,14 +428,18 @@ export const CommonProblemTests = () => {
     cy.get('#ContentPlaceHolder1_txtTitle').type('手續費');
     cy.get('#ContentPlaceHolder1_txtTitle').should('have.value', '手續費');
 
-    cy.get('#ContentPlaceHolder1_btnSearch').click();
+    cy.get('#ContentPlaceHolder1_btnSearch').click({force:true});
     cy.get('.qnasec .panel.panel-default').its('length').should('eq', 4);
   });
 };
+
 export const FriendlyServiceTests = () => {
-  it("should link to friendly service page\n(連結至友善服務頁面)", () => { 
-    cy.get('@menu').find('.hb_list').last().find('a').eq(4).click();
-    cy.wait(2000);
+  it("should link to friendly service page\n(連結至友善服務頁面)", () => {
+    cy.get("#menu1").click({ force: true });
+    cy.wait(4000);
+    cy.get('.container.hb_content').as('menu');
+    cy.get('@menu').find('.hb_list').last().find('a').eq(4).click({force:true});
+    cy.wait(4000);
     cy.get('.navbar.navbar-inverse.navbar-fixed-top').should('be.visible');
     cy.get('.in_banner img').its('length').should('eq', 2);
     cy.get('.in_banner img').should('have.attr', 'src');
@@ -448,14 +457,13 @@ export const FriendlyServiceTests = () => {
     cy.get('.news.event .container > a').should('be.visible').should('have.attr', 'href');
     cy.get('.news.event .row .col-sm-6.col-md-3').its('length').should('eq', 4);
     cy.get('.news.event .row a').should('have.attr', 'href');
-    
   });
 };
 
 export const WebsiteUseStatementTests = () => {
   it("should link to website use statement\n(連結至網站使用聲明頁面)", () => { 
-    cy.get('@menu').find('.hb_list').last().find('a').eq(5).click();
-    cy.wait(2000);
+    cy.get('@menu').find('.hb_list').last().find('a').eq(5).click({force:true});
+    cy.wait(4000);
     cy.get('.page.qa h2').should('be.visible');
     cy.get('.page.qa p').should('be.visible');
     for(let i = 0; i < 15; i++) {
@@ -464,10 +472,11 @@ export const WebsiteUseStatementTests = () => {
     }
   });
 };
+
 export const PrivacyPolicyTests = () => {
   it("should link to privacy policy\n(連結至隱私權政策頁面)", () => { 
     cy.get('@menu').find('.hb_list > li > a').last().click();
-    cy.wait(2000);
+    cy.wait(4000);
     cy.get('.page.qa h2').should('be.visible');
     cy.get('.page.qa p').should('be.visible');
     // cy.get('.page.qa').should('be.visible');
@@ -477,6 +486,7 @@ export const PrivacyPolicyTests = () => {
     }
   });
 };
+
 export const SocialMediaTests = () => {
   it("should link to social media page\n(連結至社群媒體頁面)", () => { 
     cy.get('.hb_list').last().find('.hb_socail').its('length').should('eq', 3);

@@ -1,3 +1,5 @@
 {
-  "baseUrl": "https://www.railway.gov.tw"
+  "baseUrl": "https://www.railway.gov.tw",
+  "defaultCommandTimeout": 5000,
+  "pageLoadTimeout": 100000
 }

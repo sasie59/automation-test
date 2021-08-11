@@ -9,52 +9,56 @@ describe("固定行高", () => {
     // ok
   });
   describe("首頁導覽", () => {
-    // tests.HeaderTests();
+    tests.HeaderTests();
     // ok
-    // tests.AdvertiseTests();
+    tests.AdvertiseTests();
     // ok
-    // tests.CarouselTests();
+    tests.CarouselTests();
     // ok
-    // tests.VideoTests();
+    tests.VideoTests();
     // ok
-    // tests.WhatisTaiwanPayTests();
+    tests.WhatisTaiwanPayTests();
     // ok
-    // tests.FooterTests();
+    tests.FooterTests();
     // ok
-    // tests.ContentUsTests();
+    tests.ContentUsTests();
     // ok
   });
 
   describe('功能選單', () => {
     tests.DefineElementAndClickDropDown();
-    // tests.IntroductionTests();
+
+    tests.IntroductionTests();
     // ok
-    // tests.HowToApplyTests();
+    tests.HowToApplyTests();
     // ok
-    // tests.LatestNewsTests();
+    tests.LatestNewsTests();
     // ok
-    // tests.WhereToUseTests();
+    tests.WhereToUseTests();
     // ok
-    // tests.MerchantZoneTests();
+    tests.MerchantZoneTests();
     // ok
-    // tests.EpidemicPreventionZoneTests();
+    tests.EpidemicPreventionZoneTests();
     // ok
-    // tests.VideoZoneTests();
+    tests.VideoZoneTests();
     // ok
-    // tests.CommonProblemTests();
+    tests.CommonProblemTests();
     // ok
-    // tests.FriendlyServiceTests();
+    tests.WebsiteUseStatementTests();
     // ok
-    // tests.WebsiteUseStatementTests();
+    tests.PrivacyPolicyTests();
     // ok
-    // tests.PrivacyPolicyTests();
-    // ok
-    // tests.SocialMediaTests();
+    tests.SocialMediaTests();
     // ok
   });
-
+  
   describe("線上客服小幫手", () => {
-    // tests.LittleHelperTests();
+    tests.LittleHelperTests();
+    // ok
+  });
+  
+  describe('友善服務網', () => {
+    tests.FriendlyServiceTests();
     // ok
   });
 });
