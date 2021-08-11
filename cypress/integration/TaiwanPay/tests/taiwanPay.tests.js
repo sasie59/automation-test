@@ -233,23 +233,55 @@ export const LatestNewsTests = () => {
     cy.get('.services__footer img').should('have.attr', 'src');
   });
 };
+
 export const WhereToUseTests = () => {
   it("should link to where to use page\n(連結至哪裡使用的頁面)", () => { 
     const creditCardStoreList = [
       'VISA主掃支付特店',
       '信用卡一維被掃特店'
     ];
+    cy.viewport(1000, 1200);
     creditCardStoreList.forEach(item => {
-      cy.get('@menu').find('.hb_list').eq(3)
-        .find('li').eq(1).contains(`${item}`)
-        .should('have.attr', 'target', '_blank', 'href');
+      cy.get('@menu').find('.hb_list').eq(3).find('li').eq(1).contains(`${item}`).should('have.attr', 'target', '_blank', 'href');
     });
-    cy.get('@menu').find('.hb_list').eq(3)
-      .find('li').eq(1).contains('QR Code支付').click();
+    cy.get('@menu').find('.hb_list').eq(3).find('li').eq(1).contains('QR Code支付').click();
     cy.wait(3000);
+
+    const storeFormList = [
+      '.row.list__row.list__row--title',
+      '.list__loader',
+      '.list__page'
+    ];
+    storeFormList.forEach(item => {
+      cy.get(`.list__content ${item}`).should('be.visible');
+      cy.wait(2000);
+    });
     
+    const formTitle = [
+      '.list__col__name', 
+      '.list__col__address',
+      '.list__col__pay',
+      '.list__col__category',
+    ];
+    formTitle.forEach(item => {
+      cy.get(`.row.list__row.list__row--title ${item}`).should('be.visible');
+    });
+    
+    cy.get('.list__loader > div').its('length').should('eq', 10);
+    for(let i = 0; i < 10; i++) {
+      cy.get(`.list__row--data--${i} .list__col`).its('length').should('eq', 4);
+      cy.get(`.list__row--data--${i} a`).should('have.attr', 'target', '_self', 'href');
+    }
+
+    cy.get('.list__page').scrollIntoView();
+    cy.get('.list__page .btn__page').its('length').should('eq', 11);
+    cy.get('.list__page .btn__prev').should('be.visible');
+    cy.get('.list__page .btn__next').should('be.visible');
+    cy.get('.list__page span').should('be.visible');
+
   });
 };
+
 export const MerchantZoneTests = () => {
   it("should link to merchant znoe page\n(連結至商家專區頁面)", () => { 
     cy.get('@menu').find('.hb_list').last().find('a').eq(0).click();
