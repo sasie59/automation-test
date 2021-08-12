@@ -188,7 +188,7 @@ export const LatestNewsTests = () => {
     cy.get('#activity a').its('length').should('eq', 205);
     cy.get('.nav.nav-tabs li').last().find('a').click();
     cy.wait(1000);
-    cy.get('#events a').its('length').should('eq', 30);
+    cy.get('#events a').its('length').should('eq', 31);
     cy.get('#activity a').should('have.attr', 'href');
 
     cy.get('@menu').find('.hb_list')
