@@ -79,7 +79,7 @@ export const FooterTests = () => {
     cy.get('#footer .footer_link a').its('length').should('eq', 4);
     cy.get('#footer .footer_link a').should('have.attr', 'href');
     cy.get('#footer ul > li').its('length').should('eq', 12);
-    cy.get('#gotop').should('be.visible').click();
+    cy.get('#gotop').scrollIntoView().should('be.visible').click();
     cy.wait(500);
   });
 };
