@@ -1,6 +1,6 @@
 // 前往鼎泰豐
 export const GoToDinTaiFungTests = () => {
-  it("should go to Din-Tai-Fang index\n(前往鼎泰豐首頁)", () => {
+  it("should go to Din-Tai-Fang index\n(預期連結鼎泰豐首頁)", () => {
     cy.visit("https://www.dintaifung.com.tw/");
     cy.wait(4000);
     cy.get("#menubox_box").should("be.visible");
@@ -9,7 +9,7 @@ export const GoToDinTaiFungTests = () => {
 
 // 首頁導覽
 export const ChangeLanguageTests = () => {
-  it("should change language\n(改變語系)", () => {
+  it("should change language\n(預期點擊會改變語系)", () => {
     // 應該要寫迴圈
     const LANGUAGE_LIST = ["繁體中文", "ENGLISH", "日本語", "한국어"];
     for (let i = 0; i <= LANGUAGE_LIST.length - 1; i++) {
@@ -41,7 +41,7 @@ export const ChangeLanguageTests = () => {
 };
 
 export const OnSitToNumQueryTests = () => {
-  it("should make sure on-sit link\n(確認訂位連結)", () => {
+  it("should make sure on-sit link\n(預期頁面應有彈跳出確認訂位連結的屬性)", () => {
     cy.get(".number_s.fadeInUp.animated15")
       .should("have.attr", "target", "_blank")
       .should("have.attr", "href");
@@ -49,7 +49,7 @@ export const OnSitToNumQueryTests = () => {
 };
 
 export const CarouselTests = () => {
-  it("should click dots change img\n(輪播器)", () => {
+  it("should click dots change img\n(預期點擊輪播器會切換圖片)", () => {
     cy.get("#believe").scrollIntoView().should("be.visible");
     for (let i = 0; i < 4; i++) {
       cy.get(`#believe a[data-slide-index="${i}"]`).click({ force: true });
@@ -62,7 +62,7 @@ export const CarouselTests = () => {
   });
 };
 export const TopTenTests = () => {
-  it("should dispaly top ten \n(十大人氣料理)", () => {
+  it("should dispaly top ten \n(預期有秀出十大人氣料理資訊)", () => {
     cy.get("#home_food").scrollIntoView().should("be.visible");
     cy.get(".swiper-wrapper") //會滾動的圖片//
       .first()
@@ -72,7 +72,7 @@ export const TopTenTests = () => {
 };
 
 export const NewsTests = () => {
-  it("should display news\n(最新消息)", () => {
+  it("should display news\n(預期有最新消息)", () => {
     cy.get("#home_news").scrollIntoView().should("be.visible");
     cy.get("#home_news").as("news");
     const newList = ["downbg", "title_img.active", "newsblock.clear", "flower"];
@@ -83,7 +83,7 @@ export const NewsTests = () => {
 };
 
 export const StoresTests = () => {
-  it("should display stroe\n(門市據點)", () => {
+  it("should display stroe\n(預期有門市據點資訊)", () => {
     cy.get("#globo").scrollIntoView().should("be.visible");
     cy.get("#globo").as("globo");
     const storeList = ["title_img.active", "mainmemo.active", "map.active"];
@@ -100,7 +100,7 @@ export const StoresTests = () => {
 };
 
 export const MobileAppTests = () => {
-  it("should download mobile app\n(智能手機App下載)", () => {
+  it("should download mobile app\n(預期有智能手機App下載連結)", () => {
     cy.get("footer").scrollIntoView();
     cy.get("footer").find(".custom.a_link.download.app_show").click();
     cy.wait(1000);
@@ -114,7 +114,7 @@ export const MobileAppTests = () => {
   });
 };
 export const BackToTopTests = () => {
-  it("should back to top\n(回到頂端))", () => {
+  it("should back to top\n(預期點擊會回到頂端))", () => {
     cy.get("footer").scrollIntoView();
     cy.get("#gotop").click();
     cy.wait(1000);
@@ -132,13 +132,13 @@ export const ClickMenu = () => {
 };
 
 export const MainMenuTests = () => {
-  it("should click display main menu\n(主要選單))", () => {
+  it("should click display main menu\n(預期出現主要選單))", () => {
     cy.get("#menu").should("be.visible");
   });
 };
 
 export const AboutDinTaiFungTests = () => {
-  it("should dispaly Din-Tai-Fung history\n(關於鼎泰豐))", () => {
+  it("should dispaly Din-Tai-Fung history\n(預期介紹關於鼎泰豐事紀))", () => {
     cy.get("#menu").find('a[href="about.php"]').click({ force: true });
     cy.wait(4000);
     cy.get(".triggerblk").find("li").its("length").should("eq", 4);
@@ -188,7 +188,7 @@ export const AboutDinTaiFungTests = () => {
 };
 
 export const LatestNewsTests = () => {
-  it("should dispaly latest news \n(最新消息))", () => {
+  it("should dispaly latest news \n(預期出現最新消息))", () => {
     cy.get("#menu").find('a[href="news.php"]').click();
     cy.wait(4000);
     const selectBox = ["year.select_box", "type.select_box"];
@@ -209,7 +209,7 @@ export const LatestNewsTests = () => {
   });
 };
 export const WorldwideLocationTests = () => {
-  it("should dispaly world wide location \n(門市據點))", () => {
+  it("should dispaly world wide location \n(預期出現門市據點資訊))", () => {
     cy.get("#menu").find('a[href="store.php"]').click();
     cy.wait(4000);
     cy.get("#globo").should("be.visible");
@@ -237,7 +237,7 @@ export const WorldwideLocationTests = () => {
 };
 
 export const CuisineTests = () => {
-  it("should dispaly cuisine \n(絕頂美味))", () => {
+  it("should dispaly cuisine \n(預期呈現絕頂美味資訊，點擊後有詳細分類))", () => {
     cy.get("#menu").find('a[href="food.php"]').click({ force: true });
     cy.wait(4000);
     const foodLayOut = [
@@ -330,7 +330,7 @@ export const CuisineTests = () => {
 };
 
 export const PeaceOfMindGuaranteeTests = () => {
-  it("should dispaly peace of mind guarantee \n(安心宣言)", () => {
+  it("should dispaly peace of mind guarantee \n(預期介紹安心宣言的資訊)", () => {
     cy.get("#menu").find('a[href="care.php"]').click();
     cy.wait(4000);
     const peaceMindList = [
@@ -426,7 +426,7 @@ export const PeaceOfMindGuaranteeTests = () => {
 };
 
 export const ContactUstests = () => {
-  it("should dispaly contact us \n(聯絡我們)", () => {
+  it("should dispaly contact us \n(預期出現聯絡我們的表單)", () => {
     cy.get("#menu").find('a[href="contact.php"]').click({ force: true });
     cy.wait(4000);
     cy.get("#eForm1").should("be.visible");
@@ -465,7 +465,7 @@ export const ContactUstests = () => {
   });
 };
 export const TargetBlankShoppingOnLineTests = () => {
-  it("should dispaly shopping onling \n(彈跳出線上購物的連結)", () => {
+  it("should dispaly shopping onling \n(預期彈跳出線上購物的連結)", () => {
     cy.get("#menu a").eq(6).click({ force: true });
     cy.wait(1000);
     cy.get("#menu a").eq(6).should("have.attr", "target", "_blank");
@@ -473,7 +473,7 @@ export const TargetBlankShoppingOnLineTests = () => {
 };
 
 export const TargetBlankRecruitingTests = () => {
-  it("should dispaly recruiting \n(彈跳出人才招募的連結)", () => {
+  it("should dispaly recruiting \n(預期彈跳出人才招募的連結)", () => {
     cy.get("#menu a").eq(7).click({ force: true });
     cy.wait(1000);
     cy.get("#menu a").last().should("have.attr", "target", "_blank");
