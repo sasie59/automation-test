@@ -1,12 +1,12 @@
 export const GoToTaiwanPayTests = () => {
-  it("should go to TaiwanPay index\n(前往台灣Pay首頁)", () => {
+  it("should go to TaiwanPay index\n(預期連結台灣Pay首頁)", () => {
     cy.visit("https://www.taiwanpay.com.tw/content/info/index.aspx");
     cy.get("#testlink").should("be.visible");
   });
 };
 
 export const HeaderTests = () => {
-  it("should As the width of the window is different, the display of the screen will also change\n(隨著視窗寬度不同 畫面呈現也會有改變)", () => {
+  it("should As the width of the window is different, the display of the screen will also change\n(預期會隨著視窗寬度不同 畫面呈現也會有改變)", () => {
     cy.viewport(500, 500);
     cy.wait(2000);
     cy.get(".globalnav > a").should("have.attr", "href");
@@ -21,7 +21,7 @@ export const HeaderTests = () => {
 };
 
 export const AdvertiseTests = () => {
-  it("should every three seconds change different advertise\n(每三秒更換不同的廣告) ", () => {
+  it("should every three seconds change different advertise\n(預期每三秒更換不同的廣告) ", () => {
     cy.get(".intro").scrollIntoView();
     const advImgIdList = [
       "#ContentPlaceHolder1_panelImage1",
@@ -41,7 +41,7 @@ export const AdvertiseTests = () => {
 };
 
 export const CarouselTests = () => {
-  it("should Calculate the link of the carousel and the dots at the bottom each have several items, and there are page turning functions on both sides\n(計算輪播器的連結和底下圓點各有幾項 兩側各有翻頁的功能)", () => {
+  it("should Calculate the link of the carousel and the dots at the bottom each have several items, and there are page turning functions on both sides\n(預期計算輪播器的連結和底下圓點各有幾項 兩側各有翻頁的功能)", () => {
     cy.get(".in_news").scrollIntoView();
     cy.get(".in_news h2 a").should("have.attr", "href");
     cy.get("#activity .col-sm-6 a").its("length")
@@ -56,7 +56,7 @@ export const CarouselTests = () => {
 };
 
 export const VideoTests = () => {
-  it("display how many items are presented in the video zone\n(影片專區中顯示的項目數量)", () => {
+  it("display how many items are presented in the video zone\n(預期影片專區中顯示的項目數量)", () => {
     cy.get(".video_slider").scrollIntoView();
     cy.get(".video h2 a").should("have.attr", "href");
     cy.get(".slick-track").last().find("a")
@@ -65,7 +65,7 @@ export const VideoTests = () => {
 };
 
 export const WhatisTaiwanPayTests = () => {
-  it("should introduce what is taiwan pay\n(介紹什麼是台灣pay)", () => {
+  it("should introduce what is taiwan pay\n(預期介紹什麼是台灣pay)", () => {
     cy.get(".about").scrollIntoView();
     cy.get(".about p").its("length").should("eq", 5);
     cy.get(".about .item li").its("length").should("eq", 4);
@@ -77,7 +77,7 @@ export const WhatisTaiwanPayTests = () => {
 };
 
 export const FooterTests = () => {
-  it("should Information presented at the bottom\n(底部呈現的資訊)", () => {
+  it("should Information presented at the bottom\n(預期底部呈現的資訊)", () => {
     cy.get("#footer").scrollIntoView();
     cy.get('#footer .footer_link a').its('length').should('eq', 4);
     cy.get('#footer .footer_link a').should('have.attr', 'href');
@@ -88,7 +88,7 @@ export const FooterTests = () => {
 };
 
 export const ContentUsTests = () => {
-  it("should link to content us page,fill in the email and the question to be asked\n(連結至聯結我們的頁面，填下email和要提問的問題)", () => {
+  it("should link to content us page,fill in the email and the question to be asked\n(預期連結至聯結我們的頁面，填下email和要提問的問題)", () => {
     cy.get('.footer_link').scrollIntoView().should('be.visible');
     cy.get('#footer').find('ul a').eq(9).click({force:true});
     cy.get('.row.info').should('be.visible');
@@ -110,7 +110,7 @@ export const ContentUsTests = () => {
 };
 
 export const LittleHelperTests = () => {
-  it("should click to trigger little helper\n(點擊觸發小幫手)", () => {
+  it("should click to trigger little helper\n(預期點擊觸發小幫手)", () => {
     cy.get('#open').click({force:true});
     const btnIdList = [
       '#open_facebook',
@@ -153,7 +153,7 @@ export const DefineElementAndClickDropDown = () => {
 };
 
 export const IntroductionTests = () => {
-  it("should link to introduce what is taiwan pay page\n(連結至介紹什麼是台灣pay頁面)", () => {
+  it("should link to introduce what is taiwan pay page\n(預期連結至介紹什麼是台灣pay頁面)", () => {
     cy.get('@menu').find('.hb_list > li > a').eq(0).click({force:true});
     cy.get('.container').eq(0).should('be.visible');
     cy.get('.title.title_b').scrollIntoView()
@@ -175,7 +175,7 @@ export const IntroductionTests = () => {
 };
 
 export const HowToApplyTests = () => {
-  it("should link to how to apply page and cooperative banks and credit cards\n(連結至如何申請頁面及有合作的銀行和信用卡)", () => {
+  it("should link to how to apply page and cooperative banks and credit cards\n(預期連結至如何申請頁面及有合作的銀行和信用卡)", () => {
     cy.get('@menu').find('.hb_list > li > a').eq(1).click({force:true});
     cy.get('.section-navtab').should('be.visible');
     cy.get('.pane-bank-logo').should('be.visible');
@@ -193,7 +193,7 @@ export const HowToApplyTests = () => {
 };
 
 export const LatestNewsTests = () => {
-  it("should link to latest news page,there are several links to statistics discounts and announcement areas, Introduce personalization services\n(連結至最新消息頁面,統計優惠活動和公告專區各有幾項連結,介紹個人化服務的相關)", () => {
+  it("should link to latest news page,there are several links to statistics discounts and announcement areas, Introduce personalization services\n(預期連結至最新消息頁面,統計優惠活動和公告專區各有幾項連結,介紹個人化服務的相關)", () => {
     cy.get('@menu').find('.hb_list')
       .eq(2).find('li').last().find('a').eq(0).click({force:true});
     cy.get('.nav.nav-tabs li').its('length')
@@ -252,7 +252,7 @@ export const LatestNewsTests = () => {
 };
 
 export const WhereToUseTests = () => {
-  it("should link to where to use page, filtering conditions and entering keywords will show matching business information\n(連結至哪裡使用的頁面，篩選條件及輸入關鍵字，會呈現符合的商家資訊)", () => { 
+  it("should link to where to use page, filtering conditions and entering keywords will show matching business information\n(預期連結至哪裡使用的頁面，篩選條件及輸入關鍵字，會呈現符合的商家資訊)", () => { 
     const creditCardStoreList = [
       'VISA主掃支付特店',
       '信用卡一維被掃特店'
@@ -355,7 +355,7 @@ export const WhereToUseTests = () => {
 };
 
 export const MerchantZoneTests = () => {
-  it("should link to merchant znoe page, introduce QR code collection procedures and partner banks\n(連結至商家專區頁面,介紹QR code收款步驟及合作的銀行)", () => { 
+  it("should link to merchant znoe page, introduce QR code collection procedures and partner banks\n(預期連結至商家專區頁面,介紹QR code收款步驟及合作的銀行)", () => { 
     cy.get('@menu').find('.hb_list').last().find('a').eq(0).click({force:true});
     // cy.wait(4000);
     cy.get('.nav.nav-tabs a').its('length').should('eq', 2);
@@ -378,7 +378,7 @@ export const MerchantZoneTests = () => {
 };
 
 export const EpidemicPreventionZoneTests = () => {
-  it("should link to epidemic prevention zone page, introduce the three steps of epidemic prevention\n(連結至防疫專區頁面,介紹防疫三步驟)", () => { 
+  it("should link to epidemic prevention zone page, introduce the three steps of epidemic prevention\n(預期連結至防疫專區頁面,介紹防疫三步驟)", () => { 
     cy.get('@menu').find('.hb_list').last().find('a').eq(1).click({force:true});
     cy.wait(4000);
     cy.get('.covid__menu li').its('length').should('eq', 3);
@@ -399,7 +399,7 @@ export const EpidemicPreventionZoneTests = () => {
 };
 
 export const VideoZoneTests = () => {
-  it("should link to video zone page, the video has the attribute of a bounce link\n(連結至影片專區頁面,影片具有彈跳連結的屬性)", () => { 
+  it("should link to video zone page, the video has the attribute of a bounce link\n(預期連結至影片專區頁面,影片具有彈跳連結的屬性)", () => { 
     cy.get('@menu').find('.hb_list').last().find('a').eq(2).click({force:true});
     cy.wait(4000);
     cy.get('.page.video').should('be.visible');
@@ -412,7 +412,7 @@ export const VideoZoneTests = () => {
 };
 
 export const CommonProblemTests = () => {
-  it("should link common problem page, matching items will appear if you can pass filter conditions and enter keywords\n(連結至常見問題頁面,可經由篩選條件及輸入關鍵字的會出現符合的項目)", () => { 
+  it("should link common problem page, matching items will appear if you can pass filter conditions and enter keywords\n(預期連結至常見問題頁面,可經由篩選條件及輸入關鍵字的會出現符合的項目)", () => { 
     cy.get('@menu').find('.hb_list').last().find('a').eq(3).click({force:true});
     const classList = [
       '.form-inline.form-twpay-filter-bar.clearfix',
@@ -461,7 +461,7 @@ export const CommonProblemTests = () => {
 };
 
 export const FriendlyServiceTests = () => {
-  it("should link to friendly service page, introduce discounts and latest announcements\n(連結至友善服務頁面,介紹優惠活動及最新公告)", () => {
+  it("should link to friendly service page, introduce discounts and latest announcements\n(預期連結至友善服務頁面,介紹優惠活動及最新公告)", () => {
     cy.get("#menu1").click({ force: true });
     cy.wait(4000);
     cy.get('.container.hb_content').as('menu');
@@ -493,7 +493,7 @@ export const FriendlyServiceTests = () => {
 };
 
 export const WebsiteUseStatementTests = () => {
-  it("should link to website use statement, introduce relevant laws and regulations\n(連結至網站使用聲明頁面,介紹相關法規)", () => { 
+  it("should link to website use statement, introduce relevant laws and regulations\n(預期連結至網站使用聲明頁面,介紹相關法規)", () => { 
     cy.get('@menu').find('.hb_list').last().find('a').eq(5).click({force:true});
     cy.wait(4000);
     cy.get('.page.qa h2').should('be.visible');
@@ -506,7 +506,7 @@ export const WebsiteUseStatementTests = () => {
 };
 
 export const PrivacyPolicyTests = () => {
-  it("should link to privacy policy, introduce relevant laws and regulations\n(連結至隱私權政策頁面,介紹相關法規)", () => { 
+  it("should link to privacy policy, introduce relevant laws and regulations\n(預期連結至隱私權政策頁面,介紹相關法規)", () => { 
     cy.get('@menu').find('.hb_list > li > a').last().click();
     cy.wait(4000);
     cy.get('.page.qa h2').should('be.visible');
@@ -519,7 +519,7 @@ export const PrivacyPolicyTests = () => {
 };
 
 export const SocialMediaTests = () => {
-  it("should three types of social media links\n(三種社群媒體連結)", () => { 
+  it("should three types of social media links\n(預期有三種社群媒體有彈出頁面的屬性)", () => { 
     cy.get('.hb_list').last().find('.hb_socail').its('length').should('eq', 3);
     cy.get('.hb_list').last().find('.hb_socail').should('be.visible')
       .should('have.attr', 'href');
