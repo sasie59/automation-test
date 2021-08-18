@@ -1,5 +1,5 @@
 export function GoToUniqloPageTests() {
-  it('should go to uniqlo index\n(前往uniqlo)', () => {
+  it('should go to uniqlo index\n(預期連結uniqlo)', () => {
     cy.visit('https://www.uniqlo.com/tw/');
     cy.get('a[title="UNIQLO"]').should('be.visible');
   });
@@ -17,7 +17,7 @@ export const DefineControlElement = () => {
 };
 
 export const MainTypeTests = () => {
-  it('should display main type and can each switch\n(應該呈現主要類型為: WOMEN, MEN, KIDS, BABY並且可以各自切換)', () => {
+  it('should display main type and can each switch\n(預期應該呈現主要類型為: WOMEN, MEN, KIDS, BABY並且可以各自切換)', () => {
     const mainList = [
       'header_women',
       'header_men',
@@ -42,7 +42,7 @@ export const MainTypeTests = () => {
 };
 
 export const SearchBarTests = () => {
-  it('should key in keyword can find What you want\n(輸入關鍵字可以找到你想要的)', () => {
+  it('should key in keyword can find What you want\n(預期輸入關鍵字可以找到你想要的)', () => {
     cy.get('@menu').find('input[name="qtext"]')
       .type('咒術迴戰').type('{enter}');
     cy.get('.blkProdSearchOptions').should('be.visible');
@@ -98,13 +98,13 @@ export const SearchBarTests = () => {
 };
 
 export const StoreInformationTests = () => {
-  it('should target_blank a windows about store infomation(應彈跳出有關店舖資訊的頁面)', () => {
+  it('should target_blank a windows about store infomation(預期頁面應有彈跳出有關店舖資訊的屬性)', () => {
     cy.get('#navUtil a[href="/tw/stores/"]').should('have.attr', 'target', '_blank', 'https://www.uniqlo.com/tw/stores/');
   });
 };
 
 export const LoginTests = () => {
-  it('should login account secret\n(登入帳號密碼)', () => {
+  it('should login account secret\n(預期可登入帳號密碼)', () => {
     cy.get('img[alt="登入"]').click({ force: true });
     cy.wait(1000);
     cy.url().should('eq', 'https://www.uniqlo.com/tw/store/FSC01010E02.do');
@@ -117,7 +117,7 @@ export const LoginTests = () => {
 };
 
 export const CommodityInformationTests = () => {
-  it('should display commodity information\n(應呈現商品資訊)', () => {
+  it('should display commodity information\n(預期應呈現商品資訊)', () => {
     cy.visit('https://www.uniqlo.com/tw/store/goods/440681#thumbnailSelect');
 
     cy.get('#primary').as('leftInfo');
@@ -203,7 +203,7 @@ export const CommodityInformationTests = () => {
 };
 
 export const ShoppingCartTests = () => {
-  it('should display shopping cart checkout process\n(應呈現購物車結帳流程)', () => {
+  it('should display shopping cart checkout process\n(預期應呈現購物車結帳流程)', () => {
     const commodityInfoList = [
       '商品照片',
       '顏色',
@@ -236,7 +236,7 @@ export const ShoppingCartTests = () => {
 };
 
 export const CarouselTests = () => {
-  it('should click arrow or dots will change img\n(點擊箭頭或圓點會改變圖片)', () => {
+  it('should click arrow or dots will change img\n(預期點擊箭頭或圓點會改變圖片)', () => {
     cy.get('#main-slider').as('carousel_1');
 
     cy.get('@carousel_1').contains('Next').click();
@@ -257,10 +257,8 @@ export const CarouselTests = () => {
   });
 };
 
-
-
 export const WomenAreaTests = () => {
-  it('should display all women clothing category products\n(應呈現所有女裝的分類產品)', () => {
+  it('should display all women clothing category products\n(預期應呈現所有女裝的分類產品)', () => {
     cy.get('@main').find('a[id="header_women"]').click();
     cy.wait(1000);
     cy.get('#gnav_women').contains('女裝首頁').should('be.visible');
@@ -272,7 +270,7 @@ export const WomenAreaTests = () => {
 };
 
 export const MenAreaTests = () => {
-  it('should should display all men clothing category products\n(應呈現所有男裝的分類產品)', () => {
+  it('should should display all men clothing category products\n(預期應呈現所有男裝的分類產品)', () => {
     cy.get('@main').find('a[id="header_men"]').click();
     cy.wait(1000);
     cy.get('#gnav_men').contains('男裝首頁').should('be.visible');
@@ -284,7 +282,7 @@ export const MenAreaTests = () => {
 };
 
 export const KidsAreaTests = () => {
-  it('should should display all kids clothing category products\n(應呈現所有童裝的分類產品)', () => {
+  it('should should display all kids clothing category products\n(預期應呈現所有童裝的分類產品)', () => {
     cy.get('@main').find('a[id="header_kids"]').click();
     cy.wait(1000);
     cy.get('#gnav_kids').contains('童裝首頁').should('be.visible');
@@ -296,7 +294,7 @@ export const KidsAreaTests = () => {
 };
 
 export const BabyAreaTests = () => {
-  it('should should display all baby clothing category products\n(應呈現所有嬰幼兒的分類產品)', () => {
+  it('should should display all baby clothing category products\n(預期應呈現所有嬰幼兒的分類產品)', () => {
     cy.get('@main').find('a[id="header_baby"]').click();
     cy.wait(1000);
     cy.get('#gnav_baby').contains('嬰幼兒首頁').should('be.visible');
