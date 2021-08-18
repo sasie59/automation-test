@@ -1,12 +1,12 @@
 export const GoToGoShareTests = () => {
-  it("should go to Go Share\n(前GoShare)", () => {
+  it("should go to Go Share\n(預期連結GoShare)", () => {
     cy.visit("https://www.ridegoshare.com/");
     cy.get(".privacy").should("be.visible");
   });
 };
 
 export const IntroductionTests = () => {
-  it('should introduce what service the app does\n(簡單介紹app是什麼服務)', () => {
+  it('should introduce what service the app does\n(預期介紹app提供什麼服務)', () => {
     cy.get('.home-hero').should("be.visible");
     cy.scrollTo(0, 400);
     cy.wait(1000);
@@ -20,7 +20,7 @@ export const IntroductionTests = () => {
 };
 
 export const UseStepTests = () => {
-  it('should show use step\n(使用步驟)', () => {
+  it('should show use step\n(預期出現使用步驟)', () => {
     cy.get('.standard-container.ghost-header.steps').scrollIntoView()
       .should('be.visible');
     const stepList = ['.step-1', '.step-2', '.step-2'];
@@ -32,7 +32,7 @@ export const UseStepTests = () => {
 };
 
 export const GoRideEveryWhereTests = () => {
-  it('should display go ride every where\n(到處騎乘)', () => {
+  it('should display go ride every where\n(預期出現到處騎乘的描述)', () => {
     cy.get('.standard-container.ghost-header.go-everywhere').scrollIntoView();
     const rowList = [
       '.row-first',
@@ -50,7 +50,7 @@ export const GoRideEveryWhereTests = () => {
 };
 
 export const FirstRideAndShareToEarnTests = () => {
-  it('should display go first ride and share\n(優惠介紹)', () => {
+  it('should display go first ride and share\n(預期出現優惠的介紹)', () => {
     cy.get('.standard-container.promotion')
       .scrollIntoView()
       .should('be.visible');
@@ -63,7 +63,7 @@ export const FirstRideAndShareToEarnTests = () => {
 };
 
 export const FooterNavTests = () => {
-  it('should display footer main menu\n(底部應該呈現選單)', () => {
+  it('should display footer main menu\n(預期底部應該呈現選單)', () => {
     cy.get('footer').scrollIntoView();
     const mainMenuList = [
       '.downloads',
