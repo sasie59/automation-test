@@ -8,7 +8,20 @@ export const GoToGMA_32thTests = () => {
 
 export const Into2021GoldenMelodyFestivalTests = () => {
   it('should into GMF page\n(預期進入2021金曲國際音樂節頁面)', () => {
+    cy.get('#right').find('.btn-outline-secondary1').click();
+    cy.wait(500);
+    cy.url().should('eq', 'https://gma.tavis.tw/gm32/GMF/default.asp');
+  });
+};
 
+export const GMF_CarouselTests = () => {
+  it('should photos will switch every five seconds\n(預期每經過五秒,會切換照片)', () => {
+    cy.get('#carouselExampleIndicators').should('be.visible');
+    cy.get('#carouselExampleIndicators').find('ol > li')
+      .its('length').should('eq', 13);
+    cy.get('#P1').click();
+    cy.wait(500);
+    cy.get('#P1').should('have.class', 'active');
   });
 };
 

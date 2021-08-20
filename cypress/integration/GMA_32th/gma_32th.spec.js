@@ -19,7 +19,7 @@ describe('設定視窗比例', () => {
   });
 
   describe('金曲國際音樂節主選單', () => {
-    tests.GMF_MainMenuTests();
+    // tests.GMF_MainMenuTests();
     // tests.GMF_AboutGMATests();
     // tests.GMF_UniversityExchangeTests();
     // tests.GMF_InternationalForumTests();
@@ -28,14 +28,14 @@ describe('設定視窗比例', () => {
   });
 
   describe('第32屆金曲獎頒獎典禮', () => {
-    tests.Into32thGoldenMelodyAwardsTests();
+    // tests.Into32thGoldenMelodyAwardsTests();
     // tests.GMA_CarouselTests();
     // tests.GMA_PageNavigationTests();
     // tests.GMA_UnitTests();
   });
 
   describe('金曲獎頒獎典禮主選單', () => {
-    tests.GMA_MainMenuTests();
+    // tests.GMA_MainMenuTests();
     // tests.GMA_BroadcastMessageTests();
     // tests.GMA_AppLinksTests();
     // tests.GMA_LiveTests();
@@ -47,7 +47,7 @@ describe('設定視窗比例', () => {
   });
 
   describe('共同擁有的元素', () => {
-    tests.CommonOwnElementsTests();
+    // tests.CommonOwnElementsTests();
     // tests.BothTitleTests();
     // tests.LatestNewsTests();
     // tests.MediaRegistrationTests();
