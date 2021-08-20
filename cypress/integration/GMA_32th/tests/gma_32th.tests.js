@@ -56,7 +56,7 @@ export const GMF_SeriesOfActivitiesTests = () => {
     cy.wait(2000);
     
     cy.get('.tip-black').last().get('.card-deck > div')
-      .its('length').should('eq', 4);
+      .its('length').should('eq', 4); //4張活動照片//
 
     cy.get('.tip-black').last().get('.card-deck a > img')
       .should('have.attr', 'src');
@@ -76,6 +76,19 @@ export const GMF_SuccessiveLinksTests = () => {
     
     cy.get('.bg-gold a')
       .should('have.attr', 'target', '_blank', 'href');
+  });
+};
+
+export const GMF_UnitTests = () => {
+  it('should all units are displayed at the bottom\n(預期底部呈現所有單位)', () => {
+    cy.get('footer').scrollIntoView();
+    cy.wait(2000);
+
+    cy.get('footer .row > div').last().find('.py-3.d-xl-flex.align-items-center').its('length')
+      .should('eq', 4); //有四個單位//
+
+    cy.get('footer .row > div').last().find('img')
+      .should('have.attr', 'src');
   });
 };
 
