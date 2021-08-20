@@ -44,8 +44,25 @@ export const GMF_IntroductionTests = () => {
   it('should go to specified paragraph GMA Introduction\n(預期到指定段落,GMA簡介)', () => {
     cy.get('#main-top').scrollIntoView();
     cy.wait(2000);
+
     cy.get('#main-top img').should('have.attr', 'src'); // 左圖logo//
     cy.get('#main-top .tip-interpret').should('be.visible'); // 右邊text//
+  });
+};
+
+export const GMF_SeriesOfActivitiesTests = () => {
+  it('should go to specified paragraph series of activities\n(預期預期到指定段落,全系列活動)', () => {
+    cy.get('.tip-black').last().scrollIntoView();
+    cy.wait(2000);
+    
+    cy.get('.tip-black').last().get('.card-deck > div')
+      .its('length').should('eq', 4);
+
+    cy.get('.tip-black').last().get('.card-deck a > img')
+      .should('have.attr', 'src');
+    
+    cy.get('.tip-black').last().get('.card-body')
+      .should('be.visible');
   });
 };
 
