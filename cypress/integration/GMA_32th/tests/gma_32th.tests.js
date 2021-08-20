@@ -40,6 +40,15 @@ export const GMF_CarouselTests = () => {
   });
 };
 
+export const GMF_IntroductionTests = () => {
+  it('should go to specified paragraph GMA Introduction\n(預期到指定段落,GMA簡介)', () => {
+    cy.get('#main-top').scrollIntoView();
+    cy.wait(2000);
+    cy.get('#main-top img').should('have.attr', 'src'); // 左圖logo//
+    cy.get('#main-top .tip-interpret').should('be.visible'); // 右邊text//
+  });
+};
+
 export const GMF_MainMenuTests = () => {
   it('should display GMF Main Menu\n(預期呈現金曲國際音樂節主選單)', () => {
 

@@ -11,8 +11,8 @@ describe('設定視窗比例', () => {
 
   describe('2021金曲國際音樂節', () => {
     tests.Into2021GoldenMelodyFestivalTests();
-    tests.GMF_CarouselTests();
-    // tests.GMF_IntroductionTests();
+    // tests.GMF_CarouselTests();
+    tests.GMF_IntroductionTests();
     // tests.GMF_SeriesOfActivitiesTests();
     // tests.GMF_SuccessiveLinksTests();
     // tests.GMF_UnitTests();
