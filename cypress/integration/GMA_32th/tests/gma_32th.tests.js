@@ -1,6 +1,6 @@
 
 export const GoToGMA_32thTests = () => {
-  it('should go to GMA_32th index\n(前往第32屆金曲獎首頁)', () => {
+  it('should go to GMA_32th index\n(預期連結第32屆金曲獎首頁)', () => {
     cy.visit('https://gma.tavis.tw/gm32/index.htm');
     cy.get('#left').get('#right').should('be.visible');
   });
@@ -15,13 +15,28 @@ export const Into2021GoldenMelodyFestivalTests = () => {
 };
 
 export const GMF_CarouselTests = () => {
-  it('should photos will switch every five seconds\n(預期每經過五秒,會切換照片)', () => {
+  it('should Click to turn the page, the specified tab will switch the photo\n(預期點擊翻頁、指定頁籤，會切換照片)', () => {
     cy.get('#carouselExampleIndicators').should('be.visible');
     cy.get('#carouselExampleIndicators').find('ol > li')
       .its('length').should('eq', 13);
-    cy.get('#P1').click();
-    cy.wait(500);
-    cy.get('#P1').should('have.class', 'active');
+
+    cy.get('#P2').click();  //點擊頁籤2//
+    cy.wait(1000);
+    cy.get('#P2').should('have.class', 'active');
+    
+    cy.get('#carouselExampleIndicators') //翻上頁//
+      .find('a[data-slide="prev"]').click();
+    cy.wait(1000);
+    cy.get('#P2').should('not.have.class', 'active');
+    
+    cy.get('#P10').click(); //點擊頁籤10//
+    cy.wait(1000);
+    cy.get('#P10').should('have.class', 'active');
+    
+    cy.get('#carouselExampleIndicators') //翻下頁//
+      .find('a[data-slide="next"]').click();
+    cy.wait(1000);
+    cy.get('#P10').should('not.have.class', 'active');
   });
 };
 
