@@ -51,7 +51,7 @@ export const GMF_IntroductionTests = () => {
 };
 
 export const GMF_SeriesOfActivitiesTests = () => {
-  it('should go to specified paragraph series of activities\n(預期預期到指定段落,全系列活動)', () => {
+  it('should go to specified paragraph series of activities\n(預期到指定段落,全系列活動)', () => {
     cy.get('.tip-black').last().scrollIntoView();
     cy.wait(2000);
     
@@ -63,6 +63,19 @@ export const GMF_SeriesOfActivitiesTests = () => {
     
     cy.get('.tip-black').last().get('.card-body')
       .should('be.visible');
+  });
+};
+
+export const GMF_SuccessiveLinksTests = () => {
+  it('should previous annual music festivals with bounce link attributes\n(預期歷屆年度音樂節,具有彈跳連結屬性)', () => {
+    cy.get('.bg-gold').scrollIntoView();
+    cy.wait(2000);
+
+    cy.get('.bg-gold a').its('length')
+      .should('eq', 7); //有7屆//
+    
+    cy.get('.bg-gold a')
+      .should('have.attr', 'target', '_blank', 'href');
   });
 };
 

@@ -13,8 +13,8 @@ describe('設定視窗比例', () => {
     tests.Into2021GoldenMelodyFestivalTests();
     // tests.GMF_CarouselTests();
     // tests.GMF_IntroductionTests();
-    tests.GMF_SeriesOfActivitiesTests();
-    // tests.GMF_SuccessiveLinksTests();
+    // tests.GMF_SeriesOfActivitiesTests();
+    tests.GMF_SuccessiveLinksTests();
     // tests.GMF_UnitTests();
   });
 
