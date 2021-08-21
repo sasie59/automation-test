@@ -129,6 +129,26 @@ export const GMA_CarouselTests = () => {
   });
 };
 
+export const GMA_PageNavigationTests = () => {
+  it('should list all broadcast locations, regions, channels, and times\n(列出所有播放的地點、區域、頻道、時間)', () => {
+    cy.get('.container').eq(1).scrollIntoView();
+    cy.wait(2000);
+
+    cy.get('.container .mt-md-5.pt-5').scrollIntoView()
+      .should('be.visible');
+    cy.wait(2000); //頒獎典禮舉辦時間地點//
+
+    cy.get('.container .table-responsive.pt-5').first().scrollIntoView()
+      .should('be.visible');
+    cy.wait(2000); //LIVE直播//
+
+    cy.get('.container .table-responsive.pt-5').last().scrollIntoView()
+      .should('be.visible');
+    cy.wait(2000); //重播//
+
+  });
+};
+
 export const GMF_MainMenuTests = () => {
   it('should display GMF Main Menu\n(預期呈現金曲國際音樂節主選單)', () => {
 
