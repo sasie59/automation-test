@@ -2,7 +2,7 @@ import * as tests from './tests/gma_32th.tests';
 
 describe('設定視窗比例', () => {
   beforeEach(() => {
-    cy.viewport(1200, 800);
+    cy.viewport(1200, 850);
   });
 
   describe('前往第32屆金曲獎首頁', () => {
@@ -20,9 +20,9 @@ describe('設定視窗比例', () => {
 
   describe('第32屆金曲獎頒獎典禮', () => {
     tests.Into32thGoldenMelodyAwardsTests();
-    // tests.GMA_CarouselTests();
+    tests.GMA_CarouselTests();
     tests.GMA_PageNavigationTests();
-    // tests.GMA_UnitTests();
+    tests.GMA_UnitTests();
   });
 
   describe('金曲國際音樂節主選單', () => {
