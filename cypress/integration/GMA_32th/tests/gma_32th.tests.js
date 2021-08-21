@@ -149,6 +149,18 @@ export const GMA_PageNavigationTests = () => {
   });
 };
 
+export const GMA_UnitTests = () => {
+  it('should all units are displayed at the bottom\n(預期底部呈現所有單位)', () => {
+    cy.get('.bottom').scrollIntoView().should('be.visible');
+    cy.wait(1000);
+    cy.get('.bottom footer').scrollIntoView();
+    cy.wait(3000);
+
+    cy.get('.bottom footer > .pb-5 > .row').its('length')
+      .should('eq', 7); //共有7列//
+  });
+};
+
 export const GMF_MainMenuTests = () => {
   it('should display GMF Main Menu\n(預期呈現金曲國際音樂節主選單)', () => {
 
