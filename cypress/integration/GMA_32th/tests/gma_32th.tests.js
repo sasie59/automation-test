@@ -9,7 +9,7 @@ export const GoToGMA_32thTests = () => {
 export const Into2021GoldenMelodyFestivalTests = () => {
   it('should into GMF page\n(預期進入2021金曲國際音樂節頁面)', () => {
     cy.get('#right').find('.btn-outline-secondary1').click();
-    cy.wait(500);
+    cy.wait(1000);
     cy.url().should('eq', 'https://gma.tavis.tw/gm32/GMF/default.asp');
   });
 };
@@ -23,16 +23,16 @@ export const GMF_CarouselTests = () => {
     cy.get('#P2').click();  //點擊頁籤2//
     cy.wait(1000);
     cy.get('#P2').should('have.class', 'active');
-    
+
     cy.get('#carouselExampleIndicators') //翻上頁//
       .find('a[data-slide="prev"]').click();
     cy.wait(1000);
     cy.get('#P2').should('not.have.class', 'active');
-    
+
     cy.get('#P10').click(); //點擊頁籤10//
     cy.wait(1000);
     cy.get('#P10').should('have.class', 'active');
-    
+
     cy.get('#carouselExampleIndicators') //翻下頁//
       .find('a[data-slide="next"]').click();
     cy.wait(1000);
@@ -54,13 +54,13 @@ export const GMF_SeriesOfActivitiesTests = () => {
   it('should go to specified paragraph series of activities\n(預期到指定段落,全系列活動)', () => {
     cy.get('.tip-black').last().scrollIntoView();
     cy.wait(2000);
-    
+
     cy.get('.tip-black').last().get('.card-deck > div')
       .its('length').should('eq', 4); //4張活動照片//
 
     cy.get('.tip-black').last().get('.card-deck a > img')
       .should('have.attr', 'src');
-    
+
     cy.get('.tip-black').last().get('.card-body')
       .should('be.visible');
   });
@@ -73,7 +73,7 @@ export const GMF_SuccessiveLinksTests = () => {
 
     cy.get('.bg-gold a').its('length')
       .should('eq', 7); //有7屆//
-    
+
     cy.get('.bg-gold a')
       .should('have.attr', 'target', '_blank', 'href');
   });
@@ -92,14 +92,19 @@ export const GMF_UnitTests = () => {
   });
 };
 
-export const GMF_MainMenuTests = () => {
-  it('should display GMF Main Menu\n(預期呈現金曲國際音樂節主選單)', () => {
+export const Into32thGoldenMelodyAwardsTests = () => {
+  it('should into GMA page\n(預期進入第32屆金曲獎頒獎典禮)', () => {
+    // cy.get('.navbar-brand').click();
+    // cy.wait(2000);
 
+    cy.get('#right').find('.btn-outline-secondary2').click();
+    cy.wait(1000);
+    cy.url().should('eq', 'https://gma.tavis.tw/gm32/GMA/default.asp');
   });
 };
 
-export const Into32thGoldenMelodyAwardsTests = () => {
-  it('should into GMA page\n(預期進入第32屆金曲獎頒獎典禮)', () => {
+export const GMF_MainMenuTests = () => {
+  it('should display GMF Main Menu\n(預期呈現金曲國際音樂節主選單)', () => {
 
   });
 };
