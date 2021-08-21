@@ -18,7 +18,7 @@ export const GMF_CarouselTests = () => {
   it('should Click to turn the page, the specified tab will switch the photo\n(預期點擊翻頁、指定頁籤，會切換照片)', () => {
     cy.get('#carouselExampleIndicators').should('be.visible');
     cy.get('#carouselExampleIndicators').find('ol > li')
-      .its('length').should('eq', 13);
+      .its('length').should('eq', 13);  //13張照片//
 
     cy.get('#P2').click();  //點擊頁籤2//
     cy.wait(1000);
@@ -100,6 +100,32 @@ export const Into32thGoldenMelodyAwardsTests = () => {
     cy.get('#right').find('.btn-outline-secondary2').click();
     cy.wait(1000);
     cy.url().should('eq', 'https://gma.tavis.tw/gm32/GMA/default.asp');
+  });
+};
+
+export const GMA_CarouselTests = () => {
+  it('should Click to turn the page, the specified tab will switch the photo\n(預期點擊翻頁、指定頁籤，會切換照片)', () => {
+    cy.get('#carouselExampleIndicators').should('be.visible');
+    cy.get('#carouselExampleIndicators').find('ol > li')
+      .its('length').should('eq', 20); //20張照片//
+
+    cy.get('#P9').click();  //點擊頁籤9//
+    cy.wait(1000);
+    cy.get('#P9').should('have.class', 'active');
+
+    cy.get('#carouselExampleIndicators') //翻上頁//
+      .find('a[data-slide="prev"]').click();
+    cy.wait(1000);
+    cy.get('#P9').should('not.have.class', 'active');
+
+    cy.get('#P20').click(); //點擊頁籤20//
+    cy.wait(1000);
+    cy.get('#P20').should('have.class', 'active');
+
+    cy.get('#carouselExampleIndicators') //翻下頁//
+      .find('a[data-slide="next"]').click();
+    cy.wait(1000);
+    cy.get('#P20').should('not.have.class', 'active');
   });
 };
 

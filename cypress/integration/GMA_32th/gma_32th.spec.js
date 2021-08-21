@@ -20,7 +20,7 @@ describe('設定視窗比例', () => {
 
   describe('第32屆金曲獎頒獎典禮', () => {
     tests.Into32thGoldenMelodyAwardsTests();
-    // tests.GMA_CarouselTests();
+    tests.GMA_CarouselTests();
     // tests.GMA_PageNavigationTests();
     // tests.GMA_UnitTests();
   });
