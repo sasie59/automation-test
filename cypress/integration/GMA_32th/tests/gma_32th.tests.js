@@ -169,12 +169,19 @@ export const GMF_MainMenuTests = () => {
 
 export const GMA_MainMenuTests = () => {
   it('should display GMA Main Menu\n(預期呈現金曲獎頒獎典禮主選單)', () => {
-
+    
   });
 };
 
-export const CommonOwnElementsTests = () => {
-  it('should common own elements\n(預期共同擁有的元素)', () => {
+export const DefineElements = () => {
+  beforeEach(() => {
+    cy.get('.navbar.navbar-expand-md.navbar-dark.fixed-top').as('title');
+    cy.get('.social_media.d-none.d-md-block').as('side');
+  });
+};
 
+export const BothTitleTests = () => {
+  it('should\n()', () => {
+    
   });
 };
