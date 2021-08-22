@@ -184,7 +184,7 @@ export const BothTitleTests = () => {
   it('should title has two nav links,click to expand, click again to close\n(預期標題有兩個nav連結,點擊後會展開，再次點擊即關閉)', () => {
     cy.get('@title').find('.navbar-nav').first().find('.nav-item')
       .its('length').should('eq', 2); //金曲獎頒獎典禮,曲國際音樂節兩項//
-  
+    
     cy.get('@title').get('#menu_button').should('be.visible').click();
     cy.wait(1000);
     cy.get('@title').get('#menu_button2').should('be.visible').click();
@@ -193,5 +193,39 @@ export const BothTitleTests = () => {
     cy.wait(1000);
     
     cy.get('@title').get('img').should('be.attr', 'src');
+  });
+};
+
+export const LatestNewsTests = () => {
+  it('should into latest news page, Provides the function of page turning and list\n(預期進入最新消息的頁面,提供了翻頁及清單的功能)', () => {
+    cy.get('@title').find('#li_News > a')
+      .should('be.visible').click();
+    cy.wait(1500);
+    
+    cy.get('.text-light45.text-right.pr-lg-4 > a')
+      .its('length').should('eq', 2); //兩個連結//
+    cy.get('.text-light45.text-right.pr-lg-4 > a')
+      .should('have.attr', 'href');
+    
+    cy.get('.text-light45.text-right.pr-lg-4 > a')
+      .first().click(); //第一個連結為上一頁//
+    cy.wait(1500);//此時變為三個連結，多了下一頁//
+    cy.url().should('eq', 'https://gma.tavis.tw/gm32/GMA/News.asp?PID=10');
+    
+    cy.get('.text-light45.text-right.pr-lg-4 > a')
+      .last().click(); //第三個連結為下一頁//
+    cy.wait(1500);//此時變為二個連結，到底頁了//
+    cy.url().should('eq', 'https://gma.tavis.tw/gm32/GMA/News.asp?PID=11');
+      
+    cy.get('.text-light45.text-right.pr-lg-4 > a')
+      .eq(1).click(); //第二個連結為清單列表//
+    cy.wait(1500);
+
+    cy.get('.col-12 .newslist li a').its('length')
+      .should('eq', 11); //清單共有11則消息//
+    cy.get('.col-12 .newslist li a').should('have.attr', 'href');
+    
+    cy.get('.tip-black').scrollIntoView();
+    cy.wait(2000);
   });
 };
