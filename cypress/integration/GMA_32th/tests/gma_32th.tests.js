@@ -201,7 +201,7 @@ export const LatestNewsTests = () => {
     cy.get('@title').find('#li_News > a')
       .should('be.visible').click();
     cy.wait(1500);
-    
+    cy.url().should('eq','https://gma.tavis.tw/gm32/GMA/News.asp');
     cy.get('.text-light45.text-right.pr-lg-4 > a')
       .its('length').should('eq', 2); //兩個連結//
     cy.get('.text-light45.text-right.pr-lg-4 > a')
@@ -227,5 +227,31 @@ export const LatestNewsTests = () => {
     
     cy.get('.tip-black').scrollIntoView();
     cy.wait(2000);
+  });
+};
+
+export const MediaRegistrationTests = () => {
+  it('should into media registration, list all the lists and provide relevant documents to download\n(預期進入媒體報名頁面,列出所有清單及提供相關文件下載)', () => {
+    cy.get('@title').find('#li_Media > a')
+      .should('be.visible').click();
+    cy.wait(1500);
+    cy.url().should('eq', 'https://gma.tavis.tw/mediaGroup/default.asp');
+    
+    cy.get('.col-md-4').first().find('.btn-success')
+      .should('be.visible');  //媒體註冊 按鈕//
+    cy.get('.col-md-4').first().find('.btn-primary')
+      .should('be.visible');  //媒體登入 按鈕//
+    
+    cy.get('.col-12 ol > li').first().find('a')
+      .should('have.attr', 'target', '_blank', 'href');
+    //『媒體授權承諾書』可提供下載//
+    
+    cy.get('.col-12 ol > li').its('length')
+      .should('eq', 8);  //8點注意事項//
+    
+    for(let i = 0; i < 8; i++) {
+      cy.get('.col-12 ol > li').eq(`${i}`).scrollIntoView();
+      cy.wait(2000);
+    }
   });
 };
