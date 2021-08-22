@@ -181,12 +181,16 @@ export const DefineElements = () => {
 };
 
 export const BothTitleTests = () => {
-  it('should title has two nav links\n(預期標題有兩個nav連結)', () => {
+  it('should title has two nav links,click to expand, click again to close\n(預期標題有兩個nav連結,點擊後會展開，再次點擊即關閉)', () => {
     cy.get('@title').find('.navbar-nav').first().find('.nav-item')
       .its('length').should('eq', 2); //金曲獎頒獎典禮,曲國際音樂節兩項//
   
-    cy.get('@title').get('#menu_button').should('be.visible');
-    cy.get('@title').get('#menu_button2').should('be.visible');
+    cy.get('@title').get('#menu_button').should('be.visible').click();
+    cy.wait(1000);
+    cy.get('@title').get('#menu_button2').should('be.visible').click();
+    cy.wait(1000);
+    cy.get('@title').get('#menu_button2').should('be.visible').click();
+    cy.wait(1000);
     
     cy.get('@title').get('img').should('be.attr', 'src');
   });
