@@ -401,3 +401,16 @@ export const SocialMediaTests = () => {
     cy.get('@side').find('a').should('have.attr', 'target', '_blank', 'href');
   });
 };
+
+export const GoTopTests = () => {
+  it('should press the inverted triangle button and it will slide to the top of the page\n(預期按倒三角按鈕，會滑至頁首)', () => {
+    cy.get('footer').scrollIntoView();
+    cy.wait(1500);
+    
+    cy.get('#top-navigator').should('be.visible').click();
+    cy.wait(1500);
+
+    cy.get('.navbar.navbar-expand-md.navbar-dark.fixed-top')
+      .should('be.visible');
+  });
+};
