@@ -1,8 +1,12 @@
 import * as tests from './tests/gma_32th.tests';
 
+Cypress.on('uncaught:exception', (err, runnable) => {
+  return false;
+});
+
 describe('設定視窗比例', () => {
   beforeEach(() => {
-    cy.viewport(1200, 850);
+    cy.viewport(1200, 900);
   });
 
   describe('前往第32屆金曲獎首頁', () => {
@@ -20,9 +24,9 @@ describe('設定視窗比例', () => {
 
   describe('第32屆金曲獎頒獎典禮', () => {
     tests.Into32thGoldenMelodyAwardsTests();
-    tests.GMA_CarouselTests();
-    tests.GMA_PageNavigationTests();
-    tests.GMA_UnitTests();
+    // tests.GMA_CarouselTests();
+    // tests.GMA_PageNavigationTests();
+    // tests.GMA_UnitTests();
   });
 
   describe('金曲國際音樂節主選單', () => {
@@ -47,14 +51,14 @@ describe('設定視窗比例', () => {
   });
 
   describe('共同擁有的元素', () => {
-    // tests.CommonOwnElementsTests();
-    // tests.BothTitleTests();
-    // tests.LatestNewsTests();
-    // tests.MediaRegistrationTests();
-    // tests.VendorZoneTests();
-    // tests.LanguageSwitchTests();
-    // tests.SocialMediaTests();
-    // tests.GoTopTests();
+    tests.DefineElements();
+    tests.BothTitleTests();
+    tests.LatestNewsTests();
+    tests.MediaRegistrationTests();
+    tests.VendorZoneTests();
+    tests.LanguageSwitchTests();
+    tests.SocialMediaTests();
+    tests.GoTopTests();
   });
 
 });
