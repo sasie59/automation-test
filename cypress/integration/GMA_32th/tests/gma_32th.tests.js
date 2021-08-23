@@ -365,33 +365,23 @@ export const LanguageSwitchTests = () => {
     cy.get('@title').get('.navbar-nav.justify-content-end.pl-2.pl-md-0 > a')
       .its('length').should('eq', 2);
 
-    cy.get('@title').get('.navbar-nav.justify-content-end.pl-2.pl-md-0 > a')
+    cy.get('.navbar-nav.justify-content-end.pl-2.pl-md-0 > a')
       .last().click(); //英文//
     cy.wait(2000);
 
-    cy.get('h6').first().scrollIntoView();
-    cy.get('.mt-md-5.pt-5').get('.d-inline-block').eq(0)
-      .contains('Red Carpet').should('be.visible');
-    cy.get('.mt-md-5.pt-5').get('.d-inline-block').eq(1)
-      .contains('Taipei Music Center').should('be.visible');
-    cy.get('.mt-md-5.pt-5').get('.d-inline-block').eq(2)
-      .contains('Awards Ceremony').should('be.visible');
-    cy.get('.mt-md-5.pt-5').get('.d-inline-block').eq(3)
-      .contains('Taipei Music Center Concert Hall').should('be.visible');
-      
-    cy.get('@title').get('.navbar-nav.justify-content-end.pl-2.pl-md-0 > a')
+    cy.get('#menu_button').contains('Golden Melody Awards')
+      .should('be.visible');
+    cy.get('#menu_button2').contains('Golden Melody Festival')
+      .should('be.visible');
+
+    cy.get('.navbar-nav.justify-content-end.pl-2.pl-md-0 > a')
       .first().click(); //中文//
     cy.wait(2000);
-  
-    cy.get('h6').first().scrollIntoView();
-    cy.get('.mt-md-5.pt-5').get('.d-inline-block').eq(0)
-      .contains('金曲獎星光大道').should('be.visible');
-    cy.get('.mt-md-5.pt-5').get('.d-inline-block').eq(1)
-      .contains('臺北流行音樂中心').should('be.visible');
-    cy.get('.mt-md-5.pt-5').get('.d-inline-block').eq(2)
-      .contains('金曲獎頒獎典禮').should('be.visible');
-    cy.get('.mt-md-5.pt-5').get('.d-inline-block').eq(3)
-      .contains('臺北流行音樂中心').should('be.visible');
+      
+    cy.get('#menu_button').contains('金曲獎頒獎典禮')
+      .should('be.visible');
+    cy.get('#menu_button2').contains('金曲國際音樂節')
+      .should('be.visible');
   });
 };
 
