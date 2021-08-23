@@ -394,3 +394,10 @@ export const LanguageSwitchTests = () => {
       .contains('臺北流行音樂中心').should('be.visible');
   });
 };
+
+export const SocialMediaTests = () => {
+  it('should 4 kinds of social media links, and have the attribute of opening another window\n(預期有4種社群媒體連結,且具有另開視窗的屬性)', () => {
+    cy.get('@side').find('a').its('length').should('eq', 4);
+    cy.get('@side').find('a').should('have.attr', 'target', '_blank', 'href');
+  });
+};
