@@ -257,7 +257,7 @@ export const MediaRegistrationTests = () => {
 };
 
 export const VendorZoneTests = () => {
-  it('should into vendor zone\n(預期進入廠商專區)', () => {
+  it('should into vendor zone, fill in the registration process\n(預期進入廠商專區,填寫報名流程)', () => {
     cy.get('@title').find('.nav-item > a').eq(2)
       .should('be.visible').click();
     cy.wait(1500);
