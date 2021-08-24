@@ -51,14 +51,14 @@ describe('設定視窗比例', () => {
   });
 
   describe('共同擁有的元素', () => {
-    tests.DefineElements();
-    tests.BothTitleTests();
-    tests.LatestNewsTests();
-    tests.MediaRegistrationTests();
-    tests.VendorZoneTests();
-    tests.LanguageSwitchTests();
-    tests.SocialMediaTests();
-    tests.GoTopTests();
+    // tests.DefineElements();
+    // tests.BothTitleTests();
+    // tests.LatestNewsTests();
+    // tests.MediaRegistrationTests();
+    // tests.VendorZoneTests();
+    // tests.LanguageSwitchTests();
+    // tests.SocialMediaTests();
+    // tests.GoTopTests();
   });
 
 });

@@ -107,7 +107,7 @@ export const GMA_CarouselTests = () => {
   it('should Click to turn the page, the specified tab will switch the photo\n(預期點擊翻頁、指定頁籤，會切換照片)', () => {
     cy.get('#carouselExampleIndicators').should('be.visible');
     cy.get('#carouselExampleIndicators').find('ol > li')
-      .its('length').should('eq', 20); //20張照片//
+      .its('length').should('eq', 9); //9張照片//
 
     cy.get('#P9').click();  //點擊頁籤9//
     cy.wait(1000);
@@ -118,14 +118,14 @@ export const GMA_CarouselTests = () => {
     cy.wait(1000);
     cy.get('#P9').should('not.have.class', 'active');
 
-    cy.get('#P20').click(); //點擊頁籤20//
+    cy.get('#P5').click(); //點擊頁籤5//
     cy.wait(1000);
-    cy.get('#P20').should('have.class', 'active');
+    cy.get('#P5').should('have.class', 'active');
 
     cy.get('#carouselExampleIndicators') //翻下頁//
       .find('a[data-slide="next"]').click();
     cy.wait(1000);
-    cy.get('#P20').should('not.have.class', 'active');
+    cy.get('#P5').should('not.have.class', 'active');
   });
 };
 
