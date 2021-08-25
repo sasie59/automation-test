@@ -169,7 +169,7 @@ export const GMF_MainMenuTests = () => {
 
 export const GMA_MainMenuTests = () => {
   it('should display GMA Main Menu\n(預期呈現金曲獎頒獎典禮主選單)', () => {
-    
+
   });
 };
 
@@ -184,14 +184,14 @@ export const BothTitleTests = () => {
   it('should title has two nav links,click to expand, click again to close\n(預期標題有兩個nav連結,點擊後會展開，再次點擊即關閉)', () => {
     cy.get('@title').find('.navbar-nav').first().find('.nav-item')
       .its('length').should('eq', 2); //金曲獎頒獎典禮,曲國際音樂節兩項//
-    
+
     cy.get('@title').get('#menu_button').should('be.visible').click();
     cy.wait(1000);
     cy.get('@title').get('#menu_button2').should('be.visible').click();
     cy.wait(1000);
     cy.get('@title').get('#menu_button2').should('be.visible').click();
     cy.wait(1000);
-    
+
     cy.get('@title').get('img').should('be.attr', 'src');
   });
 };
@@ -201,22 +201,22 @@ export const LatestNewsTests = () => {
     cy.get('@title').find('#li_News > a')
       .should('be.visible').click();
     cy.wait(1500);
-    cy.url().should('eq','https://gma.tavis.tw/gm32/GMA/News.asp');
+    cy.url().should('eq', 'https://gma.tavis.tw/gm32/GMA/News.asp');
     cy.get('.text-light45.text-right.pr-lg-4 > a')
       .its('length').should('eq', 2); //兩個連結//
     cy.get('.text-light45.text-right.pr-lg-4 > a')
       .should('have.attr', 'href');
-    
+
     cy.get('.text-light45.text-right.pr-lg-4 > a')
       .first().click(); //第一個連結為上一頁//
     cy.wait(1500);//此時變為三個連結，多了下一頁//
     cy.url().should('eq', 'https://gma.tavis.tw/gm32/GMA/News.asp?PID=10');
-    
+
     cy.get('.text-light45.text-right.pr-lg-4 > a')
       .last().click(); //第三個連結為下一頁//
     cy.wait(1500);//此時變為二個連結，到底頁了//
     cy.url().should('eq', 'https://gma.tavis.tw/gm32/GMA/News.asp?PID=11');
-      
+
     cy.get('.text-light45.text-right.pr-lg-4 > a')
       .eq(1).click(); //第二個連結為清單列表//
     cy.wait(1500);
@@ -224,7 +224,7 @@ export const LatestNewsTests = () => {
     cy.get('.col-12 .newslist li a').its('length')
       .should('eq', 11); //清單共有11則消息//
     cy.get('.col-12 .newslist li a').should('have.attr', 'href');
-    
+
     cy.get('.tip-black').scrollIntoView();
     cy.wait(2000);
   });
@@ -236,20 +236,20 @@ export const MediaRegistrationTests = () => {
       .should('be.visible').click();
     cy.wait(1500);
     cy.url().should('eq', 'https://gma.tavis.tw/mediaGroup/default.asp');
-    
+
     cy.get('.col-md-4').first().find('.btn-success')
       .should('be.visible');  //媒體註冊 按鈕//
     cy.get('.col-md-4').first().find('.btn-primary')
       .should('be.visible');  //媒體登入 按鈕//
-    
+
     cy.get('.col-12 ol > li').first().find('a')
       .should('have.attr', 'target', '_blank', 'href');
     //『媒體授權承諾書』可提供下載//
-    
+
     cy.get('.col-12 ol > li').its('length')
       .should('eq', 8);  //8點注意事項//
-    
-    for(let i = 0; i < 8; i++) {
+
+    for (let i = 0; i < 8; i++) {
       cy.get('.col-12 ol > li').eq(`${i}`).scrollIntoView();
       cy.wait(2000);
     }
@@ -264,9 +264,9 @@ export const VendorZoneTests = () => {
     cy.url().should('eq', 'https://gma.tavis.tw/GM32/Member/SignIn.aspx');
 
     cy.get('#cphContent_txtEmail').type(Cypress.env('account'));
-    cy.get('#cphContent_txtEmail').should('have.value',Cypress.env('account'));
+    cy.get('#cphContent_txtEmail').should('have.value', Cypress.env('account'));
     cy.get('#cphContent_txtPWD').type(Cypress.env('password'));
-    cy.get('#cphContent_txtPWD').should('have.value',Cypress.env('password'));
+    cy.get('#cphContent_txtPWD').should('have.value', Cypress.env('password'));
 
     cy.get('.savefunc input[value="登入"]').should('be.visible'); //登入按鈕//
     cy.get('.savefunc a').should('be.visible').click(); //註冊按鈕//
@@ -275,56 +275,56 @@ export const VendorZoneTests = () => {
 
     //1.帳號資訊//
     cy.get('#cphContent_txtLastName').type('謝');
-    cy.get('#cphContent_txtLastName').should('have.value','謝');
+    cy.get('#cphContent_txtLastName').should('have.value', '謝');
     cy.get('#cphContent_txtFirstName').type('士偉');
-    cy.get('#cphContent_txtFirstName').should('have.value','士偉');
+    cy.get('#cphContent_txtFirstName').should('have.value', '士偉');
     cy.get('#cphContent_txtEnglishName').type('Hsieh Shih Wei');
-    cy.get('#cphContent_txtEnglishName').should('have.value','Hsieh Shih Wei');
+    cy.get('#cphContent_txtEnglishName').should('have.value', 'Hsieh Shih Wei');
     cy.get('.form-group.memt1none.memt3none a').first().should('have.attr', 'href');
     //上傳個人照片//
     cy.get('#cphContent_txtEmail').type(Cypress.env('account'));
-    cy.get('#cphContent_txtEmail').should('have.value',Cypress.env('account'));
+    cy.get('#cphContent_txtEmail').should('have.value', Cypress.env('account'));
     cy.get('#cphContent_txtPassword').type(Cypress.env('password'));
-    cy.get('#cphContent_txtPassword').should('have.value',Cypress.env('password'));
+    cy.get('#cphContent_txtPassword').should('have.value', Cypress.env('password'));
     cy.get('#cphContent_txtPassword2').type(Cypress.env('password'));
-    cy.get('#cphContent_txtPassword2').should('have.value',Cypress.env('password'));
+    cy.get('#cphContent_txtPassword2').should('have.value', Cypress.env('password'));
     cy.get('.form-group.memt1none.memt3none a').last().get('#memtype2').should('be.visible');
     cy.get('.form-group.memt1none.memt3none a').last().get('#memtype4').should('be.visible');
-    
+
     //2.公司簡介//
     cy.get('#cphContent_txtCompanyName').type('統一企業');
-    cy.get('#cphContent_txtCompanyName').should('have.value','統一企業');
+    cy.get('#cphContent_txtCompanyName').should('have.value', '統一企業');
     cy.get('#cphContent_txtCompanyNameEN').type('Uni-President');
-    cy.get('#cphContent_txtCompanyNameEN').should('have.value','Uni-President');
+    cy.get('#cphContent_txtCompanyNameEN').should('have.value', 'Uni-President');
     cy.get('.form-group.memt1none.memt3none a').last().should('have.attr', 'href');
     cy.get('#cphContent_txtTitle').type('部長');
-    cy.get('#cphContent_txtTitle').should('have.value','部長');
+    cy.get('#cphContent_txtTitle').should('have.value', '部長');
     cy.get('#cphContent_txtCompanyID').type('12345678');
-    cy.get('#cphContent_txtCompanyID').should('have.value','12345678');
+    cy.get('#cphContent_txtCompanyID').should('have.value', '12345678');
     cy.get('.cbgroup').first().find('label').its('length').should('eq', 16);
     cy.get('#cphContent_txtCompanyCountry').type('台灣');
-    cy.get('#cphContent_txtCompanyCountry').should('have.value','台灣');
+    cy.get('#cphContent_txtCompanyCountry').should('have.value', '台灣');
     cy.get('#cphContent_txtCompanyCity').type('台北');
-    cy.get('#cphContent_txtCompanyCity').should('have.value','台北');
+    cy.get('#cphContent_txtCompanyCity').should('have.value', '台北');
     cy.get('#cphContent_txtCompanyAddress').type('中山路1號');
-    cy.get('#cphContent_txtCompanyAddress').should('have.value','中山路1號');
+    cy.get('#cphContent_txtCompanyAddress').should('have.value', '中山路1號');
     cy.get('#cphContent_txtCompanyTel').type('02-22345678');
-    cy.get('#cphContent_txtCompanyTel').should('have.value','02-22345678');
+    cy.get('#cphContent_txtCompanyTel').should('have.value', '02-22345678');
     cy.get('#cphContent_txtCompanyMobile').type('0912345678');
-    cy.get('#cphContent_txtCompanyMobile').should('have.value','0912345678');
+    cy.get('#cphContent_txtCompanyMobile').should('have.value', '0912345678');
     cy.get('#cphContent_txtCompanyEstYear').type('2000');
-    cy.get('#cphContent_txtCompanyEstYear').should('have.value','2000');
+    cy.get('#cphContent_txtCompanyEstYear').should('have.value', '2000');
     cy.get('#cphContent_txtNumberOfEmployees').type('100');
-    cy.get('#cphContent_txtNumberOfEmployees').should('have.value','100');
+    cy.get('#cphContent_txtNumberOfEmployees').should('have.value', '100');
     cy.get('#cphContent_txtLastYearRevenue').type('100');
-    cy.get('#cphContent_txtLastYearRevenue').should('have.value','100');
+    cy.get('#cphContent_txtLastYearRevenue').should('have.value', '100');
     cy.get('#cphContent_txtCompanyWebSite').type('http://xxx.com.tw');
-    cy.get('#cphContent_txtCompanyWebSite').should('have.value','http://xxx.com.tw');
+    cy.get('#cphContent_txtCompanyWebSite').should('have.value', 'http://xxx.com.tw');
     cy.get('#cphContent_txtCompanyOverview').type('xxx');
-    cy.get('#cphContent_txtCompanyOverview').should('have.value','xxx');
+    cy.get('#cphContent_txtCompanyOverview').should('have.value', 'xxx');
     cy.get('#cphContent_txtCompanyOverviewEN').type('aaa');
-    cy.get('#cphContent_txtCompanyOverviewEN').should('have.value','aaa');
-    
+    cy.get('#cphContent_txtCompanyOverviewEN').should('have.value', 'aaa');
+
     //3.本次預訂媒合項目//
     cy.get('.form-group.bzinterest > div > label').its('length')
       .should('eq', 16);
@@ -343,7 +343,7 @@ export const VendorZoneTests = () => {
 
     cy.go(-1);
     cy.wait(1500);
-    
+
     cy.get('.savefunc .blnk button').should('be.visible').click(); //忘記密碼按鈕//
     cy.wait(1500); //浮出一個視窗//
 
@@ -377,7 +377,7 @@ export const LanguageSwitchTests = () => {
     cy.get('.navbar-nav.justify-content-end.pl-2.pl-md-0 > a')
       .first().click(); //中文//
     cy.wait(2000);
-      
+
     cy.get('#menu_button').contains('金曲獎頒獎典禮')
       .should('be.visible');
     cy.get('#menu_button2').contains('金曲國際音樂節')
@@ -396,7 +396,7 @@ export const GoTopTests = () => {
   it('should press the inverted triangle button and it will slide to the top of the page\n(預期按倒三角按鈕，會滑至頁首)', () => {
     cy.get('footer').scrollIntoView();
     cy.wait(1500);
-    
+
     cy.get('#top-navigator').should('be.visible').click();
     cy.wait(1500);
 
@@ -408,17 +408,26 @@ export const GoTopTests = () => {
 export const GMA_MainMenu = () => {
   beforeEach(() => {
     cy.get('#menu_button').click();
+    cy.wait(1000);
   });
 };
 
 export const GMF_MainMenu = () => {
   beforeEach(() => {
     cy.get('#menu_button2').click();
+    cy.wait(1000);
+    cy.get('.row.pt-3').as('GMF');
   });
 };
 
 export const GMF_AboutGMATests = () => {
-  it('should \n()', ()=> {
-
+  it('should display introduction to GMF\n(預期進入「有關GMA」簡介頁面)', () => {
+    cy.get('@GMF').get('.dropdown-header').eq(4).find('a').click();
+    cy.wait(1500);
+    cy.get('#main-top').should('be.visible');
+    // tests.GMA_CarouselTests();
+    // tests.GMA_PageNavigationTests();
+    // tests.GMA_UnitTests();
+    //這三項已獨立驗証過//
   });
 };
