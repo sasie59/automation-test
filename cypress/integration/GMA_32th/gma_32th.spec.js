@@ -30,8 +30,8 @@ describe('設定視窗比例', () => {
   });
 
   describe('金曲國際音樂節主選單', () => {
-    // tests.GMF_MainMenuTests();
-    // tests.GMF_AboutGMATests();
+    tests.GMF_MainMenu();
+    tests.GMF_AboutGMATests();
     // tests.GMF_UniversityExchangeTests();
     // tests.GMF_InternationalForumTests();
     // tests.GMF_TradeFairTradingCenterTests();
@@ -39,7 +39,7 @@ describe('設定視窗比例', () => {
   });
 
   describe('金曲獎頒獎典禮主選單', () => {
-    // tests.GMA_MainMenuTests();
+    // tests.GMA_MainMenu();
     // tests.GMA_BroadcastMessageTests();
     // tests.GMA_AppLinksTests();
     // tests.GMA_LiveTests();

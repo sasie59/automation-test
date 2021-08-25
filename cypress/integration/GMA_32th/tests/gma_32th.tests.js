@@ -404,3 +404,21 @@ export const GoTopTests = () => {
       .should('be.visible');
   });
 };
+
+export const GMA_MainMenu = () => {
+  beforeEach(() => {
+    cy.get('#menu_button').click();
+  });
+};
+
+export const GMF_MainMenu = () => {
+  beforeEach(() => {
+    cy.get('#menu_button2').click();
+  });
+};
+
+export const GMF_AboutGMATests = () => {
+  it('should \n()', ()=> {
+
+  });
+};
