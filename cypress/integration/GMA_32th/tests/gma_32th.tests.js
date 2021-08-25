@@ -431,3 +431,46 @@ export const GMF_AboutGMATests = () => {
     //這三項已獨立驗証過//
   });
 };
+
+export const GMF_UniversityExchangeTests = () => {
+  it('should \n()', () => {
+    // cy.get('@GMF').get('.text-nowrap > a').click();
+    // cy.wait(1500);
+  });
+};
+export const GMF_InternationalForumTests = () => {
+  it('should \n()', () => {
+
+  });
+};
+export const GMF_TradeFairTradingCenterTests = () => {
+  it('should \n()', () => {
+
+  });
+};
+export const GMF_ShowCaseTests = () => {
+  it('should \n()', () => {
+    cy.get('@GMF').get('.mm2 > a').last().click();
+    cy.wait(1500);
+
+    cy.get('.tip-black').contains('Showcase').should('be.visible');
+    cy.get('#main-top > .row ol > li').its('length').should('eq', 3);
+
+    cy.get('.card-deck').find('.card.d-block.border-gold.mb-3') //3列//
+      .its('length').should('eq', 3);
+
+    cy.get('.card-deck').find('.card.d-block.border-gold.mb-3 > .card-header.bg-deco.text-white')
+      .its('length').should('eq', 3); //有3天演出//
+
+    cy.get('.card-deck').find('.card.d-block.border-gold.mb-3 > .card-body.text-dark > a')
+      .its('length').should('eq', 15); //共有15組演出//
+    cy.get('.card-deck').find('.card.d-block.border-gold.mb-3 > .card-body.text-dark > a')
+      .should('have.attr', 'href');
+
+    cy.get('.card-deck').find('.card.d-block.border-gold.mb-3 > .card-body.text-dark').first()
+      .find('a').first().click(); //點擊第一列 第一組//
+    cy.wait(1500);
+
+    cy.get('#myTab').should('be.visible');
+  });
+};
