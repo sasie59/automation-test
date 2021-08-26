@@ -449,7 +449,7 @@ export const GMF_TradeFairTradingCenterTests = () => {
   });
 };
 export const GMF_ShowCaseTests = () => {
-  it('should \n()', () => {
+  it('should dispaly artist profile and performance schedule\n(預期出現藝人簡介及演出的行程表)', () => {
     cy.get('@GMF').get('.mm2 > a').last().click();
     cy.wait(1500);
 
@@ -470,7 +470,28 @@ export const GMF_ShowCaseTests = () => {
     cy.get('.card-deck').find('.card.d-block.border-gold.mb-3 > .card-body.text-dark').first()
       .find('a').first().click(); //點擊第一列 第一組//
     cy.wait(1500);
-
     cy.get('#myTab').should('be.visible');
+
+    cy.get('#myTab > a').its('length').should('eq', 3);  //表演日期有3天//
+    cy.get('#myTab > a').should('have.attr', 'href');
+
+    for (let i = 1; i <= 3; i++) {
+      cy.get('#myTab > a').eq(`${i - 1}`).scrollIntoView().click();
+      cy.wait(2000);
+      for (let j = 1; j <= 5; j++) {
+        cy.get(`#sc${i}_${j}`).find('.col-md-6 > img').scrollIntoView()
+          .should('have.attr', 'src'); //照片//
+        cy.wait(1000);
+        cy.get(`#sc${i}_${j}`).find('div').last().get('h1')
+          .should('be.visible'); //名字//
+        cy.wait(1000);
+        cy.get(`#sc${i}_${j}`).find('div').last().get('p')
+          .should('be.visible'); //簡介//
+        cy.wait(1000);
+        cy.get(`#sc${i}_${j}`).find('div').last().get('a')
+          .should('have.attr', 'href'); //其他照片//
+        cy.wait(1000);
+      }
+    }
   });
 };
