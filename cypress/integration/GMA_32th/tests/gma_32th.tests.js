@@ -444,10 +444,41 @@ export const GMF_InternationalForumTests = () => {
   });
 };
 export const GMF_TradeFairTradingCenterTests = () => {
-  it('should \n()', () => {
+  it('should display trade fair trading center Results\n(預期呈現商展交易中心的成果展)', () => {
+    cy.get('@GMF').get('.mm2 > a').eq(2).click();
+    cy.wait(1500);
+    
+    cy.get('.tip-line .tip-black').should('be.visible'); //title//
+    cy.get('.row .tip-interpret').should('be.visible'); //描述//
+    
+    cy.get('.justify-content-center > .card-columns > .card')
+      .its('length').should('eq', 12);
+    cy.get('.justify-content-center > .card-columns > .card')
+      .find('a').should('have.attr', 'href');
+    cy.get('.justify-content-center > .card-columns > .card')
+      .find('a > img').should('have.attr', 'src');
+    
+    cy.get('#BothSideLine').should('be.visible'); //照片底部的文字//
+    
+    cy.get('.justify-content-center > .card-columns > .card')
+      .find('a > img').first().click(); //點擊圖片的測試//
+    cy.wait(500);
+    cy.get('.fancybox-skin').should('be.visible');
 
+    cy.get('.fancybox-skin > .fancybox-outer > a[title="Previous"]')
+      .should('be.visible').click(); //上一頁//
+    cy.wait(1000);
+    cy.get('.fancybox-skin > .fancybox-outer > a[title="Next"]')
+      .should('be.visible').click();  //下一頁//
+    cy.wait(1000);
+    cy.get('.fancybox-skin >.fancybox-title.fancybox-title-float-wrap')
+      .should('be.visible'); //照片底部的文字//
+    cy.get('.fancybox-skin > a[title="Close"]')
+      .should('be.visible').click(); //右上角的關閉鈕//
+    cy.wait(500);  
   });
 };
+
 export const GMF_ShowCaseTests = () => {
   it('should dispaly artist profile and performance schedule\n(預期出現藝人簡介及演出的行程表)', () => {
     cy.get('@GMF').get('.mm2 > a').last().click();
