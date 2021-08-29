@@ -439,10 +439,82 @@ export const GMF_UniversityExchangeTests = () => {
   });
 };
 export const GMF_InternationalForumTests = () => {
-  it('should \n()', () => {
+  it('should display the content includes sessions, theme schedule and speaker information\n(預期呈現內容包括場次、主題時程表及演講者資訊)', () => {
+    cy.get('@GMF').get('.mm2 > a').eq(1).click();
+    cy.wait(1500);
 
+    cy.get('.tip-line .tip-black').should('be.visible'); //title//
+    cy.get('.row .tip-interpret h5').should('be.visible'); //描述//
+    cy.get('.row .tip-interpret .middle3.text-light65 li')
+      .its('length').should('eq', 3); //清單有三筆//
+    
+    cy.get('#myTab a').its('length').should('eq', 2); //兩筆選單//
+    cy.get('#myTab a').should('have.attr', 'href');
+
+    cy.get('#myTab a').last().click();
+    cy.wait(1000);
+    cy.get('#myTab a').last().should('have.class', 'show');
+    cy.get('#myTab a').first().should('not.have.class', 'show');
+
+    cy.get('#myTab a').first().click();
+    cy.wait(1000);
+    cy.get('#myTab a').first().should('have.class', 'show');
+    cy.get('#myTab a').last().should('not.have.class', 'show');
+    
+    cy.get('#nav-tabContent thead td').its('length')
+      .should('eq', 4); //表單標題//
+      
+    const dataClass = [
+      '.c-1',
+      '.c-2',
+      '.c-3',
+    ];
+    dataClass.forEach(item => [
+      cy.get(`#nav-tabContent tbody ${item}`)
+        .should('be.visible') //共有三天//
+    ]);
+      
+    cy.get('#nav-tabContent tbody tr').its('length')
+      .should('eq', 10); //共10個場次//
+
+    cy.get('#nav-tabContent tbody tr a').eq(1).click();
+    cy.wait(1500);
+
+    cy.get('.row.pt-5').first().find('img').should('be.visible');
+
+    const textDom = [
+      'h1', //姓名//
+      'h5', //職稱//
+      'hr', //簡介一//
+      'div', //簡介二//
+    ];
+    textDom.forEach(item => {
+      cy.get('.row.pt-5').first().find('.p-3.px-md-5')
+        .find(`${item}`).should('be.visible');
+    }); 
+
+    cy.get('.text-right.prev_next a').its('length')
+      .should('eq', 3); //上頁，目錄，下頁//
+    cy.get('.text-right.prev_next a')
+      .should('have.attr', 'href');
+    
+    cy.get('.text-right.prev_next a').eq(2).click();
+    cy.wait(2000);
+    cy.url().should('eq', 'https://gma.tavis.tw/gm32/GMF/Conference.asp?P=2&PID=3');
+    //主題3//
+    
+    cy.get('.text-right.prev_next a').eq(0).click();
+    cy.wait(2000);
+    cy.url().should('eq', 'https://gma.tavis.tw/gm32/GMF/Conference.asp?P=2&PID=2');
+    //主題2//
+
+    cy.get('.text-right.prev_next a').eq(1).click();
+    cy.wait(2000);
+    cy.url().should('eq', 'https://gma.tavis.tw/gm32/GMF/Conference.asp?P=1');
+    //回場次時間清單//
   });
 };
+
 export const GMF_TradeFairTradingCenterTests = () => {
   it('should display trade fair trading center Results\n(預期呈現商展交易中心的成果展)', () => {
     cy.get('@GMF').get('.mm2 > a').eq(2).click();
