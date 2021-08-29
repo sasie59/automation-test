@@ -434,10 +434,48 @@ export const GMF_AboutGMATests = () => {
 
 export const GMF_UniversityExchangeTests = () => {
   it('should \n()', () => {
-    // cy.get('@GMF').get('.text-nowrap > a').click();
+    cy.get('@GMF').get('.mm2 > a').eq(0).click();
+    cy.wait(1500);
+    
+    cy.get('.tip-line .tip-black').should('be.visible'); //title//
+    cy.get('.row .tip-interpret h5').should('be.visible'); //描述//
+    
+    cy.get('#myTab a').its('length').should('eq', 5); //五筆選單//
+    cy.get('#myTab a').should('have.attr', 'href');
+    
+    cy.get('#myTab a').eq(0).click();
+    cy.wait(1500);
+
+    const textClass = [
+      '.color',
+      '.line-behind.text-gold',
+      '.mt-5',
+    ];
+    textClass.forEach(item => {
+      cy.get('.ABC.text-gold.pl-lg-5.pr-lg-3').find(`${item}`)
+        .should('be.visible');
+    });
+    for(let i = 0; i < 10; i++) {
+      cy.get('.ABC.text-gold.pl-lg-5.pr-lg-3').find('.mt-5 > h5')
+        .eq(`${i}`).scrollIntoView().should('be.visible');
+      cy.wait(1000);
+    }
+
+    cy.get('#myTab a').eq(1).click();
+    cy.wait(1500);
+
+    // cy.get('#myTab a').eq(2).click();
     // cy.wait(1500);
+
+    // cy.get('#myTab a').eq(3).click();
+    // cy.wait(1500);
+
+    // cy.get('#myTab a').eq(4).click();
+    // cy.wait(1500);
+
   });
 };
+
 export const GMF_InternationalForumTests = () => {
   it('should display the content includes sessions, theme schedule and speaker information\n(預期呈現內容包括場次、主題時程表及演講者資訊)', () => {
     cy.get('@GMF').get('.mm2 > a').eq(1).click();
