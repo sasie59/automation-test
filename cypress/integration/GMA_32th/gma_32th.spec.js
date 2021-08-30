@@ -32,10 +32,10 @@ describe('設定視窗比例', () => {
   describe('金曲國際音樂節主選單', () => {
     tests.GMF_MainMenu();
     tests.GMF_AboutGMATests();
-    // tests.GMF_UniversityExchangeTests();
-    // tests.GMF_InternationalForumTests();
-    // tests.GMF_TradeFairTradingCenterTests();
-    // tests.GMF_ShowCaseTests();
+    tests.GMF_UniversityExchangeTests();
+    tests.GMF_InternationalForumTests();
+    tests.GMF_TradeFairTradingCenterTests();
+    tests.GMF_ShowCaseTests();
   });
 
   describe('金曲獎頒獎典禮主選單', () => {
