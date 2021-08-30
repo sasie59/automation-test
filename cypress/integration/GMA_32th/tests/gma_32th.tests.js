@@ -443,34 +443,60 @@ export const GMF_UniversityExchangeTests = () => {
     cy.get('#myTab a').its('length').should('eq', 5); //五筆選單//
     cy.get('#myTab a').should('have.attr', 'href');
     
-    cy.get('#myTab a').eq(0).click();
-    cy.wait(1500);
-
-    const textClass = [
-      '.color',
-      '.line-behind.text-gold',
-      '.mt-5',
-    ];
-    textClass.forEach(item => {
-      cy.get('.ABC.text-gold.pl-lg-5.pr-lg-3').find(`${item}`)
-        .should('be.visible');
-    });
-    for(let i = 0; i < 10; i++) {
-      cy.get('.ABC.text-gold.pl-lg-5.pr-lg-3').find('.mt-5 > h5')
-        .eq(`${i}`).scrollIntoView().should('be.visible');
-      cy.wait(1000);
-    }
-
-    cy.get('#myTab a').eq(1).click();
-    cy.wait(1500);
-
-    // cy.get('#myTab a').eq(2).click();
+    // cy.get('#myTab a').eq(0).click();
     // cy.wait(1500);
 
-    // cy.get('#myTab a').eq(3).click();
+    // const textClass = [
+    //   '.color',
+    //   '.line-behind.text-gold',
+    //   '.mt-5',
+    // ];
+    // textClass.forEach(item => {
+    //   cy.get('.ABC.text-gold.pl-lg-5.pr-lg-3').find(`${item}`)
+    //     .should('be.visible');
+    // });
+    // for(let i = 0; i < 10; i++) {
+    //   cy.get('.ABC.text-gold.pl-lg-5.pr-lg-3').find('.mt-5 > h5')
+    //     .eq(`${i}`).scrollIntoView().should('be.visible');
+    //   cy.wait(1000);
+    // }
+
+    // cy.get('#myTab a').eq(1).scrollIntoView().click();
     // cy.wait(1500);
 
-    // cy.get('#myTab a').eq(4).click();
+    // cy.get('#nav-2').find('.row .col-6.col-lg-4').its('length')
+    //   .should('eq', 9);  //9位導師//  
+    
+    // for(let i = 0; i < 9; i++) {
+    //   cy.get('.col-6.col-lg-4 a').eq(`${i}`)
+    //     .should('have.attr', 'href');
+    //   cy.get('.col-6.col-lg-4 a img').eq(`${i}`)
+    //     .should('have.attr', 'src');
+    //   cy.get('.col-6.col-lg-4 a .photo_overlay_text').eq(`${i}`)
+    //     .should('be.visible'); //姓名//
+    //   cy.get('.col-6.col-lg-4 a .photo_overlay_text .middle1').eq(`${i}`)
+    //     .should('be.visible'); //指導部分//
+    //   cy.wait(1000);
+    // }
+
+    // cy.get('#myTab a').eq(2).scrollIntoView().click();
+    // cy.wait(1500);
+
+    // cy.get('.fancybox-skin .fancybox-outer')
+    //   .should('be.visible'); //導師簡介//
+    // cy.get('.fancybox-skin a[title="Close"]')
+    //   .should('be.visible').click(); //右上角的關閉鈕//
+    // cy.wait(500);
+
+    cy.get('#myTab a').eq(3).scrollIntoView().click();
+    cy.wait(1500);
+
+    cy.get('.line-behind.text-gold').find('.line-behind-title')
+      .should('be.visible');
+    cy.get('.line-behind.text-gold').find('.line-behind-tail')
+      .should('be.visible');
+
+    // cy.get('#myTab a').eq(4).scrollIntoView().click();
     // cy.wait(1500);
 
   });
