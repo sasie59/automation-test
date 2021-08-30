@@ -409,6 +409,61 @@ export const GMA_MainMenu = () => {
   beforeEach(() => {
     cy.get('#menu_button').click();
     cy.wait(1000);
+    cy.get('.row.no-gutters.pt-3').as('GMA');
+  });
+};
+
+export const GMA_BroadcastMessageTests = () => {
+  it('should into broadcast message page\n(預期進入播出訊息頁面)', () => {
+    cy.get('@GMA').find('.mm a').eq(0).click();
+    cy.wait(1500);
+    cy.url().should('eq', 'https://gma.tavis.tw/gm32/GMA/default.asp');
+    // tests.GMA_CarouselTests();
+    // tests.GMA_PageNavigationTests();
+    // tests.GMA_UnitTests();
+    //這三項已獨立驗証過//
+  });
+};
+
+export const GMA_AppLinksTests = () => {
+  it('should \n()', () => {
+    
+  });
+};
+
+export const GMA_LiveTests = () => {
+  it('should \n()', () => {
+    
+  });
+};
+
+export const GMA_ShortlistedListTests = () => {
+  it('should \n()', () => {
+    
+  });
+};
+
+export const GMA_PastWinnersListTests = () => {
+  it('should \n()', () => {
+    
+  });
+};
+
+export const GMA_TrailerTests = () => {
+  it('should \n()', () => {
+    
+  });
+};
+
+export const GMA_HeatTests = () => {
+  it('should \n()', () => {
+    
+  });
+};
+
+export const GMA_CeremonyLocationTests = () => {
+  it('should \n()', () => {
+    
   });
 };
 
@@ -425,10 +480,12 @@ export const GMF_AboutGMATests = () => {
     cy.get('@GMF').get('.dropdown-header').eq(4).find('a').click();
     cy.wait(1500);
     cy.get('#main-top').should('be.visible');
-    // tests.GMA_CarouselTests();
-    // tests.GMA_PageNavigationTests();
-    // tests.GMA_UnitTests();
-    //這三項已獨立驗証過//
+    // tests.GMF_CarouselTests();
+    // tests.GMF_IntroductionTests();
+    // tests.GMF_SeriesOfActivitiesTests();
+    // tests.GMF_SuccessiveLinksTests();
+    // tests.GMF_UnitTests();
+    //這五項已獨立驗証過//
   });
 };
 
