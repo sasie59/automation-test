@@ -433,7 +433,7 @@ export const GMF_AboutGMATests = () => {
 };
 
 export const GMF_UniversityExchangeTests = () => {
-  it('should \n()', () => {
+  it('should into page display registration method, teacher introduction, course tutors, results announcements, highlights photos\n(預期進入頁面呈現: 報名辦法、師資介紹、課程導師、成果發表、花絮照片)', () => {
     cy.get('@GMF').get('.mm2 > a').eq(0).click();
     cy.wait(1500);
     
@@ -443,62 +443,88 @@ export const GMF_UniversityExchangeTests = () => {
     cy.get('#myTab a').its('length').should('eq', 5); //五筆選單//
     cy.get('#myTab a').should('have.attr', 'href');
     
-    // cy.get('#myTab a').eq(0).click();
-    // cy.wait(1500);
+    cy.get('#myTab a').eq(0).click();
+    cy.wait(1500);
 
-    // const textClass = [
-    //   '.color',
-    //   '.line-behind.text-gold',
-    //   '.mt-5',
-    // ];
-    // textClass.forEach(item => {
-    //   cy.get('.ABC.text-gold.pl-lg-5.pr-lg-3').find(`${item}`)
-    //     .should('be.visible');
-    // });
-    // for(let i = 0; i < 10; i++) {
-    //   cy.get('.ABC.text-gold.pl-lg-5.pr-lg-3').find('.mt-5 > h5')
-    //     .eq(`${i}`).scrollIntoView().should('be.visible');
-    //   cy.wait(1000);
-    // }
+    const textClass = [
+      '.color',
+      '.line-behind.text-gold',
+      '.mt-5',
+    ];
+    textClass.forEach(item => {
+      cy.get('.ABC.text-gold.pl-lg-5.pr-lg-3').find(`${item}`)
+        .should('be.visible');
+    });
+    for(let i = 0; i < 10; i++) {
+      cy.get('.ABC.text-gold.pl-lg-5.pr-lg-3').find('.mt-5 > h5')
+        .eq(`${i}`).scrollIntoView().should('be.visible');
+      cy.wait(1000);
+    }
 
-    // cy.get('#myTab a').eq(1).scrollIntoView().click();
-    // cy.wait(1500);
+    cy.get('#myTab a').eq(1).scrollIntoView().click();
+    cy.wait(1500);
 
-    // cy.get('#nav-2').find('.row .col-6.col-lg-4').its('length')
-    //   .should('eq', 9);  //9位導師//  
+    cy.get('#nav-2').find('.row .col-6.col-lg-4').its('length')
+      .should('eq', 9);  //9位導師//  
     
-    // for(let i = 0; i < 9; i++) {
-    //   cy.get('.col-6.col-lg-4 a').eq(`${i}`)
-    //     .should('have.attr', 'href');
-    //   cy.get('.col-6.col-lg-4 a img').eq(`${i}`)
-    //     .should('have.attr', 'src');
-    //   cy.get('.col-6.col-lg-4 a .photo_overlay_text').eq(`${i}`)
-    //     .should('be.visible'); //姓名//
-    //   cy.get('.col-6.col-lg-4 a .photo_overlay_text .middle1').eq(`${i}`)
-    //     .should('be.visible'); //指導部分//
-    //   cy.wait(1000);
-    // }
+    for(let i = 0; i < 9; i++) {
+      cy.get('.col-6.col-lg-4 a').eq(`${i}`)
+        .should('have.attr', 'href');
+      cy.get('.col-6.col-lg-4 a img').eq(`${i}`)
+        .should('have.attr', 'src');
+      cy.get('.col-6.col-lg-4 a .photo_overlay_text').eq(`${i}`)
+        .should('be.visible'); //姓名//
+      cy.get('.col-6.col-lg-4 a .photo_overlay_text .middle1').eq(`${i}`)
+        .should('be.visible'); //指導部分//
+      cy.wait(1000);
+    }
 
-    // cy.get('#myTab a').eq(2).scrollIntoView().click();
-    // cy.wait(1500);
+    cy.get('#myTab a').eq(2).scrollIntoView().click();
+    cy.wait(1500);
 
-    // cy.get('.fancybox-skin .fancybox-outer')
-    //   .should('be.visible'); //導師簡介//
-    // cy.get('.fancybox-skin a[title="Close"]')
-    //   .should('be.visible').click(); //右上角的關閉鈕//
-    // cy.wait(500);
+    cy.get('.fancybox-skin .fancybox-outer')
+      .should('be.visible'); //導師簡介//
+    cy.get('.fancybox-skin a[title="Close"]')
+      .should('be.visible').click(); //右上角的關閉鈕//
+    cy.wait(500);
 
     cy.get('#myTab a').eq(3).scrollIntoView().click();
     cy.wait(1500);
 
     cy.get('.line-behind.text-gold').find('.line-behind-title')
-      .should('be.visible');
+      .should('be.visible'); //title//
     cy.get('.line-behind.text-gold').find('.line-behind-tail')
-      .should('be.visible');
+      .should('be.visible'); //title//
 
-    // cy.get('#myTab a').eq(4).scrollIntoView().click();
-    // cy.wait(1500);
+    cy.get('.ABC.text-gold.pl-lg-5.pr-lg-3').last().find('.mt-5')
+      .its('length').should('eq', 5); //5組獎項//
 
+    for(let i = 0; i < 5; i++) {
+      cy.get('.ABC.text-gold.pl-lg-5.pr-lg-3').last().find('.mt-5')
+        .eq(`${i}`).scrollIntoView().should('be.visible');
+      cy.wait(1000);
+    }
+
+    cy.get('#myTab a').eq(4).scrollIntoView().click();
+    cy.wait(1500);
+
+    cy.get('#PhotoWall').find('.mb-3').its('length')
+      .should('eq', 12); //共12張照片//
+
+    cy.get('#PhotoWall').find('.mb-3').eq(0).click();
+    cy.wait(1000); //點擊第一張照片//
+
+    cy.get('.fancybox-skin .fancybox-outer').find('a[title="Previous"]')
+      .should('be.visible').click(); //上一張//
+    cy.wait(1000);
+
+    cy.get('.fancybox-skin .fancybox-outer').find('a[title="Next"]')
+      .should('be.visible').click(); //下一張//
+    cy.wait(1000);
+
+    cy.get('.fancybox-skin .child').should('be.visible'); //底部文字//
+    cy.get('.fancybox-skin a[title="Close"]') //右上角的關閉鈕//
+      .should('be.visible').click();
   });
 };
 
