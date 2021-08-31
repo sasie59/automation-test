@@ -435,18 +435,32 @@ export const GMA_AppLinksTests = () => {
     cy.get('#main-top').find('.row').should('be.visible'); //app的功能簡介//
 
     cy.get('.row.px-1.mx-1.px-md-5').find('.row a').its('length')
-      .should('eq', 2);
+      .should('eq', 2); //ios & Android 兩種平台// 
+
     cy.get('.row.px-1.mx-1.px-md-5').find('.row a')
       .should('have.attr', 'target', '_blank', 'href');
     cy.get('.row.px-1.mx-1.px-md-5').find('.row a img')
       .should('have.attr', 'src');
-
   });
 };
 
 export const GMA_LiveTests = () => {
-  it('should \n()', () => {
-    
+  it('should into page display link with pop-up window \n(預期進入頁面後呈現具有彈出視窗的連結)', () => {
+    cy.get('@GMA').find('.mm a').eq(2).click();
+    cy.wait(1500);
+
+    cy.get('#main-top').find('.tip-title').should('be.visible');
+    //title//
+    cy.get('.tip-interpret').find('.col-md-4.pb-3.pb-md-1')
+      .its('length').should('eq', 6);
+
+    for(let i = 1; i <= 6; i++) {
+      cy.get('.tip-interpret').find(`.order-md-${i} > a`)
+        .should('have.attr', 'target', '_blank', 'href'); //連結//
+      cy.get('.tip-interpret').find(`.order-md-${i} > a > img`)
+        .should('have.attr', 'src'); //照片//
+      cy.wait(1000);
+    }
   });
 };
 
