@@ -426,8 +426,21 @@ export const GMA_BroadcastMessageTests = () => {
 };
 
 export const GMA_AppLinksTests = () => {
-  it('should \n()', () => {
-    
+  it('should into page display QRCode of two platforms, and has the attribute of pop-up window\n(預期進入頁面後呈現兩種平台的QRCode,且具有彈出視窗的屬性)', () => {
+    cy.get('@GMA').find('.mm a').eq(1).click();
+    cy.wait(1500);
+    cy.url().should('eq', 'https://gma.tavis.tw/gm32/GMA/App.asp');
+
+    cy.get('#main-top').find('.d-flex').should('be.visible'); //金曲APP//
+    cy.get('#main-top').find('.row').should('be.visible'); //app的功能簡介//
+
+    cy.get('.row.px-1.mx-1.px-md-5').find('.row a').its('length')
+      .should('eq', 2);
+    cy.get('.row.px-1.mx-1.px-md-5').find('.row a')
+      .should('have.attr', 'target', '_blank', 'href');
+    cy.get('.row.px-1.mx-1.px-md-5').find('.row a img')
+      .should('have.attr', 'src');
+
   });
 };
 
