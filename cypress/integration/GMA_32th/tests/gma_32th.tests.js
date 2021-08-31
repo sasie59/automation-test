@@ -466,31 +466,51 @@ export const GMA_LiveTests = () => {
 
 export const GMA_ShortlistedListTests = () => {
   it('should \n()', () => {
-    
+    cy.get('@GMA').find('.nominee').click();
+    cy.wait(1500);
   });
 };
 
 export const GMA_PastWinnersListTests = () => {
   it('should \n()', () => {
+    cy.get('@GMA').get('.col-md').eq(1)
+      .find('p a').last().click();
+    cy.wait(1500);
+  });
+};
+
+export const GMA_AudioAndVideoTests = () => {
+  it('should \n()', () => {
+    cy.get('@GMA').get('.col-md').eq(2)
+      .find('.mm').eq(0).click();
+    cy.wait(1500);
     
   });
 };
 
 export const GMA_TrailerTests = () => {
   it('should \n()', () => {
+    cy.get('@GMA').get('.col-md').eq(2)
+      .find('.mm a').eq(1).click();
+    cy.wait(1500);
     
   });
 };
 
 export const GMA_HeatTests = () => {
   it('should \n()', () => {
+    cy.get('@GMA').get('.col-md').eq(2)
+      .find('.mm a').eq(2).click();
+    cy.wait(1500);
     
   });
 };
 
 export const GMA_CeremonyLocationTests = () => {
   it('should \n()', () => {
-    
+    cy.get('@GMA').get('.col-md').eq(3)
+      .find('a').click();
+    cy.wait(1500);
   });
 };
 
