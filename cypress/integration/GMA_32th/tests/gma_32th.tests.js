@@ -468,14 +468,31 @@ export const GMA_ShortlistedListTests = () => {
   it('should \n()', () => {
     cy.get('@GMA').find('.nominee').click();
     cy.wait(1500);
+
   });
 };
 
 export const GMA_PastWinnersListTests = () => {
-  it('should \n()', () => {
+  it('should into page later, click on the GMA for each session, and the list of winners will appear below\n(預期進入頁面後,點擊各屆金曲獎 以下出現得獎名單)', () => {
     cy.get('@GMA').get('.col-md').eq(1)
       .find('p a').last().click();
     cy.wait(1500);
+    
+    cy.get('#main-top').find('.tip-line').should('be.visible'); //title//
+    
+    cy.get('#tip-content .justify-content-around a').its('length')
+      .should('eq', 31);
+    cy.get('#tip-content .justify-content-around a')
+      .should('have.attr', 'href'); 
+      
+    cy.get('#tip-content').find('.list-group > .active_T')
+      .should('be.visible'); //得獎名單//
+    
+    for(let i = 0; i < 31; i++) {
+      cy.get('#tip-content').find('.justify-content-around > a').eq(`${i}`).click();
+      cy.wait(500);
+      cy.get('.br').last().scrollIntoView({ duration: 3000 });
+    }
   });
 };
 
