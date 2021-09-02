@@ -465,10 +465,19 @@ export const GMA_LiveTests = () => {
 };
 
 export const GMA_ShortlistedListTests = () => {
-  it('should \n()', () => {
+  it('should into page later, display all shortlists\n(預期進入頁面後會呈現所有入圍名單)', () => {
     cy.get('@GMA').find('.nominee').click();
     cy.wait(1500);
 
+    cy.get('#main-top').find('.tip-line').should('be.visible'); //title//
+
+    cy.get('.px-0.px-md-5 .award-category').its('length')
+      .should('eq', 8); //八大入圍名單//
+
+    for(let i = 0; i < 8; i++) {
+      cy.get('.list-group-item').eq(`${i}`)
+        .scrollIntoView({ duration: 4000 });
+    } //所有入圍名單//
   });
 };
 
