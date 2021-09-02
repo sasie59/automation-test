@@ -533,10 +533,26 @@ export const GMA_HeatTests = () => {
 };
 
 export const GMA_CeremonyLocationTests = () => {
-  it('should \n()', () => {
+  it('should into page later, display information about the place\n(預期進入頁面後,呈現地點的相關資訊)', () => {
     cy.get('@GMA').get('.col-md').eq(3)
       .find('a').click();
     cy.wait(1500);
+
+    cy.get('#main-top').find('.tip-line').should('be.visible'); //title//
+
+    cy.get('.row.justify-content-center > .col-md-4.mt-md-1 img')
+      .should('have.attr', 'src'); //左邊圖案//
+      
+    const rightClass = [
+      '.bold.text-gold',
+      '.text-light',
+      'a',
+      '#map-container',
+    ];
+    rightClass.forEach(item => {
+      cy.get('.row.justify-content-center > .col-md-8').first()
+        .find(`${item}`).should('be.visible'); //地點資訊//
+    });
   });
 };
 
