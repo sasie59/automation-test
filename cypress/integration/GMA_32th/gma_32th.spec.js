@@ -30,24 +30,25 @@ describe('設定視窗比例', () => {
   });
 
   describe('金曲國際音樂節主選單', () => {
-    tests.GMF_MainMenu();
-    tests.GMF_AboutGMATests();
-    tests.GMF_UniversityExchangeTests();
-    tests.GMF_InternationalForumTests();
-    tests.GMF_TradeFairTradingCenterTests();
-    tests.GMF_ShowCaseTests();
+    // tests.GMF_MainMenu();
+    // tests.GMF_AboutGMATests();
+    // tests.GMF_UniversityExchangeTests();
+    // tests.GMF_InternationalForumTests();
+    // tests.GMF_TradeFairTradingCenterTests();
+    // tests.GMF_ShowCaseTests();
   });
 
   describe('金曲獎頒獎典禮主選單', () => {
-    // tests.GMA_MainMenu();
-    // tests.GMA_BroadcastMessageTests();
-    // tests.GMA_AppLinksTests();
-    // tests.GMA_LiveTests();
-    // tests.GMA_ShortlistedListTests();
-    // tests.GMA_PastWinnersListTests();
-    // tests.GMA_TrailerTests();
-    // tests.GMA_HeatTests();
-    // tests.GMA_CeremonyLocationTests();
+    tests.GMA_MainMenu();
+    tests.GMA_BroadcastMessageTests();
+    tests.GMA_AppLinksTests();
+    tests.GMA_LiveTests();
+    tests.GMA_ShortlistedListTests();
+    tests.GMA_PastWinnersListTests();
+    tests.GMA_AudioAndVideoTests();
+    tests.GMA_TrailerTests();
+    tests.GMA_HeatTests();
+    tests.GMA_CeremonyLocationTests();
   });
 
   describe('共同擁有的元素', () => {
