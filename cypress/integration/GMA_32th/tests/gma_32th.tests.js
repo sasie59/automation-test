@@ -161,18 +161,6 @@ export const GMA_UnitTests = () => {
   });
 };
 
-export const GMF_MainMenuTests = () => {
-  it('should display GMF Main Menu\n(預期呈現金曲國際音樂節主選單)', () => {
-
-  });
-};
-
-export const GMA_MainMenuTests = () => {
-  it('should display GMA Main Menu\n(預期呈現金曲獎頒獎典禮主選單)', () => {
-
-  });
-};
-
 export const DefineElements = () => {
   beforeEach(() => {
     cy.get('.navbar.navbar-expand-md.navbar-dark.fixed-top').as('title');
@@ -534,7 +522,7 @@ export const GMA_AudioAndVideoTests = () => {
 };
 
 export const GMA_TrailerTests = () => {
-  it('should should into page later, display Video and audio clips of the trailer\n(預期進入頁面後,呈現預告花絮的影音片段)', () => {
+  it('should into page later, display Video and audio clips of the trailer\n(預期進入頁面後,呈現預告花絮的影音片段)', () => {
     cy.get('@GMA').get('.col-md').eq(2)
       .find('.mm a').eq(1).click();
     cy.wait(1500);
@@ -562,11 +550,30 @@ export const GMA_TrailerTests = () => {
 };
 
 export const GMA_HeatTests = () => {
-  it('should \n()', () => {
+  it('should into page later, display Video clips of the finalists special\n(預期進入頁面後,呈現入圍者特輯的影音片段)', () => {
     cy.get('@GMA').get('.col-md').eq(2)
       .find('.mm a').eq(2).click();
     cy.wait(1500);
     
+    cy.get('#main-top').find('.tip-line').should('be.visible'); //title//
+    
+    cy.get('#main-top').find('.row .col-md-6')
+      .its('length').should('eq', 46); //46則影音//
+    
+    for(let i = 0; i < 46; i++) {
+      cy.get('#main-top').find('.row .col-md-6 a').eq(`${i}`)
+        .should('have.attr', 'href');
+      cy.get('#main-top').find('.row .col-md-6 > a img').eq(`${i}`)
+        .should('have.attr', 'src');
+        
+      cy.get('#main-top').find('.row .col-md-6 a').eq(`${i}`)
+        .click();
+      cy.wait(5000);
+    
+      cy.get('.fancybox-wrap').find('div[title="Close"]')
+        .should('be.visible').click();
+      cy.wait(500);
+    }
   });
 };
 
