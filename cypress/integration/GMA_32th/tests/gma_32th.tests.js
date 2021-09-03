@@ -534,11 +534,30 @@ export const GMA_AudioAndVideoTests = () => {
 };
 
 export const GMA_TrailerTests = () => {
-  it('should \n()', () => {
+  it('should should into page later, display Video and audio clips of the trailer\n(預期進入頁面後,呈現預告花絮的影音片段)', () => {
     cy.get('@GMA').get('.col-md').eq(2)
       .find('.mm a').eq(1).click();
     cy.wait(1500);
     
+    cy.get('#main-top').find('.tip-line').should('be.visible'); //title//
+    
+    cy.get('#main-top').find('.row .col-md-6')
+      .its('length').should('eq', 37); //37則影音//
+    
+    for(let i = 0; i < 37; i++) {
+      cy.get('#main-top').find('.row .col-md-6 a').eq(`${i}`)
+        .should('have.attr', 'href');
+      cy.get('#main-top').find('.row .col-md-6 > a img').eq(`${i}`)
+        .should('have.attr', 'src');
+        
+      cy.get('#main-top').find('.row .col-md-6 a').eq(`${i}`)
+        .click();
+      cy.wait(5000);
+    
+      cy.get('.fancybox-wrap').find('div[title="Close"]')
+        .should('be.visible').click();
+      cy.wait(500);
+    }
   });
 };
 
