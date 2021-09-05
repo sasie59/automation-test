@@ -493,7 +493,7 @@ export const GMA_AudioAndVideoTests = () => {
         
       cy.get('#main-top').find('.row .col-md-6 a').eq(`${i}`)
         .click();
-      cy.wait(100);
+      cy.wait(3000);
 
       cy.get('.fancybox-wrap').find('div[title="Close"]')
         .should('be.visible').click();
@@ -521,7 +521,7 @@ export const GMA_TrailerTests = () => {
         
       cy.get('#main-top').find('.row .col-md-6 a').eq(`${i}`)
         .click();
-      cy.wait(100);
+      cy.wait(3000);
     
       cy.get('.fancybox-wrap').find('div[title="Close"]')
         .should('be.visible').click();
@@ -549,7 +549,7 @@ export const GMA_HeatTests = () => {
         
       cy.get('#main-top').find('.row .col-md-6 a').eq(`${i}`)
         .click();
-      cy.wait(100);
+      cy.wait(3000);
     
       cy.get('.fancybox-wrap').find('div[title="Close"]')
         .should('be.visible').click();
