@@ -14,28 +14,28 @@ describe('設定視窗比例', () => {
   });
 
   describe('2021金曲國際音樂節', () => {
-    // tests.Into2021GoldenMelodyFestivalTests();
-    // tests.GMF_CarouselTests();
-    // tests.GMF_IntroductionTests();
-    // tests.GMF_SeriesOfActivitiesTests();
-    // tests.GMF_SuccessiveLinksTests();
-    // tests.GMF_UnitTests();
+    tests.Into2021GoldenMelodyFestivalTests();
+    tests.GMF_CarouselTests();
+    tests.GMF_IntroductionTests();
+    tests.GMF_SeriesOfActivitiesTests();
+    tests.GMF_SuccessiveLinksTests();
+    tests.GMF_UnitTests();
   });
 
   describe('第32屆金曲獎頒獎典禮', () => {
     tests.Into32thGoldenMelodyAwardsTests();
-    // tests.GMA_CarouselTests();
-    // tests.GMA_PageNavigationTests();
-    // tests.GMA_UnitTests();
+    tests.GMA_CarouselTests();
+    tests.GMA_PageNavigationTests();
+    tests.GMA_UnitTests();
   });
 
   describe('金曲國際音樂節主選單', () => {
-    // tests.GMF_MainMenu();
-    // tests.GMF_AboutGMATests();
-    // tests.GMF_UniversityExchangeTests();
-    // tests.GMF_InternationalForumTests();
-    // tests.GMF_TradeFairTradingCenterTests();
-    // tests.GMF_ShowCaseTests();
+    tests.GMF_MainMenu();
+    tests.GMF_AboutGMATests();
+    tests.GMF_UniversityExchangeTests();
+    tests.GMF_InternationalForumTests();
+    tests.GMF_TradeFairTradingCenterTests();
+    tests.GMF_ShowCaseTests();
   });
 
   describe('金曲獎頒獎典禮主選單', () => {
@@ -52,14 +52,13 @@ describe('設定視窗比例', () => {
   });
 
   describe('共同擁有的元素', () => {
-    // tests.DefineElements();
-    // tests.BothTitleTests();
-    // tests.LatestNewsTests();
-    // tests.MediaRegistrationTests();
-    // tests.VendorZoneTests();
-    // tests.LanguageSwitchTests();
-    // tests.SocialMediaTests();
-    // tests.GoTopTests();
+    tests.DefineElements();
+    tests.SocialMediaTests();
+    tests.BothTitleTests();
+    tests.LatestNewsTests();
+    tests.MediaRegistrationTests();
+    tests.VendorZoneTests();
+    tests.LanguageSwitchTests();
   });
 
 });
