@@ -163,8 +163,8 @@ export const GMA_UnitTests = () => {
 
 export const DefineElements = () => {
   beforeEach(() => {
-    cy.get('.navbar.navbar-expand-md.navbar-dark.fixed-top').as('title');
-    cy.get('.social_media.d-none.d-md-block').as('side');
+    cy.get('#navbarCollapse').as('title');
+    
   });
 };
 
@@ -261,6 +261,7 @@ export const VendorZoneTests = () => {
     cy.wait(1500);
     cy.url().should('eq', 'https://gma.tavis.tw/GM32/Member/SignIn.aspx');
 
+    //金曲獎已結束 無法接下來的註冊行為//
     //1.帳號資訊//
     // cy.get('#cphContent_txtLastName').type('謝');
     // cy.get('#cphContent_txtLastName').should('have.value', '謝');
@@ -350,46 +351,26 @@ export const VendorZoneTests = () => {
 
 export const LanguageSwitchTests = () => {
   it('should can language switch\n(預期可以語言切換)', () => {
-    cy.get('@title').get('.navbar-nav.justify-content-end.pl-2.pl-md-0 > a')
-      .its('length').should('eq', 2);
-
-    cy.get('.navbar-nav.justify-content-end.pl-2.pl-md-0 > a')
+    cy.get('.navbar-nav .nav-item')
       .last().click(); //英文//
     cy.wait(2000);
 
-    cy.get('#menu_button').contains('Golden Melody Awards')
+    cy.get('.form-signin-heading').contains('Log In')
       .should('be.visible');
-    cy.get('#menu_button2').contains('Golden Melody Festival')
-      .should('be.visible');
-
-    cy.get('.navbar-nav.justify-content-end.pl-2.pl-md-0 > a')
+      
+    cy.get('.navbar-nav .nav-item').eq(3)
       .first().click(); //中文//
     cy.wait(2000);
-
-    cy.get('#menu_button').contains('金曲獎頒獎典禮')
-      .should('be.visible');
-    cy.get('#menu_button2').contains('金曲國際音樂節')
+      
+    cy.get('.form-signin-heading').contains('登入')
       .should('be.visible');
   });
 };
 
 export const SocialMediaTests = () => {
   it('should 4 kinds of social media links, and have the attribute of opening another window\n(預期有4種社群媒體連結,且具有另開視窗的屬性)', () => {
-    cy.get('@side').find('a').its('length').should('eq', 4);
-    cy.get('@side').find('a').should('have.attr', 'target', '_blank', 'href');
-  });
-};
-
-export const GoTopTests = () => {
-  it('should press the inverted triangle button and it will slide to the top of the page\n(預期按倒三角按鈕，會滑至頁首)', () => {
-    cy.get('footer').scrollIntoView();
-    cy.wait(1500);
-
-    cy.get('#top-navigator').should('be.visible').click();
-    cy.wait(1500);
-
-    cy.get('.navbar.navbar-expand-md.navbar-dark.fixed-top')
-      .should('be.visible');
+    cy.get('.social_media').find('a').its('length').should('eq', 4);
+    cy.get('.social_media').find('a').should('have.attr', 'target', '_blank', 'href');
   });
 };
 
@@ -512,7 +493,7 @@ export const GMA_AudioAndVideoTests = () => {
         
       cy.get('#main-top').find('.row .col-md-6 a').eq(`${i}`)
         .click();
-      cy.wait(5000);
+      cy.wait(100);
 
       cy.get('.fancybox-wrap').find('div[title="Close"]')
         .should('be.visible').click();
@@ -540,7 +521,7 @@ export const GMA_TrailerTests = () => {
         
       cy.get('#main-top').find('.row .col-md-6 a').eq(`${i}`)
         .click();
-      cy.wait(5000);
+      cy.wait(100);
     
       cy.get('.fancybox-wrap').find('div[title="Close"]')
         .should('be.visible').click();
@@ -568,7 +549,7 @@ export const GMA_HeatTests = () => {
         
       cy.get('#main-top').find('.row .col-md-6 a').eq(`${i}`)
         .click();
-      cy.wait(5000);
+      cy.wait(100);
     
       cy.get('.fancybox-wrap').find('div[title="Close"]')
         .should('be.visible').click();
