@@ -62,3 +62,4 @@ describe('設定視窗比例', () => {
   });
 
 });
+// 已同步更新至104, CakeResume, LinkedIn
