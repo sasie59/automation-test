@@ -6,15 +6,15 @@ Cypress.on("uncaught:exception", (err, runnable) => {
 
 describe('振興五倍卷', () => {
   beforeEach(() => {
-    cy.viewport(800, 1000);
+    cy.viewport(1200, 1000);
   });
-  
+
   describe('前往振興五倍卷', () => {
     tests.GoTo5000Tests();
   });
 
   describe('首頁導覽', () => {
-    // tests.HomeTourTests();
+    tests.HomeTourTests();
     // tests.ZoomOutAndEnlargetests();
   });
 
@@ -59,5 +59,5 @@ describe('振興五倍卷', () => {
   describe('切換語系', () => {
     // tests.SwitchLanguageTests();
   });
-  
+
 });
