@@ -15,7 +15,7 @@ describe('振興五倍卷', () => {
 
   describe('首頁導覽', () => {
     tests.HomeTourTests();
-    // tests.ZoomOutAndEnlargetests();
+    tests.ZoomOutAndEnlargetests();
   });
 
   describe('使用方式', () => {
