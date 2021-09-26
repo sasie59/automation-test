@@ -1,8 +1,7 @@
 export const GoTo5000Tests = () => {
   it('should go to 5000 index\n(預期連結振興五倍卷)', () => {
-    cy.visit('https://5000.gov.tw/');
+    cy.visit('https://hpm.5000.gov.tw/Default.aspx');
     cy.wait(2000);
-    cy.get('.simple-text.major-logo a').should('have.attr', 'href');
     //title振興五倍卷//
   });
 };
@@ -43,8 +42,17 @@ export const HomeTourTests = () => {
 };
 
 export const ZoomOutAndEnlargetests = () => {
-  it('should ', () => {
+  it('should click to zoom\n(預期點擊可縮放)', () => {
+    cy.get('.simple-text.btn.go a').should('have.attr', 'href');
+    cy.get('.simple-text.btn.go a').contains('最小化').should('be.visible');
+    //右下角「最小化」//
+    cy.get('.simple-text.btn.go a[title="最小化[縮放]"]').click();
+    cy.wait(1000);
+    cy.get('.simple-text.btn.go a[title="最大化[縮放]"]').should('be.visible');
 
+    cy.get('.simple-text.btn.go a[title="最大化[縮放]"]').click();
+    cy.wait(1000);
+    cy.get('.simple-text.btn.go a[title="最小化[縮放]"]').should('be.visible');
   });
 };
 
