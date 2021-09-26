@@ -14,15 +14,13 @@ describe('振興五倍卷', () => {
   });
 
   describe('首頁導覽', () => {
-    tests.HomeTourTests();
-    tests.ZoomOutAndEnlargetests();
+    // tests.HomeTourTests();
+    // tests.ZoomOutAndEnlargetests();
   });
 
   describe('使用方式', () => {
-    // tests.TypeToUse();
-    // tests.CreditCardTests();
-    // tests.E_TicketTests();
-    // tests.MobilePaymentTests();
+    tests.TypeToUse();
+    tests.DigitalBindingTests();
     // tests.PaperRollTests();
   });
 

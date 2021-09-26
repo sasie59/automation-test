@@ -1,7 +1,7 @@
 export const GoTo5000Tests = () => {
   it('should go to 5000 index\n(預期連結振興五倍卷)', () => {
     cy.visit('https://hpm.5000.gov.tw/Default.aspx');
-    cy.wait(2000);
+    cy.wait(1000);
     //title振興五倍卷//
   });
 };
@@ -58,25 +58,78 @@ export const ZoomOutAndEnlargetests = () => {
 
 export const TypeToUse = () => {
   beforeEach(() => {
-
+    cy.get('.group.base-mobile a[title="必[手機版選單]"]').click();
+    cy.wait(1000);
   });
 };
 
-export const CreditCardTests = () => {
-  it('should ', () => {
+export const DigitalBindingTests = () => {
+  it('should display there are several ways of digital binding\n(預期介紹數位綁定有幾點方式)', () => {
+    cy.get('.group-list.nav ul[data-index="1"]')
+      .find('li').eq(0).click();
+    cy.get('.list-text.nav').eq(0).find('li')
+      .its('length').should('eq', 3); //數位綁定有三種方式//
 
-  });
-};
+    cy.get('.list-text.nav').eq(0).find('li').eq(0)
+      .click(); //信用卡//
+    cy.wait(500);
+    cy.url().should('eq', 'https://hpm.5000.gov.tw/News_Photo.aspx?n=193&sms=9199');
 
-export const E_TicketTests = () => {
-  it('should ', () => {
+    cy.get('.simple-text.heading').should('be.visible');
+    //title//
+    cy.get('.group-list.page-block .area-figure.page-figure').its('length')
+      .should('eq', 31); //31家信用卡//
 
-  });
-};
+    for(let i = 1; i <= 31; i++) {
+      cy.get(`li[data-index=${i}] a`)
+        .should('have.attr', 'href')
+        .get('.img img').should('have.attr', 'src')
+        .get('.essay .figcaption').should('be.visible')
+        .get('.essay .label').should('be.visible')
+        .get('.essay .p').should('be.visible');
+      cy.wait(500);
+    }
+    cy.get('.list-text.breadcrumb li[data-index="2"]').click();
+    cy.wait(500);
+    cy.url().should('eq', 'https://hpm.5000.gov.tw/cp.aspx?n=299');
 
-export const MobilePaymentTests = () => {
-  it('should ', () => {
+    cy.get('.digitFasten li').eq(1).click();
+    ////選擇電子票證
+    cy.get('.simple-text.heading').should('be.visible');
+    //title//
+    cy.get('.group-list.page-block .area-figure.page-figure').its('length')
+      .should('eq', 4); //4家電子票證//
 
+    for(let i = 1; i <= 4; i++) {
+      cy.get(`li[data-index=${i}] a`)
+        .should('have.attr', 'href')
+        .get('.img img').should('have.attr', 'src')
+        .get('.essay .figcaption').should('be.visible')
+        .get('.essay .label').should('be.visible')
+        .get('.essay .p').should('be.visible');
+      cy.wait(500);
+    }
+    
+    cy.get('.list-text.breadcrumb li[data-index="2"]').click();
+    cy.wait(500);
+    cy.url().should('eq', 'https://hpm.5000.gov.tw/cp.aspx?n=299');
+
+    cy.get('.digitFasten li').eq(2).click();
+    ////選擇行動支付
+    cy.get('.simple-text.heading').should('be.visible');
+    //title//
+    cy.get('.group-list.page-block .area-figure.page-figure').its('length')
+      .should('eq', 8); //8家行動支付//
+    
+    for(let i = 1; i <= 8; i++) {
+      cy.get(`li[data-index=${i}] a`)
+        .should('have.attr', 'href')
+        .get('.img img').should('have.attr', 'src')
+        .get('.essay .figcaption').should('be.visible')
+        .get('.essay .label').should('be.visible')
+        .get('.essay .p').should('be.visible');
+      cy.wait(500);
+    }
   });
 };
 
