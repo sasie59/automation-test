@@ -80,15 +80,15 @@ export const DigitalBindingTests = () => {
     cy.get('.group-list.page-block .area-figure.page-figure').its('length')
       .should('eq', 31); //31家信用卡//
 
-    for(let i = 1; i <= 31; i++) {
-      cy.get(`li[data-index=${i}] a`)
-        .should('have.attr', 'href')
-        .get('.img img').should('have.attr', 'src')
-        .get('.essay .figcaption').should('be.visible')
-        .get('.essay .label').should('be.visible')
-        .get('.essay .p').should('be.visible');
-      cy.wait(500);
-    }
+    // for (let i = 1; i <= 31; i++) {
+    //   cy.get(`li[data-index=${i}] a`)
+    //     .should('have.attr', 'href')
+    //     .get('.img img').should('have.attr', 'src')
+    //     .get('.essay .figcaption').should('be.visible')
+    //     .get('.essay .label').should('be.visible')
+    //     .get('.essay .p').should('be.visible');
+    //   cy.wait(500);
+    // }
     cy.get('.list-text.breadcrumb li[data-index="2"]').click();
     cy.wait(500);
     cy.url().should('eq', 'https://hpm.5000.gov.tw/cp.aspx?n=299');
@@ -100,7 +100,7 @@ export const DigitalBindingTests = () => {
     cy.get('.group-list.page-block .area-figure.page-figure').its('length')
       .should('eq', 4); //4家電子票證//
 
-    for(let i = 1; i <= 4; i++) {
+    for (let i = 1; i <= 4; i++) {
       cy.get(`li[data-index=${i}] a`)
         .should('have.attr', 'href')
         .get('.img img').should('have.attr', 'src')
@@ -109,7 +109,7 @@ export const DigitalBindingTests = () => {
         .get('.essay .p').should('be.visible');
       cy.wait(500);
     }
-    
+
     cy.get('.list-text.breadcrumb li[data-index="2"]').click();
     cy.wait(500);
     cy.url().should('eq', 'https://hpm.5000.gov.tw/cp.aspx?n=299');
@@ -120,8 +120,8 @@ export const DigitalBindingTests = () => {
     //title//
     cy.get('.group-list.page-block .area-figure.page-figure').its('length')
       .should('eq', 8); //8家行動支付//
-    
-    for(let i = 1; i <= 8; i++) {
+
+    for (let i = 1; i <= 8; i++) {
       cy.get(`li[data-index=${i}] a`)
         .should('have.attr', 'href')
         .get('.img img').should('have.attr', 'src')
@@ -135,6 +135,9 @@ export const DigitalBindingTests = () => {
 
 export const PaperRollTests = () => {
   it('should ', () => {
+    cy.get('.simple-text.major-logo a[href="Default.aspx"]').click({ force: true });
+    cy.get('.area-editor.default.group-ball').get('.ct > ul').first()
+      .find('.ball.paper').click();
 
   });
 };
