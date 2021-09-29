@@ -80,15 +80,15 @@ export const DigitalBindingTests = () => {
     cy.get('.group-list.page-block .area-figure.page-figure').its('length')
       .should('eq', 31); //31家信用卡//
 
-    // for (let i = 1; i <= 31; i++) {
-    //   cy.get(`li[data-index=${i}] a`)
-    //     .should('have.attr', 'href')
-    //     .get('.img img').should('have.attr', 'src')
-    //     .get('.essay .figcaption').should('be.visible')
-    //     .get('.essay .label').should('be.visible')
-    //     .get('.essay .p').should('be.visible');
-    //   cy.wait(500);
-    // }
+    for (let i = 1; i <= 31; i++) {
+      cy.get(`li[data-index=${i}] a`)
+        .should('have.attr', 'href')
+        .get('.img img').should('have.attr', 'src')
+        .get('.essay .figcaption').should('be.visible')
+        .get('.essay .label').should('be.visible')
+        .get('.essay .p').should('be.visible');
+      cy.wait(500);
+    }
     cy.get('.list-text.breadcrumb li[data-index="2"]').click();
     cy.wait(500);
     cy.url().should('eq', 'https://hpm.5000.gov.tw/cp.aspx?n=299');
@@ -134,11 +134,30 @@ export const DigitalBindingTests = () => {
 };
 
 export const PaperRollTests = () => {
-  it('should ', () => {
+  it('should display access to paper rolls\n(預期呈現紙本卷的領取通路)', () => {
     cy.get('.simple-text.major-logo a[href="Default.aspx"]').click({ force: true });
     cy.get('.area-editor.default.group-ball').get('.ct > ul').first()
       .find('.ball.paper').click();
 
+    cy.get('.simple-text.heading').should('be.visible');
+
+    cy.get('.g.is-right .g.is-inline img').its('length').should('eq', 2);
+    cy.get('.g.is-right .g.is-inline img').should('have.attr', 'src');
+    cy.get('.g.is-right .g.is-inline .title').should('be.visible');
+    //最上方的圖示//
+    const periodClass = [
+      '.p.is-bold',
+      '.list',
+      '.mark'
+    ];
+    periodClass.forEach(item => {
+      cy.get(`.g.is-right ${item}`).its('length').should('eq', 2); //有2個梯次//
+      cy.get(`.g.is-right ${item}`).should('be.visible');
+    }); //上半部//
+
+    cy.get('.is-left img').should('have.attr', 'src'); //郵局圖案//
+    cy.get('.is-left .g').last().get('.list .p').should('be.visible');
+    //下半部//
   });
 };
 
