@@ -18,7 +18,7 @@ describe('振興五倍卷', () => {
     // tests.ZoomOutAndEnlargetests();
   });
 
-  describe('使用方式', () => {
+  describe('領取方式', () => {
     tests.TypeToUse();
     tests.DigitalBindingTests();
     tests.PaperRollTests();
