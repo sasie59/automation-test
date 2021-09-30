@@ -169,51 +169,65 @@ export const OverWeight = () => {
 };
 
 export const GoodForEatTicketTests = () => {
-  it('should ', () => {
-    cy.get('.group-list.nav ul[data-index="1"]')
-      .find('li').last().click({ force: true });
+  it('should display GoodForEatTicket info\n(預期出現好食卷的資訊)', () => {
+    cy.get('.group-list.nav .group.nav').eq(1).click();
+    cy.wait(500);
+    cy.get('.list-text.nav').eq(1).find('li').eq(1).click();
+    cy.wait(500);
+
+    cy.get('.double .hd a').should('have.attr', 'href'); //好食卷連結//
+    cy.get('.double img').should('have.attr', 'src');  //好食卷圖片//
+
+    const goodForEatInfo = [
+      '.content',
+      '.title',
+      '.p'
+    ];
+    goodForEatInfo.forEach(item => {
+      cy.get('.double > .content').get(`${item}`).should('be.visible');
+    }); //infomation//
   });
 };
 
 export const TravelTicketTests = () => {
   it('should ', () => {
-
+    cy.get('.group-list.nav .group.nav').eq(2).click();
   });
 };
 
 export const AboriginalTicketTests = () => {
   it('should ', () => {
-
+    cy.get('.group-list.nav .group.nav').eq(3).click();
   });
 };
 
 export const FarmingTourTicketTests = () => {
   it('should ', () => {
-
+    cy.get('.group-list.nav .group.nav').eq(4).click();
   });
 };
 
 export const ArtFunTicketTests = () => {
   it('should ', () => {
-
+    cy.get('.group-list.nav .group.nav').eq(5).click();
   });
 };
 
 export const DomsTicketTests = () => {
   it('should ', () => {
-
+    cy.get('.group-list.nav .group.nav').eq(6).click();
   });
 };
 
 export const HakkaTicketTests = () => {
   it('should ', () => {
-
+    cy.get('.group-list.nav .group.nav').eq(7).click();
   });
 };
 
 export const LocalCreationTicketTests = () => {
   it('should ', () => {
-
+    cy.get('.group-list.nav .group.nav').eq(8).click();
   });
 };
 
