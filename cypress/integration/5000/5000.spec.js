@@ -29,11 +29,12 @@ describe('振興五倍卷', () => {
     tests.GoodForEatTicketTests();
     tests.TravelTicketTests();
     tests.AboriginalTicketTests();
-    // tests.FarmingTourTicketTests();
-    // tests.ArtFunTicketTests();
-    // tests.DomsTicketTests();
-    // tests.HakkaTicketTests();
-    // tests.LocalCreationTicketTests();
+    tests.FarmingTourTicketTests();
+    tests.ArtFunTicketTests();
+    tests.DomsTicketTests();
+    tests.HakkaTicketTests();
+    tests.LocalCreationTicketTests();
+    tests.OverViewTests();
   });
 
   describe('預訂與查詢', () => {
