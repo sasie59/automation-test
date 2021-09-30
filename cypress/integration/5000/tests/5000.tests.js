@@ -165,13 +165,13 @@ export const OverWeight = () => {
   beforeEach(() => {
     cy.get('.group.base-mobile a[title="必[手機版選單]"]').click();
     cy.wait(1000);
+    cy.get('.group-list.nav .group.nav').eq(1).click();
+    cy.wait(500);
   });
 };
 
 export const GoodForEatTicketTests = () => {
   it('should display GoodForEatTicket info\n(預期出現好食卷的資訊)', () => {
-    cy.get('.group-list.nav .group.nav').eq(1).click();
-    cy.wait(500);
     cy.get('.list-text.nav').eq(1).find('li').eq(1).click();
     cy.wait(500);
 
@@ -191,7 +191,20 @@ export const GoodForEatTicketTests = () => {
 
 export const TravelTicketTests = () => {
   it('should ', () => {
-    cy.get('.group-list.nav .group.nav').eq(2).click();
+    cy.get('.list-text.nav').eq(1).find('li').eq(2).click();
+    cy.wait(500);
+
+    cy.get('.double .hd a').should('have.attr', 'href'); //國旅卷連結//
+    cy.get('.double img').should('have.attr', 'src');  //國旅卷圖片//
+
+    const travelInfo = [
+      '.content',
+      '.title',
+      '.p'
+    ];
+    travelInfo.forEach(item => {
+      cy.get('.double > .content').get(`${item}`).should('be.visible');
+    }); //infomation//
   });
 };
 
