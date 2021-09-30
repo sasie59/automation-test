@@ -190,7 +190,7 @@ export const GoodForEatTicketTests = () => {
 };
 
 export const TravelTicketTests = () => {
-  it('should ', () => {
+  it('should display TravelTicketTicket info\n(預期出現國旅卷的資訊)', () => {
     cy.get('.list-text.nav').eq(1).find('li').eq(2).click();
     cy.wait(500);
 
