@@ -176,13 +176,17 @@ export const GoodForEatTicketTests = () => {
     cy.wait(500);
 
     cy.get('.double .hd a').should('have.attr', 'href'); //好食卷連結//
-    cy.get('.double img').should('have.attr', 'src');  //好食卷圖片//
+    cy.get('.double img').scrollIntoView().should('have.attr', 'src');  //好食卷圖片//
+    cy.wait(1000);
 
     const goodForEatInfo = [
       '.content',
       '.title',
       '.p'
     ];
+    cy.get('.base-footer').scrollIntoView();
+    cy.wait(2500);
+
     goodForEatInfo.forEach(item => {
       cy.get('.double > .content').get(`${item}`).should('be.visible');
     }); //infomation//
@@ -195,13 +199,16 @@ export const TravelTicketTests = () => {
     cy.wait(500);
 
     cy.get('.double .hd a').should('have.attr', 'href'); //國旅卷連結//
-    cy.get('.double img').should('have.attr', 'src');  //國旅卷圖片//
+    cy.get('.double img').scrollIntoView().should('have.attr', 'src');  //國旅卷圖片//
+    cy.wait(1000);
 
     const travelInfo = [
       '.content',
       '.title',
       '.p'
     ];
+    cy.get('.base-footer').scrollIntoView();
+    cy.wait(2500);
     travelInfo.forEach(item => {
       cy.get('.double > .content').get(`${item}`).should('be.visible');
     }); //infomation//
@@ -209,18 +216,21 @@ export const TravelTicketTests = () => {
 };
 
 export const AboriginalTicketTests = () => {
-  it('should display AboriginalTicket info\n(預期出現i原券的資訊', () => {
+  it('should display AboriginalTicket info\n(預期出現i原券的資訊)', () => {
     cy.get('.list-text.nav').eq(1).find('li').eq(3).click();
     cy.wait(500);
 
     cy.get('.double .hd a').should('have.attr', 'href'); //i原券連結//
-    cy.get('.double img').should('have.attr', 'src');  //i原券圖片//
+    cy.get('.double img').scrollIntoView().should('have.attr', 'src');  //i原券圖片//
+    cy.wait(1000);
 
     const travelInfo = [
       '.content',
       '.title',
       '.p'
     ];
+    cy.get('.base-footer').scrollIntoView();
+    cy.wait(2500);
     travelInfo.forEach(item => {
       cy.get('.double > .content').get(`${item}`).should('be.visible');
     }); //infomation//
@@ -228,32 +238,112 @@ export const AboriginalTicketTests = () => {
 };
 
 export const FarmingTourTicketTests = () => {
-  it('should ', () => {
-    cy.get('.group-list.nav .group.nav').eq(4).click();
+  it('should display FarmingTourTicket info\n(預期出現農遊券的資訊)', () => {
+    cy.get('.list-text.nav').eq(1).find('li').eq(4).click();
+    cy.wait(500);
+
+    cy.get('.double .hd a').should('have.attr', 'href'); //農遊券連結//
+    cy.get('.double img').scrollIntoView().should('have.attr', 'src');  //農遊券圖片//
+    cy.wait(1000);
+
+    const travelInfo = [
+      '.content',
+      '.title',
+      '.p'
+    ];
+    cy.get('.base-footer').scrollIntoView();
+    cy.wait(2500);
+    travelInfo.forEach(item => {
+      cy.get('.double > .content').get(`${item}`).should('be.visible');
+    }); //infomation//
   });
 };
 
 export const ArtFunTicketTests = () => {
-  it('should ', () => {
-    cy.get('.group-list.nav .group.nav').eq(5).click();
+  it('should display ArtFunTicket info\n(預期出現藝FUN券的資訊)', () => {
+    cy.get('.list-text.nav').eq(1).find('li').eq(5).click();
+    cy.wait(500);
+
+    cy.get('.double .hd a').should('have.attr', 'href'); //藝FUN券連結//
+    cy.get('.double img').scrollIntoView().should('have.attr', 'src');  //藝FUN券圖片//
+    cy.wait(1000);
+
+    const travelInfo = [
+      '.content',
+      '.title',
+      '.p'
+    ];
+    cy.get('.base-footer').scrollIntoView();
+    cy.wait(2500);
+    travelInfo.forEach(item => {
+      cy.get('.double > .content').get(`${item}`).should('be.visible');
+    }); //infomation//
   });
 };
 
 export const DomsTicketTests = () => {
-  it('should ', () => {
-    cy.get('.group-list.nav .group.nav').eq(6).click();
+  it('should display DomsTicket info\n(預期出現動滋券的資訊)', () => {
+    cy.get('.list-text.nav').eq(1).find('li').eq(6).click();
+    cy.wait(500);
+
+    cy.get('.double .hd a').should('have.attr', 'href'); //動滋券連結//
+    cy.get('.double img').scrollIntoView().should('have.attr', 'src');  //動滋券圖片//
+    cy.wait(1000);
+
+    const travelInfo = [
+      '.content',
+      '.title',
+      '.p'
+    ];
+    cy.get('.base-footer').scrollIntoView();
+    cy.wait(2500);
+    travelInfo.forEach(item => {
+      cy.get('.double > .content').get(`${item}`).should('be.visible');
+    }); //infomation//
   });
 };
 
 export const HakkaTicketTests = () => {
-  it('should ', () => {
-    cy.get('.group-list.nav .group.nav').eq(7).click();
+  it('should display HakkaTicket info\n(預期出現客庄券的資訊)', () => {
+    cy.get('.list-text.nav').eq(1).find('li').eq(7).click();
+    cy.wait(500);
+
+    cy.get('.double .hd a').should('have.attr', 'href'); //客庄券連結//
+    cy.get('.double img').scrollIntoView().should('have.attr', 'src');  //客庄券圖片//
+    cy.wait(1000);
+
+    const travelInfo = [
+      '.content',
+      '.title',
+      '.p'
+    ];
+    cy.get('.base-footer').scrollIntoView();
+    cy.wait(2500);
+    travelInfo.forEach(item => {
+      cy.get('.double > .content').get(`${item}`).should('be.visible');
+    }); //infomation//
   });
 };
 
 export const LocalCreationTicketTests = () => {
-  it('should ', () => {
-    cy.get('.group-list.nav .group.nav').eq(8).click();
+  it('should display LocalCreationTicket info\n(預期出現地方創生券的資訊)', () => {
+    cy.get('.list-text.nav').eq(1).find('li').eq(8).click();
+    cy.wait(500);
+
+    cy.get('.double .hd a').should('have.attr', 'href'); //地方創生券連結//
+    cy.get('.double img').scrollIntoView().should('have.attr', 'src');  //地方創生券圖片//
+    cy.wait(1000);
+
+    const travelInfo = [
+      '.content',
+      '.title',
+      '.p'
+    ];
+    cy.get('.base-footer').scrollIntoView();
+    cy.wait(2500);
+    travelInfo.forEach(item => {
+      cy.get('.double > .content').get(`${item}`).should('be.visible');
+    }); //infomation//
   });
 };
 
