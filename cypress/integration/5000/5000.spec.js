@@ -20,13 +20,13 @@ describe('振興五倍卷', () => {
 
   describe('領取方式', () => {
     tests.TypeToUse();
-    tests.DigitalBindingTests();
-    tests.PaperRollTests();
+    // tests.DigitalBindingTests();
+    // tests.PaperRollTests();
   });
 
   describe('各部會加碼', () => {
-    // tests.OverWeight();
-    // tests.GoodForEatTicketTests();
+    tests.OverWeight();
+    tests.GoodForEatTicketTests();
     // tests.TravelTicketTests();
     // tests.AboriginalTicketTests();
     // tests.FarmingTourTicketTests();

@@ -162,12 +162,16 @@ export const PaperRollTests = () => {
 };
 
 export const OverWeight = () => {
-
+  beforeEach(() => {
+    cy.get('.group.base-mobile a[title="必[手機版選單]"]').click();
+    cy.wait(1000);
+  });
 };
 
 export const GoodForEatTicketTests = () => {
   it('should ', () => {
-
+    cy.get('.group-list.nav ul[data-index="1"]')
+      .find('li').last().click({ force: true });
   });
 };
 
