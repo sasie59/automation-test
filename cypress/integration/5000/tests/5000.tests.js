@@ -190,7 +190,7 @@ export const GoodForEatTicketTests = () => {
 };
 
 export const TravelTicketTests = () => {
-  it('should display TravelTicketTicket info\n(預期出現國旅卷的資訊)', () => {
+  it('should display TravelTicket info\n(預期出現國旅卷的資訊)', () => {
     cy.get('.list-text.nav').eq(1).find('li').eq(2).click();
     cy.wait(500);
 
@@ -209,8 +209,21 @@ export const TravelTicketTests = () => {
 };
 
 export const AboriginalTicketTests = () => {
-  it('should ', () => {
-    cy.get('.group-list.nav .group.nav').eq(3).click();
+  it('should display AboriginalTicket info\n(預期出現i原券的資訊', () => {
+    cy.get('.list-text.nav').eq(1).find('li').eq(3).click();
+    cy.wait(500);
+
+    cy.get('.double .hd a').should('have.attr', 'href'); //i原券連結//
+    cy.get('.double img').should('have.attr', 'src');  //i原券圖片//
+
+    const travelInfo = [
+      '.content',
+      '.title',
+      '.p'
+    ];
+    travelInfo.forEach(item => {
+      cy.get('.double > .content').get(`${item}`).should('be.visible');
+    }); //infomation//
   });
 };
 
