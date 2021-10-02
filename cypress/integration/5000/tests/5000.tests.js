@@ -204,8 +204,34 @@ export const eightDepartmentOverweightTests = () => {
 };
 
 export const OverViewTests = () => {
-  it('should \n()', () => {
+  it('should display lottery time, denomination, extra budget\n(預期出現抽獎時間、面額、加碼預算)', () => {
+    cy.get('.list-text.nav').eq(1).find('li').eq(0).click();
+    cy.wait(500);
 
+    cy.get('.group.default.info .simple-text.heading');
+    ///title/
+    cy.get('.list-text.classify.eight ul li').its('length')
+      .should('eq', 9); //九筆nav//
+    cy.get('.area-editor.user-edit ol > li').its('length')
+      .should('eq', 6); //六筆資訊//
+    for(let i = 0; i < 6; i++) {
+      cy.get('.area-editor.user-edit ol > li').eq(`${i}`)
+        .scrollIntoView().should('be.visible');
+      cy.wait(750);
+    }
+
+    const tableClass = [
+      '.title',
+      '.name',
+      '.date',
+      '.dollar',
+    ];
+    tableClass.forEach(item => {
+      cy.get(`.is-table ${item}`).scrollIntoView()
+        .should('be.visible');
+      cy.wait(500);
+    });
+    cy.get('.is-table tr').its('length').should('eq', 9);
   });
 };
 
