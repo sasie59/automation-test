@@ -25,8 +25,8 @@ describe('振興五倍卷', () => {
   });
 
   describe('各部會加碼', () => {
-    tests.eightDepartmentOverweightTests();
-    tests.OverViewTests();
+    // tests.eightDepartmentOverweightTests();
+    // tests.OverViewTests();
   });
 
   describe('預訂與查詢', () => {
@@ -40,7 +40,7 @@ describe('振興五倍卷', () => {
   });
 
   describe('影音教學', () => {
-    // tests.AudiovisualTeachingTests();
+    tests.AudiovisualTeachingTests();
   });
 
   describe('常見問題', () => {

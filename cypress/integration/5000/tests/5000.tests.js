@@ -238,3 +238,53 @@ export const OverViewTests = () => {
 export const BookingAndCheck = () => {
 
 };
+
+export const AudiovisualTeachingTests = () => {
+  it('should display links to info about audio-visual teaching\n(預期呈現影音教學的資訊連結)', () => {
+    cy.get('.group.base-mobile a[title="必[手機版選單]"]').click();
+    cy.wait(1000);
+    cy.get('.group-list.nav .group.nav').eq(3).click();
+    cy.wait(500);
+
+    cy.get('.group.default.info .simple-text.heading')
+      .should('be.visible'); //title//
+    cy.get('.list-text.classify li').its('length')
+      .should('eq', 3); //三種篩選方式//
+
+    // cy.get('.list-text.classify li').eq(0).click();
+    // cy.wait(500);
+    cy.get('.group-list.page-block ul[data-child="15"] a').its('length')
+      .should('eq', 15);
+    for(let i = 1; i < 15; i++) {
+      cy.get('.group-list.page-block a').eq(`${i}`)
+        .scrollIntoView().should('be.visible');
+      cy.wait(1000);
+    }
+    
+    cy.get('.list-text.classify li').eq(1).click();
+    cy.wait(500);
+    
+    cy.get('.group-list.page-block ul[data-child="3"] a').its('length')
+      .should('eq', 3);
+    for(let i = 1; i < 3; i++) {
+      cy.get('.group-list.page-block a').eq(`${i}`)
+        .scrollIntoView().should('be.visible');
+      cy.wait(1000);
+    }
+    
+    cy.get('.list-text.classify li').eq(2).click();
+    cy.wait(500);
+    
+    cy.get('.group-list.page-block ul[data-child="12"] a').its('length')
+      .should('eq', 12);
+    for(let i = 1; i < 12; i++) {
+      cy.get('.group-list.page-block a').eq(`${i}`)
+        .scrollIntoView().should('be.visible');
+      cy.wait(1000);
+    }
+
+    cy.get('.group-list.page-block a').should('have.attr', 'target', '_self');
+    cy.get('.group-list.page-block a .img').should('be.visible');
+    cy.get('.group-list.page-block a .essay').should('be.visible');
+  });
+};
