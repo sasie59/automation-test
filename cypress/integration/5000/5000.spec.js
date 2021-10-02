@@ -25,15 +25,7 @@ describe('振興五倍卷', () => {
   });
 
   describe('各部會加碼', () => {
-    tests.OverWeight();
-    tests.GoodForEatTicketTests();
-    tests.TravelTicketTests();
-    tests.AboriginalTicketTests();
-    tests.FarmingTourTicketTests();
-    tests.ArtFunTicketTests();
-    tests.DomsTicketTests();
-    tests.HakkaTicketTests();
-    tests.LocalCreationTicketTests();
+    tests.eightDepartmentOverweightTests();
     tests.OverViewTests();
   });
 
