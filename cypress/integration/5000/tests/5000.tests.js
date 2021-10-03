@@ -288,3 +288,27 @@ export const AudiovisualTeachingTests = () => {
     cy.get('.group-list.page-block a .essay').should('be.visible');
   });
 };
+
+export const CommonProblemTests = () => {
+  it('should \n()', () => {
+    cy.get('.group.base-mobile a[title="必[手機版選單]"]').click();
+    cy.wait(1000);
+    cy.get('.group-list.nav .group.nav').eq(4).click();
+    cy.wait(500);
+
+    cy.get('.group.default.info .simple-text.heading')
+      .should('be.visible'); //title//
+
+    cy.get('.group-list.page-list ul[data-index="1"] .caption')
+      .its('length').should('eq', 49);
+
+    for(let i = 1; i < 49; i++ ) {
+      cy.get('.group-list.page-list ul[data-index="1"] .caption')
+        .eq(`${i}`).scrollIntoView().click();
+      cy.wait(2000);  //打開所有解答//
+      cy.get('.group-list.page-list ul[data-index="1"] .caption')
+        .eq(`${i}`).click();
+      cy.wait(500);  //看完再將其關閉//
+    }
+  });
+};

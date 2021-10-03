@@ -40,11 +40,11 @@ describe('振興五倍卷', () => {
   });
 
   describe('影音教學', () => {
-    tests.AudiovisualTeachingTests();
+    // tests.AudiovisualTeachingTests();
   });
 
   describe('常見問題', () => {
-    // tests.CommonProblemTests();
+    tests.CommonProblemTests();
   });
 
   describe('切換語系', () => {
