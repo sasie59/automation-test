@@ -43,12 +43,12 @@ describe('振興五倍卷', () => {
     // tests.AudiovisualTeachingTests();
   });
 
-  describe('常見問題', () => {
-    tests.CommonProblemTests();
+  describe('常見問答', () => {
+    // tests.CommonQATests();
   });
 
   describe('切換語系', () => {
-    // tests.SwitchLanguageTests();
+    tests.SwitchLanguageTests();
   });
 
 });

@@ -289,8 +289,8 @@ export const AudiovisualTeachingTests = () => {
   });
 };
 
-export const CommonProblemTests = () => {
-  it('should \n()', () => {
+export const CommonQATests = () => {
+  it('should display common QA\n(預期呈現常見問答)', () => {
     cy.get('.group.base-mobile a[title="必[手機版選單]"]').click();
     cy.wait(1000);
     cy.get('.group-list.nav .group.nav').eq(4).click();
@@ -310,5 +310,15 @@ export const CommonProblemTests = () => {
         .eq(`${i}`).click();
       cy.wait(500);  //看完再將其關閉//
     }
+  });
+};
+
+export const SwitchLanguageTests = () => {
+  it('should display switch between Chinese and English interface and link with pop-up window\n(可中英介面切換及具彈跳視窗的連結)', () => {
+    cy.get('.group.base-mobile a[title="必[手機版選單]"]').click();
+    cy.wait(1000);
+    cy.get('.list-text.link ').first().find('a[href="/en"]')
+      .should('have.attr', 'target', '_blank');
+    cy.wait(500);
   });
 };
