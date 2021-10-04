@@ -241,12 +241,25 @@ export const BookingAndCheck = () => {
     cy.wait(1000);
     cy.get('.group-list.nav .group.nav').eq(2).click();
     cy.wait(500);
+
+    cy.get('.group.default.info .simple-text.heading')
+      .should('be.visible'); //title//
+
+    cy.get('.area-editor.user-edit').as('overWeight');
   });
 };
 
 export const PersonalBindingTests = () => {
-  it('should \n()', () => {
+  it('should display Personal binding\n(預期呈現個人綁定的方式)', () => {
+    cy.get('@overWeight').get('.g.is-cut').eq(0).find('a').eq(0).click();
+    cy.wait(1000);
 
+    cy.get('.group.default.info .simple-text.heading')
+      .should('be.visible'); //title//
+
+    cy.get('.digitFasten li').its('length').should('eq', 3); //個人綁定有3種方式//
+    cy.get('.digitFasten a').should('have.attr', 'href');
+    //這邊就不在重覆驗証了，首頁已驗証過//
   });
 };
 
