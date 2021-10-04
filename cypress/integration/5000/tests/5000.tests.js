@@ -176,14 +176,14 @@ export const eightDepartmentOverweightTests = () => {
     cy.wait(1000);
     cy.get('.group-list.nav .group.nav').eq(1).click();
     cy.wait(500);
-    for(let i = 1; i <= 8; i++) {
+    for (let i = 1; i <= 8; i++) {
       cy.get('.list-text.nav').eq(1).find('li').eq(`${i}`).click();
       cy.wait(500);
-  
+
       cy.get('.double .hd a').should('have.attr', 'href'); //好食卷連結//
       cy.get('.double img').scrollIntoView().should('have.attr', 'src');  //好食卷圖片//
       cy.wait(1000);
-  
+
       const goodForEatInfo = [
         '.content',
         '.title',
@@ -191,7 +191,7 @@ export const eightDepartmentOverweightTests = () => {
       ];
       cy.get('.base-footer').scrollIntoView();
       cy.wait(2500);
-  
+
       goodForEatInfo.forEach(item => {
         cy.get('.double > .content').get(`${item}`).should('be.visible');
       }); //infomation//
@@ -214,7 +214,7 @@ export const OverViewTests = () => {
       .should('eq', 9); //九筆nav//
     cy.get('.area-editor.user-edit ol > li').its('length')
       .should('eq', 6); //六筆資訊//
-    for(let i = 0; i < 6; i++) {
+    for (let i = 0; i < 6; i++) {
       cy.get('.area-editor.user-edit ol > li').eq(`${i}`)
         .scrollIntoView().should('be.visible');
       cy.wait(750);
@@ -236,7 +236,18 @@ export const OverViewTests = () => {
 };
 
 export const BookingAndCheck = () => {
+  beforeEach(() => {
+    cy.get('.group.base-mobile a[title="必[手機版選單]"]').click();
+    cy.wait(1000);
+    cy.get('.group-list.nav .group.nav').eq(2).click();
+    cy.wait(500);
+  });
+};
 
+export const PersonalBindingTests = () => {
+  it('should \n()', () => {
+
+  });
 };
 
 export const AudiovisualTeachingTests = () => {
@@ -255,29 +266,29 @@ export const AudiovisualTeachingTests = () => {
     // cy.wait(500);
     cy.get('.group-list.page-block ul[data-child="15"] a').its('length')
       .should('eq', 15);
-    for(let i = 1; i < 15; i++) {
+    for (let i = 1; i < 15; i++) {
       cy.get('.group-list.page-block a').eq(`${i}`)
         .scrollIntoView().should('be.visible');
       cy.wait(1000);
     }
-    
+
     cy.get('.list-text.classify li').eq(1).click();
     cy.wait(500);
-    
+
     cy.get('.group-list.page-block ul[data-child="3"] a').its('length')
       .should('eq', 3);
-    for(let i = 1; i < 3; i++) {
+    for (let i = 1; i < 3; i++) {
       cy.get('.group-list.page-block a').eq(`${i}`)
         .scrollIntoView().should('be.visible');
       cy.wait(1000);
     }
-    
+
     cy.get('.list-text.classify li').eq(2).click();
     cy.wait(500);
-    
+
     cy.get('.group-list.page-block ul[data-child="12"] a').its('length')
       .should('eq', 12);
-    for(let i = 1; i < 12; i++) {
+    for (let i = 1; i < 12; i++) {
       cy.get('.group-list.page-block a').eq(`${i}`)
         .scrollIntoView().should('be.visible');
       cy.wait(1000);
@@ -302,7 +313,7 @@ export const CommonQATests = () => {
     cy.get('.group-list.page-list ul[data-index="1"] .caption')
       .its('length').should('eq', 49);
 
-    for(let i = 1; i < 49; i++ ) {
+    for (let i = 1; i < 49; i++) {
       cy.get('.group-list.page-list ul[data-index="1"] .caption')
         .eq(`${i}`).scrollIntoView().click();
       cy.wait(2000);  //打開所有解答//
