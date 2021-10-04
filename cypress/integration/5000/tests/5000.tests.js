@@ -263,6 +263,19 @@ export const PersonalBindingTests = () => {
   });
 };
 
+export const DigitalLabelTests = () => {
+  it('should display Digital Label info\n(預期呈現數位標章的資訊)', () => {
+    cy.get('@overWeight').get('.g.is-cut').eq(0).find('a').eq(1).click();
+    cy.wait(1000);
+
+    cy.get('.group.default.info .simple-text.heading')
+      .should('be.visible'); //title//
+
+    cy.get('.area-editor.user-edit img[alt="coming soon"]').should('have.attr', 'src');
+    //coming soon 還未能使用//
+  });
+};
+
 export const AudiovisualTeachingTests = () => {
   it('should display links to info about audio-visual teaching\n(預期呈現影音教學的資訊連結)', () => {
     cy.get('.group.base-mobile a[title="必[手機版選單]"]').click();
