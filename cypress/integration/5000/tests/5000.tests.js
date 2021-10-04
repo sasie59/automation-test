@@ -276,6 +276,13 @@ export const DigitalLabelTests = () => {
   });
 };
 
+export const ExitCo_BindingTests = () => {
+  it('should this link has the property of popping up a new window\n(預期此連結具有彈跳出新視窗的屬性)', () => {
+    cy.get('@overWeight').get('.g.is-cut').eq(0).find('a[title="退出綁定"]')
+      .should('have.attr', 'target', '_blank', 'href');
+  });
+};
+
 export const AudiovisualTeachingTests = () => {
   it('should display links to info about audio-visual teaching\n(預期呈現影音教學的資訊連結)', () => {
     cy.get('.group.base-mobile a[title="必[手機版選單]"]').click();
