@@ -244,14 +244,12 @@ export const BookingAndCheck = () => {
 
     cy.get('.group.default.info .simple-text.heading')
       .should('be.visible'); //title//
-
-    cy.get('.area-editor.user-edit').as('overWeight');
   });
 };
 
 export const PersonalBindingTests = () => {
   it('should display Personal binding\n(預期呈現個人綁定的方式)', () => {
-    cy.get('@overWeight').get('.g.is-cut').eq(0).find('a').eq(0).click();
+    cy.get('.is-one').click();
     cy.wait(1000);
 
     cy.get('.group.default.info .simple-text.heading')
@@ -265,21 +263,24 @@ export const PersonalBindingTests = () => {
 
 export const DigitalLabelTests = () => {
   it('should display Digital Label info\n(預期呈現數位標章的資訊)', () => {
-    cy.get('@overWeight').get('.g.is-cut').eq(0).find('a').eq(1).click();
-    cy.wait(1000);
+    cy.get('.is-two').click();
+    cy.wait(1500);
 
     cy.get('.group.default.info .simple-text.heading')
       .should('be.visible'); //title//
 
-    cy.get('.area-editor.user-edit img[alt="coming soon"]').should('have.attr', 'src');
-    //coming soon 還未能使用//
+    cy.get('.area-editor.user-edit ul li').its('length').should('eq', 3);
+
+    cy.get('.g.is-inline a').its('length').should('eq', 2); //2個連結//
+    cy.get('.g.is-inline a .hd.is-center').should('be.visible');
+    cy.get('.g.is-inline a .ct').should('be.visible');
+    cy.get('.g.is-inline a').should('have.attr', 'target', 'blank', 'href');
   });
 };
 
 export const ExitCo_BindingTests = () => {
   it('should this link has the property of popping up a new window\n(預期此連結具有彈跳出新視窗的屬性)', () => {
-    cy.get('@overWeight').get('.g.is-cut').eq(0).find('a[title="退出綁定"]')
-      .should('have.attr', 'target', '_blank', 'href');
+    cy.get('.is-three').should('have.attr', 'target', '_blank', 'href');
   });
 };
 
