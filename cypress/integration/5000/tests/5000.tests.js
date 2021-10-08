@@ -174,7 +174,7 @@ export const eightDepartmentOverweightTests = () => {
   it('should display Overweight information of the eight major ministries\n(預期出現八大部會的加碼資訊)', () => {
     cy.get('.group.base-mobile a[title="必[手機版選單]"]').click();
     cy.wait(1000);
-    cy.get('.group-list.nav .group.nav').eq(1).click();
+    cy.get('.group-list.nav .group.nav').eq(2).click();
     cy.wait(500);
     for (let i = 1; i <= 8; i++) {
       cy.get('.list-text.nav').eq(1).find('li').eq(`${i}`).click();
@@ -239,7 +239,7 @@ export const BookingAndCheck = () => {
   beforeEach(() => {
     cy.get('.group.base-mobile a[title="必[手機版選單]"]').click();
     cy.wait(1000);
-    cy.get('.group-list.nav .group.nav').eq(2).click();
+    cy.get('.group-list.nav .group.nav').eq(3).click();
     cy.wait(500);
 
     cy.get('.group.default.info .simple-text.heading')
@@ -288,7 +288,7 @@ export const AudiovisualTeachingTests = () => {
   it('should display links to info about audio-visual teaching\n(預期呈現影音教學的資訊連結)', () => {
     cy.get('.group.base-mobile a[title="必[手機版選單]"]').click();
     cy.wait(1000);
-    cy.get('.group-list.nav .group.nav').eq(3).click();
+    cy.get('.group-list.nav .group.nav').eq(4).click();
     cy.wait(500);
 
     cy.get('.group.default.info .simple-text.heading')
@@ -298,9 +298,9 @@ export const AudiovisualTeachingTests = () => {
 
     // cy.get('.list-text.classify li').eq(0).click();
     // cy.wait(500);
-    cy.get('.group-list.page-block ul[data-child="15"] a').its('length')
-      .should('eq', 15);
-    for (let i = 1; i < 15; i++) {
+    cy.get('.group-list.page-block ul[data-child="18"] a').its('length')
+      .should('eq', 18);
+    for (let i = 1; i < 16; i++) {
       cy.get('.group-list.page-block a').eq(`${i}`)
         .scrollIntoView().should('be.visible');
       cy.wait(1000);
@@ -320,9 +320,9 @@ export const AudiovisualTeachingTests = () => {
     cy.get('.list-text.classify li').eq(2).click();
     cy.wait(500);
 
-    cy.get('.group-list.page-block ul[data-child="12"] a').its('length')
-      .should('eq', 12);
-    for (let i = 1; i < 12; i++) {
+    cy.get('.group-list.page-block ul[data-child="15"] a').its('length')
+      .should('eq', 15);
+    for (let i = 1; i < 15; i++) {
       cy.get('.group-list.page-block a').eq(`${i}`)
         .scrollIntoView().should('be.visible');
       cy.wait(1000);
@@ -338,16 +338,16 @@ export const CommonQATests = () => {
   it('should display common QA\n(預期呈現常見問答)', () => {
     cy.get('.group.base-mobile a[title="必[手機版選單]"]').click();
     cy.wait(1000);
-    cy.get('.group-list.nav .group.nav').eq(4).click();
+    cy.get('.group-list.nav .group.nav').eq(5).click();
     cy.wait(500);
 
     cy.get('.group.default.info .simple-text.heading')
       .should('be.visible'); //title//
 
     cy.get('.group-list.page-list ul[data-index="1"] .caption')
-      .its('length').should('eq', 49);
+      .its('length').should('eq', 50);
 
-    for (let i = 1; i < 49; i++) {
+    for (let i = 1; i < 50; i++) {
       cy.get('.group-list.page-list ul[data-index="1"] .caption')
         .eq(`${i}`).scrollIntoView().click();
       cy.wait(2000);  //打開所有解答//
