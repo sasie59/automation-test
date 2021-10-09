@@ -3,6 +3,8 @@ export const GoTo5000Tests = () => {
     cy.visit('https://hpm.5000.gov.tw/Default.aspx');
     cy.wait(1000);
     //title振興五倍卷//
+    cy.get('.sa-button-container').click();
+    //網站要維護 跳出一個modal 先關掉//
   });
 };
 
@@ -264,6 +266,28 @@ export const PersonalBindingTests = () => {
     cy.get('.digitFasten li').its('length').should('eq', 3); //個人綁定有3種方式//
     cy.get('.digitFasten a').should('have.attr', 'href');
     //這邊就不在重覆驗証了，首頁已驗証過//
+    //數位標章已在外層驗証過了， 在此就不在重覆驗証//
+  });
+};
+
+export const PaperFor5000tests = () => {
+  it('should display PaperFor5000 info\n(預期呈現紙本五倍券資訊)', () => {
+    cy.get('.btn.yellow .box').its('length').should('eq', 3);
+    cy.get('.btn.yellow').should('have.attr', 'href');
+    cy.get('.btn.yellow').click();
+    cy.wait(1000);
+    
+    cy.get('.group.default.info .simple-text.heading')
+      .should('be.visible'); //title//
+
+    cy.get('#CCMS_Content img').should('have.attr', 'src');
+    //coming soon//
+  });
+};
+
+export const PostOfficeReserveTests = () => {
+  it('should \n()', () => {
+    
   });
 };
 
@@ -306,7 +330,7 @@ export const DigitalLabelTests = () => {
         .should('be.visible');
       cy.wait(500);
     }
-    
+
     cy.get('.area-editor.user-edit ol').eq(1).find('li').its('length')
       .should('eq', 2);
     for(let i = 0; i < 2; i++) {
