@@ -269,18 +269,59 @@ export const PersonalBindingTests = () => {
 
 export const DigitalLabelTests = () => {
   it('should display Digital Label info\n(預期呈現數位標章的資訊)', () => {
-    cy.get('.is-two').click();
-    cy.wait(1500);
+    cy.get('.group.base-mobile a[title="必[手機版選單]"]').click();
+    cy.wait(1000);
+    cy.get('.group-list.nav .group.nav').eq(1).click();
+    cy.wait(500);
 
     cy.get('.group.default.info .simple-text.heading')
       .should('be.visible'); //title//
 
-    cy.get('.area-editor.user-edit ul li').its('length').should('eq', 3);
+    cy.get('.area-editor.user-edit .badge ol li').its('length').should('eq', 3);
+    cy.get('.area-editor.user-edit .badge ul li').its('length').should('eq', 4);
 
     cy.get('.g.is-inline a').its('length').should('eq', 2); //2個連結//
     cy.get('.g.is-inline a .hd.is-center').should('be.visible');
     cy.get('.g.is-inline a .ct').should('be.visible');
-    cy.get('.g.is-inline a').should('have.attr', 'target', 'blank', 'href');
+    cy.get('.g.is-inline a').should('have.attr', 'href');
+
+    cy.get('.list-text.classify.eight a').should('have.attr', 'target', '_self', 'href')
+      .click(); //數位標章運用注意事項//
+    cy.wait(1000);
+
+    cy.get('.group.default.info .simple-text.heading')
+      .should('be.visible'); //title//
+
+    cy.get('.area-editor.user-edit p').its('length').should('eq', 3);
+    //三個段落//
+    for(let i = 0; i < 3; i++) {
+      cy.get('.area-editor.user-edit p').eq(`${i}`)
+        .should('be.visible');
+      cy.wait(500);
+    }
+    cy.get('.area-editor.user-edit ol').eq(0).find('li').its('length')
+      .should('eq', 6);
+    for(let i = 0; i < 6; i++) {
+      cy.get('.area-editor.user-edit ol').eq(0).find('li').eq(`${i}`)
+        .should('be.visible');
+      cy.wait(500);
+    }
+    
+    cy.get('.area-editor.user-edit ol').eq(1).find('li').its('length')
+      .should('eq', 2);
+    for(let i = 0; i < 2; i++) {
+      cy.get('.area-editor.user-edit ol').eq(1).find('li').eq(`${i}`)
+        .should('be.visible');
+      cy.wait(500);
+    }
+
+    cy.get('.area-editor.user-edit ol').eq(2).find('li').its('length')
+      .should('eq', 2);
+    for(let i = 0; i < 2; i++) {
+      cy.get('.area-editor.user-edit ol').eq(2).find('li').eq(`${i}`)
+        .should('be.visible');
+      cy.wait(500);
+    }
   });
 };
 
