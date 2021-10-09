@@ -172,15 +172,16 @@ export const OverWeight = () => {
 
 export const eightDepartmentOverweightTests = () => {
   it('should display Overweight information of the eight major ministries\n(預期出現八大部會的加碼資訊)', () => {
-    cy.get('.group.base-mobile a[title="必[手機版選單]"]').click();
-    cy.wait(1000);
-    cy.get('.group-list.nav .group.nav').eq(2).click();
-    cy.wait(500);
     for (let i = 1; i <= 8; i++) {
-      cy.get('.list-text.nav').eq(1).find('li').eq(`${i}`).click();
+      cy.get('.group.base-mobile a[title="必[手機版選單]"]').click();
+      cy.wait(1000);
+      cy.get('.group-list.nav .group.nav').eq(2).click();
       cy.wait(500);
 
-      cy.get('.double .hd a').should('have.attr', 'href'); //好食卷連結//
+      cy.get('.list-text.nav ul[data-child="9"]').find('li').eq(`${i}`).click();
+      cy.wait(500);
+
+      cy.get('.double').find('a').should('have.attr', 'href'); //好食卷連結//
       cy.get('.double img').scrollIntoView().should('have.attr', 'src');  //好食卷圖片//
       cy.wait(1000);
 
@@ -205,7 +206,12 @@ export const eightDepartmentOverweightTests = () => {
 
 export const OverViewTests = () => {
   it('should display lottery time, denomination, extra budget\n(預期出現抽獎時間、面額、加碼預算)', () => {
-    cy.get('.list-text.nav').eq(1).find('li').eq(0).click();
+    cy.get('.group.base-mobile a[title="必[手機版選單]"]').click();
+    cy.wait(1000);
+    cy.get('.group-list.nav .group.nav').eq(2).click();
+    cy.wait(500);
+      
+    cy.get('.list-text.nav ul[data-child="9"]').find('li').eq(0).click();
     cy.wait(500);
 
     cy.get('.group.default.info .simple-text.heading');
@@ -213,8 +219,8 @@ export const OverViewTests = () => {
     cy.get('.list-text.classify.eight ul li').its('length')
       .should('eq', 9); //九筆nav//
     cy.get('.area-editor.user-edit ol > li').its('length')
-      .should('eq', 6); //六筆資訊//
-    for (let i = 0; i < 6; i++) {
+      .should('eq', 7); //六筆資訊//
+    for (let i = 0; i < 7; i++) {
       cy.get('.area-editor.user-edit ol > li').eq(`${i}`)
         .scrollIntoView().should('be.visible');
       cy.wait(750);

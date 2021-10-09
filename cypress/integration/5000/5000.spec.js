@@ -14,24 +14,24 @@ describe('振興五倍卷', () => {
   });
 
   describe('首頁導覽', () => {
-    // tests.HomeTourTests();
-    // tests.ZoomOutAndEnlargetests();
+    tests.HomeTourTests();
+    tests.ZoomOutAndEnlargetests();
   });
 
   describe('領取方式', () => {
-    // tests.TypeToUse();
-    // tests.DigitalBindingTests();
-    // tests.PaperRollTests();
+    tests.TypeToUse();
+    tests.DigitalBindingTests();
+    tests.PaperRollTests();
   });
 
   describe('各部會加碼', () => {
-    // tests.eightDepartmentOverweightTests();
-    // tests.OverViewTests();
+    tests.eightDepartmentOverweightTests();
+    tests.OverViewTests();
   });
 
   describe('預訂與查詢', () => {
     tests.BookingAndCheck();
-    // tests.PersonalBindingTests();
+    tests.PersonalBindingTests();
     // tests.Co_BindingTests();
     // tests.QuitCo_BindingTests();
     // tests.PaperFor5000tests();
@@ -40,11 +40,11 @@ describe('振興五倍卷', () => {
   });
 
   describe('影音教學', () => {
-    // tests.AudiovisualTeachingTests();
+    tests.AudiovisualTeachingTests();
   });
 
   describe('常見問答', () => {
-    // tests.CommonQATests();
+    tests.CommonQATests();
   });
 
   describe('切換語系', () => {
