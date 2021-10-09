@@ -286,8 +286,11 @@ export const PaperFor5000tests = () => {
 };
 
 export const PostOfficeReserveTests = () => {
-  it('should \n()', () => {
-    
+  it('should this link has the property of popping up a new window\n(預期此連結具有彈跳出新視窗的屬性)', () => {
+    cy.get('.btn.green').first().should('have.attr','target', '_blank', 'href');
+    cy.get('.btn.green').first().find('.box').should('be.visible');
+
+    //之後會針對彈跳出新視窗的內容做驗証//
   });
 };
 
@@ -349,11 +352,11 @@ export const DigitalLabelTests = () => {
   });
 };
 
-export const ExitCo_BindingTests = () => {
-  it('should this link has the property of popping up a new window\n(預期此連結具有彈跳出新視窗的屬性)', () => {
-    cy.get('.is-three').should('have.attr', 'target', '_blank', 'href');
-  });
-};
+// export const ExitCo_BindingTests = () => {
+//   it('should this link has the property of popping up a new window\n(預期此連結具有彈跳出新視窗的屬性)', () => {
+//     cy.get('.is-three').should('have.attr', 'target', '_blank', 'href');
+//   });
+// };
 
 export const AudiovisualTeachingTests = () => {
   it('should display links to info about audio-visual teaching\n(預期呈現影音教學的資訊連結)', () => {
