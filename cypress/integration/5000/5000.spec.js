@@ -24,6 +24,10 @@ describe('振興五倍卷', () => {
     tests.PaperRollTests();
   });
 
+  describe('數位標章', () => {
+    tests.DigitalLabelTests();
+  });
+
   describe('各部會加碼', () => {
     tests.eightDepartmentOverweightTests();
     tests.OverViewTests();
@@ -32,11 +36,10 @@ describe('振興五倍卷', () => {
   describe('預訂與查詢', () => {
     tests.BookingAndCheck();
     tests.PersonalBindingTests();
-    // tests.Co_BindingTests();
-    // tests.QuitCo_BindingTests();
-    // tests.PaperFor5000tests();
-    // tests.OverWeightLogInTests();
-    // tests.CheckTests()
+    tests.PaperFor5000tests();
+    tests.PostOfficeReserveTests();
+    tests.OverWeightLogInTests();
+    tests.CheckTests();
   });
 
   describe('影音教學', () => {

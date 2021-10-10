@@ -291,6 +291,7 @@ export const PostOfficeReserveTests = () => {
     cy.get('.btn.green').first().find('.box').should('be.visible');
 
     //之後會針對彈跳出新視窗的內容做驗証//
+    // cy.visit('https://subservices.post.gov.tw/post/internet/5000/reservation/index.jsp');
   });
 };
 
@@ -298,8 +299,19 @@ export const OverWeightLogInTests = () => {
   it('should this link has the property of popping up a new window\n(預期此連結具有彈跳出新視窗的屬性)', () => {
     cy.get('.btn.green').last().should('have.attr','target', '_blank', 'href');
     cy.get('.btn.green').last().find('.box').should('be.visible');
-
+    
     //之後會針對彈跳出新視窗的內容做驗証//
+    // cy.visit('https://plus.5000.gov.tw/hpg/webLogin?token=coupon&language=ch');
+  });
+};
+
+export const CheckTests = () => {
+  it('should this link has the property of popping up a new window\n(預期此連結具有彈跳出新視窗的屬性)', () => {
+    cy.get('.btn.blue').should('have.attr','target', '_blank', 'href');
+    cy.get('.btn.blue').find('.box').should('be.visible');
+    
+    //之後會針對彈跳出新視窗的內容做驗証//
+    // cy.visit('https://emake.5000.gov.tw/hpg/webLogin?token=query&language=ch');
   });
 };
 
@@ -381,9 +393,9 @@ export const AudiovisualTeachingTests = () => {
 
     // cy.get('.list-text.classify li').eq(0).click();
     // cy.wait(500);
-    cy.get('.group-list.page-block ul[data-child="18"] a').its('length')
-      .should('eq', 18);
-    for (let i = 1; i < 16; i++) {
+    cy.get('.group-list.page-block ul[data-child="20"] a').its('length')
+      .should('eq', 20);
+    for (let i = 1; i < 20; i++) {
       cy.get('.group-list.page-block a').eq(`${i}`)
         .scrollIntoView().should('be.visible');
       cy.wait(1000);
@@ -403,9 +415,9 @@ export const AudiovisualTeachingTests = () => {
     cy.get('.list-text.classify li').eq(2).click();
     cy.wait(500);
 
-    cy.get('.group-list.page-block ul[data-child="15"] a').its('length')
-      .should('eq', 15);
-    for (let i = 1; i < 15; i++) {
+    cy.get('.group-list.page-block ul[data-child="17"] a').its('length')
+      .should('eq', 17);
+    for (let i = 1; i < 17; i++) {
       cy.get('.group-list.page-block a').eq(`${i}`)
         .scrollIntoView().should('be.visible');
       cy.wait(1000);
