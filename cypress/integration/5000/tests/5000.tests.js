@@ -3,7 +3,7 @@ export const GoTo5000Tests = () => {
     cy.visit('https://hpm.5000.gov.tw/Default.aspx');
     cy.wait(1000);
     //title振興五倍卷//
-    cy.get('.sa-button-container').click();
+    // cy.get('.sa-button-container').click();
     //網站要維護 跳出一個modal 先關掉//
   });
 };
@@ -289,6 +289,15 @@ export const PostOfficeReserveTests = () => {
   it('should this link has the property of popping up a new window\n(預期此連結具有彈跳出新視窗的屬性)', () => {
     cy.get('.btn.green').first().should('have.attr','target', '_blank', 'href');
     cy.get('.btn.green').first().find('.box').should('be.visible');
+
+    //之後會針對彈跳出新視窗的內容做驗証//
+  });
+};
+
+export const OverWeightLogInTests = () => {
+  it('should this link has the property of popping up a new window\n(預期此連結具有彈跳出新視窗的屬性)', () => {
+    cy.get('.btn.green').last().should('have.attr','target', '_blank', 'href');
+    cy.get('.btn.green').last().find('.box').should('be.visible');
 
     //之後會針對彈跳出新視窗的內容做驗証//
   });
