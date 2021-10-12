@@ -13,13 +13,24 @@ export const id_Verification = () => {
   cy.wait(1000); //前往 身分認証//
 
   const id_Class = [
-    '.title-con.style-line2',
-    '.title-sm',
-    'form-group.row.required',
-    '',
-    '',
+    '.title-con.style-line2', //title//
+    '.title-sm', //備註//
+    '.form-group.row.required', //認證項目//
+    '#divSmsIdn', //id輸入格//
+    '#divSmsCardNo1', //健保卡號_第1個輸入格//
+    '#divSmsCardNo2', //健保卡號_第2個輸入格//
+    '#divSmsCardNo3', //健保卡號_第3個輸入格//
+    '.custom-control-label', //是否有健保卡//
+    '#otpcaptcha', //驗証碼輸入格//
+    'img[title="語音播放圖形驗證碼"]', //播放voice//
+    '#otpCheckCode', //圖片_驗証碼//
+    'img[title="看不清楚換一張"]', //圖片更新//
+    '.btn-box', //底下的認証按鈕//
   ];
-  // cy.get('').should('be.visible');
+  id_Class.forEach(item => {
+    cy.get(`${item}`).should('be.visible');
+    cy.wait(500);
+  });
 };
 
 export const HomeTourTests = () => {
@@ -51,13 +62,13 @@ export const HomeTourTests = () => {
       .should('have.attr', 'target', '_blank', 'href',); //加碼卷logo//
     id_Verification();
 
-    // cy.visit('https://hpm.5000.gov.tw/Default.aspx');
-    // cy.wait(1000);
+    cy.visit('https://hpm.5000.gov.tw/Default.aspx');
+    cy.wait(1000);
 
-    // cy.get('@main').get('.ct > ul').eq(1).find('li').its('length')
-    //   .should('eq', 8); //8個部會//
-    // cy.get('@main').get('.ct > ul').eq(1).find('li a')
-    //   .should('have.attr', 'href');
+    cy.get('@main').get('.ct > ul').eq(1).find('li').its('length')
+      .should('eq', 8); //8個部會//
+    cy.get('@main').get('.ct > ul').eq(1).find('li a')
+      .should('have.attr', 'href');
   });
 };
 
