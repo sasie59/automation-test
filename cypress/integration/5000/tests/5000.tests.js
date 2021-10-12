@@ -1,5 +1,5 @@
 export const GoTo5000Tests = () => {
-  it('should go to 5000 index\n(預期連結振興五倍卷)', () => {
+  it.only('should go to 5000 index\n(預期連結振興五倍卷)', () => {
     cy.visit('https://hpm.5000.gov.tw/Default.aspx');
     cy.wait(1000);
     //title振興五倍卷//
@@ -8,8 +8,22 @@ export const GoTo5000Tests = () => {
   });
 };
 
+export const id_Verification = () => {
+  cy.visit('https://plus.5000.gov.tw/hpg/webLogin?token=coupon&language=ch');
+  cy.wait(1000); //前往 身分認証//
+
+  const id_Class = [
+    '.title-con.style-line2',
+    '.title-sm',
+    'form-group.row.required',
+    '',
+    '',
+  ];
+  // cy.get('').should('be.visible');
+};
+
 export const HomeTourTests = () => {
-  it('should guided tour this index all elements\n(預期導覽此網頁的全部元件)', () => {
+  it.only('should guided tour this index all elements\n(預期導覽此網頁的全部元件)', () => {
     cy.get('.area-editor.default.group-ball').as('main');
 
     cy.get('@main').find('.img > img')
@@ -35,11 +49,15 @@ export const HomeTourTests = () => {
 
     cy.get('@main').get('.coupon > .hd > .img').find('a')
       .should('have.attr', 'target', '_blank', 'href',); //加碼卷logo//
+    id_Verification();
 
-    cy.get('@main').get('.ct > ul').eq(1).find('li').its('length')
-      .should('eq', 8); //8個部會//
-    cy.get('@main').get('.ct > ul').eq(1).find('li a')
-      .should('have.attr', 'href');
+    // cy.visit('https://hpm.5000.gov.tw/Default.aspx');
+    // cy.wait(1000);
+
+    // cy.get('@main').get('.ct > ul').eq(1).find('li').its('length')
+    //   .should('eq', 8); //8個部會//
+    // cy.get('@main').get('.ct > ul').eq(1).find('li a')
+    //   .should('have.attr', 'href');
   });
 };
 
@@ -212,7 +230,7 @@ export const OverViewTests = () => {
     cy.wait(1000);
     cy.get('.group-list.nav .group.nav').eq(2).click();
     cy.wait(500);
-      
+
     cy.get('.list-text.nav ul[data-child="9"]').find('li').eq(0).click();
     cy.wait(500);
 
@@ -276,7 +294,7 @@ export const PaperFor5000tests = () => {
     cy.get('.btn.yellow').should('have.attr', 'href');
     cy.get('.btn.yellow').click();
     cy.wait(1000);
-    
+
     cy.get('.group.default.info .simple-text.heading')
       .should('be.visible'); //title//
 
@@ -287,7 +305,7 @@ export const PaperFor5000tests = () => {
 
 export const PostOfficeReserveTests = () => {
   it('should this link has the property of popping up a new window\n(預期此連結具有彈跳出新視窗的屬性)', () => {
-    cy.get('.btn.green').first().should('have.attr','target', '_blank', 'href');
+    cy.get('.btn.green').first().should('have.attr', 'target', '_blank', 'href');
     cy.get('.btn.green').first().find('.box').should('be.visible');
 
     //之後會針對彈跳出新視窗的內容做驗証//
@@ -297,9 +315,9 @@ export const PostOfficeReserveTests = () => {
 
 export const OverWeightLogInTests = () => {
   it('should this link has the property of popping up a new window\n(預期此連結具有彈跳出新視窗的屬性)', () => {
-    cy.get('.btn.green').last().should('have.attr','target', '_blank', 'href');
+    cy.get('.btn.green').last().should('have.attr', 'target', '_blank', 'href');
     cy.get('.btn.green').last().find('.box').should('be.visible');
-    
+
     //之後會針對彈跳出新視窗的內容做驗証//
     // cy.visit('https://plus.5000.gov.tw/hpg/webLogin?token=coupon&language=ch');
   });
@@ -307,9 +325,9 @@ export const OverWeightLogInTests = () => {
 
 export const CheckTests = () => {
   it('should this link has the property of popping up a new window\n(預期此連結具有彈跳出新視窗的屬性)', () => {
-    cy.get('.btn.blue').should('have.attr','target', '_blank', 'href');
+    cy.get('.btn.blue').should('have.attr', 'target', '_blank', 'href');
     cy.get('.btn.blue').find('.box').should('be.visible');
-    
+
     //之後會針對彈跳出新視窗的內容做驗証//
     // cy.visit('https://emake.5000.gov.tw/hpg/webLogin?token=query&language=ch');
   });
@@ -342,14 +360,14 @@ export const DigitalLabelTests = () => {
 
     cy.get('.area-editor.user-edit p').its('length').should('eq', 3);
     //三個段落//
-    for(let i = 0; i < 3; i++) {
+    for (let i = 0; i < 3; i++) {
       cy.get('.area-editor.user-edit p').eq(`${i}`)
         .should('be.visible');
       cy.wait(500);
     }
     cy.get('.area-editor.user-edit ol').eq(0).find('li').its('length')
       .should('eq', 6);
-    for(let i = 0; i < 6; i++) {
+    for (let i = 0; i < 6; i++) {
       cy.get('.area-editor.user-edit ol').eq(0).find('li').eq(`${i}`)
         .should('be.visible');
       cy.wait(500);
@@ -357,7 +375,7 @@ export const DigitalLabelTests = () => {
 
     cy.get('.area-editor.user-edit ol').eq(1).find('li').its('length')
       .should('eq', 2);
-    for(let i = 0; i < 2; i++) {
+    for (let i = 0; i < 2; i++) {
       cy.get('.area-editor.user-edit ol').eq(1).find('li').eq(`${i}`)
         .should('be.visible');
       cy.wait(500);
@@ -365,7 +383,7 @@ export const DigitalLabelTests = () => {
 
     cy.get('.area-editor.user-edit ol').eq(2).find('li').its('length')
       .should('eq', 2);
-    for(let i = 0; i < 2; i++) {
+    for (let i = 0; i < 2; i++) {
       cy.get('.area-editor.user-edit ol').eq(2).find('li').eq(`${i}`)
         .should('be.visible');
       cy.wait(500);
