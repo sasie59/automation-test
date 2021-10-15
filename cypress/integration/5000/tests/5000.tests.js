@@ -1,5 +1,5 @@
 export const GoTo5000Tests = () => {
-  it.only('should go to 5000 index\n(預期連結振興五倍卷)', () => {
+  it('should go to 5000 index\n(預期連結振興五倍卷)', () => {
     cy.visit('https://hpm.5000.gov.tw/Default.aspx');
     cy.wait(1000);
     //title振興五倍卷//
@@ -34,7 +34,7 @@ export const id_Verification = () => {
 };
 
 export const HomeTourTests = () => {
-  it.only('should guided tour this index all elements\n(預期導覽此網頁的全部元件)', () => {
+  it('should guided tour this index all elements\n(預期導覽此網頁的全部元件)', () => {
     cy.get('.area-editor.default.group-ball').as('main');
 
     cy.get('@main').find('.img > img')
@@ -60,6 +60,7 @@ export const HomeTourTests = () => {
 
     cy.get('@main').get('.coupon > .hd > .img').find('a')
       .should('have.attr', 'target', '_blank', 'href',); //加碼卷logo//
+
     id_Verification();
 
     cy.visit('https://hpm.5000.gov.tw/Default.aspx');
@@ -329,8 +330,7 @@ export const OverWeightLogInTests = () => {
     cy.get('.btn.green').last().should('have.attr', 'target', '_blank', 'href');
     cy.get('.btn.green').last().find('.box').should('be.visible');
 
-    //之後會針對彈跳出新視窗的內容做驗証//
-    // cy.visit('https://plus.5000.gov.tw/hpg/webLogin?token=coupon&language=ch');
+    id_Verification();
   });
 };
 
@@ -339,8 +339,7 @@ export const CheckTests = () => {
     cy.get('.btn.blue').should('have.attr', 'target', '_blank', 'href');
     cy.get('.btn.blue').find('.box').should('be.visible');
 
-    //之後會針對彈跳出新視窗的內容做驗証//
-    // cy.visit('https://emake.5000.gov.tw/hpg/webLogin?token=query&language=ch');
+    id_Verification();
   });
 };
 
@@ -401,12 +400,6 @@ export const DigitalLabelTests = () => {
     }
   });
 };
-
-// export const ExitCo_BindingTests = () => {
-//   it('should this link has the property of popping up a new window\n(預期此連結具有彈跳出新視窗的屬性)', () => {
-//     cy.get('.is-three').should('have.attr', 'target', '_blank', 'href');
-//   });
-// };
 
 export const AudiovisualTeachingTests = () => {
   it('should display links to info about audio-visual teaching\n(預期呈現影音教學的資訊連結)', () => {
