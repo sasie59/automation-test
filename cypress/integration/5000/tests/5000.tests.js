@@ -321,7 +321,6 @@ export const PostOfficeReserveTests = () => {
     cy.get('.btn.green').first().find('.box').should('be.visible');
 
     //之後會針對彈跳出新視窗的內容做驗証//
-    // cy.visit('https://subservices.post.gov.tw/post/internet/5000/reservation/index.jsp');
   });
 };
 
@@ -331,6 +330,9 @@ export const OverWeightLogInTests = () => {
     cy.get('.btn.green').last().find('.box').should('be.visible');
 
     id_Verification();
+
+    cy.visit('https://hpm.5000.gov.tw/Default.aspx');
+    cy.wait(1000);
   });
 };
 
@@ -340,6 +342,9 @@ export const CheckTests = () => {
     cy.get('.btn.blue').find('.box').should('be.visible');
 
     id_Verification();
+
+    cy.visit('https://hpm.5000.gov.tw/Default.aspx');
+    cy.wait(1000);
   });
 };
 
