@@ -47,3 +47,29 @@ export const DoubleZeroTo99Tests = () => {
     }
   });
 };
+
+export const CheckResultTests = () => {
+  it('should display elements after check result\n(預期檢查結果會出現的元素)', () => {
+    cy.get('#code').type('13'); //有中獎//
+    cy.wait(500);
+    cy.get('form button').click();
+    cy.wait(1500);
+    
+    cy.get('.App_result__3TkmB .App_title__2CLN0')
+      .should('be.visible'); //中獎title//
+      
+    cy.get('.App_result__3TkmB .result a') //中獎內容//
+      .should('have.attr', 'target', '_blank', 'href'); 
+    
+    cy.get('#code').type('28'); //沒中獎//
+    cy.wait(500);
+    cy.get('form button').click();
+    cy.wait(1500);
+
+    cy.get('.App_resultList__2RRsi .App_result__3TkmB')
+      .should('be.visible'); //沒中獎title//
+    
+    cy.get('.App_resultList__2RRsi .App_result__3TkmB')
+      .find('img').should('have.attr', 'src'); //貓咪哭哭//
+  });
+};
