@@ -25,3 +25,25 @@ export const WebPageElementTests = () => {
       .should('be.visible');
   });
 };
+
+export const DoubleZeroTo99Tests = () => {
+  it('should check 00 to 99 is Win a lottery ?\n(預期查詢00至99是否中獎?)', () => {
+    const arrayList = [
+      '00', '01', '02', '03', '04',
+      '05', '06', '07', '08', '09',
+    ];
+    arrayList.forEach(item => {
+      cy.get('#code').type(`${item}`);
+      cy.wait(500);
+      cy.get('form button').click();
+      cy.wait(1500);
+    });
+
+    for(let i = 10; i < 99; i++) {
+      cy.get('#code').type(`${i}`);
+      cy.wait(500);
+      cy.get('form button').click();
+      cy.wait(1500);
+    }
+  });
+};
