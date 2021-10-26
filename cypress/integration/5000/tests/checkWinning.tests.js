@@ -9,20 +9,23 @@ export const WebPageElementTests = () => {
   it('should display all elements\n(預期呈現所有的元素)', () => {
     cy.get('.App_App__3_kPP').as('title');
 
-    const classList = [
-      '.App_logo__1DTn3',
-      '.App_text__1FlLb',
-      '.App_footer__2bprW'
-    ];
-    classList.forEach(item => {
-      cy.get('@title').find(`${item}`).should('be.visible');
-      cy.wait(500);
-    });
-    cy.get('@title').find('small a')
-      .should('have.attr', 'target', '_blank', 'href');
-
-    cy.get('@title').find('form #code')
+    cy.get('@title').find('.App_logo__1DTn3').should('be.visible');
+    cy.get('@title').find('.App_text__1FlLb').contains('身份證加碼查')
       .should('be.visible');
+
+    cy.get('@title').find('small').contains('非官方，加碼券得獎請看振興五倍券官網')
+      .should('be.visible');
+
+    cy.get('@title').get('form div').contains('請輸入後三碼查詢').should('be.visible');
+    cy.get('@title').get('#code').should('be.visible');
+    cy.get('@title').get('form button').contains('查詢').should('be.visible');
+
+    cy.get('@title').find('.App_footer__2bprW').contains('原始碼都在 Github') 
+      .should('be.visible');
+      
+    cy.get('@title').find('.App_author__3d67c').contains('本程式由 sexyoung 開發')
+      .should('be.visible');
+
   });
 };
 
