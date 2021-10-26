@@ -22,7 +22,7 @@ export const WebPageElementTests = () => {
 
     cy.get('@title').find('.App_footer__2bprW').contains('原始碼都在 Github') 
       .should('be.visible');
-      
+
     cy.get('@title').find('.App_author__3d67c').contains('本程式由 sexyoung 開發')
       .should('be.visible');
 
@@ -58,21 +58,25 @@ export const CheckResultTests = () => {
     cy.get('form button').click();
     cy.wait(1500);
     
-    cy.get('.App_result__3TkmB .App_title__2CLN0')
+    cy.get('.App_result__3TkmB .App_title__2CLN0').contains('Wooow 中獎了')
       .should('be.visible'); //中獎title//
+    
+    cy.get('.App_result__3TkmB .result').its('length')
+      .should('eq', 2); //中兩個獎//
+
+    cy.get('.App_result__3TkmB .result').eq(0).contains('第1期動滋券')
+      .contains('(500元)').should('be.visible'); 
       
-    cy.get('.App_result__3TkmB .result a') //中獎內容//
-      .should('have.attr', 'target', '_blank', 'href'); 
+    cy.get('.App_result__3TkmB .result').eq(1).contains('第2期農遊券')
+      .contains('(888元)').should('be.visible'); 
     
     cy.get('#code').type('28'); //沒中獎//
     cy.wait(500);
     cy.get('form button').click();
     cy.wait(1500);
 
-    cy.get('.App_resultList__2RRsi .App_result__3TkmB')
-      .should('be.visible'); //沒中獎title//
+    cy.get('.App_resultList__2RRsi .App_result__3TkmB').contains('沒中獎 ')
+      .should('be.visible');
     
-    cy.get('.App_resultList__2RRsi .App_result__3TkmB')
-      .find('img').should('have.attr', 'src'); //貓咪哭哭//
   });
 };
