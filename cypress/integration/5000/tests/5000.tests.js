@@ -464,7 +464,7 @@ export const CommonQATests = () => {
     cy.wait(500);
 
     cy.get('.group.default.info .simple-text.heading')
-      .should('be.visible'); //title//
+      .contains('常見問答').should('be.visible'); //title//
 
     cy.get('.group-list.page-list ul[data-index="1"] .caption')
       .its('length').should('eq', 50);
@@ -484,8 +484,7 @@ export const SwitchLanguageTests = () => {
   it('should display switch between Chinese and English interface and link with pop-up window\n(可中英介面切換及具彈跳視窗的連結)', () => {
     cy.get('.group.base-mobile a[title="必[手機版選單]"]').click();
     cy.wait(1000);
-    cy.get('.list-text.link ').first().find('a[href="/en"]')
-      .should('have.attr', 'target', '_blank');
-    cy.wait(500);
+    cy.get('.list-text.link').first().find('a[href="/en"]')
+      .contains('EN').should('be.exist');
   });
 };
