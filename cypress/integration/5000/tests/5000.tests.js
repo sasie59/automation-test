@@ -12,25 +12,57 @@ export const id_Verification = () => {
   cy.visit('https://plus.5000.gov.tw/hpg/webLogin?token=coupon&language=ch');
   cy.wait(1000); //前往 身分認証//
 
-  const id_Class = [
-    '.title-con.style-line2', //title//
-    '.title-sm', //備註//
-    '.form-group.row.required', //認證項目//
-    '#divSmsIdn', //id輸入格//
-    '#divSmsCardNo1', //健保卡號_第1個輸入格//
-    '#divSmsCardNo2', //健保卡號_第2個輸入格//
-    '#divSmsCardNo3', //健保卡號_第3個輸入格//
-    '.custom-control-label', //是否有健保卡//
-    '#otpcaptcha', //驗証碼輸入格//
-    'img[title="語音播放圖形驗證碼"]', //播放voice//
-    '#otpCheckCode', //圖片_驗証碼//
-    'img[title="看不清楚換一張"]', //圖片更新//
-    '.btn-box', //底下的認証按鈕//
-  ];
-  id_Class.forEach(item => {
-    cy.get(`${item}`).should('be.visible');
-    cy.wait(500);
-  });
+  cy.get('.title-con.style-line2').contains('身分認證')
+    .should('be.exist');
+  cy.wait(500);
+
+  cy.get('.title-sm').contains('身分證號、健保卡號')
+    .should('be.exist');
+  cy.wait(500);
+
+  cy.get('.form-group.row.required').contains('身分證號/統一證號')
+    .should('be.exist');
+  cy.wait(500);
+
+  cy.get('#divSmsIdn[placeholder="請輸入身分證號/居留證號最長10位"]')
+    .should('be.exist');
+  cy.wait(500);
+
+  cy.get('#divSmsCardNo1[placeholder="1~4"]')
+    .should('be.exist');
+  cy.wait(500);
+
+  cy.get('#divSmsCardNo2[placeholder="5~8"]')
+    .should('be.exist');
+  cy.wait(500);
+
+  cy.get('#divSmsCardNo3[placeholder="9~12"]')
+    .should('be.exist');
+  cy.wait(500);
+
+  cy.get('.custom-control-label').contains('有健保身分者')
+    .should('be.exist');
+  cy.wait(500);
+
+  cy.get('.custom-control-label').contains('無健保身分者')
+    .should('be.exist');
+  cy.wait(500);
+
+  cy.get('#otpcaptcha[placeholder="圖形驗證碼"]')
+    .should('be.exist');
+  cy.wait(500);
+
+  cy.get('img[title="語音播放圖形驗證碼"]').should('be.exist');
+  cy.wait(500);
+
+  cy.get('#otpCheckCode[title="圖形驗證碼"]').should('be.exist');
+  cy.wait(500);
+
+  cy.get('img[title="看不清楚換一張"]').should('be.exist');
+  cy.wait(500);
+  
+  cy.get('.btn-box').contains('健保卡號認證').should('be.exist');
+  cy.wait(500);
 };
 
 export const HomeTourTests = () => {
