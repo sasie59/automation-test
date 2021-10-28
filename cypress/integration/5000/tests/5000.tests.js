@@ -37,15 +37,21 @@ export const HomeTourTests = () => {
   it('should guided tour this index all elements\n(預期導覽此網頁的全部元件)', () => {
     cy.get('.area-editor.default.group-ball').as('main');
 
-    cy.get('@main').find('.img > img')
-      .should('have.attr', 'src'); //左上的logo//
+    id_Verification();
+
+    cy.visit('https://hpm.5000.gov.tw/Default.aspx');
+    cy.wait(1000);
+    
+    cy.get('@main').find('.img > img[alt="振興五倍券"]')
+      .should('be.exist'); //左上的logo//
     cy.get('@main').find('.p').contains('10/8數位、紙本消費起跑')
       .should('be.visible');
-    cy.get('@main').find('.box > a')
-      .should('have.attr', 'href'); //右上的button//
+    cy.get('@main').find('.box > a').contains('預訂與查詢')
+      .should('be.visible'); //右上的button//
 
     cy.get('@main').get('.ct > ul').first().find('li').its('length')
       .should('eq', 4); //4種領取方式//
+
     const getWay = [
       '.credit-card',
       '.card',
@@ -54,22 +60,17 @@ export const HomeTourTests = () => {
     ];
     getWay.forEach(item => {
       cy.get('@main').get('.ct > ul').first().find(`${item} a`)
-        .should('have.attr', 'href');
+        .should('be.visible');
       cy.wait(500);
     });
 
-    cy.get('@main').get('.coupon > .hd > .img').find('a')
-      .should('have.attr', 'target', '_blank', 'href',); //加碼卷logo//
-
-    id_Verification();
-
-    cy.visit('https://hpm.5000.gov.tw/Default.aspx');
-    cy.wait(1000);
+    cy.get('@main').get('.coupon > .hd > .img').find('a[title="額度再加碼"]')
+      .get('img[alt="額度加碼"]').should('be.exist',); //加碼卷logo//
 
     cy.get('@main').get('.ct > ul').eq(1).find('li').its('length')
       .should('eq', 8); //8個部會//
     cy.get('@main').get('.ct > ul').eq(1).find('li a')
-      .should('have.attr', 'href');
+      .should('be.exist');
   });
 };
 
@@ -413,13 +414,16 @@ export const AudiovisualTeachingTests = () => {
     cy.get('.group-list.nav .group.nav').eq(4).click();
     cy.wait(500);
 
-    cy.get('.group.default.info .simple-text.heading')
+    cy.get('.group.default.info .simple-text.heading').contains('影音教學')
       .should('be.visible'); //title//
+
     cy.get('.list-text.classify li').its('length')
       .should('eq', 3); //三種篩選方式//
 
-    // cy.get('.list-text.classify li').eq(0).click();
-    // cy.wait(500);
+    cy.get('.list-text.classify li').eq(0).contains('全部').should('be.exist');
+    cy.get('.list-text.classify li').eq(1).contains('懶人包').should('be.exist');
+    cy.get('.list-text.classify li').eq(2).contains('影音').should('be.exist');
+
     cy.get('.group-list.page-block ul[data-child="20"] a').its('length')
       .should('eq', 20);
     for (let i = 1; i < 20; i++) {
@@ -449,10 +453,6 @@ export const AudiovisualTeachingTests = () => {
         .scrollIntoView().should('be.visible');
       cy.wait(1000);
     }
-
-    cy.get('.group-list.page-block a').should('have.attr', 'target', '_self');
-    cy.get('.group-list.page-block a .img').should('be.visible');
-    cy.get('.group-list.page-block a .essay').should('be.visible');
   });
 };
 
