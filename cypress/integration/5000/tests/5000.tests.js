@@ -206,25 +206,37 @@ export const PaperRollTests = () => {
     cy.get('.area-editor.default.group-ball').get('.ct > ul').first()
       .find('.ball.paper').click();
 
-    cy.get('.simple-text.heading').should('be.visible');
+    cy.get('.simple-text.heading').contains('紙本券').should('be.visible');
 
     cy.get('.g.is-right .g.is-inline img').its('length').should('eq', 2);
-    cy.get('.g.is-right .g.is-inline img').should('have.attr', 'src');
-    cy.get('.g.is-right .g.is-inline .title').should('be.visible');
+    cy.get('.g.is-right .g.is-inline img').should('be.exist');
+    cy.get('.is-center').eq(0).contains('平台預訂').should('be.visible');
+    cy.get('.is-center').eq(1).contains('超商預訂').should('be.visible');
     //最上方的圖示//
-    const periodClass = [
-      '.p.is-bold',
-      '.list',
-      '.mark'
-    ];
-    periodClass.forEach(item => {
-      cy.get(`.g.is-right ${item}`).its('length').should('eq', 2); //有2個梯次//
-      cy.get(`.g.is-right ${item}`).should('be.visible');
-    }); //上半部//
+    cy.get('.p.is-bold').contains('第一梯次').should('be.exist');
+    cy.get('.g.is-right .list').eq(0).find('li').eq(0)
+      .contains('預訂 110/09/25(六) 9:00 至 110/10/01(五) 22:00').should('be.exist');
+    cy.get('.g.is-right .list').eq(0).find('li').eq(1)
+      .contains('領取 110/10/08(五) 至 110/10/21(四)').should('be.exist');
 
-    cy.get('.is-left img').should('have.attr', 'src'); //郵局圖案//
-    cy.get('.is-left .g').last().get('.list .p').should('be.visible');
-    //下半部//
+    cy.get('.p.is-bold').contains('第二梯次').should('be.exist');
+    cy.get('.g.is-right .list').eq(1).find('li').eq(0)
+      .contains('預訂 110/10/25(一) 9:00 至 110/10/31(日) 22:00').should('be.exist');
+    cy.get('.g.is-right .list').eq(1).find('li').eq(1)
+      .contains('領取 110/11/08(一) 至 110/11/21(日)').should('be.exist');
+    
+    cy.get('.mark').contains('超商的預定與領取時間為每日09:00-22:00').should('be.exist');
+
+    cy.get('.is-left img').should('be.exist'); //郵局圖案//
+    cy.get('.is-center').eq(2).contains('郵局領取').should('be.visible');
+    cy.get('.g.is-left .list').find('li').eq(0).contains('預約 110/10/04(一) 起開放預約')
+      .should('be.exist');
+    cy.get('.g.is-left .list').find('li').eq(1)
+      .contains('領取 110/10/12(二)~110/10/30(六)上班日受理預約民眾領券')
+      .should('be.exist');
+    cy.get('.g.is-left .list').find('li').eq(2)
+      .contains('110/10/16、110/10/23兩個週六支局全日服務(機關、學校內之郵局除外)')
+      .should('be.exist');
   });
 };
 
