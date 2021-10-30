@@ -9,14 +9,14 @@ export const GoTo5000Tests = () => {
 };
 
 export const id_Verification = () => {
-  cy.visit('https://plus.5000.gov.tw/hpg/webLogin?token=coupon&language=ch');
+  cy.visit('https://emake.5000.gov.tw/hpg/webLogin?token=query&language=ch');
   cy.wait(1000); //前往 身分認証//
 
   cy.get('.title-con.style-line2').contains('身分認證')
     .should('be.exist');
   cy.wait(500);
 
-  cy.get('.title-sm').contains('身分證號、健保卡號')
+  cy.get('.title-sm').contains('身分證號+健保卡號')
     .should('be.exist');
   cy.wait(500);
 
@@ -24,19 +24,19 @@ export const id_Verification = () => {
     .should('be.exist');
   cy.wait(500);
 
-  cy.get('#divSmsIdn[placeholder="請輸入身分證號/居留證號最長10位"]')
+  cy.get('#nhCardNoModal_idn[placeholder="請輸入身分證號/居留證號最長10位"]')
     .should('be.exist');
   cy.wait(500);
 
-  cy.get('#divSmsCardNo1[placeholder="1~4"]')
+  cy.get('#nhCardNoModal_nhCard1[placeholder="1~4"]')
     .should('be.exist');
   cy.wait(500);
 
-  cy.get('#divSmsCardNo2[placeholder="5~8"]')
+  cy.get('#nhCardNoModal_nhCard2[placeholder="5~8"]')
     .should('be.exist');
   cy.wait(500);
 
-  cy.get('#divSmsCardNo3[placeholder="9~12"]')
+  cy.get('#nhCardNoModal_nhCard3[placeholder="9~12"]')
     .should('be.exist');
   cy.wait(500);
 
@@ -61,7 +61,7 @@ export const id_Verification = () => {
   cy.get('img[title="看不清楚換一張"]').should('be.exist');
   cy.wait(500);
   
-  cy.get('.btn-box').contains('健保卡號認證').should('be.exist');
+  cy.get('.btn-box').contains('執行身分認證').should('be.exist');
   cy.wait(500);
 };
 
@@ -113,11 +113,13 @@ export const ZoomOutAndEnlargetests = () => {
     //右下角「最小化」//
     cy.get('.simple-text.btn.go a[title="最小化[縮放]"]').click();
     cy.wait(1000);
-    cy.get('.simple-text.btn.go a[title="最大化[縮放]"]').should('be.visible');
+    cy.get('.simple-text.btn.go a[title="最大化[縮放]"]')
+      .contains('最大化').should('be.visible');
 
     cy.get('.simple-text.btn.go a[title="最大化[縮放]"]').click();
     cy.wait(1000);
-    cy.get('.simple-text.btn.go a[title="最小化[縮放]"]').should('be.visible');
+    cy.get('.simple-text.btn.go a[title="最小化[縮放]"]')
+      .contains('最小化').should('be.visible');
   });
 };
 
