@@ -10,7 +10,7 @@ describe('前往加碼券中獎查詢', () => {
   });
 
   tests.GoToPlusCouponCheckWinnerTests();
-  tests.WebPageElementTests();
-  tests.CheckResultTests();
+  // tests.WebPageElementTests();
+  // tests.CheckResultTests();
   tests.DoubleZeroTo99Tests();
 });
