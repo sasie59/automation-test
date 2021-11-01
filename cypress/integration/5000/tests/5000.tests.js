@@ -60,7 +60,7 @@ export const id_Verification = () => {
 
   cy.get('img[title="看不清楚換一張"]').should('be.exist');
   cy.wait(500);
-  
+
   cy.get('.btn-box').contains('執行身分認證').should('be.exist');
   cy.wait(500);
 };
@@ -73,7 +73,7 @@ export const HomeTourTests = () => {
 
     cy.visit('https://hpm.5000.gov.tw/Default.aspx');
     cy.wait(1000);
-    
+
     cy.get('@main').find('.img > img[alt="振興五倍券"]')
       .should('be.exist'); //左上的logo//
     cy.get('@main').find('.p').contains('10/8數位、紙本消費起跑')
@@ -142,40 +142,48 @@ export const DigitalBindingTests = () => {
     cy.wait(500);
     cy.url().should('eq', 'https://hpm.5000.gov.tw/News_Photo.aspx?n=193&sms=9199');
 
-    cy.get('.simple-text.heading').should('be.visible');
+    cy.get('.simple-text.heading').contains('信用卡').should('be.visible');
     //title//
     cy.get('.group-list.page-block .area-figure.page-figure').its('length')
       .should('eq', 31); //31家信用卡//
 
-    for (let i = 1; i <= 31; i++) {
-      cy.get(`li[data-index=${i}] a`)
-        .should('have.attr', 'href')
-        .get('.img img').should('have.attr', 'src')
-        .get('.essay .figcaption').should('be.visible')
-        .get('.essay .label').should('be.visible')
-        .get('.essay .p').should('be.visible');
+    const bankList = [
+      '中國信託商業銀行', '國泰世華銀行', '兆豐銀行', '合作金庫商業銀行', '聯邦銀行',
+      '玉山商業銀行', '台新國際商業銀行', '華南銀行', '陽信商業銀行', '渣打國際商業銀行',
+      '花旗(台灣)商業銀行', '三信商業銀行', '星展(台灣)商業銀行', '台灣美國運通', '高雄銀行',
+      '遠東國際商業銀行', '臺灣新光商業銀行', '上海銀行', '台中商業銀行', '臺灣銀行',
+      '彰化商業銀行', '台北富邦銀行', '滙豐(台灣)商業銀行', '日盛國際商業銀行', '永豐商業銀行',
+      '中華郵政', '元大商業銀行', '第一商業銀行', '安泰商業銀行', '臺灣中小企業銀行',
+      '臺灣土地銀行',
+    ];
+
+    bankList.forEach(item => {
+      cy.get('.group-list.page-block').contains(`${item}`).scrollIntoView().should('be.exist');
       cy.wait(500);
-    }
+    });
+
     cy.get('.list-text.breadcrumb li[data-index="2"]').click();
     cy.wait(500);
     cy.url().should('eq', 'https://hpm.5000.gov.tw/cp.aspx?n=299');
 
     cy.get('.digitFasten li').eq(1).click();
     ////選擇電子票證
-    cy.get('.simple-text.heading').should('be.visible');
+    cy.get('.simple-text.heading').contains('電子票證').should('be.visible');
     //title//
     cy.get('.group-list.page-block .area-figure.page-figure').its('length')
       .should('eq', 4); //4家電子票證//
 
-    for (let i = 1; i <= 4; i++) {
-      cy.get(`li[data-index=${i}] a`)
-        .should('have.attr', 'href')
-        .get('.img img').should('have.attr', 'src')
-        .get('.essay .figcaption').should('be.visible')
-        .get('.essay .label').should('be.visible')
-        .get('.essay .p').should('be.visible');
+    const e_TicketList = [
+      '遠鑫電子票證股份有限公司',
+      '悠遊卡股份有限公司-悠遊卡',
+      'icash2.0',
+      'iPASS 一卡通',
+    ];
+
+    e_TicketList.forEach(item => {
+      cy.get('.group-list.page-block').contains(`${item}`).should('be.exist');
       cy.wait(500);
-    }
+    });
 
     cy.get('.list-text.breadcrumb li[data-index="2"]').click();
     cy.wait(500);
@@ -183,20 +191,26 @@ export const DigitalBindingTests = () => {
 
     cy.get('.digitFasten li').eq(2).click();
     ////選擇行動支付
-    cy.get('.simple-text.heading').should('be.visible');
+    cy.get('.simple-text.heading').contains('行動支付').should('be.visible');
     //title//
     cy.get('.group-list.page-block .area-figure.page-figure').its('length')
       .should('eq', 8); //8家行動支付//
 
-    for (let i = 1; i <= 8; i++) {
-      cy.get(`li[data-index=${i}] a`)
-        .should('have.attr', 'href')
-        .get('.img img').should('have.attr', 'src')
-        .get('.essay .figcaption').should('be.visible')
-        .get('.essay .label').should('be.visible')
-        .get('.essay .p').should('be.visible');
+    const digitalPaymentList = [
+      '街口支付',
+      '台灣Pay',
+      'Pi 拍錢包',
+      '悠遊付',
+      '橘子支付',
+      'icash Pay',
+      '歐付寶',
+      'LINE Pay Money',
+    ];
+
+    digitalPaymentList.forEach(item => {
+      cy.get('.group-list.page-block').contains(`${item}`).scrollIntoView().should('be.exist');
       cy.wait(500);
-    }
+    });
   });
 };
 
@@ -224,7 +238,7 @@ export const PaperRollTests = () => {
       .contains('預訂 110/10/25(一) 9:00 至 110/10/31(日) 22:00').should('be.exist');
     cy.get('.g.is-right .list').eq(1).find('li').eq(1)
       .contains('領取 110/11/08(一) 至 110/11/21(日)').should('be.exist');
-    
+
     cy.get('.mark').contains('超商的預定與領取時間為每日09:00-22:00').should('be.exist');
 
     cy.get('.is-left img').should('be.exist'); //郵局圖案//
