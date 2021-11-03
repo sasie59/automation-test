@@ -416,7 +416,7 @@ export const DigitalLabelTests = () => {
     cy.get('.group-list.nav .group.nav').eq(1).click();
     cy.wait(500);
 
-    cy.get('.group.default.info .simple-text.heading')
+    cy.get('.group.default.info .simple-text.heading').contains('數位標章')
       .should('be.visible'); //title//
 
     cy.get('.area-editor.user-edit .badge ol li').its('length').should('eq', 3);
@@ -424,23 +424,20 @@ export const DigitalLabelTests = () => {
 
     cy.get('.g.is-inline a').its('length').should('eq', 2); //2個連結//
     cy.get('.g.is-inline a .hd.is-center').should('be.visible');
-    cy.get('.g.is-inline a .ct').should('be.visible');
-    cy.get('.g.is-inline a').should('have.attr', 'href');
 
-    cy.get('.list-text.classify.eight a').should('have.attr', 'target', '_self', 'href')
+    cy.get('.list-text.classify.eight a').contains('數位標章運用注意事項')
       .click(); //數位標章運用注意事項//
     cy.wait(1000);
 
-    cy.get('.group.default.info .simple-text.heading')
+    cy.get('.group.default.info .simple-text.heading').contains('數位標章運用注意事項')
       .should('be.visible'); //title//
 
     cy.get('.area-editor.user-edit p').its('length').should('eq', 3);
     //三個段落//
-    for (let i = 0; i < 3; i++) {
-      cy.get('.area-editor.user-edit p').eq(`${i}`)
-        .should('be.visible');
-      cy.wait(500);
-    }
+    cy.get('.area-editor.user-edit p').contains('數位標章組成').should('be.exist');
+    cy.get('.area-editor.user-edit p').contains('民眾運用時應特別注意').should('be.exist');
+    cy.get('.area-editor.user-edit p').contains('店家運用時應特別注意').should('be.exist');
+
     cy.get('.area-editor.user-edit ol').eq(0).find('li').its('length')
       .should('eq', 6);
     for (let i = 0; i < 6; i++) {
@@ -464,6 +461,19 @@ export const DigitalLabelTests = () => {
         .should('be.visible');
       cy.wait(500);
     }
+    cy.go('back');
+    cy.wait(500);
+
+    cy.get('.g.is-inline a').its('length').should('eq', 2);
+
+    cy.get('.div.customer').contains('民眾').should('be.exist');
+    cy.get('.div.customer').contains('您可按此圖示').should('be.exist');
+    cy.get('.div.customer').contains('輸入身分證+手機號碼 即可顯示您的數位標章').should('be.exist');
+
+    cy.get('.div.store').contains('店家').should('be.exist');
+    cy.get('.div.store').contains('可二擇一查詢').should('be.exist');
+    cy.get('.div.store').contains('直接以手機掃描民眾數位標章QR Code查詢是否滿額').should('be.exist');
+    cy.get('.div.store').contains('按此圖示後輸入優惠代碼+圖形驗證碼查詢是否滿額').should('be.exist');
   });
 };
 
