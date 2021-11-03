@@ -162,12 +162,12 @@ export const DigitalBindingTests = () => {
       cy.wait(500);
     });
 
-    cy.get('.list-text.breadcrumb li[data-index="2"]').click();
+    cy.get('.group.base-mobile a[title="必[手機版選單]"]').click();
+    cy.get('.group-list.nav ul[data-index="1"]').find('li').eq(0).click();
+    cy.get('.list-text.nav').eq(0).find('li').eq(1).click();
     cy.wait(500);
-    cy.url().should('eq', 'https://hpm.5000.gov.tw/cp.aspx?n=299');
+    cy.url().should('eq', 'https://hpm.5000.gov.tw/News_Photo.aspx?n=194&sms=9200');
 
-    cy.get('.digitFasten li').eq(1).click();
-    ////選擇電子票證
     cy.get('.simple-text.heading').contains('電子票證').should('be.visible');
     //title//
     cy.get('.group-list.page-block .area-figure.page-figure').its('length')
@@ -185,12 +185,12 @@ export const DigitalBindingTests = () => {
       cy.wait(500);
     });
 
-    cy.get('.list-text.breadcrumb li[data-index="2"]').click();
+    cy.get('.group.base-mobile a[title="必[手機版選單]"]').click();
+    cy.get('.group-list.nav ul[data-index="1"]').find('li').eq(0).click();
+    cy.get('.list-text.nav').eq(0).find('li').eq(2).click();
     cy.wait(500);
-    cy.url().should('eq', 'https://hpm.5000.gov.tw/cp.aspx?n=299');
+    cy.url().should('eq', 'https://hpm.5000.gov.tw/News_Photo.aspx?n=288&sms=9201');
 
-    cy.get('.digitFasten li').eq(2).click();
-    ////選擇行動支付
     cy.get('.simple-text.heading').contains('行動支付').should('be.visible');
     //title//
     cy.get('.group-list.page-block .area-figure.page-figure').its('length')
