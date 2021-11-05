@@ -322,10 +322,26 @@ export const OverViewTests = () => {
     cy.get('.list-text.nav ul[data-child="9"]').find('li').eq(0).click();
     cy.wait(500);
 
-    cy.get('.group.default.info .simple-text.heading');
+    cy.get('.group.default.info .simple-text.heading').contains('總覽')
+      .should('be.exist');
     ///title/
     cy.get('.list-text.classify.eight ul li').its('length')
-      .should('eq', 9); //九筆nav//
+      .should('eq', 10); //10筆nav//
+    const eightDepartment = [
+      '總覽',
+      '好食券',
+      '國旅券',
+      'i原券',
+      '農遊券',
+      '藝FUN券',
+      '動滋券',
+      '客庄券',
+      '地方創生券',
+      '加碼券登記修改時程'
+    ];
+    eightDepartment.forEach(item => {
+      cy.get('.list-text.classify.eight ul li').contains(`${item}`).should('be.exist');
+    });
     cy.get('.area-editor.user-edit ol > li').its('length')
       .should('eq', 7); //六筆資訊//
     for (let i = 0; i < 7; i++) {
@@ -334,18 +350,60 @@ export const OverViewTests = () => {
       cy.wait(750);
     }
 
-    const tableClass = [
-      '.title',
-      '.name',
-      '.date',
-      '.dollar',
+    const titleArray = [
+      '八大部會', '加碼券', '經濟部', '好食券', '交通部', '國旅券', '原民會', '農委會', '農遊券',
+      'i原券', '文化部', '藝Fun券', '教育部', '動滋券', '客委會', '客庄券', '國發會', '地方創生券'
     ];
-    tableClass.forEach(item => {
-      cy.get(`.is-table ${item}`).scrollIntoView()
-        .should('be.visible');
+    titleArray.forEach(item => {
+      cy.get('.box .title').contains(`${item}`).should('be.exist');
       cy.wait(500);
     });
-    cy.get('.is-table tr').its('length').should('eq', 9);
+
+    const dataArray = [
+      '抽籤時間', '10/29前綁定者不抽籤',
+      '每週二', '上午', '每週二', '下午',
+      '每週三', '上午', '每週三', '下午',
+      '每週四', '上午', '每週四', '下午',
+      '每週五', '上午',
+    ];
+    dataArray.forEach(item => {
+      cy.get('.box .date').contains(`${item}`).should('be.exist');
+      cy.wait(500);
+    });
+
+    const dollarArray = [
+      '票券面額', '500元', '1,000元',
+      '1,000元', '888元', '600元',
+      '500元', '500元', '500元',
+    ];
+    dollarArray.forEach(item => {
+      cy.get('.box .dollar').contains(`${item}`).should('be.exist');
+      cy.wait(500);
+    });
+
+    cy.get('.is-table tr').its('length').should('eq', 8);
+
+    cy.get('#week1').contains('第一週').should('be.exist');
+    cy.get('#week1').contains('10/11~10/15').should('be.exist');
+
+    cy.get('#week2').contains('第二週').should('be.exist');
+    cy.get('#week2').contains('10/18~10/22').should('be.exist');
+
+    cy.get('#week3').contains('第三週').should('be.exist');
+    cy.get('#week3').contains('10/25~10/29').should('be.exist');
+
+    cy.get('#week4').contains('第四週').should('be.exist');
+    cy.get('#week4').contains('11/01~11/05').should('be.exist');
+
+    const totalBudget = [
+      '合計', '400萬以上', '240萬',
+      '10萬', '88萬', '300萬',
+      '200萬', '40萬', '20萬',
+    ];
+    totalBudget.forEach(item => {
+      cy.get('.box').contains(`${item}`).should('be.exist');
+      cy.wait(500);
+    });
   });
 };
 
