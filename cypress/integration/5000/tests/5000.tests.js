@@ -265,6 +265,28 @@ export const OverWeight = () => {
 
 export const eightDepartmentOverweightTests = () => {
   it('should display Overweight information of the eight major ministries\n(預期出現八大部會的加碼資訊)', () => {
+    const goTOIndexArray = [
+      '前往好食券網站',
+      '前往國旅券網站',
+      '前往i原券網站',
+      '前往農遊券網站',
+      '前往藝FUN券網站',
+      '前往動滋券網站',
+      '前往客庄券網站',
+      '前往地方創生券網站',
+    ];
+
+    const eightDepartment = [
+      '好食券',
+      '國旅券',
+      'i原券',
+      '農遊券',
+      '藝FUN券',
+      '動滋券',
+      '客庄券',
+      '地方創生券',
+    ];
+
     for (let i = 1; i <= 8; i++) {
       cy.get('.group.base-mobile a[title="必[手機版選單]"]').click();
       cy.wait(1000);
@@ -274,21 +296,14 @@ export const eightDepartmentOverweightTests = () => {
       cy.get('.list-text.nav ul[data-child="9"]').find('li').eq(`${i}`).click();
       cy.wait(500);
 
-      cy.get('.double').find('a').should('have.attr', 'href'); //好食卷連結//
-      cy.get('.double img').scrollIntoView().should('have.attr', 'src');  //好食卷圖片//
+      cy.get('.double').find('a').contains(`${goTOIndexArray[i - 1]}`).should('have.attr', 'href'); //好食卷連結//
       cy.wait(1000);
 
-      const goodForEatInfo = [
-        '.content',
-        '.title',
-        '.p'
-      ];
       cy.get('.base-footer').scrollIntoView();
       cy.wait(2500);
 
-      goodForEatInfo.forEach(item => {
-        cy.get('.double > .content').get(`${item}`).should('be.visible');
-      }); //infomation//
+      cy.get('.content .caption').contains(`${eightDepartment[i - 1]}`).should('be.visible');
+
       cy.get('.group.base-mobile a[title="必[手機版選單]"]').click();
       cy.wait(1000);
       cy.get('.group-list.nav .group.nav').eq(1).click();
