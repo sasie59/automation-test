@@ -414,7 +414,7 @@ export const BookingAndCheck = () => {
     cy.get('.group-list.nav .group.nav').eq(3).click();
     cy.wait(500);
 
-    cy.get('.group.default.info .simple-text.heading')
+    cy.get('.group.default.info .simple-text.heading').contains('開始預訂與查詢')
       .should('be.visible'); //title//
   });
 };
@@ -424,11 +424,13 @@ export const PersonalBindingTests = () => {
     cy.get('.is-one').click();
     cy.wait(1000);
 
-    cy.get('.group.default.info .simple-text.heading')
+    cy.get('.group.default.info .simple-text.heading').contains('數位綁定')
       .should('be.visible'); //title//
 
     cy.get('.digitFasten li').its('length').should('eq', 3); //個人綁定有3種方式//
-    cy.get('.digitFasten a').should('have.attr', 'href');
+    cy.get('.digitFasten li').contains('信用卡').should('be.exist');
+    cy.get('.digitFasten li').contains('電子票證').should('be.exist');
+    cy.get('.digitFasten li').contains('行動支付').should('be.exist');
     //這邊就不在重覆驗証了，首頁已驗証過//
     //數位標章已在外層驗証過了， 在此就不在重覆驗証//
   });
