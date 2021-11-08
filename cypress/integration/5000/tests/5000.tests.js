@@ -454,11 +454,17 @@ export const PaperFor5000tests = () => {
 };
 
 export const PostOfficeReserveTests = () => {
-  it('should this link has the property of popping up a new window\n(預期此連結具有彈跳出新視窗的屬性)', () => {
-    cy.get('.btn.green').first().should('have.attr', 'target', '_blank', 'href');
-    cy.get('.btn.green').first().find('.box').should('be.visible');
-
-    //之後會針對彈跳出新視窗的內容做驗証//
+  it('should display get ticket info for postOffice\n(預期呈現郵局領券資訊)', () => {
+    const postOfficetext = [
+      '郵局',
+      '10/4 09:00起開放預約',
+      '10/12起 須先預約再領券',
+      '(平日 08:30開始，週六 09:00開始)',
+    ];
+    postOfficetext.forEach(item => {
+      cy.get('.green').first().scrollIntoView().contains(`${item}`).should('be.exist');
+      cy.wait(500);
+    });
   });
 };
 
