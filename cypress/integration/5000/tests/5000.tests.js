@@ -438,16 +438,18 @@ export const PersonalBindingTests = () => {
 
 export const PaperFor5000tests = () => {
   it('should display PaperFor5000 info\n(預期呈現紙本五倍券資訊)', () => {
-    cy.get('.btn.yellow .box').its('length').should('eq', 3);
-    cy.get('.btn.yellow').should('have.attr', 'href');
-    cy.get('.btn.yellow').click();
-    cy.wait(1000);
+    const paperText = [
+      '紙本五倍券',
+      '第一梯次', '9/25~10/1 預訂', '10/8~10/21 領取', '超商領取時間為每日09:00~22:00',
+      '第二梯次', '10/25~10/31 預訂', '11/8~11/21 領取',
+      '預訂方式', '健保卡/健保快易通(OTP)/自然人憑證',
+      '線上預訂', '預訂並選擇領取地點 ', '(超商/超市/藥妝店)',
+    ];
 
-    cy.get('.group.default.info .simple-text.heading')
-      .should('be.visible'); //title//
-
-    cy.get('#CCMS_Content img').should('have.attr', 'src');
-    //coming soon//
+    paperText.forEach(item => {
+      cy.get('.yellow').scrollIntoView().contains(`${item}`).should('be.exist');
+      cy.wait(500);
+    });
   });
 };
 
