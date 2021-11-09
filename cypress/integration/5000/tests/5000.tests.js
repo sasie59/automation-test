@@ -69,10 +69,10 @@ export const HomeTourTests = () => {
   it('should guided tour this index all elements\n(預期導覽此網頁的全部元件)', () => {
     cy.get('.area-editor.default.group-ball').as('main');
 
-    id_Verification();
+    // id_Verification();
 
-    cy.visit('https://hpm.5000.gov.tw/Default.aspx');
-    cy.wait(1000);
+    // cy.visit('https://hpm.5000.gov.tw/Default.aspx');
+    // cy.wait(1000);
 
     cy.get('@main').find('.img > img[alt="振興五倍券"]')
       .should('be.exist'); //左上的logo//
@@ -96,7 +96,7 @@ export const HomeTourTests = () => {
       cy.wait(500);
     });
 
-    cy.get('@main').get('.coupon > .hd > .img').find('a[title="額度再加碼"]')
+    cy.get('@main').get('.coupon > .hd > .img').find('a[title="[另開新視窗]額度再加碼"]')
       .get('img[alt="額度加碼"]').should('be.exist',); //加碼卷logo//
 
     cy.get('@main').get('.ct > ul').eq(1).find('li').its('length')
@@ -480,23 +480,31 @@ export const OverWeightLogInTests = () => {
       cy.get('.green').last().scrollIntoView().contains(`${item}`).should('be.exist');
       cy.wait(500);
     });
-
-    id_Verification();
-
-    cy.visit('https://hpm.5000.gov.tw/Default.aspx');
-    cy.wait(1000);
+    
+    // id_Verification();
+    
+    // cy.visit('https://hpm.5000.gov.tw/Default.aspx');
+    // cy.wait(1000);
   });
 };
 
 export const CheckTests = () => {
-  it('should this link has the property of popping up a new window\n(預期此連結具有彈跳出新視窗的屬性)', () => {
-    cy.get('.btn.blue').should('have.attr', 'target', '_blank', 'href');
-    cy.get('.btn.blue').find('.box').should('be.visible');
+  it('should display all info for check \n(預期呈現查詢的全部資訊)', () => {
+    const checkText = [
+      '查詢',
+      '查詢綁定、預訂狀況',
+      '加碼券登記狀況',
+      '個人資料修正',
+    ];
+    checkText.forEach(item => {
+      cy.get('.blue').last().scrollIntoView().contains(`${item}`).should('be.exist');
+      cy.wait(500);
+    });
 
-    id_Verification();
+    // id_Verification();
 
-    cy.visit('https://hpm.5000.gov.tw/Default.aspx');
-    cy.wait(1000);
+    // cy.visit('https://hpm.5000.gov.tw/Default.aspx');
+    // cy.wait(1000);
   });
 };
 
@@ -628,9 +636,9 @@ export const CommonQATests = () => {
       .contains('常見問答').should('be.visible'); //title//
 
     cy.get('.group-list.page-list ul[data-index="1"] .caption')
-      .its('length').should('eq', 50);
+      .its('length').should('eq', 56);
 
-    for (let i = 1; i < 50; i++) {
+    for (let i = 1; i < 56; i++) {
       cy.get('.group-list.page-list ul[data-index="1"] .caption')
         .eq(`${i}`).scrollIntoView().click();
       cy.wait(2000);  //打開所有解答//
