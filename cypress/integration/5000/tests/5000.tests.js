@@ -470,8 +470,16 @@ export const PostOfficeReserveTests = () => {
 
 export const OverWeightLogInTests = () => {
   it('should this link has the property of popping up a new window\n(預期此連結具有彈跳出新視窗的屬性)', () => {
-    cy.get('.btn.green').last().should('have.attr', 'target', '_blank', 'href');
-    cy.get('.btn.green').last().find('.box').should('be.visible');
+    const overWeightText = [
+      '加碼券登記',
+      '9/22~10/29 23:59 前',
+      '登記方式',
+      '身分證號/統一證號+健保卡卡號+手機簡訊認證',
+    ];
+    overWeightText.forEach(item => {
+      cy.get('.green').last().scrollIntoView().contains(`${item}`).should('be.exist');
+      cy.wait(500);
+    });
 
     id_Verification();
 
