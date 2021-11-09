@@ -469,7 +469,7 @@ export const PostOfficeReserveTests = () => {
 };
 
 export const OverWeightLogInTests = () => {
-  it('should this link has the property of popping up a new window\n(預期此連結具有彈跳出新視窗的屬性)', () => {
+  it('should display info for overWeight login\n(預期呈現加碼券登計資訊)', () => {
     const overWeightText = [
       '加碼券登記',
       '9/22~10/29 23:59 前',
